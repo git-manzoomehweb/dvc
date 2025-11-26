@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'IRANYekan';
+    overflow-wrap: break-word;
+  }
+}
+:root {
+  --primary: #00b3bd;
+  --primary-50: #e0f8f8;
+  --primary-100: #b3eeed;
+  --primary-200: #82e3e4;
+  --primary-300: #50d6da;
+  --primary-400: #29cdd4;
+  --primary-500: #00c4cf;
+  --primary-600: #00b3bd;
+  --primary-700: #009ea3;
+  --primary-800: #008a8c;
+  --primary-900: #036662;
+  --primary-950: #01504d;
+
+  --secondary: #262d5d;
+  --secondary-50: #e3e5eb;
+  --secondary-100: #babdcf;
+  --secondary-200: #8e93ae;
+  --secondary-300: #656b8d;
+  --secondary-400: #484e78;
+  --secondary-500: #2b3365;
+  --secondary-600: #262d5d;
+  --secondary-700: #1f2453;
+  --secondary-800: #181c47;
+  --secondary-900: #0e0c31;
+  --secondary-950: #070621;
+
+  --special-1: #f37321;
+
+  --bg: url('');
+  --footer-bg: url('../images/footer-background.jpg');
+  --default-bg: url('../images/default-background.jpg');
+  --tourList-bg: url('../images/tour-list-background.jpg');
+  --visaList-bg: url('../images/visa-list-background.jpg');
+  --articleList-bg: url('../images/article-list-background.jpg');
+  --contact-bg: url('../images/contact-background.jpg');
+  --tourCategory-bg: url('../images/tour-category-pc.jpg');
+  --parallax-bg: url('../images/parallax-image.jpg');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'IRANYekan';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/IRANYekanRegular.ttf') format('truetype');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'IRANYekan';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/IRANYekanMedium.ttf') format('truetype');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'IRANYekan';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/IRANYekanBold.ttf') format('truetype');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'IRANYekan';
+  font-style: normal;
+  font-weight: 950;
+  src: url('../fonts/IRANYekanExtrablack.ttf') format('truetype');
+}
+
+.my-scroll-box::-webkit-scrollbar {
+  width: 4px;
+}
+
+.my-scroll-box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.my-scroll-box::-webkit-scrollbar-thumb {
+  background: var(--primary-600);
+  border-radius: 3px;
+}
+
+.my-scroll-box::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-300);
+}
+
+.swiper .swiper-pagination-progressbar {
+  background-color: #a1a1aa;
+  border-radius: 8px;
+  height: 6px;
+  width: 433px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.swiper .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+  background-color: var(--primary-800);
+  border-radius: 8px;
+  height: 6px;
+}
+
+.direction-ltr {
+  direction: ltr;
+}
+
+.h1-tag {
+  position: absolute;
+  width: 1px;
+  padding: 0;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-width: 0;
+  clip: rect(0, 0, 0, 0);
+}
+
+.swiper-tour-cat .swiper-slide-active{
+  width: 344px;
+  height: 480px;
+}
+
+.swiper-tour-description-cat .swiper-pagination-bullet{
+  width: 14px;
+  height: 14px;
+  background-color: #A1A1AA;
+  opacity: 1;
+  margin: 10px 0 !important;
+}
+.swiper-tour-description-cat .swiper-pagination-bullet-active{
+  background-color: white;
+}
+
+.shine-effect::before {
+  content: '';
+  position: absolute;
+  width: 33rem;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  top: -220px;
+  right: -356px;
+  transform: rotate(45deg);
+  transition: all 0.5s ease-in-out;
+}
+
+.group:hover .shine-effect::before {
+  top: 100%;
+  right: 100%;
+}
