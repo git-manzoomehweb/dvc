@@ -1,4 +1,5 @@
 module.exports = {
+  // important: '#app',
   content: [
     "./web/**/*.{html,js}",
     "./mobile/**/*.{html,js}",

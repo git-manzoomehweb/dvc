@@ -28,7 +28,45 @@ var swiper = new Swiper(".swiper-thumbnail-visa", {
     },
 });
 
-
+// swiper-img-visa
+var swiper = new Swiper(".swiper-img-visa", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    navigation: {
+        nextEl: ".swiper-button-next-visa",
+        prevEl: ".swiper-button-prev-visa",
+    },
+    pagination: {
+        el: ".swiper-pagination",
+    },
+});
+// swiper-comment-user
+var swiper = new Swiper(".swiper-comment-user", {
+    scrollbar: {
+        el: ".swiper-scrollbar-comment",
+        hide: false,
+        draggable: true,
+        snapOnRelease: true,
+    },
+    slidesPerView: 3,
+    spaceBetween: 20,
+    freeMode: true,
+    navigation: {
+        nextEl: ".swiper-button-next-comment",
+        prevEl: ".swiper-button-prev-comment",
+    },
+    breakpoints: {
+        640: {
+            slidesPerView: 1,
+        },
+        768: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 3,
+        }
+    }
+});
 // faq
 const panels = document.querySelectorAll(".panel");
 
