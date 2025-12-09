@@ -1,0 +1,200 @@
+@import "input.css";
+
+/*<!--------------------------init CSS------------------------------->*/
+@font-face {
+    font-family: "DanaMedium";
+    src: url("../fonts/DanaFaNum-Medium.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DanaRegular";
+    src: url("../fonts/DanaFaNum-Regular.ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DanaBold";
+    src: url("../fonts/DanaFaNum-Bold.ttf");
+    font-weight: 800;
+    font-style: normal;
+}
+
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: "DanaMedium";
+    background: #fff;
+    direction: rtl;
+
+}
+
+*,
+::after,
+::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.c-container {
+    margin-inline: auto;
+    max-width: 1280px;
+}
+
+.danaBold {
+    font-family: "DanaBold";
+}
+
+.danaRegular {
+    font-family: "DanaRegular";
+}
+
+:root {
+    --bg-main: url("../images/bg-main.png");
+    --bg-main-tour: url("../images/main-tour.png")
+}
+
+a, button {
+    cursor: pointer;
+}
+
+.ease {
+    transition: 0.5s ease-in-out;
+}
+
+input, button, a {
+    outline: none;
+}
+
+/*<!--------------------------init CSS------------------------------->*/
+
+/*s-main*/
+.s-main-mobi{
+    background: var(--bg-main) no-repeat center center;
+    background-size: cover;
+}
+
+.list-category-tour .item-category-tour{
+  white-space: nowrap;
+}
+
+.shadow-custom-1 {
+    box-shadow: 0 4px 67px 0 #0000000F;
+}
+
+.shadow-custom-2 {
+    box-shadow: 0 24px 54px 0 #00000017;
+}
+
+.shadow-custom-3 {
+    box-shadow: 0 4px 35px 0 #0000002E;
+}
+
+.box-visa-comment {
+    box-shadow: 0px 20px 45px 0px #00000017;
+}
+
+.pre-line {
+    white-space: pre-line;
+}
+.thumbnail-tour {
+    box-shadow: 0 8px 20px 0 #00000017;
+}
+
+.swiper-thumbnail-tour{
+    padding: 1rem 8px;
+}
+.btn-primary {
+    background: var(--text-primary-900);
+    border: 1px solid var(--text-primary-900);
+    border-radius: 100px;
+    height: 55px;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'danaRegular';
+    transition: 0.6s ease;
+}
+
+
+
+/*faq*/
+
+
+.panel {
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.setting-title {
+    display: flex;
+    transition: all 0.3s ease;
+}
+
+.setting-content {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.panel.active .setting-content {
+    opacity: 1;
+    height: auto;
+    transform: translateY(0);
+}
+
+.setting-content .answer {
+    transform: scale(0.98);
+    opacity: 0;
+    transition: transform 0.3s ease 0.1s;
+}
+
+.panel.active .setting-content .answer {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.panel .end svg {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+.panel.active .end svg {
+    transform: rotate(180deg) scale(1.1);
+}
+
+
+.popular-destinations .swiper-slide {
+    text-align: center;
+    height: calc((100% - 30px) / 2) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popular-destinations{
+    padding-block: 2rem;
+}
+
+/*footer*/
+.s-footer {
+    background: linear-gradient(180deg, #FAF7F3 0%, #FFFFFF 100%);
+}

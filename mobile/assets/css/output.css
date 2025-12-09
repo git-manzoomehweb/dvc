@@ -552,6 +552,12 @@
   .w-\[20\%\] {
     width: 20%;
   }
+  .w-\[24\%\] {
+    width: 24%;
+  }
+  .w-\[30\%\] {
+    width: 30%;
+  }
   .w-\[30px\] {
     width: 30px;
   }
@@ -594,11 +600,17 @@
   .w-\[63px\] {
     width: 63px;
   }
+  .w-\[65px\] {
+    width: 65px;
+  }
   .w-\[70px\] {
     width: 70px;
   }
   .w-\[75\%\] {
     width: 75%;
+  }
+  .w-\[75px\] {
+    width: 75px;
   }
   .w-\[77\%\] {
     width: 77%;
@@ -1481,11 +1493,6 @@
   justify-content: center;
   font-family: 'danaRegular';
   transition: 0.6s ease;
-}
-.btn-primary:hover {
-  background: white;
-  color: var(--text-primary-900);
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 @property --tw-translate-x {
   syntax: "*";
