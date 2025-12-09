@@ -339,3 +339,103 @@ input, button, a {
     width: 100%;
     height: 100%;
 }
+
+
+.swiper-img-visa .swiper-pagination-bullet {
+    background: white;
+    opacity: 1;
+}
+
+.swiper-img-visa .swiper-pagination-bullet-active {
+    background: #BB9B57 !important;
+}
+
+
+.active-tab {
+    background: var(--text-secondary-200);
+    color: var(--text-secondary-950);
+}
+
+.btn-tab a:hover {
+    background: var(--text-secondary-200);
+}
+
+.swiper-button-next-tour:hover svg, .swiper-button-next-hotel:hover svg, .swiper-button-next-visa:hover svg{
+    transform: translate(5px);
+}
+
+.swiper-button-prev-tour:hover svg, .swiper-button-prev-hotel:hover svg, .swiper-button-prev-visa:hover svg{
+    transform: translate(-5px);
+}
+
+.item-popular-destinations img, .item-visa svg, .thumbnail-blog, .btn-tab a, .thumbnail-tour, .thumbnail-hotel, .s-footer .col-4 svg {
+    transition: 0.5s ease;
+}
+
+.item-popular-destinations:hover img {
+    scale: 1.4;
+}
+
+.item-popular-destinations:hover h3 {
+    color: var(--text-secondary-700);
+}
+
+.item-visa:hover svg {
+    translate: -10px;
+}
+
+.item-visa:hover h2, .item-visa:hover svg path {
+    color: var(--text-secondary-950);
+    fill: var(--text-secondary-950);
+}
+
+.item-visa h2, .thumbnail-blog h2 a {
+    transition: 0.4s all;
+}
+
+.thumbnail-blog:hover {
+    scale: 1.06;
+}
+
+.thumbnail-tour:hover, .thumbnail-hotel:hover {
+    translate: 0 -10px;
+}
+
+.thumbnail-tour:hover h3 a, .thumbnail-hotel:hover h3 a, .thumbnail-blog:hover h2 a {
+    color: var(--text-secondary-950);
+}
+
+.s-footer .col-4 .item:hover svg {
+    scale: 1.1;
+}
+
+header .menu li, header .item-social, .bottom .btn-register {
+    transition: 0.4s all;
+}
+
+header .menu li:hover {
+    color: var(--text-secondary-950);
+}
+
+header .item-social:hover {
+    translate: 0 -3px;
+}
+
+.bottom .btn-register:hover {
+    background: transparent;
+}
+
+.s-details .row-default .p-img img, .s-details .row-reverse .p-img img  ,.s-details .row-default h2 , .s-details .row-reverse h2 , .row-text h2{
+    transition: 0.5s ease;
+}
+
+.s-details .row-default:hover .p-img img, .s-details .row-reverse:hover .p-img img {
+    filter: grayscale(0.5);
+    scale: 1.3;
+}
+.s-details .row-default:hover h2, .s-details .row-reverse:hover h2 , .row-text:hover h2{
+  color: var(--text-secondary-950);
+}
+.p-pagination .pagination .next-page svg , .p-pagination .pagination .prev-page svg{
+    transition: 0.5s ease;
+}

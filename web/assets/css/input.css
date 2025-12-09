@@ -339,9 +339,22 @@
     transition: 0.6s ease;
 }
 
-.btn-primary:hover {
+.btn-primary:hover , .btn-primary-sm:hover {
     background: white;
     color: var(--text-primary-900);
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
+.btn-primary-sm {
+    background: var(--text-primary-900);
+    border: 1px solid var(--text-primary-900);
+    border-radius: 100px;
+    height: 40px;
+    color: white;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'danaRegular';
+    transition: 0.6s ease;
+}

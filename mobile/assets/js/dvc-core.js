@@ -52,6 +52,39 @@ var swiper = new Swiper(".popular-destinations", {
     spaceBetween: 12,
 });
 
+// swiper-comment-user
+var swiper = new Swiper(".swiper-comment-user", {
+    scrollbar: {
+        el: ".swiper-scrollbar-comment",
+        hide: false,
+        draggable: true,
+        snapOnRelease: true,
+    },
+    slidesPerView: 1.2,
+    spaceBetween: 14,
+    freeMode: true,
+    navigation: {
+        nextEl: ".swiper-button-next-comment",
+        prevEl: ".swiper-button-prev-comment",
+    },
+    breakpoints: {
+        640: {
+            slidesPerView: 1,
+        },
+        768: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 3,
+        }
+    }
+});
+
+
+
+
+
+
 // faq
 const panels = document.querySelectorAll(".panel");
 
