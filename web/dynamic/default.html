@@ -23,8 +23,7 @@
         </member>
     </basis>
     <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
-        <member name="faq" type="view"  postsql="select * from [db.faqcontent] where TypeID in(250)"
-        />
+        <member name="faq" type="view"  postsql="select * from [db.faq] where TypeID in(250)"/>
         </member>
     </basis>
 
@@ -40,6 +39,10 @@
     </basis>
     <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219252">
         <member name="visa" type="list" link="visa.bc"  order="ord"/>
+        </member>
+    </basis>
+    <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219234">
+        <member name="service" type="list" link="service.bc"  order="ord"/>
         </member>
     </basis>
 
@@ -554,7 +557,143 @@
                 </div>
             </div>
         </section>
+        <!--s-visa-->
+        <section class="s-visa mt-20">
+            <div class="c-container">
+                <div class="title w-full flex flex-col items-center justify-center gap-[6px]">
+                    <h2 class="danaBold text-2xl">ویزا های تعطیلات رویایی</h2>
+                    <svg width="266" height="6">
+                        <use href="/images/sprite-icons.svg#icon-line-title-tour"></use>
+                    </svg>
+                    <span class="text-zinc-600 danaRegular mt-3 text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+                    <div class="btn-tab w-full flex items-center justify-center mt-7 gap-2">
+                        <a class="px-[17px] transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
+                           href="">ویزای توریستی</a>
+                        <a class="px-[17px] transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
+                           href="">اقامت</a>
+                        <a class="px-[17px] transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
+                           href="">تحصیلی</a>
+                        <a class="px-[17px] transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
+                           href="">فرهنگی</a>
+                    </div>
+                </div>
+                <div class="p-list-visa bg-white w-full">
+                    <div class="swiper bg-white swiper-thumbnail-visa py-5">
+                        <div class="swiper-wrapper">
+                            <basis core="list" datamembername="db.visa">
+                                <layout>@child</layout>
+                                <face>
+                                    <div class="swiper-slide">
+                                        <a href="@link" class="item-visa shadow-custom-1 w-full relative bg-color-2 h-[85px] rounded-[100px] px-[8px]">
+                                            <div class="img overflow-hidden h-[85px] rounded-[100px] w-full relative">
+                                                <div class="back-bg p-2 gap-3 flex items-center justify-between w-full h-full absolute right-0 top-0 z-5 bg-[#0000008A]">
+                                                    <div class="flex items-center gap-2">
+                                                        <img class="w-[60px]" src="/@images" alt="@title">
+                                                        <div class="flex flex-col items-start">
+                                                            <span class="text-white text-xs	 danaRegular">ویزای</span>
+                                                            <h2 class="text-white text-2xl danaBold mt-1">@title</h2>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ml-[2rem]">
+                                                        <svg width="14" height="26">
+                                                            <use href="/images/sprite-icons.svg#icon-arrow-left"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <img class="w-full h-full" src="/images/img-ib.jpg" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                </face>
+                            </basis>
 
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="w-full flex items-center mt-3 justify-center">
+                    <div class="bg-slider p-2 rounded-[50px] flex items-center w-auto h-[60px] gap-2 bg-zinc-100">
+                        <button class="swiper-button-next-visa  w-10 h-10 rounded-[50%] flex items-center justify-center bg-white">
+                            <svg class="ease" width="9" height="16">
+                                <use href="/images/sprite-icons.svg#icon-next"></use>
+                            </svg>
+                        </button>
+                        <a href=""
+                           class="btn-view h-10 text-white px-[24px] btn-primary-sm  text-xs	 danaRegular flex items-center rounded-[50px]">
+                            مشاهده همه
+                        </a>
+                        <button class="swiper-button-prev-visa w-10 h-10 rounded-[50%] flex items-center justify-center bg-white">
+                            <svg class="ease" width="9" height="16">
+                                <use href="/images/sprite-icons.svg#icon-prev"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--s-services-->
+        <section class="s-services my-20">
+            <div class="c-container">
+                <div class="flex items-start relative justify-end">
+                    <div class="start-text absolute right-0 flex flex-col z-10 items-start">
+                        <h2 class="text-secondary-900 text-[23px] danaBold">خدمات آژانس</h2>
+                        <h6 class="text-zinc-900 text-4xl danaBold mt-2">تعطیلات رویایی</h6>
+                        <a href=""
+                           class="btn-more border-primary-900 h-[55px] px-[24px] mt-4 text-primary-900 border-1 rounded-[100px] flex items-center">
+                            مشاهده بیشتر
+                        </a>
+                    </div>
+                    <div class="box-services w-[86%]  h-[325px] relative rounded-[50px]">
+                        <div class="detail relative  mx-auto h-full z-10 flex flex-col">
+                            <p class="text-zinc-900 w-[78%] mx-auto text-justify text-sm	 mt-4 leading-[25px]">لورم
+                                ایپسوم متن ساختگی با
+                                تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
+                                چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                                تکنولوژی مورد نیاز</p>
+
+                            <div class="items relative top-10 flex  items-center justify-center gap-7 w-full">
+                                <basis core="list" datamembername="db.service">
+                                    <layout>@child</layout>
+                                    <face>
+                                        <div class="item-services w-auto  h-[270px] rounded-xl p-3 flex flex-col items-center justify-center">
+                                            <div class="bg-white box-svg ease w-[70px] h-[70px] rounded-[1rem] flex items-center justify-center">
+                                                <svg width="37" height="37">
+                                                    <use href="/images/sprite-icons.svg#icon-service"></use>
+                                                </svg>
+                                            </div>
+                                            <a href="@link"><h5 class="danaBold ease text-secondary-950 text-base mt-4">@title</h5></a>
+                                            <div class="w-full ease hidden  detail-items flex-col">
+                                                <p class="text-zinc-600 text-xs	 w-[240px] text-justify my-2">لورم ایپسوم متن
+                                                    ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان
+                                                    گرافیک است، چاپگرها </p>
+                                                <div class="w-full flex items-center justify-between mt-1">
+                                                    <span class="text-zinc-900 text-xs	 danaRegular">مشاهده بیشتر</span>
+                                                    <a href="">
+                                                        <svg width="48" height="48">
+                                                            <use href="/images/sprite-icons.svg#icon-circle-arrow"></use>
+                                                        </svg>
+
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </face>
+                                </basis>
+
+                            </div>
+                        </div>
+                        <div class="img w-full h-full absolute right-0 top-0">
+                            <img class="w-full h-full" src="/images/img-services.png" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
 
