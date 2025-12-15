@@ -86,3 +86,35 @@ panels.forEach((panel) => {
         }
     });
 });
+
+
+function openTab(evt, tabName) {
+    const buttons = document.getElementsByClassName("btn-tab");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+    }
+
+    const contents = document.getElementsByClassName("tab-content");
+    for (let i = 0; i < contents.length; i++) {
+        contents[i].classList.remove("active");
+    }
+
+    evt.currentTarget.classList.add("active");
+
+    const matchedContents = document.querySelectorAll(
+        `.tab-content[data-category="${tabName}"]`
+    );
+
+    matchedContents.forEach(item => {
+        item.classList.add("active");
+    });
+}
+document.addEventListener("DOMContentLoaded", function () {
+    const activeTab = document.body.getAttribute("data-active-tab");
+    if (activeTab) {
+        const btn = document.querySelector(`.btn-tab[data-tab="${activeTab}"]`);
+        if (btn) {
+            btn.click();
+        }
+    }
+});
