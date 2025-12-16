@@ -5,7 +5,7 @@
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219094">
-    <member name="tours" type="list" link="Categories-of-tours" propertyid="3088231" order="ord"/>
+    <member name="tours" type="list" link="Categories-of-tours" propertyid="8181,3088230,8076,8077,10000504,3088231"  order="ord"/>
     </member>
 </basis>
 
@@ -23,7 +23,7 @@
     <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219096">
-    <member name="hotels" type="list" link="hotels" propertyid="3088232" order="ord"/>
+    <member name="hotels" type="list" link="hotels" propertyid="3088232,3088223,3088222,3088221,3088220,3088219,7249,7245" order="ord"/>
     </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
@@ -42,7 +42,7 @@
     </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219252">
-    <member name="visa" type="list" link="visa.bc" order="ord"/>
+    <member name="visa" type="list" link="visa.bc" propertyid="3088232" order="ord"/>
     </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219234">
@@ -109,7 +109,7 @@
                     <div class="list-category-tour mt-12 w-full grid grid-cols-10">@child</div>
                 </layout>
                 <face>
-                    <a href="#"
+                    <a href="/@link"
                        class="item-category-tour relative ease w-full py-2 flex flex-col items-center justify-center gap-3">
                         <img class="relative z-5" width="36" src="/@image" alt="@title">
                         <span class="DanaRegular text-[17px] text-[#171717] relative z-5">@title</span>
@@ -129,14 +129,14 @@
                 </svg>
                 <span class="text-zinc-600 mt-3 text-xs">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
                 <div class="btn-tab w-full flex items-center justify-center my-5 gap-2">
-                    <a data-tab="cat_1" onclick="openTab(event, 'محبوب ترین تورها')"
-                       class="px-[17px]  transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">محبوبت
+                    <a data-tab="cat_1" data-default="true" onclick="openTab(event, 'محبوب ترین تورها')"
+                       class="px-[17px] tab-btn  transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">محبوبت
                         ترین</a>
                     <a data-tab="cat_1" onclick="openTab(event, 'جدیدترین')"
-                       class="px-[17px] transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
+                       class="px-[17px] tab-btn transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
                     >جدیدترین تورها</a>
                     <a data-tab="cat_1" onclick="openTab(event, 'مهیج ترین')"
-                       class="px-[17px] transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
+                       class="px-[17px] tab-btn transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
                     >مهیج ترین</a>
                 </div>
             </div>
@@ -145,18 +145,18 @@
                     <basis core="list" datamembername="db.tours">
                         <layout>@child</layout>
                         <face>
-                            <div data-category="@prp_3088231" class="swiper-slide tab-content">
+                            <div data-category="@prp_3088231" class="swiper-slide swiper-slide-tabs tab-content">
                                 <div class="thumbnail-tour  w-full rounded-3xl p-3 flex flex-col items-center">
                                     <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
-                                        <img class="w-full h-full " src="/@images" draggable="false"
-                                             alt="tour">
+                                        <img class="w-full h-full " src="/@image" draggable="false"
+                                             alt="/@title">
                                         <button class="absolute right-3 top-3 z-10">
                                             <img width="36" src="/images/favorite.png" alt="">
                                         </button>
                                     </div>
                                     <div class="w-full flex flex-col gap-1 items-start mt-6">
                                         <h3><a class="font-bold danaBold text-lg" href="@link">@title</a></h3>
-                                        <span class="text-primary-700 text-xs	">شروع سفر از  20 اردیبهشت 1404</span>
+                                        <span class="text-primary-700 text-xs">@prp_3088230</span>
                                     </div>
                                     <div class="w-full mt-6 grid grid-cols-4">
                                         <div class="item flex flex-col items-center justify-center gap-2">
@@ -165,13 +165,13 @@
                                                     <use href="/images/sprite-icons.svg#icon-days"></use>
                                                 </svg>
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">10 روز 11 شب</span>
+                                            <span class="text-zinc-600 text-xs	 danaRegular">10@prp_8076</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
                                                 <img width="23" src="/images/date.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 mt-1 danaRegular">@date</span>
+                                            <span class="text-zinc-600 text-xs	 mt-1 danaRegular">@prp_8077</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
@@ -183,26 +183,22 @@
                                             <div class="h-9 flex items-end">
                                                 <img width="26" src="/images/airline.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">ایران ایرتور</span>
+                                            <span class="text-zinc-600 text-xs	 danaRegular">@prp_10000504</span>
                                         </div>
 
 
                                     </div>
                                     <div class="w-full price flex items-center justify-between mt-5">
                                         <span class="text-zinc-500 danaRegular text-sm	">شروع قیمت:</span>
-                                        <h5>
-                                            24/000/000 تومان
-                                        </h5>
+                                        <h5>@prp_8181</h5>
                                     </div>
                                 </div>
                             </div>
                         </face>
                     </basis>
-
                 </div>
 
             </div>
-
 
             <div class="w-full flex items-center mt-3 justify-center">
                 <div class="bg-slider p-2 rounded-[50px] flex items-center w-auto h-[60px] gap-2 bg-zinc-100">
@@ -304,7 +300,7 @@
                             <div class="swiper-slide">
                                 <div class="thumbnail-tour bg-white w-full rounded-3xl p-3 flex flex-col items-center">
                                     <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
-                                        <img class="w-full h-full" src="/@images" draggable="false"
+                                        <img class="w-full h-full" src="/@image" draggable="false"
                                              alt="@title">
                                         <button class="absolute right-3 top-3 z-10">
                                             <img width="35" src="/images/favorite.png" alt="">
@@ -312,7 +308,7 @@
                                     </div>
                                     <div class="w-full flex flex-col gap-1 items-start mt-6">
                                         <h3><a class="font-bold danaBold text-lg" href="@link">@title</a></h3>
-                                        <span class="text-[#D1AB66] text-xs	">Richmond Ephesus Resort</span>
+                                        <span class="text-[#D1AB66] text-xs	">@prp_7245</span>
                                     </div>
                                     <div class="w-full mt-6 grid grid-cols-4">
                                         <div class="item flex flex-col items-center justify-center gap-2">
@@ -320,7 +316,9 @@
                                                 <img width="27" src="/images/star.png" alt="">
 
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">104 ستاره</span>
+                                            <span class="text-zinc-600 text-xs	 danaRegular">
+                                        @prp_3088219
+                                        ستاره</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
@@ -328,27 +326,25 @@
 
 
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 mt-1 danaRegular">B.B</span>
+                                            <span class="text-zinc-600 text-xs	 mt-1 danaRegular">@prp_3088220</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
                                                 <img width="27" src="/images/pin.png" alt="">
 
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">تکسیم</span>
+                                            <span class="text-zinc-600 text-xs	 danaRegular">@prp_3088221</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
                                                 <img width="27" src="/images/star2.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">4.8</span>
+                                            <span class="text-zinc-600 text-xs	 danaRegular">@prp_3088222</span>
                                         </div>
                                     </div>
                                     <div class="w-full price flex items-center justify-between mt-5">
                                         <span class="text-zinc-500 danaRegular text-sm	">شروع قیمت:</span>
-                                        <h5>
-                                            24/000/000 تومان
-                                        </h5>
+                                        <h5>@prp_3088223</h5>
                                     </div>
                                 </div>
                             </div>
@@ -483,8 +479,7 @@
                 <basis core="print" datamembername="db.popular-destinations">
                     <layout>@child</layout>
                     <face>
-                        <a href=""
-                           class="item-popular-destinations shadow-custom-1 w-full relative bg-white h-[90px] rounded-xl p-[8px]">
+                        <a href="/@link" class="item-popular-destinations shadow-custom-1 w-full relative bg-white h-[90px] rounded-xl p-[8px]">
                             <div class="img overflow-hidden rounded-xl w-full h-full relative">
                                 <div class="back-bg flex items-center justify-center w-full h-full absolute right-0 top-0 z-5 bg-[#0000007A]">
                                     <h3 class="text-white danaBold text-xl">@title</h3>
@@ -518,7 +513,7 @@
                                 <h2><a class="text-zinc-900 danaBold text-zinc-900 text-base"
                                        href="@link">@title</a>
                                 </h2>
-                                <p class="leading-[21px] relative z-10 text-xs	h-[170px] text-justify danaRegular text-zinc-700 mt-3">
+                                <p class="leading-[21px] relative z-10 text-xs	h-[165px] text-justify danaRegular text-zinc-700 mt-3">
                                     @prp_7244
                                 </p>
                                 <div class="w-full flex items-center justify-start gap-2 mt-3">
@@ -593,7 +588,7 @@
                                         <div class="img overflow-hidden h-[85px] rounded-[100px] w-full relative">
                                             <div class="back-bg p-2 gap-3 flex items-center justify-between w-full h-full absolute right-0 top-0 z-5 bg-[#0000008A]">
                                                 <div class="flex items-center gap-2">
-                                                    <img class="w-[60px]" src="/@images" alt="@title">
+                                                    <img class="w-[60px] h-[60px] rounded-[50%]" src="/@image" alt="@title">
                                                     <div class="flex flex-col items-start">
                                                         <span class="text-white text-xs	 danaRegular">ویزای</span>
                                                         <h2 class="text-white text-2xl danaBold mt-1">@title</h2>

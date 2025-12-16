@@ -1,0 +1,413 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219252">
+    <member name="visa" type="list" link="visa.bc" propertyid="3088232" order="ord"/>
+    </member>
+</basis>
+
+<basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
+    <member name="scalar" type="scalar" typeid="150" />
+</basis>
+
+<basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
+    <member name="scalarEN" type="scalar" typeid="150" />
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
+    <member name="p-under" type="list"  propertyid="" />
+</basis>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>visa list</title>
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
+    <basis core="call" file="style-test.inc"/>
+</head>
+<body>
+<basis core="call" file="header-test.inc"/>
+
+
+
+<!--main-->
+<main>
+    <!--s-main-visa-->
+    <section class="s-main-visa mt-[9rem]">
+        <div class="c-container">
+            <div class="flex flex-col justify-between relative  pb-6">
+                <div class="box-main-tour pt-12  w-full flex flex-col items-center justify-center">
+                    <basis core="print" datamembername="db.scalarEN">
+                        <face>
+                            <h4 class="text-zinc-200 leading-[16px] text-4xl">@column1</h4>
+                        </face>
+                    </basis>
+                    <basis core="print" datamembername="db.scalar">
+                        <face>
+                            <h1 class="text-zinc-900 text-4xl danaBold relative bottom-3">@column1</h1>
+
+                        </face>
+                    </basis>
+                    <p class="text-zinc-500 text-xs	 danaRegular relative bottom-1">متنی آزمایشی و بی‌معنی در صنعت
+                        چاپ، صفحه‌آرایی و طراحی گرافیک
+                        گفته می‌شود. طراح گرافیک از این متن </p>
+                    <div class="box-search w-[55%] flex items-center gap-2 mt-5">
+                        <input class="w-[80%] bg-white shadow-custom-1 h-[55px] rounded-[100px] px-[24px]" type="text"
+                               placeholder="جستجوی ">
+                        <button class="h-[55px] w-[20%] bg-primary-900 rounded-[100px] text-white">
+                            جستجو
+                        </button>
+                    </div>
+                    <div class="btn-tab w-full flex items-center justify-center mt-5 gap-2">
+                        <a class="px-[17px] transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
+                           href="">ویزای توریستی</a>
+                        <a class="px-[17px] transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
+                           href="">اقامت</a>
+                        <a class="px-[17px] transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
+                           href="">تحصیلی</a>
+                        <a class="px-[17px] transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
+                           href="">فرهنگی</a>
+                    </div>
+                    <div class="p-list-visa grid grid-cols-5 gap-x-5 gap-y-11 bg-white w-full mt-12">
+                        <basis core="list" datamembername="db.visa">
+                            <layout>@child</layout>
+                            <face>
+                                <a href="@link"
+                                   class="item-visa shadow-custom-1 w-full relative bg-color-2 h-[85px] rounded-[100px] px-[8px]">
+                                    <div class="img overflow-hidden h-[85px] rounded-[100px] w-full relative">
+                                        <div class="back-bg p-2 gap-3 flex items-center justify-between w-full h-full absolute right-0 top-0 z-5 bg-[#0000008A]">
+                                            <div class="flex items-center gap-2">
+                                                <img class="w-[60px] h-[60px] rounded-[50%]" src="/@image" alt="@title">
+                                                <div class="flex flex-col items-start">
+                                                    <span class="text-white text-xs	 danaRegular">ویزای</span>
+                                                    <h2 class="text-white text-2xl danaBold mt-1">@title</h2>
+                                                </div>
+                                            </div>
+                                            <div class="ml-[2rem]">
+                                                <svg width="14" height="26">
+                                                    <use href="/images/sprite-icons.svg#icon-arrow-left"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <img class="w-full h-full" src="/images/img-ib.jpg" alt="">
+                                    </div>
+                                </a>
+                            </face>
+                        </basis>
+                    </div>
+                    <div class="p-pagination w-full my-10 flex justify-center ">
+                        <div class="pagination px-[8px] rounded-[50px] w-[290px] h-[64px] flex items-center justify-between bg-zinc-100">
+                            <button class="next-page">
+                                <svg width="48" height="48">
+                                    <use href="/images/sprite-icons.svg#icon-circle-next"></use>
+                                </svg>
+                            </button>
+                            <div class="pages   flex items-center justify-center gap-2 ">
+                                <button class="danaRegular w-12 h-12 bg-white  rounded-[50%] ease hover:bg-zinc-300 text-base">
+                                    1
+                                </button>
+                                <button class="danaRegular w-12 h-12 bg-primary-900 text-white rounded-[50%] ease hover:bg-zinc-300 text-base">
+                                    2
+                                </button>
+                                <button class="danaRegular w-12 h-12 bg-white rounded-[50%] ease hover:bg-zinc-300 text-base">
+                                    3
+                                </button>
+                            </div>
+                            <button class="prev-page">
+                                <svg width="48" height="48">
+                                    <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!--s-details-->
+    <section class="s-details mt-8">
+        <div class="c-container">
+            <div class="p-details w-full flex flex-col gap-12">
+                <div class="row-default grid grid-cols-[1.07fr_1fr] gap-8">
+                    <div class="p-img w-full rounded-3xl overflow-hidden h-[370px]">
+                        <img class="w-full h-full" src="/images/visa-1.png" alt="">
+                    </div>
+                    <div class="detail-tour w-full flex flex-col items-start pt-4">
+                        <h2 class="text-zinc-900 danaBold text-2xl mt-1">ویزای شینگن</h2>
+                        <p class="leading-[21px] text-justify text-zinc-900 text-xs	 mt-3">
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
+                            است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
+                            در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم
+                            افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان
+                            فارسی ایجاد کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+                            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
+                            است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
+                            می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را
+                            می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و
+                            فرهنگ پیشرو در زبان فارسی ایجاد کرد، در اینلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                            صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، لورم ایپسوم متن ساختگی با تولید
+                            سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
+                            مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                            متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
+                        </p>
+                    </div>
+                </div>
+                <div class="row-reverse grid grid-cols-[1fr_1.07fr] gap-8">
+                    <div class="detail-tour w-full flex flex-col items-start pt-4">
+                        <h2 class="text-zinc-900 danaBold text-2xl mt-1">ویزای آفریقا</h2>
+                        <p class="leading-[21px] text-justify text-zinc-900 text-xs	 mt-3">
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
+                            است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
+                            در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم
+                            افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان
+                            فارسی ایجاد کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+                            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
+                            است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
+                            می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را
+                            می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و
+                            فرهنگ پیشرو در زبان فارسی ایجاد کرد، در اینلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                            صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، لورم ایپسوم متن ساختگی با تولید
+                            سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
+                            مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                            متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
+                        </p>
+                    </div>
+                    <div class="p-img w-full rounded-3xl overflow-hidden h-[370px]">
+                        <img class="w-full h-full" src="/images/visa-2.png" alt="">
+                    </div>
+                </div>
+                <div class="row-default grid grid-cols-[1.07fr_1fr] gap-8">
+                    <div class="p-img w-full rounded-3xl overflow-hidden h-[370px]">
+                        <img class="w-full h-full" src="/images/visa-3.png" alt="">
+                    </div>
+                    <div class="detail-tour w-full flex flex-col items-start pt-4">
+                        <h2 class="text-zinc-900 danaBold text-2xl mt-1">مدارک مورد نیاز</h2>
+                        <p class="leading-[21px] text-justify text-zinc-900 text-xs	 mt-3">
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
+                            است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
+                            در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم
+                            افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان
+                            فارسی ایجاد کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+                            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
+                            است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
+                            می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را
+                            می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و
+                            فرهنگ پیشرو در زبان فارسی ایجاد کرد، در اینلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                            صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، لورم ایپسوم متن ساختگی با تولید
+                            سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
+                            مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                            متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
+                        </p>
+                    </div>
+                </div>
+                <div class="row-text w-full">
+                    <div class="detail-tour w-full flex flex-col items-start">
+                        <h2 class="text-zinc-900 danaBold text-2xl mt-1">ویزای های تحصیلی</h2>
+                        <p class="leading-[21px] text-justify text-zinc-900 text-xs	 mt-3">
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
+                            است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
+                            در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم
+                            افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان
+                            فارسی ایجاد کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+                            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
+                            است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
+                            می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را
+                            می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و
+                            فرهنگ پیشرو در زبان فارسی ایجاد کرد، در اینلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                            صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، لورم ایپسوم متن ساختگی با تولید
+                            سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
+                            مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                            متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--s-visa-->
+    <section class="s-visa mt-15">
+        <div class="c-container">
+            <div class="p-visa w-full flex flex-col">
+                <div class="title w-full flex flex-col items-center justify-center gap-[6px]">
+                    <h2 class="danaBold text-2xl">ويزای دریافت شده توسط ما</h2>
+                    <svg width="301" height="6" viewBox="0 0 301 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M300.773 2.88672L297.887 -3.26633e-05L295 2.88672L297.887 5.77347L300.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77347 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM297.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L297.887 3.38672V2.88672Z"
+                              fill="#CFAA65"/>
+                    </svg>
+                    <span class="text-zinc-300 danaRegular mt-3 text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+                </div>
+                <div class="row-visa mt-8 w-full flex items-center justify-between">
+                    <div class="slider-img w-[40%]">
+                        <div class="swiper swiper-img-visa">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="p-img w-full h-[300px] rounded-3xl overflow-hidden">
+                                        <img class="w-full h-full" src="/images/img-slider-visa.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="p-img w-full h-[300px] rounded-3xl overflow-hidden">
+                                        <img class="w-full h-full" src="/images/img-slider-visa.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="p-img w-full h-[300px] rounded-3xl overflow-hidden">
+                                        <img class="w-full h-full" src="/images/img-slider-visa.png" alt="">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                    <div class="w-[58%] h-[300px] flex px-3 py-6 flex-col items-start rounded-lg bg-white box-visa-comment">
+                        <h3 class="danaBold  text-zinc-900 text-xl">نظر کاربران</h3>
+                        <form class="w-full mt-5 flex  gap-2 flex-col justify-between" action="">
+                            <div class="grid w-full grid-cols-2 gap-2">
+                                <input class="h-[55px] text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                                       placeholder="نام و نام خانوادگی" type="text">
+                                <input class="h-[55px] text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                                       placeholder="شماره تماس" type="text">
+                            </div>
+                            <input class="h-[55px] w-full text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                                   placeholder="یادداشت" type="text">
+                            <div class="w-[62%] gap-2  grid grid-cols-[1.4fr_1fr_0.7fr]">
+                                <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                                       placeholder="کد امنیتی" type="text">
+                                <div class="box-captcha h-[55px] shadow-custom-1 overflow-hidden bg-white rounded-[100px]">
+                                    <img class="w-full h-full object-cover" src="/images/captcha.png" alt="">
+                                </div>
+                                <button class="h-[55px] bg-primary-900 rounded-[100px] text-white">
+                                    ارسال
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row-user-comments w-full grid grid-cols-[0.7fr_3fr] gap-8 mt-10">
+                    <div class="start mt-6 flex flex-col items-start">
+                        <svg width="110" height="88">
+                            <use href="/images/sprite-icons.svg#icon-kama"></use>
+                        </svg>
+                        <h5 class="text-secondary-950 text-base mt-5">نظر کاربران درباره ما</h5>
+                        <h3 class="danaBold text-xl mt-3">نظر کاربران تعطیلات رویای</h3>
+                        <div class="option-slider mt-12 flex items-center justify-between w-full gap-2">
+                            <button class="swiper-button-prev-comment">
+                                <svg width="24" height="20">
+                                    <use href="/images/sprite-icons.svg#icon-r-slider"></use>
+                                </svg>
+                            </button>
+                            <div class="swiper-scrollbar-comment w-[190px]"></div>
+                            <button class="swiper-button-next-comment">
+                                <svg width="24" height="20">
+                                    <use href="/images/sprite-icons.svg#icon-l-slider"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="swiper box-transparent w-full swiper-comment-user">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                    <div class="top w-full flex items-center gap-3">
+                                        <img width="60" src="/images/icon-circle-user.png" alt="">
+                                        <div class="flex flex-col">
+                                            <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
+                                            <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
+                                        </div>
+                                    </div>
+                                    <div class="bottom mt-2">
+                                        <p class="leading-5 h-[120px] text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+                                            از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                                            متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                            چاپ،</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                    <div class="top w-full flex items-center gap-3">
+                                        <img width="60" src="/images/icon-circle-user.png" alt="">
+                                        <div class="flex flex-col">
+                                            <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
+                                            <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
+                                        </div>
+                                    </div>
+                                    <div class="bottom mt-2">
+                                        <p class="leading-5 h-[120px] text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+                                            از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                                            متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                            چاپ،</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                    <div class="top w-full flex items-center gap-3">
+                                        <img width="60" src="/images/icon-circle-user.png" alt="">
+                                        <div class="flex flex-col">
+                                            <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
+                                            <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
+                                        </div>
+                                    </div>
+                                    <div class="bottom mt-2">
+                                        <p class="leading-5 h-[120px] text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+                                            از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                                            متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                            چاپ،</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                    <div class="top w-full flex items-center gap-3">
+                                        <img width="60" src="/images/icon-circle-user.png" alt="">
+                                        <div class="flex flex-col">
+                                            <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
+                                            <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
+                                        </div>
+                                    </div>
+                                    <div class="bottom mt-2">
+                                        <p class="leading-5 h-[120px] text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+                                            از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                                            متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                            چاپ،</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+
+
+
+
+
+<!--footer-->
+<basis core="call" file="footer-test.bc"/>
+
+<!--scripts-->
+<script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
+<basis core="call" file="script-test.inc"/>
+</body>
+</html>

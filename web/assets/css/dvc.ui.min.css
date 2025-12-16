@@ -2659,3 +2659,13 @@ header .item-social:hover {
 .swiper-thumbnail-hotel{
     padding: 2rem 12px !important;
 }
+.swiper-slide-tabs{
+    width: 413px !important;
+}
+.btn-tab .active{
+    color: var(--secondary-950) !important;
+    background: var(--secondary-200) !important;
+}
+input{
+    padding-inline: 20px;
+}
