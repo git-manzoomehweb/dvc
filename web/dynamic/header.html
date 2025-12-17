@@ -8,6 +8,9 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
     <member name="blogs-header"  type="tree" request="cat" parentid="219097" order="ord"></member>
 </basis>
+<basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
+    <member name="info" type="view"></member>
+</basis>
 
 <!--header-->
 <header class="w-full absolute z-10 right-0 top-8">
@@ -24,12 +27,16 @@
                         <use href="/images/sprite-icons.svg#icon-tel-header"></use>
                     </svg>
                 </a>
-                <a class="item-social" href="">
-                    <svg width="48" height="48">
-                        <use href="/images/sprite-icons.svg#icon-insta-header"></use>
-                    </svg>
-
-                </a>
+                <basis core="list" datamembername="db.info">
+                    <layout>@child</layout>
+                    <face filter="TypeID in('245') and text in('اینستاگرام')">
+                        <a class="item-social" href="/@largetext">
+                            <svg width="48" height="48">
+                                <use href="/images/sprite-icons.svg#icon-insta-header"></use>
+                            </svg>
+                        </a>
+                    </face>
+                </basis>
             </div>
             <div class="menu">
                 <ul class="flex items-center">
@@ -39,7 +46,7 @@
                            nullvalue="219094">
                         <layout>
                             <li class="border-l border-zinc-200 group-links relative px-[1.5rem] px-5 h-10 flex items-center">
-                                <span class="text-zinc-900">تورها </span>
+                                <a href="@link" class="text-zinc-900">تورها </a>
                                 <svg class="mr-2" width="24" height="24">
                                     <use href="/images/sprite-icons.svg#icon-arrow-down"></use>
                                 </svg>

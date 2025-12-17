@@ -1,0 +1,225 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
+    <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
+    </member>
+</basis>
+<basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
+    <member name="scalar" type="scalar" typeid="150" />
+</basis>
+
+<basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
+    <member name="scalarEN" type="scalar" typeid="150" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid|(0)##]">
+    <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid|(0)##]" />
+</basis>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>visa info</title>
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
+    <basis core="call" file="style-test.inc"/>
+</head>
+<body>
+<basis core="call" file="header-test.inc"/>
+
+
+
+<main>
+    <!--s-main-visa-->
+    <section class="s-main-visa  relative mt-[10rem]">
+        <div class="bg-back absolute right-0 top-0 w-full z-0">
+            <img src="../assets/images/bg-visa.png" alt="">
+        </div>
+        <div class="p-visa relative z-5">
+            <div class="c-container">
+                <div class="w-full title flex flex-col items-center justify-center">
+                    <basis core="print" datamembername="db.scalarEN">
+                        <face>
+                            <h4 class="text-zinc-200 leading-[16px] text-4xl">@column1</h4>
+                        </face>
+                    </basis>
+                    <basis core="print" datamembername="db.scalar">
+                        <face>
+                            <h1 class="text-zinc-900 text-4xl danaBold relative bottom-3">@column1</h1>
+                        </face>
+                    </basis>
+                    <p class="text-zinc-500 text-xs	 danaRegular relative bottom-2">متنی آزمایشی و بی‌معنی در صنعت
+                        چاپ، صفحه‌آرایی و طراحی گرافیک
+                        گفته می‌شود. طراح گرافیک از این متن </p>
+                    <ul class="breadcrumb flex items-center gap-2 mt-2">
+                        <basis core="print" datamembername="db.navigation">
+                            <face filter="RowNumber=max(RowNumber) and parentcatid<>218576">
+                                <li class="text-secondary">
+                                    <span class="text-zinc-900 text-xs">></span>
+                                    <span class="text-xs text-secondary-950" itemprop="name">@title</span>
+                                    <meta itemprop="position" content="@rownumber" />
+                                </li>
+                            </face>
+                            <face filter="link is null and parentcatid<>218576">
+                                <li class="" itemprop="itemListElement">
+                                    <a class="text-xs" itemprop="item" aria-label="@title">
+                                        <span class="text-zinc-900 text-xs">></span>
+                                        <span itemprop="name">@title</span>
+                                        <meta itemprop="position" content="@rownumber" />
+                                    </a></li>
+                            </face>
+                            <face filter="parentcatid<>218576">
+                                <li  itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                                    <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
+                                        <span class="text-zinc-900 text-xs	">></span>
+                                        <span itemprop="name">@title</span>
+                                        <meta itemprop="position" content="@rownumber" />
+                                    </a></li>
+                            </face>
+                        </basis>
+                    </ul>
+                </div>
+                <div class="main-row grid grid-cols-[325px_1fr] mt-12 gap-5">
+                    <div class="box-visa h-[550px] rounded-3xl overflow-hidden w-full flex flex-col items-center justify-between">
+                        <div class="top relative z-10 pt-8 flex flex-col items-center">
+                            <img class="w-[85px]" src="../assets/images/kanada.png" alt="">
+                            <span class="text-white text-base mt-3 danaRegular">کشور اخذ ویزا</span>
+                            <h5 class="text-white text-4xl danaBold">کانادا</h5>
+                        </div>
+                        <div class="bottom w-full pb-8 px-6 flex flex-col items-center relative z-10 gap-3">
+                            <a href=""
+                               class="btn border-1 border-secondary-900 rounded-[100px] h-12 w-full flex items-center text-secondary-900 justify-center">درخواست
+                                ویزا</a>
+                            <a href=""
+                               class="btn bg-secondary-900 rounded-[100px] h-12 w-full flex items-center text-color-1 justify-center">درخواست
+                                ویزا</a>
+                        </div>
+                    </div>
+                    <div class="w-full flex flex-col items-start">
+                        <div class="btn-tab w-full flex items-center justify-start  gap-2">
+                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
+                               href="">ویزای توریستی</a>
+                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
+                               href="">مشاوره</a>
+                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
+                               href="">دانشجویی</a>
+                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
+                               href="">ثبت شرکت</a>
+                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
+                               href="">دانش آموزی</a>
+                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
+                               href="">استارتاپ</a>
+                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
+                               href="">تحصیلی</a>
+                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
+                               href="">فرهنگی</a>
+
+                        </div>
+                        <div class="bg-white w-full rounded-3xl p-6 mt-6 h-[480px] shadow-custom-2 flex flex-col items-start">
+                            <h3 class="danaBold text-zinc-900 text-xl">زندگی در استانبول</h3>
+                            <p class="text-zinc-900 w-full text-xs	 mt-8 pre-line">
+                                ایرانیان با پاسپورت ایرانی برای سفر به کانادا نیاز به دریافت ویزا هستند که اعتبار این ویزا معمولا مطابق با اعتبار پاسپورت می باشد که در هر بار ورود امکان اقامت 6 ماهه دارند.برای ثبت درخواست میتوانید به مراکز انگشت نگاری vfs در کشورهای همسایه ایران مراجعه کنید.
+                                شرایط برای دریافت ویزا:
+                                داشتن سابقه سفر خوب به همراه پاسپورتهای قبلی
+                                مدارک شغلی معتبر 
+                                مدارک مالی و اسناد ملکی
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- s-faq-->
+    <section class="s-faq  py-2 mb-24 mt-25">
+        <div class="c-container">
+            <div class="title w-full flex flex-col items-center justify-center gap-[6px]">
+                <h2 class="danaBold mb-0 text-4xl">سوالات متداول </h2>
+                <svg width="194" height="6">
+                    <use href="/images/sprite-icons.svg#line-title-hotel"></use>
+                </svg>
+                <span class="text-zinc-500 mt-1 text-xs">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+            </div>
+            <div class="w-full my-8 grid grid-cols-[1fr_1.5fr] gap-8">
+                <img class="w-full" src="/images/img-faq.png" alt="">
+                <div class="w-full container p-faq flex flex-col gap-4">
+                    <basis core="print" datamembername="db.faq">
+                        <layout>@child</layout>
+                        <face>
+                            <div class="panel flex flex-col gap-4 cursor-pointer ">
+                                <div class="setting-title">
+                                    <div class="question cursor-pointer flex items-center justify-between w-full">
+                                        <div class="start w-[90%] flex items-center gap-1">
+                                            <div class="number w-12 h-12 rounded-[50%] flex items-center justify-center bg-[#D1AB66]">
+                                                <span class="text-base text-white danaBold">@RowNumber</span>
+
+                                            </div>
+                                            <svg width="62" height="20">
+                                                <use href="/images/sprite-icons.svg#line-between"></use>
+                                            </svg>
+                                            <h4 class="text-base danaRegular">@text</h4>
+                                        </div>
+                                        <div class="end">
+                                            <svg width="24" height="24">
+                                                <use href="/images/sprite-icons.svg#icon-arrow-down"></use>
+                                            </svg>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="setting-content">
+                                    <div class="answer w-full text-[#776440] text-sm bg-secondary-100 rounded-xl p-3 flex flex-col">
+                                        <p class="text-sm	 danaRegular leading-5 text-[#776440] mt-2">
+                                            @largetext
+                                        </p>
+                                        <div class="w-full mt-5">
+                                            <a class="rounded-[100px] text-white danaRegular text-base w-[180px] px-[24px] h-12 flex items-center justify-center btn-primary"
+                                               href="">
+                                                مشاهده ویدیو
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </face>
+                    </basis>
+
+
+                </div>
+            </div>
+            <div class="w-full flex flex-col items-center gap-6 mt-14">
+                <h3 class="text-zinc-900 text-xl danaBold">ارتباط با کارشناسان ما جهت مشاوره رایگان</h3>
+                <form class="contact-us w-[80%] mx-auto grid grid-cols-[2fr_2fr_1fr_1fr_1fr] gap-2">
+                    <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                           placeholder="شماره تماس "
+                           type="text">
+                    <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                           placeholder="نام و نام خانوادگی" type="text">
+                    <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                           placeholder="کد امنیتی"
+                           type="text">
+                    <div class="box-captcha h-[55px] shadow-custom-1 overflow-hidden bg-white rounded-[100px]">
+                        <img class="w-full h-full object-cover" src="/images/captcha.png" alt="">
+                    </div>
+                    <button class="h-[55px] btn-primary rounded-[100px] text-white">
+                        ارسال
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+
+
+<!--footer-->
+<basis core="call" file="footer-test.bc"/>
+
+<!--scripts-->
+<script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
+<basis core="call" file="script-test.inc"/>
+</body>
+</html>

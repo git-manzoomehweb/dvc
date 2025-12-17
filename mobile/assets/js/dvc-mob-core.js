@@ -1,6 +1,6 @@
 // swiper-thumbnail-tour
 var swiper = new Swiper(".swiper-thumbnail-tour", {
-    slidesPerView: 3,
+    slidesPerView: 1,
     spaceBetween: 20,
     navigation: {
         nextEl: ".swiper-button-next-tour",
@@ -8,9 +8,10 @@ var swiper = new Swiper(".swiper-thumbnail-tour", {
     },
 });
 
+
 // swiper-thumbnail-hotel
 var swiper = new Swiper(".swiper-thumbnail-hotel", {
-    slidesPerView: 3,
+    slidesPerView: 1,
     spaceBetween: 20,
     navigation: {
         nextEl: ".swiper-button-next-hotel",
@@ -20,8 +21,8 @@ var swiper = new Swiper(".swiper-thumbnail-hotel", {
 
 // swiper-thumbnail-visa
 var swiper = new Swiper(".swiper-thumbnail-visa", {
-    slidesPerView: 5,
-    spaceBetween: 30,
+    slidesPerView: 1.6,
+    spaceBetween: 20,
     navigation: {
         nextEl: ".swiper-button-next-visa",
         prevEl: ".swiper-button-prev-visa",
@@ -40,6 +41,17 @@ var swiper = new Swiper(".swiper-img-visa", {
         el: ".swiper-pagination",
     },
 });
+
+
+var swiper = new Swiper(".popular-destinations", {
+    slidesPerView: 1.4,
+    grid: {
+        fill: 'row',
+        rows: 2
+    },
+    spaceBetween: 12,
+});
+
 // swiper-comment-user
 var swiper = new Swiper(".swiper-comment-user", {
     scrollbar: {
@@ -48,8 +60,8 @@ var swiper = new Swiper(".swiper-comment-user", {
         draggable: true,
         snapOnRelease: true,
     },
-    slidesPerView: 3,
-    spaceBetween: 20,
+    slidesPerView: 1.2,
+    spaceBetween: 14,
     freeMode: true,
     navigation: {
         nextEl: ".swiper-button-next-comment",
@@ -67,6 +79,12 @@ var swiper = new Swiper(".swiper-comment-user", {
         }
     }
 });
+
+
+
+
+
+
 // faq
 const panels = document.querySelectorAll(".panel");
 
@@ -86,6 +104,7 @@ panels.forEach((panel) => {
         }
     });
 });
+
 
 function openTab(evt, tabName) {
     const allBtns = document.querySelectorAll(".btn-tab .tab-btn");

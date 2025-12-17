@@ -1,6 +1,8 @@
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219094">
-    <member name="tours" type="list" link="Categories-of-tours" propertyid="8181,3088230,8076,8077,10000504,3088231"  order="ord"/>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
+    <member name="tours" type="list" link="Categories-of-tours" perpage="2" pageno="[##cms.query.pagenum|(1)##]"
+            propertyid="8181,3088230,8076,8077,10000504,3088231" order="ord"/>
     </member>
+    <member name="paging" type="list" request="paging" count="3" parentname="tours"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
@@ -13,20 +15,25 @@
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid|(0)##]">
-    <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid|(0)##]" />
+    <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid|(0)##]"/>
 </basis>
 
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
-    <member name="scalar" type="scalar" typeid="150" />
+    <member name="scalar" type="scalar" typeid="150"/>
 </basis>
 
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
-    <member name="scalarEN" type="scalar" typeid="150" />
+    <member name="scalarEN" type="scalar" typeid="150"/>
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
-    <member name="p-under" type="list" size="" propertyid="" />
+    <member name="p-under" type="list" size="" propertyid=""/>
 </basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.Gid##]">
+    <member name="p-blog" type="list" size="" propertyid=""/>
+</basis>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,23 +73,25 @@
                                     itemtype="https://schema.org/ListItem">
                                     <span class="text-zinc-900 text-xs	">></span>
                                     <span class="text-xs text-secondary-950" itemprop="name">@title</span>
-                                    <meta itemprop="position" content="@rownumber" />
+                                    <meta itemprop="position" content="@rownumber"/>
                                 </li>
                             </face>
                             <face filter="link is null and parentcatid<>218576">
-                                <li class="" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                                    <a class="text-xs" itemprop="item" href="/tour-list.bc?catid=@parentcatid" aria-label="@title">
+                                <li class="" itemprop="itemListElement" itemscope=""
+                                    itemtype="https://schema.org/ListItem">
+                                    <a class="text-xs" itemprop="item" href="/tour-list.bc?catid=@parentcatid"
+                                       aria-label="@title">
                                         <span class="text-zinc-900 text-xs">></span>
                                         <span itemprop="name">@title</span>
-                                        <meta itemprop="position" content="@rownumber" />
+                                        <meta itemprop="position" content="@rownumber"/>
                                     </a></li>
                             </face>
                             <face filter="parentcatid<>218576">
-                                <li  itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                                <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
                                     <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
                                         <span class="text-zinc-900 text-xs	">></span>
                                         <span itemprop="name">@title</span>
-                                        <meta itemprop="position" content="@rownumber" />
+                                        <meta itemprop="position" content="@rownumber"/>
                                     </a></li>
                             </face>
                         </basis>
@@ -118,12 +127,12 @@
                     >مهیج ترین</a>
                 </div>
             </div>
-
             <div class="list-tour grid grid-cols-3 mt-8 gap-x-7 gap-y-9">
                 <basis core="list" datamembername="db.tours">
                     <layout>@child</layout>
                     <face>
-                        <div data-category="@prp_3088231" class="thumbnail-tour tab-content w-full rounded-3xl p-3 flex flex-col items-center">
+                        <div data-category="@prp_3088231"
+                             class="thumbnail-tour tab-content w-full rounded-3xl p-3 flex flex-col items-center">
                             <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
                                 <img class="w-full h-full " src="/@image" draggable="false"
                                      alt="tour">
@@ -174,33 +183,82 @@
                 </basis>
 
             </div>
-
-            <div class="p-pagination w-full my-10 flex justify-center ">
-                <div class="pagination px-[8px] rounded-[50px] w-[290px] h-[64px] flex items-center justify-between bg-zinc-100">
-                    <button class="next-page">
-                        <svg width="48" height="48">
-                            <use href="/images/sprite-icons.svg#icon-circle-next"></use>
-                        </svg>
-                    </button>
-                    <div class="pages   flex items-center justify-center gap-2 ">
-                        <button class="danaRegular w-12 h-12 bg-white  rounded-[50%] ease hover:bg-zinc-300 text-base">
-                            1
-                        </button>
-                        <button class="danaRegular w-12 h-12 bg-primary-900 text-white rounded-[50%] ease hover:bg-zinc-300 text-base">
-                            2
-                        </button>
-                        <button class="danaRegular w-12 h-12 bg-white rounded-[50%] ease hover:bg-zinc-300 text-base">
-                            3
-                        </button>
-                    </div>
-                    <button class="prev-page">
-                        <svg width="48" height="48">
-                            <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
-                        </svg>
-                    </button>
+            <ul class="p-pagination w-full my-10 flex justify-center" id="wibpaging">
+                <div class="pagination px-[8px] rounded-[50px] w-[290px] h-[64px] direction-ltr flex items-center justify-between bg-zinc-100">
+                    <basis core="print" datamembername="db.paging">
+                        <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">
+                            <li class="prev-page">
+                                <a aria-label="angle-left" href="/[##cms.cms.link_page##]&pagenum=@page">
+                                    <svg width="48" height="48">
+                                        <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        </face>
+                        <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'<>'')">
+                            <li class="prev-page">
+                                <a aria-label="angle-left" href="/[##cms.cms.pageurl##]?pagenum=@page">
+                                    <svg width="48" height="48">
+                                        <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        </face>
+                    </basis>
+                    <basis core="print" datamembername="db.paging">
+                        <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')">
+                            <li
+                                    class="flex items-center justify-center w-12 h-12 p-2 rounded-[50%] transition-all duration-300 bg-primary-900 page-no">
+                                <a class="flex items-center justify-center w-full h-full text-white rounded-[50%] cursor-pointer page-number bg-primary-900"
+                                   href="/[##cms.cms.link_page##]&pagenum=@page">@page</a>
+                            </li>
+                        </face>
+                        <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
+                            <li
+                                    class="flex items-center justify-center w-12 h-12 p-2 rounded-lg transition-all duration-300 bg-primary-900 page-no">
+                                <a class="flex items-center justify-center w-full h-full text-white cursor-pointer page-number bg-primary-900"
+                                   href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
+                            </li>
+                        </face>
+                        <face
+                                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'='') ">
+                            <li
+                                    class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
+                                <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                                   href="/[##cms.cms.link_page##]&pagenum=@page">@page</a>
+                            </li>
+                        </face>
+                        <face
+                                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') ">
+                            <li
+                                    class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
+                                <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                                   href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
+                            </li>
+                        </face>
+                    </basis>
+                    <basis core="print" datamembername="db.paging">
+                        <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'='')">
+                            <li class="next-page">
+                                <a aria-label="angle-right" href="/[##cms.cms.link_page##]&pagenum=@page">
+                                    <svg width="48" height="48">
+                                        <use href="/images/sprite-icons.svg#icon-circle-next"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        </face>
+                        <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'<>'')">
+                            <li class="next-page">
+                                <a aria-label="angle-right" href="/[##cms.cms.pageurl##]?pagenum=@page">
+                                    <svg width="48" height="48">
+                                        <use href="/images/sprite-icons.svg#icon-circle-next"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        </face>
+                    </basis>
                 </div>
-            </div>
-
+            </ul>
         </div>
     </section>
 
@@ -208,108 +266,20 @@
     <section class="s-details mt-8">
         <div class="c-container">
             <div class="p-details w-full flex flex-col gap-12">
-                <div class="row-default grid grid-cols-[1.07fr_1fr] gap-8">
-                    <div class="p-img w-full rounded-3xl overflow-hidden h-[370px]">
-                        <img class="w-full h-full" src="/images/img-tour-1.png" alt="">
-                    </div>
-                    <div class="detail-tour w-full flex flex-col items-start pt-4">
-                        <h2 class="text-zinc-900 danaBold text-2xl mt-1">مكان های دیدنی استانبول</h2>
-                        <p class="leading-[21px] text-justify text-zinc-900 text-xs	 mt-3">
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-                            است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
-                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
-                            در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم
-                            افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان
-                            فارسی ایجاد کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-                            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
-                            است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
-                            می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را
-                            می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و
-                            فرهنگ پیشرو در زبان فارسی ایجاد کرد، در اینلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                            صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، لورم ایپسوم متن ساختگی با تولید
-                            سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
-                            مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-                            متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
-                        </p>
-                    </div>
-                </div>
-                <div class="row-reverse grid grid-cols-[1fr_1.07fr] gap-8">
-                    <div class="detail-tour w-full flex flex-col items-start pt-4">
-                        <h2 class="text-zinc-900 danaBold text-2xl mt-1">بهترین هتل های استانبول</h2>
-                        <p class="leading-[21px] text-justify text-zinc-900 text-xs	 mt-3">
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-                            است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
-                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
-                            در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم
-                            افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان
-                            فارسی ایجاد کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-                            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
-                            است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
-                            می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را
-                            می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و
-                            فرهنگ پیشرو در زبان فارسی ایجاد کرد، در اینلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                            صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، لورم ایپسوم متن ساختگی با تولید
-                            سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
-                            مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-                            متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
-                        </p>
-                    </div>
-                    <div class="p-img w-full rounded-3xl overflow-hidden h-[370px]">
-                        <img class="w-full h-full" src="/images/img-tour-2.png" alt="">
-                    </div>
-                </div>
-                <div class="row-default grid grid-cols-[1.07fr_1fr] gap-8">
-                    <div class="p-img w-full rounded-3xl overflow-hidden h-[370px]">
-                        <img class="w-full h-full" src="/images/img-tour-3.png" alt="">
-                    </div>
-                    <div class="detail-tour w-full flex flex-col items-start pt-4">
-                        <h2 class="text-zinc-900 danaBold text-2xl mt-1">استانبول چه فصلی بریم</h2>
-                        <p class="leading-[21px] text-justify text-zinc-900 text-xs	 mt-3">
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-                            است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
-                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
-                            در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم
-                            افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان
-                            فارسی ایجاد کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-                            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
-                            است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
-                            می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را
-                            می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و
-                            فرهنگ پیشرو در زبان فارسی ایجاد کرد، در اینلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                            صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، لورم ایپسوم متن ساختگی با تولید
-                            سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
-                            مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-                            متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
-                        </p>
-                    </div>
-                </div>
-                <div class="row-text w-full">
-                    <div class="detail-tour w-full flex flex-col items-start">
-                        <h2 class="text-zinc-900 danaBold text-2xl mt-1">درباره استانبول</h2>
-                        <p class="leading-[21px] text-justify text-zinc-900 text-xs	 mt-3">
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-                            است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
-                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
-                            در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم
-                            افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان
-                            فارسی ایجاد کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-                            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
-                            است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
-                            می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را
-                            می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و
-                            فرهنگ پیشرو در زبان فارسی ایجاد کرد، در اینلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                            صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، لورم ایپسوم متن ساختگی با تولید
-                            سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
-                            مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-                            متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
-                        </p>
-                    </div>
-                </div>
-
+                <basis core="print" datamembername="db.p-under">
+                    <layout>
+                        <div class="row-default grid grid-cols-[1.07fr_1fr] gap-8">@child</div>
+                    </layout>
+                    <face>
+                        <div class="p-img w-full rounded-3xl overflow-hidden h-[370px]">
+                            <img class="w-full h-full" src="/@image" alt="">
+                        </div>
+                        <div class="detail-tour w-full flex flex-col items-start pt-4">
+                            <h2 class="text-zinc-900 danaBold text-2xl mt-1">@title</h2>
+                            <p class="leading-[21px] text-justify text-zinc-900 text-xs	 mt-3">@largetext</p>
+                        </div>
+                    </face>
+                </basis>
             </div>
         </div>
     </section>
