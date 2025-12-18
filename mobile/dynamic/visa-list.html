@@ -1,0 +1,377 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219252">
+    <member name="visa" type="list" link="visa.bc" propertyid="3088232" order="ord"/>
+    </member>
+    <member name="paging" type="list" request="paging" count="3" parentname="visa" />
+</basis>
+
+<basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
+    <member name="scalar" type="scalar" typeid="150" />
+</basis>
+
+<basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
+    <member name="scalarEN" type="scalar" typeid="150" />
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
+    <member name="p-under" type="list"  propertyid="" />
+</basis>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
+    <basis core="call" file="style-test.inc" pageindex="[##cms.cms.pageindex##]"/>
+</head>
+<body>
+<basis core="call" file="header-test.inc" pageindex="[##cms.cms.pageindex##]"/>
+
+
+
+
+<!--main-->
+<main>
+    <!--s-main-visa-->
+    <section class="s-main-visa mt-[4rem] ">
+        <div class="flex flex-col justify-between relative  pb-6">
+            <div class="box-main-tour pt-12  w-full flex flex-col items-center justify-center">
+                <basis core="print" datamembername="db.scalarEN">
+                    <face>
+                        <h4 class="text-zinc-200 leading-[16px] text-base">@column1</h4>
+                    </face>
+                </basis>
+                <basis core="print" datamembername="db.scalar">
+                    <face>
+                        <h1 class="text-zinc-900 text-base danaBold relative bottom-3">@column1</h1>
+                    </face>
+                </basis>
+                <p class="text-zinc-500 px-4 text-xs	 text-center danaRegular relative bottom-1">متنی آزمایشی و بی‌معنی در صنعت
+                    چاپ، صفحه‌آرایی و طراحی گرافیک
+                    گفته می‌شود. طراح گرافیک از این متن </p>
+                <div class="box-search px-4 w-full flex flex-col items-center gap-2 mt-5">
+                    <input class="w-full bg-white shadow-custom-1 h-[55px] rounded-[100px] px-[24px]" type="text"
+                           placeholder="جستجوی ">
+                    <button class="h-[55px] w-full bg-primary-900 rounded-[100px] text-white">
+                        جستجو
+                    </button>
+                </div>
+                <div class="btn-tab w-full overflow-x-scroll overflow-y-hidden py-2 flex items-center justify-start pr-4 mt-5 gap-2">
+                    <a class="px-[17px] w-[37%] flex-shrink-0 text-center transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
+                       href="">ویزای توریستی</a>
+                    <a class="px-[17px] w-[37%] flex-shrink-0 text-center transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
+                       href="">اقامت</a>
+                    <a class="px-[17px] w-[37%] flex-shrink-0 text-center transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
+                       href="">تحصیلی</a>
+                    <a class="px-[17px] w-[37%] flex-shrink-0 text-center transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
+                       href="">فرهنگی</a>
+                </div>
+                <div class="p-list-visa px-4 grid  gap-4 bg-white w-full mt-12">
+                    <basis core="list" datamembername="db.visa">
+                        <layout>@child</layout>
+                        <face>
+                            <a href="/@link" class="item-visa shadow-custom-1 bg-color-2 shadow-custom-3 w-full relative  h-[90px] flex items-center rounded-[100px] p-[6px]">
+                                <div class="img overflow-hidden h-[80px] rounded-[100px] w-full relative">
+                                    <div class="back-bg p-2 gap-3 flex items-center justify-between w-full h-full absolute right-0 top-0 z-5 bg-[#0000008A]">
+                                        <div class="flex items-center gap-2">
+                                            <img class="w-[60px] rounded-[50%] pr-[2px]" src="/@image" alt="">
+                                            <div class="flex flex-col items-start">
+                                                <span class="text-white text-xs	 danaRegular">ویزای</span>
+                                                <h2 class="text-white text-2xl danaBold mt-1">@title</h2>
+                                            </div>
+                                        </div>
+                                        <div class="ml-[2rem]">
+                                            <svg width="14" height="26">
+                                                <use href="/images/sprite-icons.svg#icon-arrow-left"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <img class="w-full h-full " src="/images/img-ib.jpg" alt="">
+                                </div>
+                            </a>
+                        </face>
+                    </basis>
+                </div>
+                <ul class="p-pagination w-full my-10 flex justify-center" id="wibpaging">
+                    <div class="pagination px-[8px] rounded-[50px] w-[290px] h-[64px] direction-ltr flex items-center justify-between bg-zinc-100">
+                        <basis core="print" datamembername="db.paging">
+                            <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">
+                                <li class="prev-page">
+                                    <a aria-label="angle-left" href="/[##cms.cms.link_page##]&pagenum=@page">
+                                        <svg width="48" height="48">
+                                            <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                            <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'<>'')">
+                                <li class="prev-page">
+                                    <a aria-label="angle-left" href="/[##cms.cms.pageurl##]?pagenum=@page">
+                                        <svg width="48" height="48">
+                                            <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                        </basis>
+                        <basis core="print" datamembername="db.paging">
+                            <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')">
+                                <li
+                                        class="flex items-center justify-center w-12 h-12 p-2 rounded-[50%] transition-all duration-300 bg-primary-900 page-no">
+                                    <a class="flex items-center justify-center w-full h-full text-white rounded-[50%] cursor-pointer page-number bg-primary-900"
+                                       href="/[##cms.cms.link_page##]&pagenum=@page">@page</a>
+                                </li>
+                            </face>
+                            <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
+                                <li
+                                        class="flex items-center justify-center w-12 h-12 p-2 rounded-lg transition-all duration-300 bg-primary-900 page-no">
+                                    <a class="flex items-center justify-center w-full h-full text-white cursor-pointer page-number bg-primary-900"
+                                       href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
+                                </li>
+                            </face>
+                            <face
+                                    filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'='') ">
+                                <li
+                                        class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
+                                    <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                                       href="/[##cms.cms.link_page##]&pagenum=@page">@page</a>
+                                </li>
+                            </face>
+                            <face
+                                    filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') ">
+                                <li
+                                        class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
+                                    <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                                       href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
+                                </li>
+                            </face>
+                        </basis>
+                        <basis core="print" datamembername="db.paging">
+                            <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'='')">
+                                <li class="next-page">
+                                    <a aria-label="angle-right" href="/[##cms.cms.link_page##]&pagenum=@page">
+                                        <svg width="48" height="48">
+                                            <use href="/images/sprite-icons.svg#icon-circle-next"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                            <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'<>'')">
+                                <li class="next-page">
+                                    <a aria-label="angle-right" href="/[##cms.cms.pageurl##]?pagenum=@page">
+                                        <svg width="48" height="48">
+                                            <use href="/images/sprite-icons.svg#icon-circle-next"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                        </basis>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!--s-details-->
+    <section class="s-details mt-8 px-4">
+        <div class="c-container">
+            <div class="p-details w-full flex flex-col gap-12">
+                <basis core="list" datamembername="db.p-under">
+                    <layout>
+                        <div class="row-default grid  gap-8">@child</div>
+                    </layout>
+                    <face>
+                        <div class="detail-tour w-full flex flex-col gap-2 items-start pt-4">
+                            <h2 class="text-zinc-900 danaBold text-2xl mt-1">@title</h2>
+                            <img class="w-full rounded-xl" src="/@image" alt="">
+                        </div>
+                    </face>
+                </basis>
+            </div>
+        </div>
+    </section>
+
+    <!--s-visa-->
+    <section class="s-visa mt-15 px-4">
+        <div class="p-visa w-full flex flex-col">
+            <div class="title w-full flex flex-col items-center justify-center gap-[6px]">
+                <h2 class="danaBold mb-2 text-base">ويزای دریافت شده توسط ما</h2>
+                <svg width="301" height="6" viewBox="0 0 301 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M300.773 2.88672L297.887 -3.26633e-05L295 2.88672L297.887 5.77347L300.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77347 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM297.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L297.887 3.38672V2.88672Z"
+                          fill="#CFAA65"/>
+                </svg>
+                <span class="text-zinc-600 text-center danaRegular mt-3 text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+            </div>
+            <div class="row-visa mt-8 gap-8 w-full flex flex-col">
+                <div class="slider-img w-full">
+                    <div class="swiper swiper-img-visa">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="p-img w-full h-[165px] rounded-3xl overflow-hidden">
+                                    <img class="w-full h-full" src="/images/img-slider-visa.png" alt="">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="p-img w-full h-[165px] rounded-3xl overflow-hidden">
+                                    <img class="w-full h-full" src="/images/img-slider-visa.png" alt="">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="p-img w-full h-[165px] rounded-3xl overflow-hidden">
+                                    <img class="w-full h-full" src="/images/img-slider-visa.png" alt="">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <div class="w-full  flex px-3 py-4 flex-col items-start rounded-lg bg-white box-visa-comment">
+                    <h3 class="danaBold  text-zinc-900 text-base">نظر کاربران</h3>
+                    <form class="w-full mt-5 flex  gap-2 flex-col justify-between" action="">
+                        <div class="grid w-full gap-2">
+                            <input class="h-[55px] text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                                   placeholder="شماره تماس" type="text">
+                            <input class="h-[55px] text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                                   placeholder="نام و نام خانوادگی" type="text">
+
+                        </div>
+                        <input class="h-[55px] w-full text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                               placeholder="یادداشت" type="text">
+                        <div class="w-full gap-2  grid grid-cols-2">
+                            <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                                   placeholder="کد امنیتی" type="text">
+                            <div class="box-captcha h-[55px] shadow-custom-1 overflow-hidden bg-white rounded-[100px]">
+                                <img class="w-full h-full object-cover" src="/images/captcha.png" alt="">
+                            </div>
+
+                        </div>
+                        <button class="h-[55px] w-full bg-primary-900 rounded-[100px] text-white">
+                            ارسال
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="row-user-comments w-full grid   mt-2">
+                <div class="start flex flex-col pt-8 items-start">
+                    <svg width="72" height="58">
+                        <use href="/images/sprite-icons.svg#icon-kama"></use>
+                    </svg>
+                    <h5 class="text-secondary-950 text-sm	 mt-5">نظر کاربران درباره ما</h5>
+                    <h3 class="danaBold text-base mt-3">نظر کاربران تعطیلات رویای</h3>
+                    <div class="option-slider mt-7 flex items-center justify-between w-full gap-2">
+                        <button class="swiper-button-prev-comment">
+                            <svg width="24" height="20">
+                                <use href="/images/sprite-icons.svg#icon-r-slider"></use>
+                            </svg>
+                        </button>
+                        <div class="swiper-scrollbar-comment w-[90%]"></div>
+                        <button class="swiper-button-next-comment">
+                            <svg width="24" height="20">
+                                <use href="/images/sprite-icons.svg#icon-l-slider"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="swiper box-transparent w-full swiper-comment-user">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                <div class="top w-full flex items-center gap-3">
+                                    <img width="60" src="/images/icon-circle-user.png" alt="">
+
+                                    <div class="flex flex-col">
+                                        <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
+                                        <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
+                                    </div>
+                                </div>
+                                <div class="bottom mt-2">
+                                    <p class="leading-5  text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+                                        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                                        متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                        چاپ،</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                <div class="top w-full flex items-center gap-3">
+                                    <img width="60" src="/images/icon-circle-user.png" alt="">
+
+                                    <div class="flex flex-col">
+                                        <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
+                                        <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
+                                    </div>
+                                </div>
+                                <div class="bottom mt-2">
+                                    <p class="leading-5  text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+                                        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                                        متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                        چاپ،</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                <div class="top w-full flex items-center gap-3">
+                                    <img width="60" src="/images/icon-circle-user.png" alt="">
+
+                                    <div class="flex flex-col">
+                                        <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
+                                        <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
+                                    </div>
+                                </div>
+                                <div class="bottom mt-2">
+                                    <p class="leading-5  text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+                                        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                                        متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                        چاپ،</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                <div class="top w-full flex items-center gap-3">
+                                    <img width="60" src="/images/icon-circle-user.png" alt="">
+
+                                    <div class="flex flex-col">
+                                        <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
+                                        <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
+                                    </div>
+                                </div>
+                                <div class="bottom mt-2">
+                                    <p class="leading-5  text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+                                        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                                        متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                        چاپ،</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+
+
+
+<basis core="call" file="footer-test.bc" pageindex="[##cms.cms.pageindex##]"/>
+
+<!--scripts-->
+<script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
+<basis core="call" file="script-test.inc" pageindex="[##cms.cms.pageindex##]"/>
+</body>
+</html>

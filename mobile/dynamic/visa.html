@@ -1,0 +1,232 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
+    <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
+    </member>
+</basis>
+<basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
+    <member name="scalar" type="scalar" typeid="150" />
+</basis>
+
+<basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
+    <member name="scalarEN" type="scalar" typeid="150" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid|(0)##]">
+    <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid|(0)##]" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
+    <member name="p-under" type="view" propertyid=""/>
+</basis>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>visa</title>
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
+    <basis core="call" file="style-test.inc" pageindex="[##cms.cms.pageindex##]"/>
+</head>
+<body>
+<basis core="call" file="header-test.inc" pageindex="[##cms.cms.pageindex##]"/>
+
+
+
+
+<main>
+    <!--s-main-visa-->
+    <section class="s-main-visa  relative mt-[7rem] px-4">
+        <div class="w-full title flex flex-col items-center justify-center">
+            <basis core="print" datamembername="db.scalarEN">
+                <face>
+                    <h4 class="text-zinc-200 leading-[16px] text-base">@column1</h4>
+                </face>
+            </basis>
+            <basis core="print" datamembername="db.scalar">
+                <face>
+                    <h1 class="text-zinc-900 text-base danaBold relative bottom-3">@column1</h1>
+                </face>
+            </basis>
+            <p class="text-zinc-500 text-xs	 text-center danaRegular relative ">متنی آزمایشی و بی‌معنی در صنعت
+                چاپ، صفحه‌آرایی و طراحی گرافیک
+                گفته می‌شود. طراح گرافیک از این متن </p>
+            <ul class="breadcrumb flex items-center gap-2 mt-2">
+                <basis core="print" datamembername="db.navigation">
+                    <face filter="RowNumber=max(RowNumber) and parentcatid<>218576">
+                        <li class="text-secondary">
+                            <span class="text-zinc-900 text-xs">></span>
+                            <span class="text-xs text-secondary-950" itemprop="name">@title</span>
+                            <meta itemprop="position" content="@rownumber" />
+                        </li>
+                    </face>
+                    <face filter="link is null and parentcatid<>218576">
+                        <li class="" itemprop="itemListElement">
+                            <a class="text-xs" itemprop="item" aria-label="@title">
+                                <span class="text-zinc-900 text-xs">></span>
+                                <span itemprop="name">@title</span>
+                                <meta itemprop="position" content="@rownumber" />
+                            </a></li>
+                    </face>
+                    <face filter="parentcatid<>218576">
+                        <li  itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                            <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
+                                <span class="text-zinc-900 text-xs	">></span>
+                                <span itemprop="name">@title</span>
+                                <meta itemprop="position" content="@rownumber" />
+                            </a></li>
+                    </face>
+                </basis>
+            </ul>
+        </div>
+        <div class="main-row flex flex-col w-full  mt-8 gap-2">
+            <div class="box-visa h-[400px] rounded-3xl overflow-hidden w-full flex flex-col items-center justify-between">
+                <div class="top relative z-10 pt-8 flex flex-col items-center">
+                    <img class="w-[85px]" src="../assets/images/kanada.png" alt="">
+                    <span class="text-white text-base mt-3 danaRegular">کشور اخذ ویزا</span>
+                    <h5 class="text-white text-4xl danaBold">کانادا</h5>
+                </div>
+                <div class="bottom w-full pb-8 px-6 flex flex-col items-center relative z-10 gap-3">
+                    <a href=""
+                       class="btn border border-secondary-900 rounded-[100px] h-12 w-full flex items-center text-secondary-900 justify-center">درخواست
+                        ویزا</a>
+                    <a href=""
+                       class="btn bg-secondary-900 rounded-[100px] h-12 w-full flex items-center text-color-1 justify-center">درخواست
+                        ویزا</a>
+                </div>
+            </div>
+            <div class="w-full flex flex-col items-start">
+                <div class="btn-tab w-full  flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2">
+                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                       href="">ویزای توریستی</a>
+                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                       href="">مشاوره</a>
+                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                       href="">دانشجویی</a>
+                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                       href="">ثبت شرکت</a>
+                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                       href="">دانش آموزی</a>
+                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                       href="">استارتاپ</a>
+                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                       href="">تحصیلی</a>
+                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                       href="">فرهنگی</a>
+                </div>
+                <div class="bg-white w-full rounded-3xl p-6 mt-6 h-[480px] shadow-custom-2 flex flex-col items-start">
+                    <basis core="print" datamembername="db.p-under">
+                        <layout>
+                            @child
+                        </layout>
+                        <face filter="TypeID in(150)">
+                            <div class="text-zinc-900 danaBold text-base mt-1">
+                                <h2 >@text</h2>
+                            </div>
+                        </face>
+                        <face filter="TypeID in(129)">
+                            <div class="leading-[21px] text-justify text-zinc-900 text-xs mt-3">
+                                <p >@largetext</p>
+                            </div>
+                        </face>
+                        <face filter="TypeID in(159)">
+                            <div class="w-full flex items-center mt-6 mb-6 justify-center">
+                                <img class="object-contain" src="/@largetext" alt="">
+                            </div>
+                        </face>
+                    </basis>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- s-faq-->
+    <section class="s-faq  py-2 px-4 mt-15">
+        <div class="title w-full flex flex-col items-center justify-center gap-[6px]">
+            <h2 class="danaBold mb-0 text-base">سوالات متداول </h2>
+            <svg width="133" height="6" viewBox="0 0 133 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M132.773 2.88672L129.887 -3.26633e-05L127 2.88672L129.887 5.77347L132.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77348 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM129.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L129.887 3.38672V2.88672Z"
+                      fill="#CFAA65"/>
+            </svg>
+            <span class="text-zinc-500 text-xs	 text-center mt-1">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+        </div>
+        <div class="w-full my-8 grid  gap-8">
+            <div class="w-full container p-faq flex flex-col gap-4">
+                <basis core="print" datamembername="db.faq">
+                    <layout>@child</layout>
+                    <face>
+                        <div class="panel flex flex-col gap-4 cursor-pointer">
+                            <div class="setting-title">
+                                <div class="question cursor-pointer flex items-center justify-between w-full">
+                                    <div class="start w-[90%] flex items-center gap-1">
+                                        <div class="number w-8 h-8 rounded-[50%] flex items-center justify-center bg-[#D1AB66]">
+                                            <span class="text-base text-white danaBold">@RowNumber</span>
+                                        </div>
+
+                                        <svg width="24" height="24">
+                                            <use href="/images/sprite-icons.svg#line-between"></use>
+                                        </svg>
+                                        <h4 class="text-xs danaRegular w-3/4">@text</h4>
+                                    </div>
+                                    <div class="end">
+                                        <svg width="24" height="24">
+                                            <use href="/images/sprite-icons.svg#icon-arrow-down"></use>
+                                        </svg>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="setting-content">
+                                <div class="answer w-full bg-secondary-100 rounded-xl p-3 flex flex-col">
+                                    <div class="text-sm	 danaRegular text-justify leading-5 text-[#776440] mt-2">
+                                        @largetext
+                                    </div>
+                                    <div class="w-full mt-5">
+                                        <a class="rounded-[100px] text-white danaRegular text-base w-full px-[24px] h-12 flex items-center justify-center bg-primary-900"
+                                           href="">
+                                            مشاهده ویدیو
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </face>
+                </basis>
+
+            </div>
+            <img class="w-full" src="/images/img-faq.png" alt="">
+        </div>
+        <div class="w-full flex flex-col items-center gap-6 mt-8">
+            <h3 class="text-zinc-900 text-base danaBold">ارتباط با کارشناسان ما جهت مشاوره رایگان</h3>
+            <form class="contact-us w-full  flex flex-col gap-2">
+                <input class="h-[55px] w-full text-[15px] bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                       placeholder="نام و نام خانوادگی" type="text">
+                <input class="h-[55px] w-full text-[15px] bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                       placeholder="شماره تماس "
+                       type="text">
+                <div class="w-full grid grid-cols-2 gap-2">
+                    <input class="h-[55px] w-full text-[15px] bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                           placeholder="کد امنیتی"
+                           type="text">
+                    <div class="box-captcha h-[55px] shadow-custom-1 overflow-hidden bg-white rounded-[100px]">
+                        <img class="w-full h-full object-cover" src="/images/captcha.png" alt="">
+                    </div>
+                </div>
+                <button class="h-[55px] btn-primary rounded-[100px] text-white">
+                    ارسال
+                </button>
+            </form>
+        </div>
+    </section>
+</main>
+
+
+
+
+
+<basis core="call" file="footer-test.bc" pageindex="[##cms.cms.pageindex##]"/>
+
+<!--scripts-->
+<script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
+<basis core="call" file="script-test.inc" pageindex="[##cms.cms.pageindex##]"/>
+</body>
+</html>

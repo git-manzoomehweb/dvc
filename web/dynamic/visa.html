@@ -1,4 +1,4 @@
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.qid##]">
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
     </member>
 </basis>
@@ -12,6 +12,10 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid|(0)##]">
     <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid|(0)##]" />
 </basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
+    <member name="p-under" type="view" propertyid=""/>
+</basis>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,7 +88,7 @@
                         </div>
                         <div class="bottom w-full pb-8 px-6 flex flex-col items-center relative z-10 gap-3">
                             <a href=""
-                               class="btn border-1 border-secondary-900 rounded-[100px] h-12 w-full flex items-center text-secondary-900 justify-center">درخواست
+                               class="btn border border-secondary-900 rounded-[100px] h-12 w-full flex items-center text-secondary-900 justify-center">درخواست
                                 ویزا</a>
                             <a href=""
                                class="btn bg-secondary-900 rounded-[100px] h-12 w-full flex items-center text-color-1 justify-center">درخواست
@@ -112,14 +116,27 @@
 
                         </div>
                         <div class="bg-white w-full rounded-3xl p-6 mt-6 h-[480px] shadow-custom-2 flex flex-col items-start">
-                            <h3 class="danaBold text-zinc-900 text-xl">زندگی در استانبول</h3>
-                            <p class="text-zinc-900 w-full text-xs	 mt-8 pre-line">
-                                ایرانیان با پاسپورت ایرانی برای سفر به کانادا نیاز به دریافت ویزا هستند که اعتبار این ویزا معمولا مطابق با اعتبار پاسپورت می باشد که در هر بار ورود امکان اقامت 6 ماهه دارند.برای ثبت درخواست میتوانید به مراکز انگشت نگاری vfs در کشورهای همسایه ایران مراجعه کنید.
-                                شرایط برای دریافت ویزا:
-                                داشتن سابقه سفر خوب به همراه پاسپورتهای قبلی
-                                مدارک شغلی معتبر 
-                                مدارک مالی و اسناد ملکی
-                            </p>
+                            <basis core="print" datamembername="db.p-under">
+                                <layout>
+                                   @child
+                                </layout>
+                                <face filter="TypeID in(150)">
+                                    <div class="text-zinc-900 danaBold text-2xl mt-1">
+                                        <h2 >@text</h2>
+                                    </div>
+                                </face>
+                                <face filter="TypeID in(129)">
+                                    <div class="leading-[21px] text-justify text-zinc-900 text-xs mt-3">
+                                        <p >@largetext</p>
+                                    </div>
+                                </face>
+                                <face filter="TypeID in(159)">
+                                    <div class="w-full flex items-center mt-6 mb-6 justify-center">
+                                        <img class="object-contain" src="/@largetext" alt="">
+                                    </div>
+                                </face>
+                            </basis>
+
                         </div>
 
                     </div>

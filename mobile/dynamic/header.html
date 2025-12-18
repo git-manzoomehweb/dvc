@@ -1,0 +1,298 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db">
+    <member name="tours-header" type="tree" link="" request="cat" parentid="219094" order="ord"></member>
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
+    <member name="visa-header" type="tree" request="cat" parentid="219252" order="ord"></member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
+    <member name="blogs-header"  type="tree" request="cat" parentid="219097" order="ord"></member>
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
+    <member name="info" type="view"></member>
+</basis>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
+    <section class="relative z-30 bg-white rounded-2xl">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2 h-16">
+                <div class="flex items-center">
+                    <svg width="48" height="48" class="flex-shrink-0 cursor-pointer bars3" viewBox="0 0 48 48"
+                         fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M32 32H16C15.448 32 15 31.553 15 31C15 30.447 15.448 30 16 30H32C32.552 30 33 30.447 33 31C33 31.553 32.552 32 32 32Z"
+                              fill="#000"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M32 18H16C15.448 18 15 17.553 15 17C15 16.447 15.448 16 16 16H32C32.552 16 33 16.447 33 17C33 17.553 32.552 18 32 18Z"
+                              fill="#000"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M32 25H16C15.448 25 15 24.553 15 24C15 23.447 15.448 23 16 23H32C32.552 23 33 23.447 33 24C33 24.553 32.552 25 32 25Z"
+                              fill="#000"/>
+                    </svg>
+
+                    <div class="Login_Information relative group z-10 flex items-center text-white text-sm text-center transition-all cursor-pointer duration-300 hover:bg-primary-600 rounded-lg bg-secondary-700">
+                        <basis core="call" file="authentication/modal" lid="1"></basis>
+                    </div>
+                </div>
+            </div>
+            <a href="/"><img src="/images/logo-footer.png" alt="logo-header" width="67" height="11"
+                             loading="lazy" class="transition-all duration-300 hover:scale-90"/></a>
+        </div>
+        <!-- header menu -->
+        <div
+                class="header-menu bg-white fixed z-30 translate-x-[1024px] inset-0 w-full transition-all duration-300 overflow-scroll">
+            <div>
+                <div class="flex items-center justify-between py-3 mx-auto w-[90%]">
+                    <a href="/"><img src="[##cms.cms.cdn##]/images/logo-footer.png" alt="logo-header" width="94"
+                                     height="34" loading="lazy"
+                                     class="transition-all duration-300 hover:scale-105"/></a>
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="cursor-pointer header-menu-close"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M24.8129 23.5001L29.7277 18.5853C30.0908 18.2222 30.0908 17.6354 29.7277 17.2723C29.3646 16.9092 28.7778 16.9092 28.4148 17.2723L23.5 22.1871L18.5852 17.2723C18.2222 16.9092 17.6354 16.9092 17.2723 17.2723C16.9092 17.6354 16.9092 18.2222 17.2723 18.5853L22.187 23.5001L17.2723 28.415C16.9092 28.778 16.9092 29.3649 17.2723 29.7279C17.4534 29.909 17.6911 30 17.9288 30C18.1665 30 18.4042 29.909 18.5852 29.7279L23.5 24.8132L28.4148 29.7279C28.5958 29.909 28.8335 30 29.0712 30C29.3089 30 29.5466 29.909 29.7277 29.7279C30.0908 29.3649 30.0908 28.778 29.7277 28.415L24.8129 23.5001Z"
+                              fill="#000"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="pb-5 bg-white w-[90%] mx-auto">
+                <nav class="pt-2">
+                    <ul class="text-sm divide-y divide-primary-50">
+                        <li class="py-3"><a href="/" class="text-zinc-900">صفحه اصلی</a></li>
+                        <basis core="tree" datamembername="db.tours-header" idcol="catid" parentidcol="parentid"
+                               nullvalue="219094">
+                            <layout>
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="/tour-list.bc" class="text-zinc-900">تورها</a>
+                                        <svg width="48" class="transition-all duration-300 dropdown-icon" height="48"
+                                             viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M31 20.5L24 27.5L17 20.5" stroke="#000" stroke-width="2"
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <!-- submenu -->
+                                    <ul
+                                            class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-primary-50 max-h-0">
+                                        @child
+                                    </ul>
+                                    <!-- submenu end -->
+                                </li>
+                            </layout>
+
+                            <face level="end" filter="link is null">
+                                <li class="py-4 px-4">
+                                    <a href="/" class="text-zinc-900">@title</a>
+                                </li>
+                            </face>
+
+                            <face level="end">
+                                <li class="py-4 px-4">
+                                    <a href="@link" class="text-zinc-900">@title</a>
+                                </li>
+                            </face>
+
+                            <face level="1" filter="link is null">
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="/article-list.bc?catid=@catid" class="text-zinc-900">@title</a>
+                                        <svg width="48" class="transition-all duration-300 dropdown-icon" height="48"
+                                             viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M31 20.5L24 27.5L17 20.5" stroke="#181C47" stroke-width="2"
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <!-- nested submenu -->
+                                    <ul
+                                            class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-primary-50 max-h-0">
+                                        @child
+                                    </ul>
+                                    <!-- nested submenu end -->
+                                </li>
+                            </face>
+
+                            <face level="1">
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="@link" class="text-zinc-900">@title</a>
+                                        <svg width="48" class="transition-all duration-300 dropdown-icon" height="48"
+                                             viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M31 20.5L24 27.5L17 20.5" stroke="#181C47" stroke-width="2"
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <!-- nested submenu -->
+                                    <ul
+                                            class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-primary-50 max-h-0">
+                                        @child
+                                    </ul>
+                                    <!-- nested submenu end -->
+                                </li>
+                            </face>
+
+
+                        </basis>
+                        <li class="py-3"><a href="/hotel-list.bc" class="text-zinc-900">هتل </a></li>
+                        <basis core="tree" datamembername="db.blogs-header" idcol="catid" parentidcol="parentid"
+                               nullvalue="219097">
+                            <layout>
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="/article-list.bc" class="text-zinc-900">بلاگ</a>
+                                        <svg width="48" class="transition-all duration-300 dropdown-icon" height="48"
+                                             viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M31 20.5L24 27.5L17 20.5" stroke="#000" stroke-width="2"
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <!-- submenu -->
+                                    <ul
+                                            class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-primary-50 max-h-0">
+                                        @child
+                                    </ul>
+                                    <!-- submenu end -->
+                                </li>
+                            </layout>
+
+                            <face level="end" filter="link is null">
+                                <li class="py-4 px-4">
+                                    <a href="/" class="text-zinc-900">@title</a>
+                                </li>
+                            </face>
+
+                            <face level="end">
+                                <li class="py-4 px-4">
+                                    <a href="@link" class="text-zinc-900">@title</a>
+                                </li>
+                            </face>
+
+                            <face level="1" filter="link is null">
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="/article-list.bc?catid=@catid" class="text-zinc-900">@title</a>
+                                        <svg width="48" class="transition-all duration-300 dropdown-icon" height="48"
+                                             viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M31 20.5L24 27.5L17 20.5" stroke="#181C47" stroke-width="2"
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <!-- nested submenu -->
+                                    <ul
+                                            class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-primary-50 max-h-0">
+                                        @child
+                                    </ul>
+                                    <!-- nested submenu end -->
+                                </li>
+                            </face>
+
+                            <face level="1">
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="@link" class="text-zinc-900">@title</a>
+                                        <svg width="48" class="transition-all duration-300 dropdown-icon" height="48"
+                                             viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M31 20.5L24 27.5L17 20.5" stroke="#181C47" stroke-width="2"
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <!-- nested submenu -->
+                                    <ul
+                                            class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-primary-50 max-h-0">
+                                        @child
+                                    </ul>
+                                    <!-- nested submenu end -->
+                                </li>
+                            </face>
+
+
+                        </basis>
+                        <basis core="tree" datamembername="db.visa-header" idcol="catid" parentidcol="parentid"
+                               nullvalue="219252">
+                            <layout>
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="/visa-list.bc" class="text-zinc-900">ویزاها</a>
+                                        <svg width="48" class="transition-all duration-300 dropdown-icon" height="48"
+                                             viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M31 20.5L24 27.5L17 20.5" stroke="#000" stroke-width="2"
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <!-- submenu -->
+                                    <ul
+                                            class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-primary-50 max-h-0">
+                                        @child
+                                    </ul>
+                                    <!-- submenu end -->
+                                </li>
+                            </layout>
+
+                            <face level="end" filter="link is null">
+                                <li class="py-4 px-4">
+                                    <a href="/" class="text-zinc-900">@title</a>
+                                </li>
+                            </face>
+
+                            <face level="end">
+                                <li class="py-4 px-4">
+                                    <a href="@link" class="text-zinc-900">@title</a>
+                                </li>
+                            </face>
+
+                            <face level="1" filter="link is null">
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="/article-list.bc?catid=@catid" class="text-zinc-900">@title</a>
+                                        <svg width="48" class="transition-all duration-300 dropdown-icon" height="48"
+                                             viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M31 20.5L24 27.5L17 20.5" stroke="#181C47" stroke-width="2"
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <!-- nested submenu -->
+                                    <ul
+                                            class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-primary-50 max-h-0">
+                                        @child
+                                    </ul>
+                                    <!-- nested submenu end -->
+                                </li>
+                            </face>
+
+                            <face level="1">
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="@link" class="text-zinc-900">@title</a>
+                                        <svg width="48" class="transition-all duration-300 dropdown-icon" height="48"
+                                             viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M31 20.5L24 27.5L17 20.5" stroke="#181C47" stroke-width="2"
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <!-- nested submenu -->
+                                    <ul
+                                            class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-primary-50 max-h-0">
+                                        @child
+                                    </ul>
+                                    <!-- nested submenu end -->
+                                </li>
+                            </face>
+
+
+                        </basis>
+                        <li class="py-3"><a href="/about.bc" class="text-zinc-900">درباره ما</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- header menu -->
+    </section>
+</header>
+</body>
+</html>

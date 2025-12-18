@@ -2626,11 +2626,11 @@ header .item-social:hover {
 }
 
 
-.tab-content ,.tab-content-hotel ,.tab-content-popular{
+.tab-content, .tab-content-hotel, .tab-content-popular {
     display: none;
 }
 
-.tab-content.active , .tab-content-hotel.active ,.tab-content-popular.active{
+.tab-content.active, .tab-content-hotel.active, .tab-content-popular.active {
     display: block;
 }
 
@@ -2651,16 +2651,190 @@ header .item-social:hover {
     border-radius: 24px;
 }
 
-.swiper-thumbnail-hotel{
+.swiper-thumbnail-hotel {
     padding: 2rem 12px !important;
 }
-.swiper-slide-tabs{
+
+.swiper-slide-tabs {
     width: 413px !important;
 }
-.btn-tab .active{
+
+.btn-tab .active {
     color: var(--secondary-950) !important;
     background: var(--secondary-200) !important;
 }
-input{
+
+input {
     padding-inline: 20px;
+}
+
+
+/*search-engine*/
+.reservation-item {
+    width: 465px;
+    border-radius: 100px;
+    background: #F4F4F5;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 66px;
+    gap: 12px;
+    padding-inline: 12px;
+}
+
+.reservation-item .reserve-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 100px;
+    height: 50px;
+}
+
+#flightSearch {
+    height: 64px;
+    background: white;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 12px;
+    box-shadow: 0px 4px 67.4px 0px #0000000F;
+    margin-top: 16px;
+}
+
+.search-flight {
+    background: var(--primary-900);
+    height: 48px;
+    color: white;
+    border: 1px solid var(--primary-900);
+    transition: 0.5s ease;
+    font-size: 16px;
+    border-radius: 100px;
+    width: 107px;
+}
+
+.search-flight svg {
+    display: none;
+}
+
+.search-flight:hover {
+    background: white;
+    color: var(--primary-900);
+    transition: 0.5s ease;
+}
+
+.reserve-field {
+    width: 50%;
+}
+
+.reserve-field .label-text {
+    color: #71717A;
+    font-size: 12px;
+}
+
+.reserve-field .auto-fit {
+    display: none;
+}
+
+.reserve-field .departure, .reserve-field .destination {
+    font-weight: 800;
+    font-size: 16px;
+    margin-top: 4px;
+}
+
+.reserve-field .label-routes {
+    display: flex;
+}
+
+.flight-routes {
+    width: 46%;
+    padding-left: 3rem;
+}
+
+/*date-search-engine*/
+.date__searched__container {
+    width: 25%;
+    height: 47px;
+}
+
+.date__searched__container .departure__date {
+    padding: 23px 23px 0 0;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.date__searched__container .departure__date::placeholder {
+    color: #000;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.date__searched__container .label-dates {
+    display: flex;
+    color: #71717A;
+}
+
+.Flightclass-Passenger .flightclass-field {
+    display: none;
+}
+
+.return-date .label-dates {
+    display: flex;
+    color: #71717A;
+    font-size: 12px;
+}
+
+.return-date .arrival__date {
+    padding: 23px 23px 0 0;
+    font-weight: 800;
+    font-size: 16px;
+    color: #000;
+}
+
+.return-date .arrival__date::placeholder {
+    color: #000 !important;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.Flightclass-Passenger {
+    width: 20%;
+}
+
+.Flightclass-Passenger .label-passengers-flight {
+    display: flex;
+}
+
+.Flightclass-Passenger .label-passengers-flight span {
+    color: #71717A;
+    font-size: 12px;
+}
+
+.Flightclass-Passenger .passenger-counts {
+    color: #000;
+    font-size: 16px;
+    font-weight: 800;
+    padding-right: 14px;
+}
+
+.searchList .reserve-location {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 13px;
+}
+.searchList .load-location-options ul{
+    margin-block: 8px;
+}
+.searchList .load-location-options ul li:first-child {
+    background: var(--primary-900);
+    color: white;
+    border-radius: 4px;
+}
+.searchList .load-location-options ul li:not(:first-child) {
+  border-bottom: 1px solid #f2f2f2;
+}
+.passengerbox .passenger-item{
+    padding: 4px 0;
+    border-bottom: 1px solid #f2f2f2;
 }

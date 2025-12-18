@@ -1,0 +1,338 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid|(0)##]">
+    <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid|(0)##]"/>
+</basis>
+
+<basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
+    <member name="scalar" type="scalar" typeid="150"/>
+</basis>
+
+<basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
+    <member name="scalarEN" type="scalar" typeid="150"/>
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
+    <member name="p-under" type="view" propertyid=""/>
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
+    <member name="article" type="list" link="article.bc" perpage="3" order="ord" propertyid="7244,7249,7248,3088243"/>
+    </member>
+</basis>
+
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id##]">
+    <member name="view" type="view" propertyid="7244,7249,7246,7248,3088243"/>
+
+</basis><basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.nid##]">
+    <member name="last-news" type="list" propertyid="7244,7249,7246"/>
+</basis>
+
+<basis core="dbsource" source="userbehavior" mid="1"  name="db" usedforid="[##cms.query.id##]">
+    <member name="comment" type="list" order="ord" request="listcomment" />
+</basis>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>article mobi</title>
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
+    <basis core="call" file="style-test.inc" pageindex="[##cms.cms.pageindex##]"/>
+</head>
+<body>
+<basis core="call" file="header-test.inc" pageindex="[##cms.cms.pageindex##]"/>
+
+
+
+<!--main-->
+<main>
+    <!--s-main-article-->
+    <section class="s-main-article">
+        <div class="bg-back absolute right-0 top-0 w-full h-[550px]"></div>
+        <div class="flex flex-col justify-between relative px-4 h-[550px] pb-4">
+            <div class="box-main-tour pt-12  h-[300px] w-full flex flex-col items-center justify-center">
+                <h4 class="text-zinc-200 leading-[16px] text-base">istanbul</h4>
+                <basis core="print" datamembername="db.view">
+                    <face filter="TypeID in(150)">
+                        <h1 class="text-zinc-900 text-base danaBold relative bottom-3">@text</h1>
+
+                    </face>
+                </basis>
+                <div class="text-zinc-500 text-xs text-center danaRegular">
+                    <basis core="print" datamembername="db.view">
+                        <face filter="TypeID in(129)">
+                            @largetext
+                        </face>
+                    </basis>
+
+                </div>
+                <ul class="breadcrumb flex items-center gap-2 mt-2">
+                    <basis core="print" datamembername="db.navigation">
+                        <face filter="RowNumber=max(RowNumber) and parentcatid<>218577">
+                            <li class="text-secondary" itemprop="itemListElement" itemscope=""
+                                itemtype="https://schema.org/ListItem">
+                                <a href="" class="text-xs text-zinc-900">صفحه اصلی</a>
+                                <span class="text-zinc-900 text-xs	">></span>
+                                <span class="text-xs text-secondary-950" itemprop="name">@title</span>
+                                <meta itemprop="position" content="@rownumber" />
+                            </li>
+                        </face>
+                        <face filter="link is null and parentcatid<>218577">
+                            <li class="" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                                <a class="text-xs" itemprop="item" href="/tour-list.bc?catid=@parentcatid" aria-label="@title">
+                                    <span class="text-zinc-900 text-xs">></span>
+                                    <span itemprop="name">@title</span>
+                                    <meta itemprop="position" content="@rownumber" />
+                                </a></li>
+                        </face>
+                        <face filter="parentcatid<>218577">
+                            <li  itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                                <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
+                                    <span class="text-zinc-900 text-xs	">></span>
+                                    <span itemprop="name">@title</span>
+                                    <meta itemprop="position" content="@rownumber" />
+                                </a></li>
+                        </face>
+                    </basis>
+                </ul>
+            </div>
+            <div class="flex w-full flex-col items-center">
+                <div class="flex flex-col  items-center mb-2 justify-center">
+                    <img width="36" src="/images/mouse.png" alt="">
+                    <span class="text-white text-[15px] danaRegular">بیشتر ببینید</span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--s-info-blog-->
+    <section class="s-info-blog mt-15 px-4">
+        <div class="p-blog-info w-full flex flex-col  gap-6">
+            <div class="flex start w-full flex-col">
+                <div class="box-editor w-full bg-white shadow-custom-2 rounded-lg flex flex-col items-start p-4">
+                    <basis core="print" datamembername="db.view">
+                        <face filter="TypeID in(150)">
+                            <h5 class="danaBold text-base text-zinc-900">@text</h5>
+                        </face>
+                    </basis>
+                    <div class="text-base text-zinc-900 text-justify leading-6 w-full danaRegular mt-5">
+                        <basis core="print" datamembername="db.view">
+                            <layout>@child</layout>
+
+                            <face filter="TypeID in(129)">
+                                <div class="text-zinc-900 text-sm mb-4 w-full leading-7">
+                                    @largetext
+                                </div>
+                            </face>
+                        </basis>
+                        <div class="flex flex-col w-full items-start w-full my-5">
+                            <basis core="list" datamembername="db.view">
+
+                                <face filter="TypeID in(250)">
+                                    <div class="title flex items-center mt-7 w-full justify-between">
+                                        <h5 class="danaBold text-base text-zinc-900">@text</h5>
+                                    </div>
+                                    <div class="mt-3 text-xs"><p>@largetext</p></div>
+                                </face>
+                            </basis>
+                        </div>
+                        <basis core="print" datamembername="db.view">
+                            <layout>@child</layout>
+                            <face filter="TypeID in(159)">
+                                <img class="w-full rounded-2xl my-5" src="/@largetext" alt="">
+                            </face>
+                        </basis>
+                    </div>
+
+                </div>
+                <div class="w-full mt-6  flex px-3 py-6 flex-col items-start rounded-lg bg-white box-visa-comment">
+                    <h3 class="danaBold  text-zinc-900 text-base">نظر کاربران</h3>
+                    <form class="w-full mt-5 flex  gap-2 flex-col justify-between" action="">
+                        <div class="grid w-full  gap-2">
+                            <input class="h-[55px] text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]" placeholder="نام و نام خانوادگی" type="text">
+                            <input class="h-[55px] text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]" placeholder="شماره تماس" type="text">
+                        </div>
+                        <input class="h-[55px] w-full text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]" placeholder="یادداشت" type="text">
+                        <div class="w-full gap-2  grid grid-cols-2">
+                            <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]" placeholder="کد امنیتی" type="text">
+                            <div class="box-captcha h-[55px] shadow-custom-1 overflow-hidden bg-white rounded-[100px]">
+                                <img class="w-full h-full object-cover" src="/images/captcha.png" alt="">
+                            </div>
+                        </div>
+                        <button class="h-[55px] w-full bg-primary-900 rounded-[100px] text-white">
+                            ارسال
+                        </button>
+                    </form>
+                </div>
+                <div class="row-user-comments w-full grid   mt-2">
+                    <div class="start flex flex-col pt-8 items-start">
+                        <svg width="72" height="58">
+                            <use href="/images/sprite-icons.svg#icon-kama"></use>
+                        </svg>
+                        <h5 class="text-secondary-950 text-sm	 mt-5">نظر کاربران درباره ما</h5>
+                        <h3 class="danaBold text-base mt-3">نظر کاربران تعطیلات رویای</h3>
+                        <div class="option-slider mt-7 flex items-center justify-between w-full gap-2">
+                            <button class="swiper-button-prev-comment">
+                                <svg width="24" height="20">
+                                    <use href="/images/sprite-icons.svg#icon-r-slider"></use>
+                                </svg>
+                            </button>
+                            <div class="swiper-scrollbar-comment w-[90%]"></div>
+                            <button class="swiper-button-next-comment">
+                                <svg width="24" height="20">
+                                    <use href="/images/sprite-icons.svg#icon-l-slider"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="swiper box-transparent w-full swiper-comment-user">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                    <div class="top w-full flex items-center gap-3">
+                                        <img width="60" src="/images/icon-circle-user.png" alt="">
+
+                                        <div class="flex flex-col">
+                                            <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
+                                            <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
+                                        </div>
+                                    </div>
+                                    <div class="bottom mt-2">
+                                        <p class="leading-5  text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+                                            از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                                            متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                            چاپ،</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                    <div class="top w-full flex items-center gap-3">
+                                        <img width="60" src="/images/icon-circle-user.png" alt="">
+
+                                        <div class="flex flex-col">
+                                            <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
+                                            <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
+                                        </div>
+                                    </div>
+                                    <div class="bottom mt-2">
+                                        <p class="leading-5  text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+                                            از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                                            متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                            چاپ،</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                    <div class="top w-full flex items-center gap-3">
+                                        <img width="60" src="/images/icon-circle-user.png" alt="">
+
+                                        <div class="flex flex-col">
+                                            <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
+                                            <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
+                                        </div>
+                                    </div>
+                                    <div class="bottom mt-2">
+                                        <p class="leading-5  text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+                                            از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                                            متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                            چاپ،</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                    <div class="top w-full flex items-center gap-3">
+                                        <img width="60" src="/images/icon-circle-user.png" alt="">
+
+                                        <div class="flex flex-col">
+                                            <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
+                                            <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
+                                        </div>
+                                    </div>
+                                    <div class="bottom mt-2">
+                                        <p class="leading-5  text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+                                            از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                            سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+                                            متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                            چاپ،</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="banners mt-3 w-full gap-3 flex flex-col">
+                    <img class="w-full rounded-2xl" src="/images/banner.png" alt="">
+                    <img class="w-full rounded-2xl" src="/images/banner.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--s-blog-->
+    <section class="s-blog mt-5 mb-24">
+        <div class="title px-4 w-full flex flex-col items-center justify-center gap-[6px]">
+            <h2 class="danaBold text-base">مقاله های گردشگری</h2>
+            <svg width="150" height="6" viewBox="0 0 150 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M149.773 2.88672L146.887 -3.26633e-05L144 2.88672L146.887 5.77347L149.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77347 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM146.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L146.887 3.38672V2.88672Z"
+                      fill="#CFAA65"/>
+            </svg>
+            <span class="text-zinc-600 danaRegular text-center mt-3 text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+        </div>
+        <div class="p-list-blog px-4 w-full grid  mt-10 gap-5">
+            <div class="start flex overflow-x-auto overflow-y-hidden py-3 px-4  gap-3 w-full">
+                <basis core="list" datamembername="db.article">
+                    <layout>@child</layout>
+                    <face>
+                        <div class="thumbnail-blog w-[290px] flex-shrink-0 relative w-full flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
+                            <h2><a class="text-zinc-900 danaBold text-zinc-900 text-base" href="/@link">@title</a>
+                            </h2>
+                            <div class="leading-[21px] relative z-10 text-xs	 text-justify danaRegular text-zinc-700 mt-3">
+                                <p>@prp_7244</p>
+                            </div>
+                            <div class="w-full flex items-center justify-start gap-2 mt-3">
+                                <img width="17" src="/images/date-blog.png" alt="">
+                                <span class="text-zinc-500 text-xs	">@prp_7249</span>
+                            </div>
+                            <a href="/@link" class="w-full relative z-10 flex items-center justify-between mt-7">
+                                <span class="text-primary-900 text-sm	 danaRegular">مشاهده بیشتر</span>
+                                <svg width="48" height="48">
+                                    <use href="/images/sprite-icons.svg#icon-circle-arrow"></use>
+                                </svg>
+                            </a>
+                            <div class="svg-fix absolute left-4 bottom-22 z-0">
+                                <svg width="70" height="56" viewBox="0 0 70 56" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 33.5994C0 31.3803 0.60518 29.3701 1.25691 27.4121C1.90863 25.4541 3.34243 22.5171 5.5583 18.6011C7.90452 14.5545 11.6845 8.35416 16.8983 0L28.2384 7.63622L24.9146 12.5312C21.0042 18.4053 18.5928 22.1907 17.6804 23.8877C21.8515 24.2793 25.3056 25.9762 28.0429 28.9785C30.9105 31.9808 32.3443 35.5704 32.3443 39.7475C32.3443 44.1857 30.7801 48.0364 27.6518 51.2997C24.5235 54.4326 20.8087 55.999 16.5073 55.999C11.9452 55.999 8.10003 54.4326 4.97175 51.2997C1.84346 48.1669 0 44.3279 0 39.7593V36.3993V33.5994Z"
+                                          fill="#FFF8E8"/>
+                                    <path d="M37.9349 33.6787C37.9349 31.4597 38.2608 29.3711 38.9125 27.4131C39.5642 25.4551 40.998 22.5181 43.2139 18.6021C45.5601 14.5555 49.3402 8.35519 54.554 0.00103739L65.8941 7.63726L62.5702 12.5323C58.6599 18.4063 56.2485 22.1918 55.336 23.8887C59.5071 24.2803 62.9613 25.9772 65.6985 28.9795C68.5661 31.9818 70 35.5715 70 39.7486C70 44.1867 68.4358 48.0374 65.3075 51.3008C62.1792 54.4336 58.4643 56 54.1629 56C49.6008 56 45.7556 54.4336 42.6273 51.3008C39.4991 48.168 37.9349 44.3172 37.9349 39.7486V33.6787Z"
+                                          fill="#FFF8E8"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </face>
+                </basis>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+
+
+
+<basis core="call" file="footer-test.bc" pageindex="[##cms.cms.pageindex##]"/>
+
+<!--scripts-->
+<script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
+<basis core="call" file="script-test.inc" pageindex="[##cms.cms.pageindex##]"/>
+</body>
+</html>
