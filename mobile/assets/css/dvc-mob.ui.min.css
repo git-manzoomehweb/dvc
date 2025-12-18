@@ -2504,45 +2504,19 @@ input {
 .reservation-item .reserve-btn {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     background: #fff;
     border-radius: 100px;
     height: 50px;
     width: 100%;
 }
 
-#flightSearch {
-    height: auto;
-    background: white;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 8px;
-    box-shadow: 0px 4px 67px 0px #0000000F;
-    margin-top: 16px;
-}
 
-.search-flight {
-    background: var(--primary-900);
-    height: 48px;
-    color: white;
-    border: 1px solid var(--primary-900);
-    transition: 0.5s ease;
-    font-size: 16px;
-    border-radius: 100px;
-    width: 100%;
-}
 
 .search-flight svg {
     display: none;
 }
 
-.search-flight:hover {
-    background: white;
-    color: var(--primary-900);
-    transition: 0.5s ease;
-}
 
 .reserve-field {
     width: 50%;
@@ -2591,11 +2565,15 @@ input {
 }
 
 .date__searched__container .departure__date {
-    padding: 23px 23px 0 0;
+    padding: 23px 63px 0 0;
     font-weight: 800;
     font-size: 16px;
 }
-
+.departure-date{
+    width: 100%;
+    border-bottom: 1px solid #f2f2f2;
+    height: 52px !important;
+}
 .date__searched__container .departure__date::placeholder {
     color: #000;
     font-size: 16px;
@@ -2678,4 +2656,195 @@ input {
 .passengerbox .passenger-item {
     padding: 4px 0;
     border-bottom: 1px solid #f2f2f2;
+}
+
+.reservation-item .module-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--color-zinc-100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.reservation-item .module-icon .module-icon-deactive {
+    display: flex;
+}
+
+.reservation-item .module-icon .module-icon-active {
+    display: none;
+}
+.reservation-item .module-icon .module-icon-deactive {
+    display: flex;
+}
+
+.reservation-item .module-icon .module-icon-active {
+    display: none;
+}
+
+
+
+
+/*search-engine*/
+
+.reservation-item .module-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--color-zinc-100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.reservation-item .module-name {
+    font-size: 14px;
+    color: var(--color-zinc-500);
+}
+
+}
+.reservation-item .module-icon .module-icon-deactive {
+    display: flex;
+}
+
+.reservation-item .module-icon .module-icon-active {
+    display: none;
+}
+
+.search-flight svg {
+    display: none;
+}
+
+.search-flight:hover {
+    background: white;
+    color: var(--primary-900);
+    transition: 0.5s ease;
+}
+
+.reserve-field {
+    width: 100%;
+}
+
+.reserve-field .label-text {
+    color: #71717A;
+    font-size: 12px;
+    margin-right: 56px;
+}
+
+.reserve-field .auto-fit {
+    display: none;
+}
+
+.reserve-field .departure, .reserve-field .destination {
+    font-weight: 800;
+    font-size: 16px;
+    margin-top: 4px;
+    padding: 0 56px 0 0;
+}
+
+.reserve-field .label-routes {
+    display: flex;
+    position: relative;
+}
+
+
+/*date-search-engine*/
+.date__searched__container .label-dates svg:first-child, .label-routes svg:first-child {
+    position: absolute;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #F4F4F5;
+}
+
+.Flightclass-Passenger .flightclass-field {
+    display: none;
+}
+
+.return-date .label-dates {
+    display: flex;
+    color: #71717A;
+    font-size: 12px;
+}
+
+.return-date .arrival__date {
+    padding: 23px 63px 0 0;
+    font-weight: 800;
+    font-size: 16px;
+    color: #000;
+}
+
+.return-date .arrival__date::placeholder {
+    color: #000 !important;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.Flightclass-Passenger .passenger-counts {
+    color: #000;
+    font-size: 16px;
+    font-weight: 800;
+    padding-right: 14px;
+}
+
+.label-passengers .label-text {
+    margin-right: 56px;
+}
+.label-passengers{
+    position: relative;
+}
+.label-passengers svg:first-child {
+    position: absolute;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #F4F4F5;
+}
+
+.searchList .reserve-location {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 13px;
+}
+
+.searchList .load-location-options ul {
+    margin-block: 8px;
+}
+
+.searchList .load-location-options ul li:first-child {
+    background: var(--primary-900);
+    color: white;
+    border-radius: 4px;
+}
+
+.searchList .load-location-options ul li:not(:first-child) {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.passengerbox .passenger-item {
+    padding: 4px 0;
+    border-bottom: 1px solid #f2f2f2;
+}
+.passengers-field-f .passenger-counts{
+    padding-right: 54px;
+}
+#flightSearch{
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+}
+.search-flight {
+    background: var(--primary-900);
+    height: 48px;
+    color: white;
+    border: 1px solid var(--primary-900);
+    transition: 0.5s ease;
+    font-size: 16px;
+    border-radius: 100px;
+    width: 100%;
 }
