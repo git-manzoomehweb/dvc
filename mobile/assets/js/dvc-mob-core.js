@@ -241,3 +241,119 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+
+
+// form-footer
+function uploadDocumentFooter(args) {
+    document.querySelector('#form-footer .Loading_Form').style.display =
+        'block'
+    const captcha = document
+        .querySelector('#form-footer')
+        .querySelector("#captchaContainer input[name='captcha']").value
+    const captchaid = document
+        .querySelector('#form-footer')
+        .querySelector("#captchaContainer input[name='captchaid']").value
+    const stringJson = JSON.stringify(args.source?.rows[0])
+    $bc.setSource('cms.uploadFooter', {
+        value: stringJson,
+        captcha: captcha,
+        captchaid: captchaid,
+        run: true,
+    })
+}
+
+function refreshCaptchaFooter(e) {
+    $bc.setSource('captcha.refreshFooter', true)
+}
+
+async function OnProcessedEditObjectFooter(args) {
+    var response = args.response
+    var json = await response.json()
+    var errorid = json.errorid
+    if (errorid == '6') {
+        document.querySelector('#form-footer .Loading_Form').style.display =
+            'none'
+        document.querySelector('#form-footer .message-api').innerHTML =
+            'درخواست شما با موفقیت ثبت شد.'
+        document.querySelector('#form-footer .message-api').style.color =
+            'rgb(60 200 60)'
+    } else {
+        refreshCaptchaFooter()
+        setTimeout(() => {
+            document.querySelector(
+                '#form-footer .Loading_Form',
+            ).style.display = 'none'
+            document.querySelector('#form-footer .message-api').innerHTML =
+                'خطایی رخ داده, لطفا مجدد اقدام کنید.'
+            document.querySelector('#form-footer .message-api').style.color =
+                'rgb(220 38 38)'
+        }, 2000)
+    }
+}
+
+async function RenderFormFooter() {
+    var inputElementVisa7 = document.querySelector(
+        '.footer-form-email input[data-bc-text-input]',
+    )
+    inputElementVisa7.setAttribute('placeholder', 'ایمیل')
+}
+
+
+// form-faq
+function uploadDocumentFaq(args) {
+    document.querySelector('#form-faq .Loading_Form').style.display =
+        'block'
+    const captcha = document
+        .querySelector('#form-faq')
+        .querySelector("#captchaContainer input[name='captcha']").value
+    const captchaid = document
+        .querySelector('#form-faq')
+        .querySelector("#captchaContainer input[name='captchaid']").value
+    const stringJson = JSON.stringify(args.source?.rows[0])
+    $bc.setSource('cms.uploadFaq', {
+        value: stringJson,
+        captcha: captcha,
+        captchaid: captchaid,
+        run: true,
+    })
+}
+
+function refreshCaptchaFaq(e) {
+    $bc.setSource('captcha.refreshFaq', true)
+}
+
+async function OnProcessedEditObjectFaq(args) {
+    var response = args.response
+    var json = await response.json()
+    var errorid = json.errorid
+    if (errorid == '6') {
+        document.querySelector('#form-faq .Loading_Form').style.display =
+            'none'
+        document.querySelector('#form-faq .message-api').innerHTML =
+            'درخواست شما با موفقیت ثبت شد.'
+        document.querySelector('#form-faq .message-api').style.color =
+            'rgb(60 200 60)'
+    } else {
+        refreshCaptchaFaq()
+        setTimeout(() => {
+            document.querySelector(
+                '#form-faq .Loading_Form',
+            ).style.display = 'none'
+            document.querySelector('#form-faq .message-api').innerHTML =
+                'خطایی رخ داده, لطفا مجدد اقدام کنید.'
+            document.querySelector('#form-faq .message-api').style.color =
+                'rgb(220 38 38)'
+        }, 2000)
+    }
+}
+
+async function RenderFormFaq() {
+    var inputElementPhone = document.querySelector(
+        '.form-faq input[data-bc-text-input]:first-child',
+    )
+    var inputElementUsername = document.querySelector(
+        '.form-faq input[data-bc-text-input]:last-child',
+    )
+    inputElementPhone.setAttribute('placeholder', 'شماره تماس')
+    inputElementUsername.setAttribute('placeholder', 'نام و نام خانوادگی')
+}

@@ -22,14 +22,17 @@
 <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id##]">
     <member name="view" type="view" propertyid="7244,7249,7246,7248,3088243"/>
 
-</basis><basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.nid##]">
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.nid##]">
     <member name="last-news" type="list" propertyid="7244,7249,7246"/>
 </basis>
 
-<basis core="dbsource" source="userbehavior"  name="db" usedforid="[##cms.query.id##]">
-    <member name="comment" type="list" order="ord" request="listcomment" />
+<basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
+    <member name="comment" type="list" order="ord" request="listcomment"/>
 </basis>
-
+<basis core='dbsource' name='captcha' source='trust_login8'>
+    <member name='code' type='scalar' request='captcha'></member>
+</basis>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,23 +76,25 @@
                                     <a href="" class="text-xs text-zinc-900">صفحه اصلی</a>
                                     <span class="text-zinc-900 text-xs	">></span>
                                     <span class="text-xs text-secondary-950" itemprop="name">@title</span>
-                                    <meta itemprop="position" content="@rownumber" />
+                                    <meta itemprop="position" content="@rownumber"/>
                                 </li>
                             </face>
                             <face filter="link is null and parentcatid<>218577">
-                                <li class="" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                                    <a class="text-xs" itemprop="item" href="/tour-list.bc?catid=@parentcatid" aria-label="@title">
+                                <li class="" itemprop="itemListElement" itemscope=""
+                                    itemtype="https://schema.org/ListItem">
+                                    <a class="text-xs" itemprop="item" href="/tour-list.bc?catid=@parentcatid"
+                                       aria-label="@title">
                                         <span class="text-zinc-900 text-xs">></span>
                                         <span itemprop="name">@title</span>
-                                        <meta itemprop="position" content="@rownumber" />
+                                        <meta itemprop="position" content="@rownumber"/>
                                     </a></li>
                             </face>
                             <face filter="parentcatid<>218577">
-                                <li  itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                                <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
                                     <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
                                         <span class="text-zinc-900 text-xs	">></span>
                                         <span itemprop="name">@title</span>
-                                        <meta itemprop="position" content="@rownumber" />
+                                        <meta itemprop="position" content="@rownumber"/>
                                     </a></li>
                             </face>
                         </basis>
@@ -114,19 +119,21 @@
                                     </li>
                                 </face>
                                 <face>
-                                    <li class="" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                                        <a class="text-xs" itemprop="item" href="/article-test.bc?catid=@parentcatid" aria-label="@title">
+                                    <li class="" itemprop="itemListElement" itemscope=""
+                                        itemtype="https://schema.org/ListItem">
+                                        <a class="text-xs" itemprop="item" href="/article-test.bc?catid=@parentcatid"
+                                           aria-label="@title">
                                             <span class="text-zinc-900 text-xs">></span>
                                             <span itemprop="name">@title</span>
                                             <meta itemprop="position" content="@rownumber"/>
                                         </a></li>
                                 </face>
                                 <face>
-                                    <li  itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                                    <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
                                         <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
                                             <span class="text-zinc-900 text-xs	">></span>
                                             <span itemprop="name">@title</span>
-                                            <meta itemprop="position" content="@rownumber" />
+                                            <meta itemprop="position" content="@rownumber"/>
                                         </a></li>
                                 </face>
                             </basis>
@@ -199,8 +206,10 @@
                                     <face filter="TypeID in(250)">
                                         <div class="title flex items-center mt-7 w-full justify-between">
                                             <h5 class="danaBold text-base text-zinc-900">@text</h5>
-                                            <svg width="600" height="6" viewBox="0 0 662 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M661.773 2.88672L658.887 -3.26633e-05L656 2.88672L658.887 5.77347L661.773 2.88672ZM0 2.88687L2.88672 5.77363L5.7735 2.88687L2.88672 0.000122204L0 2.88687ZM658.887 2.88672L658.887 2.38672L2.88672 2.38687L2.88672 2.88687L2.88672 3.38687L658.887 3.38672L658.887 2.88672Z" fill="#CFAA65"></path>
+                                            <svg width="600" height="6" viewBox="0 0 662 6" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M661.773 2.88672L658.887 -3.26633e-05L656 2.88672L658.887 5.77347L661.773 2.88672ZM0 2.88687L2.88672 5.77363L5.7735 2.88687L2.88672 0.000122204L0 2.88687ZM658.887 2.88672L658.887 2.38672L2.88672 2.38687L2.88672 2.88687L2.88672 3.38687L658.887 3.38672L658.887 2.88672Z"
+                                                      fill="#CFAA65"></path>
                                             </svg>
                                         </div>
                                         <p class="mt-3">@largetext</p>
@@ -218,25 +227,48 @@
                     </div>
                     <div class="w-full mt-6 h-[300px] flex px-3 py-6 flex-col items-start rounded-lg bg-white box-visa-comment">
                         <h3 class="danaBold  text-zinc-900 text-xl">نظر کاربران</h3>
-                        <form class="w-full mt-5 flex  gap-2 flex-col justify-between" action="">
-                            <div class="grid w-full grid-cols-2 gap-2">
+                        <form action="/Tem1_OpinionAction.bc" method="POST"
+                              class="w-full mt-5 flex  gap-2 flex-col justify-between">
+                            <input type="hidden" name="title" value="[##cms.seo.title##]">
+                            <div class="grid grid-cols-2 w-full gap-2">
                                 <input class="h-[55px] text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
-                                       placeholder="نام و نام خانوادگی" type="text">
+                                       type="text" name="Username" placeholder="نام و نام خانوادگی" required>
                                 <input class="h-[55px] text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
-                                       placeholder="شماره تماس" type="text">
+                                       type="text" name="_root.Phone" placeholder="شماره تماس" required>
                             </div>
-                            <input class="h-[55px] w-full text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
-                                   placeholder="یادداشت" type="text">
+                            <textarea
+                                    class="h-[55px] textarea-comment w-full text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                                    required name="OpinionMessage" placeholder="توضیحات" cols="30"
+                                    rows="7"></textarea>
+                            <input name="productid" value="[##cms.query.id##]" type="hidden">
+                            <input name="mid" value="1" type="hidden">
                             <div class="w-[62%] gap-2  grid grid-cols-[1.4fr_1fr_0.7fr]">
-                                <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]"
-                                       placeholder="کد امنیتی" type="text">
-                                <div class="box-captcha h-[55px] shadow-custom-1 overflow-hidden bg-white rounded-[100px]">
-                                    <img class="w-full h-full object-cover" src="/images/captcha.png" alt="">
-                                </div>
-                                <button class=" btn-primary  text-white">
+                                <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]" type="text" name="Captcha" placeholder="کد امنیتی" required="">
+
+                                <span class="load-captcha ">
+                                                    <img class="w-full h-[55px] rounded-[100px]" alt="کد امنیتی"
+                                                         src="[##captcha.code.captcha##]">
+                                                    <input type="hidden" value="[##captcha.code.captcha##]"
+                                                           name="Captchaid">
+                                                </span>
+                                <button type="submit"
+                                        class="h-[55px] btn-primary rounded-[100px] text-white">
                                     ارسال
                                 </button>
                             </div>
+                            <div class="Loading_Form hidden">
+                                <div id="ballsWaveG">
+                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                                </div>
+                            </div>
+                            <div class="Message-Form text-center mt-6"></div>
                         </form>
                     </div>
                 </div>
@@ -358,88 +390,32 @@
                 </div>
                 <div class="swiper box-transparent w-full swiper-comment-user">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">
-                                <div class="top w-full flex items-center gap-3">
-                                    <img width="60" src="/images/icon-circle-user.png" alt="">
-                                    <div class="flex flex-col">
-                                        <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
-                                        <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
+                        <basis core="list" datamembername="db.comment">
+                            <layout>@child</layout>
+                            <face>
+                                <div class="swiper-slide">
+                                    <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                        <div class="top w-full flex items-center gap-3">
+                                            <img width="60" src="/images/icon-circle-user.png" alt="">
+                                            <div class="flex flex-col">
+                                                <h5 class="text-zinc-900 danaBold text-base">@username</h5>
+                                                <span class="text-zinc-400 text-xs	 mt-2">@createdate</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom mt-2">
+                                            <p class="leading-5 h-[120px] text-justify text-zinc-800 text-xs overflow-y-auto">
+                                                @comment</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="bottom mt-2">
-                                    <p class="leading-5 h-[120px] text-justify text-zinc-800 text-xs	">لورم ایپسوم
-                                        متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
-                                        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-                                        متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                        چاپ،</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">
-                                <div class="top w-full flex items-center gap-3">
-                                    <img width="60" src="/images/icon-circle-user.png" alt="">
-                                    <div class="flex flex-col">
-                                        <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
-                                        <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
-                                    </div>
-                                </div>
-                                <div class="bottom mt-2">
-                                    <p class="leading-5 h-[120px] text-justify text-zinc-800 text-xs	">لورم ایپسوم
-                                        متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
-                                        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-                                        متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                        چاپ،</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">
-                                <div class="top w-full flex items-center gap-3">
-                                    <img width="60" src="/images/icon-circle-user.png" alt="">
-                                    <div class="flex flex-col">
-                                        <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
-                                        <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
-                                    </div>
-                                </div>
-                                <div class="bottom mt-2">
-                                    <p class="leading-5 h-[120px] text-justify text-zinc-800 text-xs	">لورم ایپسوم
-                                        متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
-                                        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-                                        متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                        چاپ،</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">
-                                <div class="top w-full flex items-center gap-3">
-                                    <img width="60" src="/images/icon-circle-user.png" alt="">
-                                    <div class="flex flex-col">
-                                        <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
-                                        <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
-                                    </div>
-                                </div>
-                                <div class="bottom mt-2">
-                                    <p class="leading-5 h-[120px] text-justify text-zinc-800 text-xs	">لورم ایپسوم
-                                        متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
-                                        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-                                        متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                        چاپ،</p>
-                                </div>
-                            </div>
-                        </div>
+                            </face>
+                        </basis>
+
+
                     </div>
                 </div>
             </div>
-
     </section>
-
 
     <!--s-blog-->
     <section class="s-blog mb-24 mt-20">

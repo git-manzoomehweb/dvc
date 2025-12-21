@@ -15,6 +15,12 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
     <member name="p-under" type="list"  propertyid="" />
 </basis>
+<basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
+    <member name="comment" type="list" order="ord" request="listcomment"/>
+</basis>
+<basis core='dbsource' name='captcha' source='trust_login8'>
+    <member name='code' type='scalar' request='captcha'></member>
+</basis>
 
 
 <!DOCTYPE html>
@@ -231,28 +237,48 @@
                 </div>
                 <div class="w-full  flex px-3 py-4 flex-col items-start rounded-lg bg-white box-visa-comment">
                     <h3 class="danaBold  text-zinc-900 text-base">نظر کاربران</h3>
-                    <form class="w-full mt-5 flex  gap-2 flex-col justify-between" action="">
-                        <div class="grid w-full gap-2">
-                            <input class="h-[55px] text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
-                                   placeholder="شماره تماس" type="text">
-                            <input class="h-[55px] text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
-                                   placeholder="نام و نام خانوادگی" type="text">
-
+                    <form action="/Tem1_OpinionAction.bc" method="POST"
+                          class="w-full mt-5 flex  gap-2 flex-col justify-between">
+                        <input type="hidden" name="title" value="[##cms.seo.title##]">
+                        <div class="grid  w-full gap-2">
+                            <input class="h-[55px] text-base w-full bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                                   type="text" name="Username" placeholder="نام و نام خانوادگی" required>
+                            <input class="h-[55px] text-base w-full bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                                   type="text" name="_root.Phone" placeholder="شماره تماس" required>
                         </div>
-                        <input class="h-[55px] w-full text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
-                               placeholder="یادداشت" type="text">
+                        <textarea
+                                class="h-[55px] textarea-comment w-full text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                                required name="OpinionMessage" placeholder="توضیحات" cols="30"
+                                rows="7"></textarea>
+                        <input name="productid" value="[##cms.query.id##]" type="hidden">
+                        <input name="mid" value="1" type="hidden">
                         <div class="w-full gap-2  grid grid-cols-2">
-                            <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]"
-                                   placeholder="کد امنیتی" type="text">
-                            <div class="box-captcha h-[55px] shadow-custom-1 overflow-hidden bg-white rounded-[100px]">
-                                <img class="w-full h-full object-cover" src="/images/captcha.png" alt="">
-                            </div>
-
+                            <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]" type="text" name="Captcha" placeholder="کد امنیتی" required="">
+                            <span class="load-captcha ">
+                                                    <img class="w-full h-[55px] rounded-[100px]" alt="کد امنیتی"
+                                                         src="[##captcha.code.captcha##]">
+                                                    <input type="hidden" value="[##captcha.code.captcha##]"
+                                                           name="Captchaid">
+                                                </span>
                         </div>
-                        <button class="h-[55px] w-full bg-primary-900 rounded-[100px] text-white">
+                        <button type="submit" class="h-[55px] w-full btn-primary rounded-[100px] text-white">
                             ارسال
                         </button>
+                        <div class="Loading_Form hidden">
+                            <div id="ballsWaveG">
+                                <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                            </div>
+                        </div>
+                        <div class="Message-Form text-center mt-6"></div>
                     </form>
+
                 </div>
             </div>
             <div class="row-user-comments w-full grid   mt-2">
@@ -278,82 +304,27 @@
                 </div>
                 <div class="swiper box-transparent w-full swiper-comment-user">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
-                                <div class="top w-full flex items-center gap-3">
-                                    <img width="60" src="/images/icon-circle-user.png" alt="">
+                        <basis core="list" datamembername="db.comment">
+                            <layout>@child</layout>
+                            <face>
+                                <div class="swiper-slide">
+                                    <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                        <div class="top w-full flex items-center gap-3">
+                                            <img width="60" src="/images/icon-circle-user.png" alt="">
 
-                                    <div class="flex flex-col">
-                                        <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
-                                        <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
+                                            <div class="flex flex-col">
+                                                <h5 class="text-zinc-900 danaBold text-base">@username</h5>
+                                                <span class="text-zinc-400 text-xs	 mt-2">@createdate</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom mt-2">
+                                            <p class="leading-5  text-justify text-zinc-800 text-xs	">@comment</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="bottom mt-2">
-                                    <p class="leading-5  text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
-                                        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-                                        متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                        چاپ،</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
-                                <div class="top w-full flex items-center gap-3">
-                                    <img width="60" src="/images/icon-circle-user.png" alt="">
+                            </face>
+                        </basis>
 
-                                    <div class="flex flex-col">
-                                        <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
-                                        <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
-                                    </div>
-                                </div>
-                                <div class="bottom mt-2">
-                                    <p class="leading-5  text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
-                                        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-                                        متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                        چاپ،</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
-                                <div class="top w-full flex items-center gap-3">
-                                    <img width="60" src="/images/icon-circle-user.png" alt="">
-
-                                    <div class="flex flex-col">
-                                        <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
-                                        <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
-                                    </div>
-                                </div>
-                                <div class="bottom mt-2">
-                                    <p class="leading-5  text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
-                                        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-                                        متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                        چاپ،</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
-                                <div class="top w-full flex items-center gap-3">
-                                    <img width="60" src="/images/icon-circle-user.png" alt="">
-
-                                    <div class="flex flex-col">
-                                        <h5 class="text-zinc-900 danaBold text-base">محسن حیدری</h5>
-                                        <span class="text-zinc-400 text-xs	 mt-2">1 هفته پیش</span>
-                                    </div>
-                                </div>
-                                <div class="bottom mt-2">
-                                    <p class="leading-5  text-justify text-zinc-800 text-xs	">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
-                                        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-                                        متنوع با هدف بهبودلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                        چاپ،</p>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
                 </div>

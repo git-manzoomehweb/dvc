@@ -2512,7 +2512,6 @@ input {
 }
 
 
-
 .search-flight svg {
     display: none;
 }
@@ -2569,11 +2568,13 @@ input {
     font-weight: 800;
     font-size: 16px;
 }
-.departure-date{
+
+.departure-date {
     width: 100%;
     border-bottom: 1px solid #f2f2f2;
     height: 52px !important;
 }
+
 .date__searched__container .departure__date::placeholder {
     color: #000;
     font-size: 16px;
@@ -2676,6 +2677,7 @@ input {
 .reservation-item .module-icon .module-icon-active {
     display: none;
 }
+
 .reservation-item .module-icon .module-icon-deactive {
     display: flex;
 }
@@ -2683,8 +2685,6 @@ input {
 .reservation-item .module-icon .module-icon-active {
     display: none;
 }
-
-
 
 
 /*search-engine*/
@@ -2794,9 +2794,11 @@ input {
 .label-passengers .label-text {
     margin-right: 56px;
 }
-.label-passengers{
+
+.label-passengers {
     position: relative;
 }
+
 .label-passengers svg:first-child {
     position: absolute;
     right: 0;
@@ -2830,14 +2832,17 @@ input {
     padding: 4px 0;
     border-bottom: 1px solid #f2f2f2;
 }
-.passengers-field-f .passenger-counts{
+
+.passengers-field-f .passenger-counts {
     padding-right: 54px;
 }
-#flightSearch{
+
+#flightSearch {
     background: white;
     border-radius: 8px;
     padding: 10px;
 }
+
 .search-flight {
     background: var(--primary-900);
     height: 48px;
@@ -2847,4 +2852,113 @@ input {
     font-size: 16px;
     border-radius: 100px;
     width: 100%;
+}
+
+
+/*form-footer  & form-faq*/
+.form-footer , .form-about{
+    display: grid;
+    place-items: center;
+}
+
+[data-bc-title-container] {
+    display: none;
+}
+
+[data-bc-text-input] {
+    box-shadow: 0px 4px 67px 0px #0000000F;
+    background: white;
+    border-radius: 100px;
+    height: 55px;
+    width: 100%;
+}
+
+[data-bc-answer-container], [data-bc-part-container] {
+    width: 100%;
+}
+
+.form-footer input[type=text], .form-faq input[type=text] , .form-about input[type=text]{
+    box-shadow: 0px 4px 67px 0px #0000000F !important;
+    background: white !important;
+    border-radius: 100px !important;
+    height: 55px !important;
+    width: 100% !important;
+    padding: 0 24px !important;
+    border: none !important;
+    height: 55px !important;
+    font-size: 16px !important;
+}
+
+.form-footer input[type=text]::placeholder, .form-faq input[type=text]::placeholder , .form-about input[type=text]::placeholder{
+    color: var(--color-zinc-500);
+}
+
+.form-footer .gap-8, .form-faq .gap-8 , .form-about .gap-8{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 8px;
+}
+
+.form-footer .gap-8 svg, .form-faq .gap-8 svg ,  .form-about .gap-8 svg{
+    display: none;
+}
+
+.form-footer .gap-8 img, .form-faq .gap-8 img ,  .form-about .gap-8 img {
+    width: 100%;
+    height: 55px;
+}
+
+[data-bc-schema-main-container], [data-bc-answer-container], [data-bc-part-container] {
+    width: 100% !important;
+}
+
+.footer-form-email {
+    margin: 0 !important;
+    padding: 0;
+    width: 100% !important;
+}
+
+.form-faq {
+    display: grid;
+    place-items: center;
+}
+
+.form-faq [data-bc-section-title] {
+    display: none;
+}
+
+.form-faq [data-bc-schema-column] {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
+.form-faq [data-bc-section] {
+    margin: 0;
+    padding: 0;
+}
+
+.form-faq [data-bc-schema-column] {
+    gap: 8px;
+}
+
+.form-faq [data-bc-question] {
+    margin: 0;
+    height: 55px;
+}
+
+.form-faq [data-bc-part] {
+    width: 100%;
+}
+.load-captcha img{
+    height: 55px;
+}
+.textarea-comment{
+    padding: 16px 24px 0 0;
+    resize: none;
+}
+.thumbnail-comment p{
+    height: 120px;
+    overflow-y: auto;
 }

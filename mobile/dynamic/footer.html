@@ -134,20 +134,69 @@
     <div class="row-three px-4 w-full">
         <div class="w-full flex flex-col items-center gap-6 mt-14">
             <h3 class="text-zinc-900 text-base danaBold">ارتباط با کارشناسان ما جهت مشاوره رایگان</h3>
-            <form class="contact-us w-full mx-auto flex flex-col gap-2">
-                <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]"
-                       placeholder="ایمیل خود را وارد کنید" type="text">
-                <div class="grid w-full grid-cols-[1.5fr_1fr] gap-2">
-                    <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]"
-                           placeholder="کد امنیتی" type="text">
-                    <div class="box-captcha h-[55px] shadow-custom-1 overflow-hidden bg-white rounded-[100px]">
-                        <img class="w-full h-full object-cover" src="/images/captcha.png" alt="">
+            <div id="form-footer" class="w-full">
+                <div class="form-footer grid gap-2 w-full mx-auto">
+                    <basis core="schema" run="atclient"
+                           schemaurl="/schema/domainform/062C936D-5BF7-44D3-8CA0-63697B1F0746/1F347EEB-6F6F-4119-A25D-D0AE3F25F2B5/fa/عضویت-در-خبر-نامه"
+                           displaymode="new" button="[data-btn-uploadfooter]" resultsourceid="upload.datafooter"
+                           OnRendered="RenderFormFooter"></basis>
+                    <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                           url="/schema/domainform/062C936D-5BF7-44D3-8CA0-63697B1F0746/fa/editobject" method="post"
+                           body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                           content-type="application/x-www-form-urlencoded" triggers='cms.uploadFooter'
+                           OnProcessed="OnProcessedEditObjectFooter"></basis>
+                    <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                           triggers="upload.datafooter">
+                    </basis>
+                    <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                           triggers="captcha.refreshFooter">
+                        <member name="code-footer" type="scalar" request="captcha"></member>
+                    </basis>
+                    <div class="w-full" id="captchaContainer">
+                        <div class="w-full captchaContainer w-full">
+                            <basis datamembername="captcha.code-footer" core="print" run="atclient">
+                                <face>
+                                    <script type="text/template">
+                                        <div>
+                                            <div class="flex gap-8">
+                                                <div class="float-right"><input type="text"
+                                                                                class="contactUsInput codeinputm"
+                                                                                name="captcha" maxlength="4"
+                                                                                placeholder="کد امنیتی"/><input
+                                                        type="hidden" name="captchaid" value="@captcha@"/></div>
+                                                <div class="flex items-center gap-6">
+                                                    <img draggable="false" src="/@captcha@" loading="lazy"
+                                                         height="55" alt="captcha" class="rounded-[100px]"/>
+                                                    <svg width="48" height="48" onclick="refreshCaptchaFooter()"
+                                                         class="text-zinc-900 cursor-pointer">
+                                                        <use href="/images/sprite-icons.svg#icon-refresh"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div></script>
+                                </face>
+                            </basis>
+                        </div>
+                    </div>
+                    <button class="h-[55px] w-full btn-primary px-4 rounded-[100px] text-white" type="button"
+                            data-btn-uploadfooter><span class="">ارسال</span></button>
+
+                </div>
+                <div class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5">
+                    <div id="ballsWaveG" class="text-base font-normal leading-normal ext-zinc-50">
+                        <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_8" class="ballsWaveG"></div>
                     </div>
                 </div>
-                <button class="h-[55px] bg-primary-900 rounded-[100px] text-white">
-                    ارسال
-                </button>
-            </form>
+                <div class="mt-4 text-center message-api"></div>
+            </div>
+
         </div>
     </div>
     <div class="row-four px-4 w-full flex flex-col items-center mt-8">

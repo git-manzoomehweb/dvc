@@ -345,24 +345,72 @@
         </div>
         <div class="w-full flex flex-col items-center gap-6 mt-8">
             <h3 class="text-zinc-900 text-base danaBold">ارتباط با کارشناسان ما جهت مشاوره رایگان</h3>
-            <form class="contact-us w-full  flex flex-col gap-2">
-                <input class="h-[55px] w-full text-[15px] bg-white rounded-[100px] shadow-custom-1 px-[20px]"
-                       placeholder="نام و نام خانوادگی" type="text">
-                <input class="h-[55px] w-full text-[15px] bg-white rounded-[100px] shadow-custom-1 px-[20px]"
-                       placeholder="شماره تماس "
-                       type="text">
-                <div class="w-full grid grid-cols-2 gap-2">
-                    <input class="h-[55px] w-full text-[15px] bg-white rounded-[100px] shadow-custom-1 px-[20px]"
-                           placeholder="کد امنیتی"
-                           type="text">
-                    <div class="box-captcha h-[55px] shadow-custom-1 overflow-hidden bg-white rounded-[100px]">
-                        <img class="w-full h-full object-cover" src="/images/captcha.png" alt="">
+            <div class="w-full flex flex-col items-center gap-6 mt-14">
+                <h3 class="text-zinc-900 text-xl danaBold">ارتباط با کارشناسان ما جهت مشاوره رایگان</h3>
+                <div class="w-full" id="form-faq">
+                    <div class="form-faq grid grid-cols-[2fr_1fr_1fr] gap-2 w-full mx-auto">
+                        <basis core="schema" run="atclient"
+                               schemaurl="/schema/domainform/062C936D-5BF7-44D3-8CA0-63697B1F0746/D046A7E4-4424-4D9D-B7B0-F32362924A8D/fa/ارتباط-با-کارشناسان-ما"
+                               displaymode="new" button="[data-btn-uploadfaq]" resultsourceid="upload.datafaq"
+                               OnRendered="RenderFormFaq"></basis>
+                        <basis core="api" if="{##cms.uploadFaq.run|(false)##}" run="atclient"
+                               url="/schema/domainform/062C936D-5BF7-44D3-8CA0-63697B1F0746/fa/editobject" method="post"
+                               body="object_edit={##cms.uploadFaq.value##}&captcha={##cms.uploadFaq.captcha##}&captchaid={##cms.uploadFaq.captchaid##}"
+                               content-type="application/x-www-form-urlencoded" triggers='cms.uploadFaq'
+                               OnProcessed="OnProcessedEditObjectFaq"></basis>
+                        <basis core="callback" run="atclient" method="uploadDocumentFaq" triggers="upload.datafaq">
+                        </basis>
+                        <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                               triggers="captcha.refreshFaq">
+                            <member name="code-faq" type="scalar" request="captcha"></member>
+                        </basis>
+                        <div class="w-full" id="captchaContainer">
+                            <div class="w-full captchaContainer w-full">
+                                <basis datamembername="captcha.code-faq" core="print" run="atclient">
+                                    <face>
+                                        <script type="text/template">
+                                            <div>
+                                                <div class="flex gap-8">
+                                                    <div class="float-right"><input type="text" class="contactUsInput codeinputm"
+                                                                                    name="captcha" maxlength="4"
+                                                                                    placeholder="کد امنیتی"/><input type="hidden"
+                                                                                                                    name="captchaid"
+                                                                                                                    value="@captcha@"/>
+                                                    </div>
+                                                    <div class="flex items-center gap-6">
+                                                        <img draggable="false" src="/@captcha@" loading="lazy" height="55"
+                                                             alt="captcha" class="rounded-[100px]"/>
+                                                        <svg width="48" height="48" onclick="refreshCaptchaFaq()"
+                                                             class="text-zinc-900 cursor-pointer">
+                                                            <use href="/images/sprite-icons.svg#icon-refresh"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div></script>
+                                    </face>
+                                </basis>
+                            </div>
+                        </div>
+
+                        <button class="h-[55px] w-full btn-primary px-4 rounded-[100px] text-white" type="button"
+                                data-btn-uploadfaq><span class="">ارسال</span></button>
+                        <div class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5">
+                            <div id="ballsWaveG" class="text-base font-normal leading-normal ext-zinc-50">
+                                <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center message-api"></div>
                     </div>
+
                 </div>
-                <button class="h-[55px] btn-primary rounded-[100px] text-white">
-                    ارسال
-                </button>
-            </form>
+            </div>
         </div>
     </section>
     <!--s-blog-->
