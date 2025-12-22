@@ -1,5 +1,5 @@
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid|(0)##]">
-    <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid|(0)##]"/>
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="[##cms.query.id##]">
+    <member name="navigation" type="tree" request="navigationcat"/>
 </basis>
 
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
@@ -70,31 +70,34 @@
                     </basis>
 
                 </div>
-                <ul class="breadcrumb flex items-center gap-2 mt-2">
+                <ul class="breadcrumb  flex items-center gap-2 mt-2">
                     <basis core="print" datamembername="db.navigation">
-                        <face filter="RowNumber=max(RowNumber) and parentcatid<>218577">
+                        <face filter="RowNumber=max(RowNumber) and title <> 'ریشه'">
                             <li class="text-secondary" itemprop="itemListElement" itemscope=""
                                 itemtype="https://schema.org/ListItem">
-                                <a href="" class="text-xs text-zinc-900">صفحه اصلی</a>
-                                <span class="text-zinc-900 text-xs	">></span>
+                                <a href="" class="text-xs text-zinc-900">@title</a>
+                                <span class="text-zinc-900 text-xs">></span>
                                 <span class="text-xs text-secondary-950" itemprop="name">@title</span>
-                                <meta itemprop="position" content="@rownumber" />
+                                <meta itemprop="position" content="@rownumber"/>
                             </li>
                         </face>
-                        <face filter="link is null and parentcatid<>218577">
-                            <li class="" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                                <a class="text-xs" itemprop="item" href="/tour-list.bc?catid=@parentcatid" aria-label="@title">
+                        <face filter="link is null and title <> 'ریشه'">
+                            <li class="" itemprop="itemListElement" itemscope=""
+                                itemtype="https://schema.org/ListItem">
+                                <a class="text-xs text-zinc-900" itemprop="item"
+                                   href="/article-test.bc?catid=@parentcatid"
+                                   aria-label="@title">
                                     <span class="text-zinc-900 text-xs">></span>
                                     <span itemprop="name">@title</span>
-                                    <meta itemprop="position" content="@rownumber" />
+                                    <meta itemprop="position" content="@rownumber"/>
                                 </a></li>
                         </face>
-                        <face filter="parentcatid<>218577">
-                            <li  itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                                <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
-                                    <span class="text-zinc-900 text-xs	">></span>
+                        <face filter="title <> 'ریشه'">
+                            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                                <a class="text-xs text-zinc-900" itemprop="item" href="@link" aria-label="@title">
                                     <span itemprop="name">@title</span>
-                                    <meta itemprop="position" content="@rownumber" />
+                                    <span class="text-zinc-900 text-xs	">></span>
+                                    <meta itemprop="position" content="@rownumber"/>
                                 </a></li>
                         </face>
                     </basis>
@@ -114,7 +117,7 @@
     <section class="s-info-blog mt-15 px-4">
         <div class="p-blog-info w-full flex flex-col  gap-6">
             <div class="flex start w-full flex-col">
-                <div class="box-editor w-full bg-white shadow-custom-2 rounded-lg flex flex-col items-start p-4">
+                <div class="editor-tags w-full bg-white shadow-custom-2 rounded-lg flex flex-col items-start p-4">
                     <basis core="print" datamembername="db.view">
                         <face filter="TypeID in(150)">
                             <h5 class="danaBold text-base text-zinc-900">@text</h5>
@@ -132,7 +135,6 @@
                         </basis>
                         <div class="flex flex-col w-full items-start w-full my-5">
                             <basis core="list" datamembername="db.view">
-
                                 <face filter="TypeID in(250)">
                                     <div class="title flex items-center mt-7 w-full justify-between">
                                         <h5 class="danaBold text-base text-zinc-900">@text</h5>

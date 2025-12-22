@@ -405,3 +405,58 @@ async function RenderFormAbout() {
     )
     inputElementEmail.setAttribute('placeholder', 'ایمیل')
 }
+
+function ShareSocialMedia(event, containerid) {
+    event.stopPropagation(); // جلوگیری از بسته شدن هنگام کلیک داخل باکس
+
+    const container = document.getElementById(containerid);
+    const shareBox = container.querySelector(".socialmedia-box-share");
+    const txtcontainer = container.querySelector(".text-share-box");
+    const bgactivation = container.querySelector(".bg-activation-sharebtn");
+    const onlybtncontainer = document.getElementById("sharebutton-content");
+
+    if (!container || !shareBox) return;
+
+    // بررسی باز یا بسته بودن
+    const isOpen = container.classList.contains("hovered");
+
+    if (isOpen) {
+        // بستن باکس
+        shareBox.classList.add("invisible", "opacity-0");
+        container.classList.remove("hovered", "w-[302px]");
+        onlybtncontainer.classList.remove("w-[302px]");
+        txtcontainer.classList.remove("text-white");
+        bgactivation.classList.remove(
+            "right-0",
+            "!mx-0",
+            "h-full",
+            "w-full",
+            "p-0"
+        );
+    } else {
+        // بستن سایر باکس‌ها (در صورتی که چندین باکس وجود داشته باشد)
+        document.querySelectorAll(".share-container").forEach((el) => {
+            el.classList.remove("hovered", "w-[302px]");
+            onlybtncontainer.classList.remove("w-[302px]");
+            txtcontainer.classList.remove("text-white");
+            bgactivation.classList.remove(
+                "right-0",
+                "!mx-0",
+                "h-full",
+                "w-full",
+                "p-0"
+            );
+            el.querySelector(".socialmedia-box-share").classList.add(
+                "invisible",
+                "opacity-0"
+            );
+        });
+
+        // باز کردن باکس
+        shareBox.classList.remove("invisible", "opacity-0", "w-full");
+        container.classList.add("hovered", "w-full");
+        onlybtncontainer.classList.add("w-full");
+        txtcontainer.classList.add("text-white");
+        bgactivation.classList.add("right-0", "!mx-0", "h-full", "w-full", "p-0");
+    }
+}

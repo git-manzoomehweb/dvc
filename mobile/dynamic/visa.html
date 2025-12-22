@@ -1,19 +1,19 @@
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.qid##]">
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
     </member>
 </basis>
-<basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
-    <member name="scalar" type="scalar" typeid="150" />
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="[##cms.query.id##]">
+    <member name="navigation" type="tree" request="navigationcat" />
 </basis>
 
-<basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
-    <member name="scalarEN" type="scalar" typeid="150" />
-</basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid|(0)##]">
-    <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid|(0)##]" />
-</basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
     <member name="p-under" type="view" propertyid=""/>
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id##]">
+    <member name="view" type="view" propertyid="7249"/>
+</basis>
+<basis core="dbsource" source="media" lid="1" name="view" usedforid="[##cms.query.id##]" sourcemid="article">
+    <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,16 +32,16 @@
 
 <main>
     <!--s-main-visa-->
-    <section class="s-main-visa  relative mt-[7rem] px-4">
+    <section class="s-main-visa  relative mt-12 px-4">
         <div class="w-full title flex flex-col items-center justify-center">
-            <basis core="print" datamembername="db.scalarEN">
-                <face>
-                    <h4 class="text-zinc-200 leading-[16px] text-base">@column1</h4>
+            <basis core="print" datamembername="db.view">
+                <face filter="typeID in(128)">
+                    <h4 class="text-zinc-200 leading-[16px] text-base">@text</h4>
                 </face>
             </basis>
-            <basis core="print" datamembername="db.scalar">
-                <face>
-                    <h1 class="text-zinc-900 text-base danaBold relative bottom-3">@column1</h1>
+            <basis core="print" datamembername="db.view">
+                <face filter="typeID in(150)">
+                    <h1 class="text-zinc-900 text-base danaBold relative bottom-3">@text</h1>
                 </face>
             </basis>
             <p class="text-zinc-500 text-xs	 text-center danaRegular relative ">متنی آزمایشی و بی‌معنی در صنعت
@@ -49,22 +49,22 @@
                 گفته می‌شود. طراح گرافیک از این متن </p>
             <ul class="breadcrumb flex items-center gap-2 mt-2">
                 <basis core="print" datamembername="db.navigation">
-                    <face filter="RowNumber=max(RowNumber) and parentcatid<>218576">
+                    <face filter="RowNumber=max(RowNumber) and title<>'ریشه'">
                         <li class="text-secondary">
                             <span class="text-zinc-900 text-xs">></span>
                             <span class="text-xs text-secondary-950" itemprop="name">@title</span>
                             <meta itemprop="position" content="@rownumber" />
                         </li>
                     </face>
-                    <face filter="link is null and parentcatid<>218576">
+                    <face filter="link is null and title<>'ریشه'">
                         <li class="" itemprop="itemListElement">
                             <a class="text-xs" itemprop="item" aria-label="@title">
                                 <span class="text-zinc-900 text-xs">></span>
                                 <span itemprop="name">@title</span>
-                                <meta itemprop="position" content="@rownumber" />
+                                <meta itemprop="position" content="@rownumber"/>
                             </a></li>
                     </face>
-                    <face filter="parentcatid<>218576">
+                    <face filter="title<>'ریشه'">
                         <li  itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
                             <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
                                 <span class="text-zinc-900 text-xs	">></span>
@@ -78,9 +78,25 @@
         <div class="main-row flex flex-col w-full  mt-8 gap-2">
             <div class="box-visa h-[400px] rounded-3xl overflow-hidden w-full flex flex-col items-center justify-between">
                 <div class="top relative z-10 pt-8 flex flex-col items-center">
-                    <img class="w-[85px]" src="../assets/images/kanada.png" alt="">
+                    <basis core="print" datamembername="db.view">
+                        <layout>
+                            @child
+                        </layout>
+                        <face filter="typeID in(159)">
+                            <img class="w-[85px] rounded-[50%]" src="/@text" alt="">
+                        </face>
+                    </basis>
                     <span class="text-white text-base mt-3 danaRegular">کشور اخذ ویزا</span>
-                    <h5 class="text-white text-4xl danaBold">کانادا</h5>
+                    <basis core="print" datamembername="db.view">
+                        <layout>
+                            @child
+                        </layout>
+                        <face filter="TypeID in(150)">
+                            <div class="text-zinc-900 danaBold text-2xl mt-1">
+                                <h5 class="text-white text-2xl danaBold">@text</h5>
+                            </div>
+                        </face>
+                    </basis>
                 </div>
                 <div class="bottom w-full pb-8 px-6 flex flex-col items-center relative z-10 gap-3">
                     <a href=""
@@ -93,45 +109,40 @@
             </div>
             <div class="w-full flex flex-col items-start">
                 <div class="btn-tab w-full  flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2">
-                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
                        href="">ویزای توریستی</a>
-                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
                        href="">مشاوره</a>
-                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
                        href="">دانشجویی</a>
-                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
                        href="">ثبت شرکت</a>
-                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
                        href="">دانش آموزی</a>
-                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
                        href="">استارتاپ</a>
-                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
                        href="">تحصیلی</a>
-                    <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
+                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
                        href="">فرهنگی</a>
                 </div>
-                <div class="bg-white w-full rounded-3xl p-6 mt-6 h-[480px] shadow-custom-2 flex flex-col items-start">
-                    <basis core="print" datamembername="db.p-under">
+                <div class="bg-white w-full rounded-3xl p-6 mt-6  shadow-custom-2 flex flex-col items-start">
+                    <basis core="list" datamembername="db.view">
                         <layout>
                             @child
                         </layout>
-                        <face filter="TypeID in(150)">
-                            <div class="text-zinc-900 danaBold text-base mt-1">
-                                <h2 >@text</h2>
-                            </div>
-                        </face>
-                        <face filter="TypeID in(129)">
-                            <div class="leading-[21px] text-justify text-zinc-900 text-xs mt-3">
-                                <p >@largetext</p>
-                            </div>
-                        </face>
-                        <face filter="TypeID in(159)">
-                            <div class="w-full flex items-center mt-6 mb-6 justify-center">
-                                <img class="object-contain" src="/@largetext" alt="">
-                            </div>
-                        </face>
-                    </basis>
+                        <div class="w-full">
+                            <face filter="TypeID in(250)">
+                                <div class="flex w-full flex-col items-start mt-6">
+                                    <h2 class="text-zinc-900 font-bold danaBold text-xl mt-1">@text</h2>
+                                    <div class="text-xs text-zinc-900 mt-6">
+                                        <p>@largetext</p>
+                                    </div>
+                                </div>
+                            </face>
+                        </div>
 
+                    </basis>
                 </div>
 
             </div>
@@ -139,7 +150,7 @@
     </section>
 
     <!-- s-faq-->
-    <section class="s-faq  py-2 px-4 mt-15">
+    <section class="s-faq  py-2 px-4 mt-15 mb-6">
         <div class="title w-full flex flex-col items-center justify-center gap-[6px]">
             <h2 class="danaBold mb-0 text-base">سوالات متداول </h2>
             <svg width="133" height="6" viewBox="0 0 133 6" fill="none" xmlns="http://www.w3.org/2000/svg">

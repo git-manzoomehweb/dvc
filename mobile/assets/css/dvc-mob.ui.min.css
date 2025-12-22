@@ -2962,3 +2962,18 @@ input {
     height: 120px;
     overflow-y: auto;
 }
+
+/*editor*/
+.editor-tags {
+    gap: 1rem;
+}
+
+.editor-tags p {
+    width: 100%;
+    overflow: hidden;
+}
+
+.editor-tags p img {
+    width: 100%;
+    border-radius: 8px;
+}

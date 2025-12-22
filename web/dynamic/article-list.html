@@ -1,11 +1,12 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219094">
-    <member name="tours" type="list" link="Categories-of-tours" propertyid="8181,3088230,8076,8077,10000504,3088231"  order="ord"/>
+    <member name="tours" type="list" link="Categories-of-tours" propertyid="8181,3088230,8076,8077,10000504,3088231"
+            order="ord" />
     </member>
 </basis>
 
 
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219234">
-    <member name="service" type="list" link="service.bc" order="ord" propertyid="7244,7249"/>
+    <member name="service" type="list" link="service.bc" order="ord" propertyid="7244,7249" />
     </member>
 </basis>
 
@@ -17,29 +18,35 @@
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
     <member name="scalarEN" type="scalar" typeid="150" />
 </basis>
-
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
-    <member name="p-under" type="view"  propertyid="" />
+    <member name="p-under" type="view" propertyid="" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
-    <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"/>
+    <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"
+            pageno="[##cms.query.pagenum|(1)##]"  perpage="1" />
     </member>
+    <member name="paging" type="list" request="paging" count="3" parentname="article" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid|(0)##]">
     <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid|(0)##]" />
 </basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.nid##]">
+    <member name="lastNews" type="view" />
+</basis>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>blog list</title>
-    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
-    <basis core="call" file="style-test.inc"/>
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
+    <basis core="call" file="style-test.inc" />
 </head>
+
 <body>
 
-<basis core="call" file="header-test.inc"/>
+<basis core="call" file="header-test.inc" />
 
 <!--main-->
 <main>
@@ -78,30 +85,39 @@
                                 </li>
                             </face>
                             <face filter="link is null and parentcatid<>218577">
-                                <li class="" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                                    <a class="text-xs" itemprop="item" href="/tour-list.bc?catid=@parentcatid" aria-label="@title">
+                                <li class="" itemprop="itemListElement" itemscope=""
+                                    itemtype="https://schema.org/ListItem">
+                                    <a class="text-xs" itemprop="item" href="/tour-list.bc?catid=@parentcatid"
+                                       aria-label="@title">
                                         <span class="text-zinc-900 text-xs">></span>
                                         <span itemprop="name">@title</span>
                                         <meta itemprop="position" content="@rownumber" />
-                                    </a></li>
+                                    </a>
+                                </li>
                             </face>
                             <face filter="parentcatid<>218577">
-                                <li  itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                                <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
                                     <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
                                         <span class="text-zinc-900 text-xs	">></span>
                                         <span itemprop="name">@title</span>
                                         <meta itemprop="position" content="@rownumber" />
-                                    </a></li>
+                                    </a>
+                                </li>
                             </face>
                         </basis>
                     </ul>
-                    <div class="box-search w-[55%] flex items-center gap-2 mt-5">
-                        <input class="w-[80%] bg-white shadow-custom-1 h-[55px] rounded-[100px] px-[24px]" type="text"
-                               placeholder="جستجوی مقاله">
-                        <button class="h-[55px] w-[20%] bg-primary-900 rounded-[100px] text-white">
-                            جستجو
-                        </button>
-                    </div>
+                    <form method="get" action="/search-content-test.bc"
+                          class="box-search w-[55%] flex items-center gap-2 mt-5">
+                        <input type="hidden" name="t" value="article">
+                        <div class="flex items-center w-full gap-2">
+                            <input class="w-[80%] bg-white shadow-custom-1 h-[55px] rounded-[100px] px-[24px]"
+                                   placeholder="جستجوی مطلب" type="text" autocomplete="on" required
+                                   name="search-content-name" />
+                            <button type="submit" class="h-[55px] w-[20%] btn-primary rounded-[100px] text-white">
+                                جستجو
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -112,20 +128,23 @@
             <div class="title w-full flex flex-col items-center justify-center gap-[12px]">
                 <h2 class="danaBold text-2xl">اخرین اخبار</h2>
                 <svg width="135" height="6" viewBox="0 0 135 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M134.773 2.88672L131.887 -3.26633e-05L129 2.88672L131.887 5.77347L134.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77347 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM131.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L131.887 3.38672V2.88672Z"
-                          fill="#DDB974"/>
+                    <path
+                            d="M134.773 2.88672L131.887 -3.26633e-05L129 2.88672L131.887 5.77347L134.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77347 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM131.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L131.887 3.38672V2.88672Z"
+                            fill="#DDB974" />
                 </svg>
-                <span class="text-zinc-600 mt-2 danaRegular text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+                <span class="text-zinc-600 mt-2 danaRegular text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی
+                        و طراحی گرافیک گفته می‌شود. طراح</span>
             </div>
             <div class="w-full box-latest-news h-[380px] mt-6 rounded-3xl p-5">
                 <basis core="list" datamembername="db.article">
                     <layout>@child</layout>
                     <face filter="ord=1">
-                        <div class="thumbnail-blog relative h-[340px] w-[45%] flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
-                            <h2><a class="text-zinc-900 danaBold text-zinc-900 text-base"
-                                   href="@link">@title</a>
+                        <div
+                                class="thumbnail-blog relative h-[340px] w-[45%] flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
+                            <h2><a class="text-zinc-900 danaBold text-zinc-900 text-base" href="@link">@title</a>
                             </h2>
-                            <p class="leading-[21px] relative z-10 text-xs	h-[165px] text-justify danaRegular text-zinc-700 mt-3">
+                            <p
+                                    class="leading-[21px] relative z-10 text-xs	h-[165px] text-justify danaRegular text-zinc-700 mt-3">
                                 @prp_7244
                             </p>
                             <div class="w-full flex items-center justify-start gap-2 mt-3">
@@ -141,10 +160,12 @@
                             <div class="svg-fix absolute left-4 bottom-22 z-0">
                                 <svg width="70" height="56" viewBox="0 0 70 56" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M0 33.5994C0 31.3803 0.60518 29.3701 1.25691 27.4121C1.90863 25.4541 3.34243 22.5171 5.5583 18.6011C7.90452 14.5545 11.6845 8.35416 16.8983 0L28.2384 7.63622L24.9146 12.5312C21.0042 18.4053 18.5928 22.1907 17.6804 23.8877C21.8515 24.2793 25.3056 25.9762 28.0429 28.9785C30.9105 31.9808 32.3443 35.5704 32.3443 39.7475C32.3443 44.1857 30.7801 48.0364 27.6518 51.2997C24.5235 54.4326 20.8087 55.999 16.5073 55.999C11.9452 55.999 8.10003 54.4326 4.97175 51.2997C1.84346 48.1669 0 44.3279 0 39.7593V36.3993V33.5994Z"
-                                          fill="#FFF8E8"/>
-                                    <path d="M37.9349 33.6787C37.9349 31.4597 38.2608 29.3711 38.9125 27.4131C39.5642 25.4551 40.998 22.5181 43.2139 18.6021C45.5601 14.5555 49.3402 8.35519 54.554 0.00103739L65.8941 7.63726L62.5702 12.5323C58.6599 18.4063 56.2485 22.1918 55.336 23.8887C59.5071 24.2803 62.9613 25.9772 65.6985 28.9795C68.5661 31.9818 70 35.5715 70 39.7486C70 44.1867 68.4358 48.0374 65.3075 51.3008C62.1792 54.4336 58.4643 56 54.1629 56C49.6008 56 45.7556 54.4336 42.6273 51.3008C39.4991 48.168 37.9349 44.3172 37.9349 39.7486V33.6787Z"
-                                          fill="#FFF8E8"/>
+                                    <path
+                                            d="M0 33.5994C0 31.3803 0.60518 29.3701 1.25691 27.4121C1.90863 25.4541 3.34243 22.5171 5.5583 18.6011C7.90452 14.5545 11.6845 8.35416 16.8983 0L28.2384 7.63622L24.9146 12.5312C21.0042 18.4053 18.5928 22.1907 17.6804 23.8877C21.8515 24.2793 25.3056 25.9762 28.0429 28.9785C30.9105 31.9808 32.3443 35.5704 32.3443 39.7475C32.3443 44.1857 30.7801 48.0364 27.6518 51.2997C24.5235 54.4326 20.8087 55.999 16.5073 55.999C11.9452 55.999 8.10003 54.4326 4.97175 51.2997C1.84346 48.1669 0 44.3279 0 39.7593V36.3993V33.5994Z"
+                                            fill="#FFF8E8" />
+                                    <path
+                                            d="M37.9349 33.6787C37.9349 31.4597 38.2608 29.3711 38.9125 27.4131C39.5642 25.4551 40.998 22.5181 43.2139 18.6021C45.5601 14.5555 49.3402 8.35519 54.554 0.00103739L65.8941 7.63726L62.5702 12.5323C58.6599 18.4063 56.2485 22.1918 55.336 23.8887C59.5071 24.2803 62.9613 25.9772 65.6985 28.9795C68.5661 31.9818 70 35.5715 70 39.7486C70 44.1867 68.4358 48.0374 65.3075 51.3008C62.1792 54.4336 58.4643 56 54.1629 56C49.6008 56 45.7556 54.4336 42.6273 51.3008C39.4991 48.168 37.9349 44.3172 37.9349 39.7486V33.6787Z"
+                                            fill="#FFF8E8" />
                                 </svg>
                             </div>
                         </div>
@@ -153,7 +174,6 @@
             </div>
         </div>
     </section>
-
     <!--s-blog-->
     <section class="s-blog mt-20">
         <div class="c-container">
@@ -162,18 +182,21 @@
                 <svg width="214" height="6">
                     <use href="/images/sprite-icons.svg#line-title-blog"></use>
                 </svg>
-                <span class="text-zinc-600 danaRegular mt-3 text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+                <span class="text-zinc-600 danaRegular mt-3 text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی
+                        و طراحی گرافیک گفته می‌شود. طراح</span>
             </div>
             <div class="p-list-blog w-full  mt-10 gap-5">
                 <div class="list grid grid-cols-3 gap-x-5  gap-y-7 w-full">
                     <basis core="list" datamembername="db.article">
                         <layout>@child</layout>
                         <face filter="ord <>1">
-                            <div class="thumbnail-blog relative w-full flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
+                            <div
+                                    class="thumbnail-blog relative w-full flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
                                 <h2><a class="text-zinc-900 danaBold text-zinc-900 text-base"
                                        href="@link">@title</a>
                                 </h2>
-                                <p class="leading-[21px] relative z-10 text-xs	h-[165px] text-justify danaRegular text-zinc-700 mt-3">
+                                <p
+                                        class="leading-[21px] relative z-10 text-xs	h-[165px] text-justify danaRegular text-zinc-700 mt-3">
                                     @prp_7244
                                 </p>
                                 <div class="w-full flex items-center justify-start gap-2 mt-3">
@@ -189,45 +212,100 @@
                                 <div class="svg-fix absolute left-4 bottom-22 z-0">
                                     <svg width="70" height="56" viewBox="0 0 70 56" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M0 33.5994C0 31.3803 0.60518 29.3701 1.25691 27.4121C1.90863 25.4541 3.34243 22.5171 5.5583 18.6011C7.90452 14.5545 11.6845 8.35416 16.8983 0L28.2384 7.63622L24.9146 12.5312C21.0042 18.4053 18.5928 22.1907 17.6804 23.8877C21.8515 24.2793 25.3056 25.9762 28.0429 28.9785C30.9105 31.9808 32.3443 35.5704 32.3443 39.7475C32.3443 44.1857 30.7801 48.0364 27.6518 51.2997C24.5235 54.4326 20.8087 55.999 16.5073 55.999C11.9452 55.999 8.10003 54.4326 4.97175 51.2997C1.84346 48.1669 0 44.3279 0 39.7593V36.3993V33.5994Z"
-                                              fill="#FFF8E8"/>
-                                        <path d="M37.9349 33.6787C37.9349 31.4597 38.2608 29.3711 38.9125 27.4131C39.5642 25.4551 40.998 22.5181 43.2139 18.6021C45.5601 14.5555 49.3402 8.35519 54.554 0.00103739L65.8941 7.63726L62.5702 12.5323C58.6599 18.4063 56.2485 22.1918 55.336 23.8887C59.5071 24.2803 62.9613 25.9772 65.6985 28.9795C68.5661 31.9818 70 35.5715 70 39.7486C70 44.1867 68.4358 48.0374 65.3075 51.3008C62.1792 54.4336 58.4643 56 54.1629 56C49.6008 56 45.7556 54.4336 42.6273 51.3008C39.4991 48.168 37.9349 44.3172 37.9349 39.7486V33.6787Z"
-                                              fill="#FFF8E8"/>
+                                        <path
+                                                d="M0 33.5994C0 31.3803 0.60518 29.3701 1.25691 27.4121C1.90863 25.4541 3.34243 22.5171 5.5583 18.6011C7.90452 14.5545 11.6845 8.35416 16.8983 0L28.2384 7.63622L24.9146 12.5312C21.0042 18.4053 18.5928 22.1907 17.6804 23.8877C21.8515 24.2793 25.3056 25.9762 28.0429 28.9785C30.9105 31.9808 32.3443 35.5704 32.3443 39.7475C32.3443 44.1857 30.7801 48.0364 27.6518 51.2997C24.5235 54.4326 20.8087 55.999 16.5073 55.999C11.9452 55.999 8.10003 54.4326 4.97175 51.2997C1.84346 48.1669 0 44.3279 0 39.7593V36.3993V33.5994Z"
+                                                fill="#FFF8E8" />
+                                        <path
+                                                d="M37.9349 33.6787C37.9349 31.4597 38.2608 29.3711 38.9125 27.4131C39.5642 25.4551 40.998 22.5181 43.2139 18.6021C45.5601 14.5555 49.3402 8.35519 54.554 0.00103739L65.8941 7.63726L62.5702 12.5323C58.6599 18.4063 56.2485 22.1918 55.336 23.8887C59.5071 24.2803 62.9613 25.9772 65.6985 28.9795C68.5661 31.9818 70 35.5715 70 39.7486C70 44.1867 68.4358 48.0374 65.3075 51.3008C62.1792 54.4336 58.4643 56 54.1629 56C49.6008 56 45.7556 54.4336 42.6273 51.3008C39.4991 48.168 37.9349 44.3172 37.9349 39.7486V33.6787Z"
+                                                fill="#FFF8E8" />
                                     </svg>
                                 </div>
                             </div>
                         </face>
                     </basis>
                 </div>
-                <div class="p-pagination w-full my-10 flex justify-center ">
-                    <div class="pagination px-[8px] rounded-[50px] w-[290px] h-[64px] flex items-center justify-between bg-zinc-100">
-                        <button class="next-page">
-                            <svg width="48" height="48">
-                                <use href="/images/sprite-icons.svg#icon-circle-next"></use>
-                            </svg>
-                        </button>
-                        <div class="pages   flex items-center justify-center gap-2 ">
-                            <button class="danaRegular w-12 h-12 bg-white  rounded-[50%] ease hover:bg-zinc-300 text-base">
-                                1
-                            </button>
-                            <button class="danaRegular w-12 h-12 bg-primary-900 text-white rounded-[50%] ease hover:bg-zinc-300 text-base">
-                                2
-                            </button>
-                            <button class="danaRegular w-12 h-12 bg-white rounded-[50%] ease hover:bg-zinc-300 text-base">
-                                3
-                            </button>
+                <div id="paging">
+                    <ul class="p-pagination w-full my-10 flex justify-center" id="wibpaging">
+                        <div
+                                class="pagination px-[8px] rounded-[50px] w-[290px] h-[64px] direction-ltr flex items-center justify-between bg-zinc-100">
+                            <basis core="print" datamembername="db.paging">
+                                <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">
+                                    <li class="prev-page">
+                                        <a aria-label="angle-left" href="/[##cms.cms.link_page##]&pagenum=@page">
+                                            <svg width="48" height="48">
+                                                <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </face>
+                                <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'<>'')">
+                                    <li class="prev-page">
+                                        <a aria-label="angle-left" href="/[##cms.cms.pageurl##]?pagenum=@page">
+                                            <svg width="48" height="48">
+                                                <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </face>
+                            </basis>
+                            <basis core="print" datamembername="db.paging">
+                                <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')">
+                                    <li
+                                            class="flex items-center justify-center w-12 h-12 p-2 rounded-[50%] transition-all duration-300 bg-primary-900 page-no">
+                                        <a class="flex items-center justify-center w-full h-full text-white rounded-[50%] cursor-pointer page-number bg-primary-900"
+                                           href="/[##cms.cms.link_page##]&pagenum=@page">@page</a>
+                                    </li>
+                                </face>
+                                <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
+                                    <li
+                                            class="flex items-center justify-center w-12 h-12 p-2 rounded-lg transition-all duration-300 bg-primary-900 page-no">
+                                        <a class="flex items-center justify-center w-full h-full text-white cursor-pointer page-number bg-primary-900"
+                                           href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
+                                    </li>
+                                </face>
+                                <face
+                                        filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'='') ">
+                                    <li
+                                            class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
+                                        <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                                           href="/[##cms.cms.link_page##]&pagenum=@page">@page</a>
+                                    </li>
+                                </face>
+                                <face
+                                        filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') ">
+                                    <li
+                                            class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
+                                        <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                                           href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
+                                    </li>
+                                </face>
+                            </basis>
+                            <basis core="print" datamembername="db.paging">
+                                <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'='')">
+                                    <li class="next-page">
+                                        <a aria-label="angle-right" href="/[##cms.cms.link_page##]&pagenum=@page">
+                                            <svg width="48" height="48">
+                                                <use href="/images/sprite-icons.svg#icon-circle-next"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </face>
+                                <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'<>'')">
+                                    <li class="next-page">
+                                        <a aria-label="angle-right" href="/[##cms.cms.pageurl##]?pagenum=@page">
+                                            <svg width="48" height="48">
+                                                <use href="/images/sprite-icons.svg#icon-circle-next"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </face>
+                            </basis>
                         </div>
-                        <button class="prev-page">
-                            <svg width="48" height="48">
-                                <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
-                            </svg>
-                        </button>
-                    </div>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- s-vacation-tours-->
     <section class="s-vacation-tours  py-2 mt-25">
         <div class="c-container">
@@ -236,17 +314,18 @@
                 <svg width="266" height="6">
                     <use href="/images/sprite-icons.svg#icon-line-title-tour"></use>
                 </svg>
-                <span class="text-zinc-600 mt-3 text-xs">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+                <span class="text-zinc-600 mt-3 text-xs">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی
+                        گرافیک گفته می‌شود. طراح</span>
                 <div class="btn-tab w-full flex items-center justify-center my-5 gap-2">
                     <a data-tab="cat_1" data-default="true" onclick="openTab(event, 'محبوب ترین تورها')"
                        class="px-[17px] tab-btn  transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">محبوبت
                         ترین</a>
                     <a data-tab="cat_1" onclick="openTab(event, 'جدیدترین')"
-                       class="px-[17px] tab-btn transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
-                    >جدیدترین تورها</a>
+                       class="px-[17px] tab-btn transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">جدیدترین
+                        تورها</a>
                     <a data-tab="cat_1" onclick="openTab(event, 'مهیج ترین')"
-                       class="px-[17px] tab-btn transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
-                    >مهیج ترین</a>
+                       class="px-[17px] tab-btn transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">مهیج
+                        ترین</a>
                 </div>
             </div>
             <div class="swiper swiper-thumbnail-tour py-5">
@@ -257,8 +336,7 @@
                             <div data-category="@prp_3088231" class="swiper-slide swiper-slide-tabs tab-content">
                                 <div class="thumbnail-tour  w-full rounded-3xl p-3 flex flex-col items-center">
                                     <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
-                                        <img class="w-full h-full " src="/@image" draggable="false"
-                                             alt="/@title">
+                                        <img class="w-full h-full " src="/@image" draggable="false" alt="/@title">
                                         <button class="absolute right-3 top-3 z-10">
                                             <img width="36" src="/images/favorite.png" alt="">
                                         </button>
@@ -311,7 +389,8 @@
 
             <div class="w-full flex items-center mt-3 justify-center">
                 <div class="bg-slider p-2 rounded-[50px] flex items-center w-auto h-[60px] gap-2 bg-zinc-100">
-                    <button class="swiper-button-next-tour  w-10 h-10 rounded-[50%] flex items-center justify-center bg-white">
+                    <button
+                            class="swiper-button-next-tour  w-10 h-10 rounded-[50%] flex items-center justify-center bg-white">
                         <svg class="ease" width="9" height="16">
                             <use href="/images/sprite-icons.svg#icon-next"></use>
                         </svg>
@@ -321,7 +400,8 @@
                        class="btn-view h-10 text-white px-[24px] btn-primary-sm  text-xs	 danaRegular flex items-center rounded-[50px]">
                         مشاهده همه
                     </a>
-                    <button class="swiper-button-prev-tour w-10 h-10 rounded-[50%] flex items-center justify-center bg-white">
+                    <button
+                            class="swiper-button-prev-tour w-10 h-10 rounded-[50%] flex items-center justify-center bg-white">
                         <svg class="ease" width="9" height="16">
                             <use href="/images/sprite-icons.svg#icon-prev"></use>
                         </svg>
@@ -330,7 +410,6 @@
             </div>
         </div>
     </section>
-
     <!--s-services-->
     <section class="s-services my-20">
         <div class="c-container">
@@ -345,7 +424,9 @@
                 </div>
                 <div class="box-services w-[86%]  h-[325px] relative rounded-[50px]">
                     <div class="detail relative  mx-auto h-full z-10 flex flex-col">
-                        <p class="text-zinc-900 w-[78%] mx-auto text-justify relative top-7 text-sm mt-4 leading-[25px]">لورم
+                        <p
+                                class="text-zinc-900 w-[78%] mx-auto text-justify relative top-7 text-sm mt-4 leading-[25px]">
+                            لورم
                             ایپسوم متن ساختگی با
                             تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
                             چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
@@ -355,14 +436,17 @@
                             <basis core="list" datamembername="db.service">
                                 <layout>@child</layout>
                                 <face>
-                                    <div class="item-services w-auto  h-[270px] rounded-xl p-3 flex flex-col items-center justify-center">
-                                        <div class="bg-white box-svg ease w-[70px] h-[70px] rounded-[1rem] flex items-center justify-center">
+                                    <div
+                                            class="item-services w-auto  h-[270px] rounded-xl p-3 flex flex-col items-center justify-center">
+                                        <div
+                                                class="bg-white box-svg ease w-[70px] h-[70px] rounded-[1rem] flex items-center justify-center">
                                             <svg width="37" height="37">
                                                 <use href="/images/sprite-icons.svg#icon-service"></use>
                                             </svg>
                                         </div>
-                                        <a class="mt-4" href="@link"><h5
-                                                class="danaBold ease text-secondary-950 text-base mt-4">@title</h5></a>
+                                        <a class="mt-4" href="@link">
+                                            <h5 class="danaBold ease text-secondary-950 text-base mt-4">@title</h5>
+                                        </a>
                                         <div class="w-full ease hidden  detail-items flex-col">
                                             <p class="text-zinc-600 text-xs	 w-[240px] text-justify my-2">
                                                 @prp_7244
@@ -371,7 +455,8 @@
                                                 <span class="text-zinc-900 text-xs	 danaRegular">مشاهده بیشتر</span>
                                                 <a href="/@link">
                                                     <svg width="48" height="48">
-                                                        <use href="/images/sprite-icons.svg#icon-circle-arrow"></use>
+                                                        <use href="/images/sprite-icons.svg#icon-circle-arrow">
+                                                        </use>
                                                     </svg>
                                                 </a>
                                             </div>
@@ -397,10 +482,11 @@
 
 
 <!--footer-->
-<basis core="call" file="footer-test.bc"/>
+<basis core="call" file="footer-test.bc" />
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
-<basis core="call" file="script-test.inc"/>
+<basis core="call" file="script-test.inc" />
 </body>
+
 </html>

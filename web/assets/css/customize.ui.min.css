@@ -1568,41 +1568,6 @@ body {
 .ease-out {
     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
-
-:root {
-    --primary: #000080;
-    --primary-50: #e9e9ff;
-    --primary-100: #d0d0ff;
-    --primary-200: #a5a5ff;
-    --primary-300: #7676ff;
-    --primary-400: #4343ff;
-    --primary-500: #0000db;
-    --primary-600: #000080;
-    --primary-700: #00006e;
-    --primary-800: #000056;
-    --primary-900: #00003d;
-    --primary-950: #000031;
-    --secondary: #fae00b;
-    --secondary-50: #fffcf2;
-    --secondary-100: #fff9e5;
-    --secondary-200: #fff4c6;
-    --secondary-300: #ffeea2;
-    --secondary-400: #ffec8c;
-    --secondary-500: #ffe64a;
-    --secondary-600: #fae00b;
-    --secondary-700: #b7a405;
-    --secondary-800: #766902;
-    --secondary-900: #3c3501;
-    --secondary-950: #221e00;
-    --special-1: #ffffff05;
-    --special-2: #ffffff00;
-    --special-3: #0000009c;
-    --special-4: #00000033;
-    --client-color: #466def;
-    --bg: url('');
-    --hotel-bg: url('../images/hotel-background.jpg');
-}
-
 .dynamic-bg {
     background-image: var(--bg);
 }
@@ -2153,17 +2118,6 @@ body {
     display: none !important;
 }
 
-.footer-form [data-bc-answer-container] input[type='text'] {
-    background-color: white !important;
-    color: #18181b !important;
-    height: 56px !important;
-    padding: 0 16px !important;
-    font-weight: 400 !important;
-    outline: none !important;
-    border-radius: 12px !important;
-    border: none !important;
-    font-size: 16px !important;
-}
 
 .footer-form [data-bc-schema-direction='rtl'] [data-bc-part-container] {
     width: 100%;

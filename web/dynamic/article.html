@@ -1,5 +1,5 @@
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid|(0)##]">
-    <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid|(0)##]"/>
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="[##cms.query.id##]">
+    <member name="navigation" type="tree" request="navigationcat"/>
 </basis>
 
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
@@ -68,37 +68,6 @@
                         </basis>
 
                     </div>
-                    <ul class="breadcrumb flex items-center gap-2 mt-2">
-                        <basis core="print" datamembername="db.navigation">
-                            <face filter="RowNumber=max(RowNumber) and parentcatid<>218577">
-                                <li class="text-secondary" itemprop="itemListElement" itemscope=""
-                                    itemtype="https://schema.org/ListItem">
-                                    <a href="" class="text-xs text-zinc-900">صفحه اصلی</a>
-                                    <span class="text-zinc-900 text-xs	">></span>
-                                    <span class="text-xs text-secondary-950" itemprop="name">@title</span>
-                                    <meta itemprop="position" content="@rownumber"/>
-                                </li>
-                            </face>
-                            <face filter="link is null and parentcatid<>218577">
-                                <li class="" itemprop="itemListElement" itemscope=""
-                                    itemtype="https://schema.org/ListItem">
-                                    <a class="text-xs" itemprop="item" href="/tour-list.bc?catid=@parentcatid"
-                                       aria-label="@title">
-                                        <span class="text-zinc-900 text-xs">></span>
-                                        <span itemprop="name">@title</span>
-                                        <meta itemprop="position" content="@rownumber"/>
-                                    </a></li>
-                            </face>
-                            <face filter="parentcatid<>218577">
-                                <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                                    <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
-                                        <span class="text-zinc-900 text-xs	">></span>
-                                        <span itemprop="name">@title</span>
-                                        <meta itemprop="position" content="@rownumber"/>
-                                    </a></li>
-                            </face>
-                        </basis>
-                    </ul>
                 </div>
 
                 <div class="flex w-full flex-col items-center">
@@ -109,30 +78,31 @@
                     <div class="flex w-full items-center justify-between">
                         <ul class="breadcrumb  flex items-center gap-2 mt-2">
                             <basis core="print" datamembername="db.navigation">
-                                <face>
+                                <face filter="RowNumber=max(RowNumber) and title <> 'ریشه'">
                                     <li class="text-secondary" itemprop="itemListElement" itemscope=""
                                         itemtype="https://schema.org/ListItem">
-                                        <a href="" class="text-xs text-zinc-900">صفحه اصلی</a>
-                                        <span class="text-zinc-900 text-xs	">></span>
+                                        <a href="" class="text-xs text-white">@title</a>
+                                        <span class="text-white text-xs">></span>
                                         <span class="text-xs text-secondary-950" itemprop="name">@title</span>
                                         <meta itemprop="position" content="@rownumber"/>
                                     </li>
                                 </face>
-                                <face>
+                                <face filter="link is null and title <> 'ریشه'">
                                     <li class="" itemprop="itemListElement" itemscope=""
                                         itemtype="https://schema.org/ListItem">
-                                        <a class="text-xs" itemprop="item" href="/article-test.bc?catid=@parentcatid"
+                                        <a class="text-xs text-white" itemprop="item"
+                                           href="/article-test.bc?catid=@parentcatid"
                                            aria-label="@title">
-                                            <span class="text-zinc-900 text-xs">></span>
+                                            <span class="text-white text-xs">></span>
                                             <span itemprop="name">@title</span>
                                             <meta itemprop="position" content="@rownumber"/>
                                         </a></li>
                                 </face>
-                                <face>
+                                <face filter="title <> 'ریشه'">
                                     <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                                        <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
-                                            <span class="text-zinc-900 text-xs	">></span>
+                                        <a class="text-xs text-white" itemprop="item" href="@link" aria-label="@title">
                                             <span itemprop="name">@title</span>
+                                            <span class="text-white text-xs	">></span>
                                             <meta itemprop="position" content="@rownumber"/>
                                         </a></li>
                                 </face>
@@ -200,11 +170,10 @@
                                     </div>
                                 </face>
                             </basis>
-                            <div class="flex flex-col items-start w-full my-5">
+                            <div class="flex flex-col items-start w-full my-5 editor-tags">
                                 <basis core="list" datamembername="db.view">
-
                                     <face filter="TypeID in(250)">
-                                        <div class="title flex items-center mt-7 w-full justify-between">
+                                        <div class="title flex items-center  w-full justify-between">
                                             <h5 class="danaBold text-base text-zinc-900">@text</h5>
                                             <svg width="600" height="6" viewBox="0 0 662 6" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -220,7 +189,9 @@
                                 <layout>@child</layout>
 
                                 <face filter="TypeID in(159)">
-                                    <img class="w-full rounded-2xl my-5" src="/@largetext" alt="">
+                                    <div class="img">
+                                        <img class="w-full rounded-2xl my-5" src="/@largetext" alt="">
+                                    </div>
                                 </face>
                             </basis>
                         </div>
@@ -243,7 +214,8 @@
                             <input name="productid" value="[##cms.query.id##]" type="hidden">
                             <input name="mid" value="1" type="hidden">
                             <div class="w-[62%] gap-2  grid grid-cols-[1.4fr_1fr_0.7fr]">
-                                <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]" type="text" name="Captcha" placeholder="کد امنیتی" required="">
+                                <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                                       type="text" name="Captcha" placeholder="کد امنیتی" required="">
 
                                 <span class="load-captcha ">
                                                     <img class="w-full h-[55px] rounded-[100px]" alt="کد امنیتی"
@@ -306,115 +278,149 @@
 
                                 <span class="text-zinc-900 text-sm	 danaRegular">چگونه به استانبول سفر کنیم</span>
                             </div>
-
-                            <button class="btn-primary w-full mt-6 gap-3">
-                                <svg width="18" height="19" viewBox="0 0 18 19" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M11.8782 5.59455C12.4432 6.09544 13.186 6.4 13.9988 6.4C15.7638 6.4 17.1988 4.964 17.1988 3.2C17.1988 1.436 15.7638 0 13.9988 0C12.2338 0 10.7988 1.436 10.7988 3.2C10.7988 3.42878 10.823 3.65204 10.8688 3.86736L5.31961 7.10433C4.7548 6.60397 4.01236 6.29977 3.2 6.29977C1.435 6.29977 0 7.7358 0 9.4998C0 11.2638 1.435 12.6988 3.2 12.6988C4.01279 12.6988 4.7556 12.3945 5.32051 11.8939L10.8698 15.1284C10.8233 15.3451 10.7988 15.5698 10.7988 15.8001C10.7988 17.5641 12.2338 19.0001 13.9988 19.0001C15.7638 19.0001 17.1988 17.5641 17.1988 15.8001C17.1988 14.0361 15.7638 12.6001 13.9988 12.6001C13.1874 12.6001 12.4457 12.9036 11.8811 13.403L6.3301 10.1668C6.3759 9.9516 6.4 9.7284 6.4 9.4998C6.4 9.2705 6.3758 9.0468 6.3297 8.8311L11.8782 5.59455Z"
-                                          fill="white"/>
+                            <div id="sharebutton"
+                                 class="group/sharebutton share-container float-left w-[300px] h-[56px] relative z-50 transition-all duration-500 my-2 hover:w-[302px] hover:h-fit ">
+                                <div id="sharebutton-content" onclick="ShareSocialMedia(event, 'sharebutton')"
+                                     class="w-full btn-primary bg-white drop-shadow-xl p-3 cursor-pointer transition-all duration-500 z-20 group-hover/sharebutton:w-[302px] group-hover/sharebutton:bg-primary ">
+                                    <div class="bg-activation-sharebtn bg-primary w-12 h-12 rounded-full drop-shadow-md absolute top-0 bottom-0 left-0 my-auto mx-1 -z-10 group-hover/sharebutton:w-full group-hover/sharebutton:h-full group-hover/sharebutton:mx-0 group-hover/sharebutton:right-0 ">
+                                    </div>
+                                    <div class="flex justify-between items-center gap-4">
+                                        <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11.8782 5.59455C12.4432 6.09544 13.186 6.4 13.9988 6.4C15.7638 6.4 17.1988 4.964 17.1988 3.2C17.1988 1.436 15.7638 0 13.9988 0C12.2338 0 10.7988 1.436 10.7988 3.2C10.7988 3.42878 10.823 3.65204 10.8688 3.86736L5.31961 7.10433C4.7548 6.60397 4.01236 6.29977 3.2 6.29977C1.435 6.29977 0 7.7358 0 9.4998C0 11.2638 1.435 12.6988 3.2 12.6988C4.01279 12.6988 4.7556 12.3945 5.32051 11.8939L10.8698 15.1284C10.8233 15.3451 10.7988 15.5698 10.7988 15.8001C10.7988 17.5641 12.2338 19.0001 13.9988 19.0001C15.7638 19.0001 17.1988 17.5641 17.1988 15.8001C17.1988 14.0361 15.7638 12.6001 13.9988 12.6001C13.1874 12.6001 12.4457 12.9036 11.8811 13.403L6.3301 10.1668C6.3759 9.9516 6.4 9.7284 6.4 9.4998C6.4 9.2705 6.3758 9.0468 6.3297 8.8311L11.8782 5.59455Z" fill="white"/>
+                                        </svg>
+                                        <span class="text-share-box text-center block text-base ">اشتراک
+                                    گذاری </span>
+                                    </div>
+                                </div>
+                            <ul class="socialmedia-box-share invisible bottom-0 opacity-0 h-14 w-full flex justify-around px-4 items-center drop-shadow-none bg-white pt-40  border border-primary absolute  left-0 right-0 -z-50 rounded-xl transition-all duration-500 ">
+                                <li class=""><a class="flex justify-center items-center cursor-pointer"
+                                                href="https://www.instagram.com/sharer/sharer.php?u=[##cms.request.full-url##]"
+                                                target="_blank" aria-label="facebook">
+                                    <svg width="27" height="27">
+                                        <use href="/images/sprite-icons.svg#icon-instagram"></use>
+                                    </svg>
+                                </a></li>
+                                <li class=""><a class="flex justify-center items-center cursor-pointer"
+                                                href="https://www.youtube.com/sharer/sharer.php?u=[##cms.request.full-url##]"
+                                                target="_blank" aria-label="facebook">
+                                    <svg width="27" height="27">
+                                        <use href="/images/sprite-icons.svg#icon-youtube"></use>
+                                    </svg>
+                                </a></li>
+                                <li class=""><a class="flex justify-center items-center cursor-pointer"
+                                                href="https://www.facebook.com/sharer/sharer.php?u=[##cms.request.full-url##]"
+                                                target="_blank" aria-label="facebook">
+                                    <svg width="27" height="27">
+                                        <use href="/images/sprite-icons.svg#icon-facebook"></use>
+                                    </svg>
+                                </a></li>
+                                <li class=""><a class="flex justify-center items-center cursor-pointer"
+                                                href="https://twitter.com/home?status=[##cms.request.full-url##]"
+                                                target="_blank"
+                                                aria-label="twitter">
+                                    <svg width="27" height="27">
+                                        <use href="/images/sprite-icons.svg#icon-x"></use>
+                                    </svg>
+                                </a></li>
+                            </ul>
+                        </div>
+                        <div class="other-news w-full mt-15 flex flex-col">
+                            <h3 class="danaBold text-xl text-zinc-900">دیگر اخبار</h3>
+                            <svg class="mt-5" width="306" height="6" viewBox="0 0 306 6" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M305.773 2.88672L302.887 -3.26633e-05L300 2.88672L302.887 5.77347L305.773 2.88672ZM-3.05176e-05 2.88679L2.88672 5.77354L5.77347 2.88679L2.88672 3.81602e-05L-3.05176e-05 2.88679ZM302.887 2.88672L302.887 2.38672L2.88672 2.38679L2.88672 2.88679L2.88672 3.38679L302.887 3.38672L302.887 2.88672Z"
+                                      fill="#CFAA65"/>
+                            </svg>
+                            <div class="items flex flex-col gap-3 pt-4 mt-3 w-full">
+                                <basis core="list" datamembername="db.article">
+                                    <layout>@child</layout>
+                                    <face>
+                                        <div class="thumbnail-blog relative w-full flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
+                                            <h2><a class="text-zinc-900 danaBold text-zinc-900 text-base"
+                                                   href="@link">@title</a>
+                                            </h2>
+                                            <p class="leading-[21px] relative z-10 text-xs	h-[165px] text-justify danaRegular text-zinc-700 mt-3">
+                                                @prp_7244
+                                            </p>
+                                            <div class="w-full flex items-center justify-start gap-2 mt-3">
+                                                <img width="17" src="/images/date-blog.png" alt="">
+                                                <span class="text-zinc-500 text-xs">@prp_7249</span>
+                                            </div>
+                                            <a href="@link"
+                                               class="w-full relative z-10 flex items-center justify-between mt-7">
+                                                <span class="text-primary-900 text-sm danaRegular">مشاهده بیشتر</span>
+                                                <svg width="48" height="48">
+                                                    <use href="/images/sprite-icons.svg#icon-circle-arrow"></use>
+                                                </svg>
+                                            </a>
+                                            <div class="svg-fix absolute left-4 bottom-22 z-0">
+                                                <svg width="70" height="56" viewBox="0 0 70 56" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0 33.5994C0 31.3803 0.60518 29.3701 1.25691 27.4121C1.90863 25.4541 3.34243 22.5171 5.5583 18.6011C7.90452 14.5545 11.6845 8.35416 16.8983 0L28.2384 7.63622L24.9146 12.5312C21.0042 18.4053 18.5928 22.1907 17.6804 23.8877C21.8515 24.2793 25.3056 25.9762 28.0429 28.9785C30.9105 31.9808 32.3443 35.5704 32.3443 39.7475C32.3443 44.1857 30.7801 48.0364 27.6518 51.2997C24.5235 54.4326 20.8087 55.999 16.5073 55.999C11.9452 55.999 8.10003 54.4326 4.97175 51.2997C1.84346 48.1669 0 44.3279 0 39.7593V36.3993V33.5994Z"
+                                                          fill="#FFF8E8"/>
+                                                    <path d="M37.9349 33.6787C37.9349 31.4597 38.2608 29.3711 38.9125 27.4131C39.5642 25.4551 40.998 22.5181 43.2139 18.6021C45.5601 14.5555 49.3402 8.35519 54.554 0.00103739L65.8941 7.63726L62.5702 12.5323C58.6599 18.4063 56.2485 22.1918 55.336 23.8887C59.5071 24.2803 62.9613 25.9772 65.6985 28.9795C68.5661 31.9818 70 35.5715 70 39.7486C70 44.1867 68.4358 48.0374 65.3075 51.3008C62.1792 54.4336 58.4643 56 54.1629 56C49.6008 56 45.7556 54.4336 42.6273 51.3008C39.4991 48.168 37.9349 44.3172 37.9349 39.7486V33.6787Z"
+                                                          fill="#FFF8E8"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </face>
+                                </basis>
+                            </div>
+                        </div>
+                        <div class="banners mt-3 w-full gap-3 flex flex-col">
+                            <img class="w-full rounded-2xl" src="/images/banner.png" alt="">
+                            <img class="w-full rounded-2xl" src="/images/banner.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row-user-comments w-full grid grid-cols-[0.7fr_3fr] gap-8 mt-10">
+                    <div class="start mt-6 flex flex-col items-start">
+                        <svg width="110" height="88">
+                            <use href="/images/sprite-icons.svg#icon-kama"></use>
+                        </svg>
+                        <h5 class="text-secondary-950 text-base mt-5">نظر کاربران درباره ما</h5>
+                        <h3 class="danaBold text-xl mt-3">نظر کاربران تعطیلات رویای</h3>
+                        <div class="option-slider mt-12 flex items-center justify-between w-full gap-2">
+                            <button class="swiper-button-prev-comment">
+                                <svg width="24" height="20">
+                                    <use href="/images/sprite-icons.svg#icon-r-slider"></use>
                                 </svg>
-
-                                اشتراک گذاری
+                            </button>
+                            <div class="swiper-scrollbar-comment w-[190px]"></div>
+                            <button class="swiper-button-next-comment">
+                                <svg width="24" height="20">
+                                    <use href="/images/sprite-icons.svg#icon-l-slider"></use>
+                                </svg>
                             </button>
                         </div>
                     </div>
-                    <div class="other-news w-full mt-15 flex flex-col">
-                        <h3 class="danaBold text-xl text-zinc-900">دیگر اخبار</h3>
-                        <svg class="mt-5" width="306" height="6" viewBox="0 0 306 6" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M305.773 2.88672L302.887 -3.26633e-05L300 2.88672L302.887 5.77347L305.773 2.88672ZM-3.05176e-05 2.88679L2.88672 5.77354L5.77347 2.88679L2.88672 3.81602e-05L-3.05176e-05 2.88679ZM302.887 2.88672L302.887 2.38672L2.88672 2.38679L2.88672 2.88679L2.88672 3.38679L302.887 3.38672L302.887 2.88672Z"
-                                  fill="#CFAA65"/>
-                        </svg>
-                        <div class="items flex flex-col gap-3 pt-4 mt-3 w-full">
-                            <basis core="list" datamembername="db.article">
+                    <div class="swiper box-transparent w-full swiper-comment-user">
+                        <div class="swiper-wrapper">
+                            <basis core="list" datamembername="db.comment">
                                 <layout>@child</layout>
                                 <face>
-                                    <div class="thumbnail-blog relative w-full flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
-                                        <h2><a class="text-zinc-900 danaBold text-zinc-900 text-base"
-                                               href="@link">@title</a>
-                                        </h2>
-                                        <p class="leading-[21px] relative z-10 text-xs	h-[165px] text-justify danaRegular text-zinc-700 mt-3">
-                                            @prp_7244
-                                        </p>
-                                        <div class="w-full flex items-center justify-start gap-2 mt-3">
-                                            <img width="17" src="/images/date-blog.png" alt="">
-                                            <span class="text-zinc-500 text-xs">@prp_7249</span>
-                                        </div>
-                                        <a href="@link"
-                                           class="w-full relative z-10 flex items-center justify-between mt-7">
-                                            <span class="text-primary-900 text-sm danaRegular">مشاهده بیشتر</span>
-                                            <svg width="48" height="48">
-                                                <use href="/images/sprite-icons.svg#icon-circle-arrow"></use>
-                                            </svg>
-                                        </a>
-                                        <div class="svg-fix absolute left-4 bottom-22 z-0">
-                                            <svg width="70" height="56" viewBox="0 0 70 56" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M0 33.5994C0 31.3803 0.60518 29.3701 1.25691 27.4121C1.90863 25.4541 3.34243 22.5171 5.5583 18.6011C7.90452 14.5545 11.6845 8.35416 16.8983 0L28.2384 7.63622L24.9146 12.5312C21.0042 18.4053 18.5928 22.1907 17.6804 23.8877C21.8515 24.2793 25.3056 25.9762 28.0429 28.9785C30.9105 31.9808 32.3443 35.5704 32.3443 39.7475C32.3443 44.1857 30.7801 48.0364 27.6518 51.2997C24.5235 54.4326 20.8087 55.999 16.5073 55.999C11.9452 55.999 8.10003 54.4326 4.97175 51.2997C1.84346 48.1669 0 44.3279 0 39.7593V36.3993V33.5994Z"
-                                                      fill="#FFF8E8"/>
-                                                <path d="M37.9349 33.6787C37.9349 31.4597 38.2608 29.3711 38.9125 27.4131C39.5642 25.4551 40.998 22.5181 43.2139 18.6021C45.5601 14.5555 49.3402 8.35519 54.554 0.00103739L65.8941 7.63726L62.5702 12.5323C58.6599 18.4063 56.2485 22.1918 55.336 23.8887C59.5071 24.2803 62.9613 25.9772 65.6985 28.9795C68.5661 31.9818 70 35.5715 70 39.7486C70 44.1867 68.4358 48.0374 65.3075 51.3008C62.1792 54.4336 58.4643 56 54.1629 56C49.6008 56 45.7556 54.4336 42.6273 51.3008C39.4991 48.168 37.9349 44.3172 37.9349 39.7486V33.6787Z"
-                                                      fill="#FFF8E8"/>
-                                            </svg>
+                                    <div class="swiper-slide">
+                                        <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                            <div class="top w-full flex items-center gap-3">
+                                                <img width="60" src="/images/icon-circle-user.png" alt="">
+                                                <div class="flex flex-col">
+                                                    <h5 class="text-zinc-900 danaBold text-base">@username</h5>
+                                                    <span class="text-zinc-400 text-xs	 mt-2">@createdate</span>
+                                                </div>
+                                            </div>
+                                            <div class="bottom mt-2">
+                                                <p class="leading-5 h-[120px] text-justify text-zinc-800 text-xs overflow-y-auto">
+                                                    @comment</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </face>
                             </basis>
+
+
                         </div>
                     </div>
-                    <div class="banners mt-3 w-full gap-3 flex flex-col">
-                        <img class="w-full rounded-2xl" src="/images/banner.png" alt="">
-                        <img class="w-full rounded-2xl" src="/images/banner.png" alt="">
-                    </div>
                 </div>
-            </div>
-            <div class="row-user-comments w-full grid grid-cols-[0.7fr_3fr] gap-8 mt-10">
-                <div class="start mt-6 flex flex-col items-start">
-                    <svg width="110" height="88">
-                        <use href="/images/sprite-icons.svg#icon-kama"></use>
-                    </svg>
-                    <h5 class="text-secondary-950 text-base mt-5">نظر کاربران درباره ما</h5>
-                    <h3 class="danaBold text-xl mt-3">نظر کاربران تعطیلات رویای</h3>
-                    <div class="option-slider mt-12 flex items-center justify-between w-full gap-2">
-                        <button class="swiper-button-prev-comment">
-                            <svg width="24" height="20">
-                                <use href="/images/sprite-icons.svg#icon-r-slider"></use>
-                            </svg>
-                        </button>
-                        <div class="swiper-scrollbar-comment w-[190px]"></div>
-                        <button class="swiper-button-next-comment">
-                            <svg width="24" height="20">
-                                <use href="/images/sprite-icons.svg#icon-l-slider"></use>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper box-transparent w-full swiper-comment-user">
-                    <div class="swiper-wrapper">
-                        <basis core="list" datamembername="db.comment">
-                            <layout>@child</layout>
-                            <face>
-                                <div class="swiper-slide">
-                                    <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">
-                                        <div class="top w-full flex items-center gap-3">
-                                            <img width="60" src="/images/icon-circle-user.png" alt="">
-                                            <div class="flex flex-col">
-                                                <h5 class="text-zinc-900 danaBold text-base">@username</h5>
-                                                <span class="text-zinc-400 text-xs	 mt-2">@createdate</span>
-                                            </div>
-                                        </div>
-                                        <div class="bottom mt-2">
-                                            <p class="leading-5 h-[120px] text-justify text-zinc-800 text-xs overflow-y-auto">
-                                                @comment</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </face>
-                        </basis>
-
-
-                    </div>
-                </div>
-            </div>
     </section>
 
     <!--s-blog-->
