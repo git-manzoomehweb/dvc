@@ -10,12 +10,33 @@
     <member name="service" type="list" link="service.bc" order="ord" propertyid="7244,7249,3088232"/>
     </member>
 </basis>
-
+<basis core="dbsource" source="basiscore" name="db" mid="10" lid="1">
+    <member name="offices" type="list" propertyid="8142" />
+</basis>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|(خرید بلیط هواپیما - رزرو آنلاین پرواز داخلی و خارجی - تعطیلات رویایی)##]
+    </title>
+    <meta name="description"
+          content="[##cms.seo.description|(خرید آنلاین بلیط هواپیما داخلی و خارجی با بهترین قیمت. بلیط چارتر و سیستمی برای کیش، مشهد، ایروان ، مسقط . میسان گشت، آسان‌ترین راه رزرو پرواز با پشتیبانی ۲۴ ساعته.)##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value"/>
+        </face>
+        <face>
+            <meta property="@key" content="@value"/>
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa-test.inc" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
     <basis core="call" file="style-test.inc"/>
 </head>
@@ -52,28 +73,28 @@
                                     </div>
                                 </layout>
                                 <face filter="TypeID in('245') and text in('یوتیوب')">
-                                    <a class="ease hover:scale-[1.3]" href="/@largetext">
+                                    <a class="ease hover:scale-[1.3]" target="_blank" href="/@largetext">
                                         <svg width="27" height="27">
                                             <use href="/images/sprite-icons.svg#icon-youtube"></use>
                                         </svg>
                                     </a>
                                 </face>
                                 <face filter="TypeID in('245') and text in('توییتر')">
-                                    <a class="ease hover:scale-[1.3]" href="/@largetext">
+                                    <a class="ease hover:scale-[1.3]" target="_blank" href="/@largetext">
                                         <svg width="27" height="27">
                                             <use href="/images/sprite-icons.svg#icon-x"></use>
                                         </svg>
                                     </a>
                                 </face>
                                 <face filter="TypeID in('245') and text in('اینستاگرام')">
-                                    <a class="ease hover:scale-[1.3]" href="/@largetext">
+                                    <a class="ease hover:scale-[1.3]" target="_blank" href="/@largetext">
                                         <svg width="27" height="27">
                                             <use href="/images/sprite-icons.svg#icon-instagram"></use>
                                         </svg>
                                     </a>
                                 </face>
                                 <face filter="TypeID in('245') and text in('فیس بوک')">
-                                    <a class="ease hover:scale-[1.3]" href="/@largetext">
+                                    <a class="ease hover:scale-[1.3]" target="_blank" href="/@largetext">
 
                                         <svg width="27" height="27">
                                             <use href="/images/sprite-icons.svg#icon-facebook"></use>
@@ -142,8 +163,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="map w-full rounded-3xl overflow-hidden h-[150px]">
-                            <img class="w-full h-full" src="/images/map.png" alt="">
+                        <div class="map w-full rounded-3xl overflow-hidden">
+                            <basis core="print" datamembername="db.info">
+                                <face filter="TypeID=246">
+                                    <iframe src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed"
+                                            class=" w-full  align-middle !border-0 border-none" height="150"
+                                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </face>
+                            </basis>
                         </div>
                     </div>
                     <div class="w-full flex flex-col gap-7">

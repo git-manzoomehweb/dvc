@@ -417,7 +417,9 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .my-5 {
                         margin-block: calc(var(--spacing) * 5);
                     }
-
+                    .my-6 {
+                        margin-block: calc(var(--spacing) * 6);
+                    }
                     .my-8 {
                         margin-block: calc(var(--spacing) * 8);
                     }
@@ -429,7 +431,15 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .my-12 {
                         margin-block: calc(var(--spacing) * 12);
                     }
-
+                    .my-14 {
+                        margin-block: calc(var(--spacing) * 14);
+                    }
+                    .my-16 {
+                        margin-block: calc(var(--spacing) * 16);
+                    }
+                    .my-18 {
+                        margin-block: calc(var(--spacing) * 18);
+                    }
                     .my-20 {
                         margin-block: calc(var(--spacing) * 20);
                     }
@@ -485,11 +495,21 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .mt-15 {
                         margin-top: calc(var(--spacing) * 15);
                     }
-
+                    .mt-16 {
+                        margin-top: calc(var(--spacing) * 16);
+                    }
+                    .mt-18 {
+                        margin-top: calc(var(--spacing) * 18);
+                    }
                     .mt-20 {
                         margin-top: calc(var(--spacing) * 20);
                     }
-
+                    .mt-22 {
+                        margin-top: calc(var(--spacing) * 22);
+                    }
+                    .mt-24 {
+                        margin-top: calc(var(--spacing) * 24);
+                    }
                     .mt-25 {
                         margin-top: calc(var(--spacing) * 25);
                     }
@@ -537,7 +557,30 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .mb-9 {
                         margin-bottom: calc(var(--spacing) * 9);
                     }
-
+                    .mb-10 {
+                        margin-bottom: calc(var(--spacing) * 10);
+                    }
+                    .mb-11 {
+                        margin-bottom: calc(var(--spacing) * 11);
+                    }
+                    .mb-12 {
+                        margin-bottom: calc(var(--spacing) * 12);
+                    }
+                    .mb-13 {
+                        margin-bottom: calc(var(--spacing) * 13);
+                    }
+                    .mb-14 {
+                        margin-bottom: calc(var(--spacing) * 14);
+                    }
+                    .mb-16 {
+                        margin-bottom: calc(var(--spacing) * 16);
+                    }
+                    .mb-18 {
+                        margin-bottom: calc(var(--spacing) * 18);
+                    }
+                    .mb-20 {
+                        margin-bottom: calc(var(--spacing) * 20);
+                    }
                     .ml-\[1rem\] {
                         margin-left: 1rem;
                     }
@@ -1117,15 +1160,24 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .gap-9 {
                         gap: calc(var(--spacing) * 9);
                     }
-
+                    .gap-10 {
+                        gap: calc(var(--spacing) * 10);
+                    }
                     .gap-12 {
                         gap: calc(var(--spacing) * 12);
                     }
-
                     .gap-14 {
                         gap: calc(var(--spacing) * 14);
                     }
-
+                    .gap-16 {
+                        gap: calc(var(--spacing) * 16);
+                    }
+                    .gap-18 {
+                        gap: calc(var(--spacing) * 18);
+                    }
+                    .gap-20 {
+                        gap: calc(var(--spacing) * 20);
+                    }
                     .gap-\[6px\] {
                         gap: 6px;
                     }
@@ -3031,6 +3083,7 @@ input {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
+    gap: 8px;
 }
 
 .form-faq [data-bc-section] {
@@ -3078,7 +3131,7 @@ input {
 }
 
 .title h2 {
-    font-size: 22px;
+    font-size: 22px !important;
 }
 
 .border-secondary-900 {

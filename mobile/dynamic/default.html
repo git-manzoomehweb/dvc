@@ -5,7 +5,7 @@
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219094">
-    <member name="tours" type="list" link="tours.bc" propertyid="8181,3088230,8076,8077,10000504,3088231" order="ord"/>
+    <member name="tours" type="list" link="tour.bc" propertyid="8181,3088230,8076,8077,10000504,3088231" order="ord"/>
     </member>
 </basis>
 
@@ -23,7 +23,7 @@
     <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219096">
-    <member name="hotels" type="list" link="hotels.bc"
+    <member name="hotels" type="list" link="hotel.bc"
             propertyid="3088232,3088223,3088222,3088221,3088220,3088219,7249,7245" order="ord"/>
     </member>
 </basis>
@@ -54,8 +54,25 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|(خرید بلیط هواپیما - رزرو آنلاین پرواز داخلی و خارجی - تعطیلات رویایی)##]
+    </title>
+    <meta name="description" content="[##cms.seo.description|(خرید آنلاین بلیط هواپیما داخلی و خارجی با بهترین قیمت. بلیط چارتر و سیستمی برای کیش، مشهد، ایروان ، مسقط . تعطیلات رویای ، آسان‌ترین راه رزرو پرواز با پشتیبانی ۲۴ ساعته.)##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value"/>
+        </face>
+        <face>
+            <meta property="@key" content="@value"/>
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa-test.inc" pageindex="[##cms.cms.pageindex##]" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
     <basis core="call" file="style-test.inc" pageindex="[##cms.cms.pageindex##]"/>
 </head>
@@ -137,16 +154,19 @@
                         <layout>@child</layout>
                         <face>
                             <div data-category="@prp_3088231" class="swiper-slide swiper-slide-tabs tab-content">
-                                <div class="thumbnail-tour w-full rounded-3xl p-3 flex flex-col items-center">
-                                    <div class="img rounded-[9px] h-[150px] w-full overflow-hidden relative">
-                                        <img class="w-full h-full " src="/@image" draggable="false"
-                                             alt="tour">
+                                <div class="thumbnail-tour  w-full rounded-3xl p-3 flex flex-col items-center">
+                                    <div class=" h-[150px] w-full  relative">
+                                        <a class="w-full h-full img " href="@link" aria-label="@title">
+                                            <img class="w-full h-full rounded-[9px]" src="/@image" draggable="false"
+                                                 alt="/@title">
+                                        </a>
+
                                         <button class="absolute right-3 top-3 z-10">
                                             <img width="36" src="/images/favorite.png" alt="">
                                         </button>
                                     </div>
                                     <div class="w-full flex flex-col gap-1 items-start mt-6">
-                                        <h3><a class="font-bold danaBold text-base" href="/@link">@title</a></h3>
+                                        <h3><a class="font-bold danaBold text-base" href="">@title</a></h3>
                                         <span class="text-primary-700 text-xs">@prp_3088230</span>
                                     </div>
                                     <div class="w-full mt-6 grid grid-cols-4">
@@ -156,7 +176,7 @@
                                                     <use href="/images/sprite-icons.svg#icon-days"></use>
                                                 </svg>
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">@prp_8076</span>
+                                            <span class="text-zinc-600 text-xs danaRegular">@prp_8076</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
@@ -180,7 +200,7 @@
 
                                     </div>
                                     <div class="w-full price flex items-center justify-between mt-5">
-                                        <span class="text-zinc-500 danaRegular text-sm">شروع قیمت:</span>
+                                        <span class="text-zinc-500 danaRegular text-sm	">شروع قیمت:</span>
                                         <h5 class="text-base text-zinc-900">@prp_8181</h5>
                                     </div>
                                 </div>
@@ -285,13 +305,13 @@
                         <face>
                             <div data-category="@prp_3088232" class="swiper-slide swiper-slide-tabs tab-content-hotel">
                                 <div class="thumbnail-tour bg-white w-full rounded-3xl p-3 flex flex-col items-center">
-                                    <div class="img rounded-[9px] h-[150px] w-full overflow-hidden relative">
+                                    <a href="@link" aria-label="@title" class="img rounded-[9px] h-[150px] w-full overflow-hidden relative">
                                         <img class="w-full h-full " src="/@image" draggable="false"
                                              alt="tour">
                                         <button class="absolute right-3 top-3 z-10">
                                             <img width="36" src="/images/favorite.png" alt="">
                                         </button>
-                                    </div>
+                                    </a>
                                     <div class="w-full flex flex-col gap-1 items-start mt-3">
                                         <h3><a class="font-bold danaBold text-base" href="/@link">@title</a></h3>
                                         <span class="text-secondary-900 text-xs	">@prp_7245</span>
@@ -416,8 +436,7 @@
             <img class="w-full" src="/images/img-faq.png" alt="">
         </div>
         <div class="w-full flex flex-col items-center gap-6 mt-8">
-            <h3 class="text-zinc-900 text-base danaBold">ارتباط با کارشناسان ما جهت مشاوره رایگان</h3>
-            <div class="w-full flex flex-col items-center gap-6 mt-14">
+            <div class="w-full flex flex-col items-center gap-6">
                 <h3 class="text-zinc-900 text-xl danaBold">ارتباط با کارشناسان ما جهت مشاوره رایگان</h3>
                 <div class="w-full" id="form-faq">
                     <div class="form-faq grid grid-cols-[2fr_1fr_1fr] gap-2 w-full mx-auto">

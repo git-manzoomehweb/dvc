@@ -4,13 +4,12 @@
     </member>
     <member name="paging" type="list" request="paging" count="3" parentname="tours"/>
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.qid##]">
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
     </member>
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
-    <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"
-            postsql="SELECT * FROM [db.article] ORDER BY ord ASC LIMIT 3;"/>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.gid##]">
+    <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"/>
     </member>
 </basis>
 
@@ -26,21 +25,33 @@
     <member name="scalarEN" type="scalar" typeid="150"/>
 </basis>
 
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" usedforid="[##cms.query.aid##]">
     <member name="p-under" type="list" size="" propertyid=""/>
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.Gid##]">
-    <member name="p-blog" type="list" size="" propertyid=""/>
-</basis>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|(خرید بلیط هواپیما - رزرو آنلاین پرواز داخلی و خارجی - تعطیلات رویایی)##]
+    </title>
+    <meta name="description" content="[##cms.seo.description|(خرید آنلاین بلیط هواپیما داخلی و خارجی با بهترین قیمت. بلیط چارتر و سیستمی برای کیش، مشهد، ایروان ، مسقط . تعطیلات رویای ، آسان‌ترین راه رزرو پرواز با پشتیبانی ۲۴ ساعته.)##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value"/>
+        </face>
+        <face>
+            <meta property="@key" content="@value"/>
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa-test.inc" pageindex="[##cms.cms.pageindex##]" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
     <basis core="call" file="style-test.inc" pageindex="[##cms.cms.pageindex##]"/>
 </head>
@@ -57,7 +68,7 @@
         <div class="bg-back absolute right-0 top-0 w-full h-[550px]"></div>
         <div class="c-container">
             <div class="flex flex-col justify-between relative h-[550px] px-4 pb-6">
-                <div class="box-main-tour pt-12  h-[450px] w-full flex flex-col items-center justify-center">
+                <div class="box-main-tour pt-20  h-[450px] w-full flex flex-col items-center justify-start">
                     <basis core="print" datamembername="db.scalarEN">
                         <face>
                             <h4 class="text-zinc-200 leading-[16px] text-base">@column1</h4>
@@ -137,10 +148,13 @@
                 <basis core="list" datamembername="db.tours">
                     <layout>@child</layout>
                     <face>
-                        <div data-category="@prp_3088231" class="thumbnail-tour w-full rounded-3xl p-3 flex flex-col items-center">
-                            <div class="img rounded-[9px] h-[150px] w-full overflow-hidden relative">
-                                <img class="w-full h-full " src="/@image" draggable="false"
-                                     alt="tour">
+                        <div data-category="@prp_3088231" class="thumbnail-tour tab-content w-full rounded-3xl p-3 flex flex-col items-center">
+                            <div class=" h-[150px] w-full  relative">
+                                <a class="w-full h-full img " href="@link" aria-label="@title">
+                                    <img class="w-full h-full rounded-[9px]" src="/@image" draggable="false"
+                                         alt="/@title">
+                                </a>
+
                                 <button class="absolute right-3 top-3 z-10">
                                     <img width="36" src="/images/favorite.png" alt="">
                                 </button>
@@ -189,7 +203,7 @@
 
 
             </div>
-            <ul class="p-pagination w-full my-10 flex justify-center" id="wibpaging">
+            <ul class="p-pagination w-full my-10 mt-12 mb-9 flex justify-center" id="wibpaging">
                 <div class="pagination px-[8px] rounded-[50px] w-[290px] h-[64px]  flex items-center justify-between bg-zinc-100">
                     <basis core="print" datamembername="db.paging">
                         <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">
@@ -344,7 +358,6 @@
             <img class="w-full" src="/images/img-faq.png" alt="">
         </div>
         <div class="w-full flex flex-col items-center gap-6 mt-8">
-            <h3 class="text-zinc-900 text-base danaBold">ارتباط با کارشناسان ما جهت مشاوره رایگان</h3>
             <div class="w-full flex flex-col items-center gap-6 mt-14">
                 <h3 class="text-zinc-900 text-xl danaBold">ارتباط با کارشناسان ما جهت مشاوره رایگان</h3>
                 <div class="w-full" id="form-faq">
@@ -460,10 +473,6 @@
         </div>
     </section>
 </main>
-
-
-
-
 
 
 <basis core="call" file="footer-test.bc" pageindex="[##cms.cms.pageindex##]"/>

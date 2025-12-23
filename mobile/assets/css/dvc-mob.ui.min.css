@@ -531,7 +531,9 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .mb-9 {
                         margin-bottom: calc(var(--spacing) * 9);
                     }
-
+                    .mb-10 {
+                        margin-bottom: calc(var(--spacing) * 10);
+                    }
                     .ml-\[1rem\] {
                         margin-left: 1rem;
                     }
@@ -1399,6 +1401,30 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                         padding-top: calc(var(--spacing) * 12);
                     }
 
+                    .pt-14 {
+                        padding-top: calc(var(--spacing) * 14);
+                    }
+                    .pt-16 {
+                        padding-top: calc(var(--spacing) * 16);
+                    }
+                    .pt-18 {
+                        padding-top: calc(var(--spacing) * 18);
+                    }
+                    .pt-20 {
+                        padding-top: calc(var(--spacing) * 20);
+                    }
+                    .pt-22 {
+                        padding-top: calc(var(--spacing) * 22);
+                    }
+                    .pt-24 {
+                        padding-top: calc(var(--spacing) * 24);
+                    }
+                    .pt-26 {
+                        padding-top: calc(var(--spacing) * 26);
+                    }
+                    .pt-28 {
+                        padding-top: calc(var(--spacing) * 28);
+                    }
                     .pt-30 {
                         padding-top: calc(var(--spacing) * 30);
                     }
@@ -2469,6 +2495,13 @@ input {
 .swiper-slide-tabs {
     width: 329px !important;
 }
+.border-secondary-900 {
+    border-color: var(--secondary-900);
+}
+
+.text-secondary-900 {
+    color: var(--secondary-900);
+}
 
 
 /*search-engine*/
@@ -2976,4 +3009,11 @@ input {
 .editor-tags p img {
     width: 100%;
     border-radius: 8px;
+}
+.item-editor-mobi{
+    gap: 12px;
+    display: grid;
+}
+.title-editor{
+    margin-top: 2rem;
 }

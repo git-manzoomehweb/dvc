@@ -37,8 +37,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blog info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|(خرید بلیط هواپیما - رزرو آنلاین پرواز داخلی و خارجی - تعطیلات رویایی)##]
+    </title>
+    <meta name="description"
+          content="[##cms.seo.description|(خرید آنلاین بلیط هواپیما داخلی و خارجی با بهترین قیمت. بلیط چارتر و سیستمی برای کیش، مشهد، ایروان ، مسقط . میسان گشت، آسان‌ترین راه رزرو پرواز با پشتیبانی ۲۴ ساعته.)##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value"/>
+        </face>
+        <face>
+            <meta property="@key" content="@value"/>
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa-test.inc" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
     <basis core="call" file="style-test.inc"/>
 </head>
@@ -155,21 +173,6 @@
             <div class="p-blog-info w-full grid grid-cols-[1fr_305px] gap-6">
                 <div class="flex start w-full flex-col">
                     <div class="box-editor w-full bg-white shadow-custom-2 rounded-3xl flex flex-col items-start pt-6 pb-30 px-6">
-                        <basis core="print" datamembername="db.view">
-                            <face filter="TypeID in(150)">
-                                <h5 class="danaBold text-base text-zinc-900">@text</h5>
-                            </face>
-                        </basis>
-                        <div class="text-base text-zinc-900 text-justify leading-6 danaRegular mt-5">
-                            <basis core="print" datamembername="db.view">
-                                <layout>@child</layout>
-
-                                <face filter="TypeID in(129)">
-                                    <div class="text-zinc-900 text-sm mb-4 leading-7">
-                                        @largetext
-                                    </div>
-                                </face>
-                            </basis>
                             <div class="flex flex-col items-start w-full my-5 editor-tags">
                                 <basis core="list" datamembername="db.view">
                                     <face filter="TypeID in(250)">
@@ -373,54 +376,56 @@
                         </div>
                     </div>
                 </div>
-                <div class="row-user-comments w-full grid grid-cols-[0.7fr_3fr] gap-8 mt-10">
-                    <div class="start mt-6 flex flex-col items-start">
-                        <svg width="110" height="88">
-                            <use href="/images/sprite-icons.svg#icon-kama"></use>
-                        </svg>
-                        <h5 class="text-secondary-950 text-base mt-5">نظر کاربران درباره ما</h5>
-                        <h3 class="danaBold text-xl mt-3">نظر کاربران تعطیلات رویای</h3>
-                        <div class="option-slider mt-12 flex items-center justify-between w-full gap-2">
-                            <button class="swiper-button-prev-comment">
-                                <svg width="24" height="20">
-                                    <use href="/images/sprite-icons.svg#icon-r-slider"></use>
-                                </svg>
-                            </button>
-                            <div class="swiper-scrollbar-comment w-[190px]"></div>
-                            <button class="swiper-button-next-comment">
-                                <svg width="24" height="20">
-                                    <use href="/images/sprite-icons.svg#icon-l-slider"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="swiper box-transparent w-full swiper-comment-user">
-                        <div class="swiper-wrapper">
-                            <basis core="list" datamembername="db.comment">
-                                <layout>@child</layout>
-                                <face>
-                                    <div class="swiper-slide">
-                                        <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">
-                                            <div class="top w-full flex items-center gap-3">
-                                                <img width="60" src="/images/icon-circle-user.png" alt="">
-                                                <div class="flex flex-col">
-                                                    <h5 class="text-zinc-900 danaBold text-base">@username</h5>
-                                                    <span class="text-zinc-400 text-xs	 mt-2">@createdate</span>
-                                                </div>
-                                            </div>
-                                            <div class="bottom mt-2">
-                                                <p class="leading-5 h-[120px] text-justify text-zinc-800 text-xs overflow-y-auto">
-                                                    @comment</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </face>
-                            </basis>
-
-
-                        </div>
+                </div>
+            </div>
+            <div class="row-user-comments w-full grid grid-cols-[0.7fr_3fr] gap-8 mt-10">
+                <div class="start mt-6 flex flex-col items-start">
+                    <svg width="110" height="88">
+                        <use href="/images/sprite-icons.svg#icon-kama"></use>
+                    </svg>
+                    <h5 class="text-secondary-950 text-base mt-5">نظر کاربران درباره ما</h5>
+                    <h3 class="danaBold text-xl mt-3">نظر کاربران تعطیلات رویای</h3>
+                    <div class="option-slider mt-12 flex items-center justify-between w-full gap-2">
+                        <button class="swiper-button-prev-comment">
+                            <svg width="24" height="20">
+                                <use href="/images/sprite-icons.svg#icon-r-slider"></use>
+                            </svg>
+                        </button>
+                        <div class="swiper-scrollbar-comment w-[190px]"></div>
+                        <button class="swiper-button-next-comment">
+                            <svg width="24" height="20">
+                                <use href="/images/sprite-icons.svg#icon-l-slider"></use>
+                            </svg>
+                        </button>
                     </div>
                 </div>
+                <div class="swiper box-transparent w-full swiper-comment-user">
+                    <div class="swiper-wrapper">
+                        <basis core="list" datamembername="db.comment">
+                            <layout>@child</layout>
+                            <face>
+                                <div class="swiper-slide">
+                                    <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">
+                                        <div class="top w-full flex items-center gap-3">
+                                            <img width="60" src="/images/icon-circle-user.png" alt="">
+                                            <div class="flex flex-col">
+                                                <h5 class="text-zinc-900 danaBold text-base">@username</h5>
+                                                <span class="text-zinc-400 text-xs	 mt-2">@createdate</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom mt-2">
+                                            <p class="leading-5 h-[120px] text-justify text-zinc-800 text-xs overflow-y-auto">
+                                                @comment</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </face>
+                        </basis>
+
+
+                    </div>
+                </div>
+            </div>
     </section>
 
     <!--s-blog-->

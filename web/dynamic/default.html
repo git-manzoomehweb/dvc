@@ -1,11 +1,11 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db">
-    <member name="tourCategory" link="Categories-of-tours.bc" type="tree" request="cat" parentid="219145"
+    <member name="tourCategory" link="tourCategory.bc" type="tree" request="cat" parentid="219145"
             postsql="select * from [db.tourCategory] where parentid in(219145)"
     ></member>
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219094">
-    <member name="tours" type="list" link="tours.bc" propertyid="8181,3088230,8076,8077,10000504,3088231" order="ord"/>
+    <member name="tours" type="list" link="tour.bc" propertyid="8181,3088230,8076,8077,10000504,3088231" order="ord"/>
     </member>
 </basis>
 
@@ -23,7 +23,7 @@
     <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219096">
-    <member name="hotels" type="list" link="hotels.bc"
+    <member name="hotels" type="list" link="hotel.bc"
             propertyid="3088232,3088223,3088222,3088221,3088220,3088219,7249,7245" order="ord"/>
     </member>
 </basis>
@@ -51,13 +51,31 @@
     </member>
 </basis>
 
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <title>home page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|(خرید بلیط هواپیما - رزرو آنلاین پرواز داخلی و خارجی - تعطیلات رویایی)##]
+    </title>
+    <meta name="description"
+          content="[##cms.seo.description|(خرید آنلاین بلیط هواپیما داخلی و خارجی با بهترین قیمت. بلیط چارتر و سیستمی برای کیش، مشهد، ایروان ، مسقط . میسان گشت، آسان‌ترین راه رزرو پرواز با پشتیبانی ۲۴ ساعته.)##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value"/>
+        </face>
+        <face>
+            <meta property="@key" content="@value"/>
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa-test.inc"/>
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
     <basis core="call" file="style-test.inc"/>
 </head>
@@ -112,7 +130,7 @@
                     <div class="list-category-tour mt-12 w-full grid grid-cols-10">@child</div>
                 </layout>
                 <face>
-                    <a href="/@link"
+                    <a href="@link"
                        class="item-category-tour relative ease w-full py-2 flex flex-col items-center justify-center gap-3">
                         <img class="relative z-5" width="36" src="/@image" alt="@title">
                         <span class="DanaRegular text-[17px] text-[#171717] relative z-5">@title</span>
@@ -130,7 +148,16 @@
                 <svg width="266" height="6">
                     <use href="/images/sprite-icons.svg#icon-line-title-tour"></use>
                 </svg>
-                <span class="text-zinc-600 mt-3 text-xs">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+                <basis core="print" datamembername="db.tours-header">
+                    <layout>@child</layout>
+
+                    <div>
+                        <face filter="RowNumber=1">
+                            <span class="text-zinc-600 mt-3 text-xs">@urldescription</span>
+                        </face>
+                    </div>
+
+                </basis>
                 <div class="btn-tab w-full flex items-center justify-center my-5 gap-2">
                     <a data-tab="cat_1" data-default="true" onclick="openTab(event, 'محبوب ترین تورها')"
                        class="px-[17px] tab-btn  transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">محبوبت
@@ -151,14 +178,15 @@
                             <div data-category="@prp_3088231" class="swiper-slide swiper-slide-tabs tab-content">
                                 <div class="thumbnail-tour  w-full rounded-3xl p-3 flex flex-col items-center">
                                     <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
-                                        <img class="w-full h-full " src="/@image" draggable="false"
-                                             alt="/@title">
+                                        <a class="w-full h-[222px] relative" href="/@link" aria-label="@title">
+                                            <img class="w-full h-full" src="/@image" draggable="false" alt="tour">
+                                        </a>
                                         <button class="absolute right-3 top-3 z-10">
                                             <img width="36" src="/images/favorite.png" alt="">
                                         </button>
                                     </div>
                                     <div class="w-full flex flex-col gap-1 items-start mt-6">
-                                        <h3><a class="font-bold danaBold text-lg" href="@link">@title</a></h3>
+                                        <h3><a class="font-bold danaBold text-lg" href="/@link">@title</a></h3>
                                         <span class="text-primary-700 text-xs">@prp_3088230</span>
                                     </div>
                                     <div class="w-full mt-6 grid grid-cols-4">
@@ -168,7 +196,7 @@
                                                     <use href="/images/sprite-icons.svg#icon-days"></use>
                                                 </svg>
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">10@prp_8076</span>
+                                            <span class="text-zinc-600 text-xs danaRegular">@prp_8076</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
@@ -186,7 +214,7 @@
                                             <div class="h-9 flex items-end">
                                                 <img width="26" src="/images/airline.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">@prp_10000504</span>
+                                            <span class="text-zinc-600 text-xs danaRegular">@prp_10000504</span>
                                         </div>
 
 
@@ -295,16 +323,17 @@
                 </div>
             </div>
             <div class="swiper swiper-thumbnail-hotel py-5">
-
                 <div class="swiper-wrapper">
                     <basis core="list" datamembername="db.hotels">
                         <layout>@child</layout>
                         <face>
                             <div data-category="@prp_3088232" class="swiper-slide swiper-slide-tabs tab-content-hotel">
-                                <div class="thumbnail-tour transition delay-150 duration-500  bg-white w-full rounded-3xl p-3 flex flex-col items-center">
+                                <div class="thumbnail-tour  bg-white w-full rounded-3xl p-3 flex flex-col items-center">
                                     <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
-                                        <img class="w-full h-full" src="/@image" draggable="false"
-                                             alt="@title">
+                                        <a class="w-full h-full" href="@link" aria-label="@title">
+                                            <img class="w-full h-full" src="/@image" draggable="false"
+                                                 alt="@title">
+                                        </a>
                                         <button class="absolute right-3 top-3 z-10">
                                             <img width="35" src="/images/favorite.png" alt="">
                                         </button>
@@ -353,10 +382,7 @@
                             </div>
                         </face>
                     </basis>
-
-
                 </div>
-
             </div>
             <div class="w-full flex items-center mt-3 justify-center">
                 <div class="bg-slider p-2 rounded-[50px] flex items-center w-auto h-[60px] gap-2 bg-zinc-100">
@@ -463,14 +489,17 @@
                                         <script type="text/template">
                                             <div>
                                                 <div class="flex gap-8">
-                                                    <div class="float-right"><input type="text" class="contactUsInput codeinputm"
+                                                    <div class="float-right"><input type="text"
+                                                                                    class="contactUsInput codeinputm"
                                                                                     name="captcha" maxlength="4"
-                                                                                    placeholder="کد امنیتی"/><input type="hidden"
-                                                                                                                    name="captchaid"
-                                                                                                                    value="@captcha@"/>
+                                                                                    placeholder="کد امنیتی"/><input
+                                                            type="hidden"
+                                                            name="captchaid"
+                                                            value="@captcha@"/>
                                                     </div>
                                                     <div class="flex items-center gap-6">
-                                                        <img draggable="false" src="/@captcha@" loading="lazy" height="55"
+                                                        <img draggable="false" src="/@captcha@" loading="lazy"
+                                                             height="55"
                                                              alt="captcha" class="rounded-[100px]"/>
                                                         <svg width="48" height="48" onclick="refreshCaptchaFaq()"
                                                              class="text-zinc-900 cursor-pointer">
@@ -525,13 +554,12 @@
                        class="px-[17px] tab-btn_popular transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
                     >مهیج ترین</a>
                 </div>
-
             </div>
             <div class="list w-full grid grid-cols-4 mt-8 gap-6">
                 <basis core="print" datamembername="db.popular-destinations">
                     <layout>@child</layout>
                     <face>
-                        <a data-category="@prp_3088231" href="/@link"
+                        <a aria-label="@title" data-category="@prp_3088231" href="/@link"
                            class="item-popular-destinations tab-content-popular shadow-custom-1 w-full relative bg-white h-[90px] rounded-xl p-[8px]">
                             <div class="img overflow-hidden rounded-xl w-full h-full relative">
                                 <div class="back-bg flex items-center justify-center w-full h-full absolute right-0 top-0 z-5 bg-[#0000007A]">
@@ -644,7 +672,7 @@
                                                          alt="@title">
                                                     <div class="flex flex-col items-start">
                                                         <span class="text-white text-xs	 danaRegular">ویزای</span>
-                                                        <h2 class="text-white text-2xl danaBold mt-1">@title</h2>
+                                                        <h2 class="text-white text-base danaBold mt-1">@title</h2>
                                                     </div>
                                                 </div>
                                                 <div class="ml-[2rem]">

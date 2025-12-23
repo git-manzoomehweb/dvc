@@ -1,5 +1,5 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
-    <member name="tours" type="list" link="Categories-of-tours" perpage="2" pageno="[##cms.query.pagenum|(1)##]"
+    <member name="tours" type="list" link="tour-list.bc" perpage="2" pageno="[##cms.query.pagenum|(1)##]"
             propertyid="8181,3088230,8076,8077,10000504,3088231" order="ord"/>
     </member>
     <member name="paging" type="list" request="paging" count="3" parentname="tours"/>
@@ -8,7 +8,7 @@
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
     </member>
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.Gid##]">
     <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"
             postsql="SELECT * FROM [db.article] ORDER BY ord ASC LIMIT 3;"/>
     </member>
@@ -26,19 +26,34 @@
     <member name="scalarEN" type="scalar" typeid="150"/>
 </basis>
 
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" usedforid="[##cms.query.aid##]">
     <member name="p-under" type="list" size="" propertyid=""/>
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.Gid##]">
-    <member name="p-blog" type="list" size="" propertyid=""/>
-</basis>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|(خرید بلیط هواپیما - رزرو آنلاین پرواز داخلی و خارجی - تعطیلات رویایی)##]
+    </title>
+    <meta name="description"
+          content="[##cms.seo.description|(خرید آنلاین بلیط هواپیما داخلی و خارجی با بهترین قیمت. بلیط چارتر و سیستمی برای کیش، مشهد، ایروان ، مسقط . میسان گشت، آسان‌ترین راه رزرو پرواز با پشتیبانی ۲۴ ساعته.)##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value"/>
+        </face>
+        <face>
+            <meta property="@key" content="@value"/>
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa-test.inc" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
     <basis core="call" file="style-test.inc"/>
 </head>
@@ -47,11 +62,11 @@
 
 <main>
     <!--s-main-tour-->
-    <section class="s-main-tour ">
+    <section class="s-main-tour">
         <div class="bg-back absolute right-0 top-0 w-full h-[750px]"></div>
         <div class="c-container">
             <div class="flex flex-col justify-between relative h-[750px] pb-6">
-                <div class="box-main-tour pt-12  h-[450px] w-full flex flex-col items-center justify-center">
+                <div class="box-main-tour pt-12  h-[480px] w-full flex flex-col items-center justify-center">
                     <basis core="print" datamembername="db.scalarEN">
                         <face>
                             <h4 class="text-zinc-200 leading-[16px] text-4xl">@column1</h4>
@@ -89,7 +104,7 @@
                             <face filter="parentcatid<>218576">
                                 <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
                                     <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
-                                        <span class="text-zinc-900 text-xs	">></span>
+                                        <span class="text-zinc-900 text-xs">></span>
                                         <span itemprop="name">@title</span>
                                         <meta itemprop="position" content="@rownumber"/>
                                     </a></li>
@@ -131,16 +146,18 @@
                 <basis core="list" datamembername="db.tours">
                     <layout>@child</layout>
                     <face>
-                        <div data-category="@prp_3088231" class="thumbnail-tour tab-content w-full rounded-3xl p-3 flex flex-col items-center">
+                        <div data-category="@prp_3088231"
+                             class="thumbnail-tour tab-content w-full rounded-3xl p-3 flex flex-col items-center">
                             <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
-                                <img class="w-full h-full " src="/@image" draggable="false"
-                                     alt="tour">
+                                <a class="w-full h-[222px] relative" href="/@link" aria-label="@title">
+                                    <img class="w-full h-full" src="/@image" draggable="false" alt="tour">
+                                </a>
                                 <button class="absolute right-3 top-3 z-10">
                                     <img width="36" src="/images/favorite.png" alt="">
                                 </button>
                             </div>
                             <div class="w-full flex flex-col gap-1 items-start mt-6">
-                                <h3><a class="font-bold danaBold text-lg" href="">@title</a></h3>
+                                <h3><a class="font-bold danaBold text-lg" href="/@link">@title</a></h3>
                                 <span class="text-primary-700 text-xs">@prp_3088230</span>
                             </div>
                             <div class="w-full mt-6 grid grid-cols-4">
@@ -182,82 +199,84 @@
                 </basis>
 
             </div>
-            <ul class="p-pagination w-full my-10 flex justify-center" id="wibpaging">
-                <div class="pagination px-[8px] rounded-[50px] w-[290px] h-[64px] direction-ltr flex items-center justify-between bg-zinc-100">
-                    <basis core="print" datamembername="db.paging">
-                        <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">
-                            <li class="prev-page">
-                                <a aria-label="angle-left" href="/[##cms.cms.link_page##]&pagenum=@page">
-                                    <svg width="48" height="48">
-                                        <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                        </face>
-                        <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'<>'')">
-                            <li class="prev-page">
-                                <a aria-label="angle-left" href="/[##cms.cms.pageurl##]?pagenum=@page">
-                                    <svg width="48" height="48">
-                                        <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                        </face>
-                    </basis>
-                    <basis core="print" datamembername="db.paging">
-                        <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')">
-                            <li
-                                    class="flex items-center justify-center w-12 h-12 p-2 rounded-[50%] transition-all duration-300 bg-primary-900 page-no">
-                                <a class="flex items-center justify-center w-full h-full text-white rounded-[50%] cursor-pointer page-number bg-primary-900"
-                                   href="/[##cms.cms.link_page##]&pagenum=@page">@page</a>
-                            </li>
-                        </face>
-                        <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
-                            <li
-                                    class="flex items-center justify-center w-12 h-12 p-2 rounded-lg transition-all duration-300 bg-primary-900 page-no">
-                                <a class="flex items-center justify-center w-full h-full text-white cursor-pointer page-number bg-primary-900"
-                                   href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
-                            </li>
-                        </face>
-                        <face
-                                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'='') ">
-                            <li
-                                    class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
-                                <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
-                                   href="/[##cms.cms.link_page##]&pagenum=@page">@page</a>
-                            </li>
-                        </face>
-                        <face
-                                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') ">
-                            <li
-                                    class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
-                                <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
-                                   href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
-                            </li>
-                        </face>
-                    </basis>
-                    <basis core="print" datamembername="db.paging">
-                        <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'='')">
-                            <li class="next-page">
-                                <a aria-label="angle-right" href="/[##cms.cms.link_page##]&pagenum=@page">
-                                    <svg width="48" height="48">
-                                        <use href="/images/sprite-icons.svg#icon-circle-next"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                        </face>
-                        <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'<>'')">
-                            <li class="next-page">
-                                <a aria-label="angle-right" href="/[##cms.cms.pageurl##]?pagenum=@page">
-                                    <svg width="48" height="48">
-                                        <use href="/images/sprite-icons.svg#icon-circle-next"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                        </face>
-                    </basis>
-                </div>
-            </ul>
+            <div id="paging">
+                <ul class="p-pagination w-full mb-14 mt-12 flex justify-center" id="wibpaging">
+                    <div class="pagination px-[8px] rounded-[50px] w-[290px] h-[64px] direction-ltr flex items-center justify-between bg-zinc-100">
+                        <basis core="print" datamembername="db.paging">
+                            <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">
+                                <li class="prev-page">
+                                    <a aria-label="angle-left" href="/[##cms.cms.link_page##]&pagenum=@page">
+                                        <svg width="48" height="48">
+                                            <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                            <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'<>'')">
+                                <li class="prev-page">
+                                    <a aria-label="angle-left" href="/[##cms.cms.pageurl##]?pagenum=@page">
+                                        <svg width="48" height="48">
+                                            <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                        </basis>
+                        <basis core="print" datamembername="db.paging">
+                            <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')">
+                                <li
+                                        class="flex items-center justify-center w-12 h-12 p-2 rounded-[50%] transition-all duration-300 bg-primary-900 page-no">
+                                    <a class="flex items-center justify-center w-full h-full text-white rounded-[50%] cursor-pointer page-number bg-primary-900"
+                                       href="/[##cms.cms.link_page##]&pagenum=@page">@page</a>
+                                </li>
+                            </face>
+                            <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
+                                <li
+                                        class="flex items-center justify-center w-12 h-12 p-2 rounded-lg transition-all duration-300 bg-primary-900 page-no">
+                                    <a class="flex items-center justify-center w-full h-full text-white cursor-pointer page-number bg-primary-900"
+                                       href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
+                                </li>
+                            </face>
+                            <face
+                                    filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'='') ">
+                                <li
+                                        class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
+                                    <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                                       href="/[##cms.cms.link_page##]&pagenum=@page">@page</a>
+                                </li>
+                            </face>
+                            <face
+                                    filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') ">
+                                <li
+                                        class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
+                                    <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                                       href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
+                                </li>
+                            </face>
+                        </basis>
+                        <basis core="print" datamembername="db.paging">
+                            <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'='')">
+                                <li class="next-page">
+                                    <a aria-label="angle-right" href="/[##cms.cms.link_page##]&pagenum=@page">
+                                        <svg width="48" height="48">
+                                            <use href="/images/sprite-icons.svg#icon-circle-next"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                            <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'<>'')">
+                                <li class="next-page">
+                                    <a aria-label="angle-right" href="/[##cms.cms.pageurl##]?pagenum=@page">
+                                        <svg width="48" height="48">
+                                            <use href="/images/sprite-icons.svg#icon-circle-next"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                        </basis>
+                    </div>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -265,20 +284,24 @@
     <section class="s-details mt-8">
         <div class="c-container">
             <div class="p-details w-full flex flex-col gap-12">
-                <basis core="print" datamembername="db.p-under">
-                    <layout>
-                        <div class="row-default grid grid-cols-[1.07fr_1fr] gap-8">@child</div>
-                    </layout>
-                    <face>
-                        <div class="p-img w-full rounded-3xl overflow-hidden h-[370px]">
-                            <img class="w-full h-full" src="/@image" alt="">
-                        </div>
-                        <div class="detail-tour w-full flex flex-col items-start pt-4">
-                            <h2 class="text-zinc-900 danaBold text-2xl mt-1">@title</h2>
-                            <p class="leading-[21px] text-justify text-zinc-900 text-xs	 mt-3">@largetext</p>
-                        </div>
-                    </face>
-                </basis>
+                <div class="w-full">
+                    <basis core="list" datamembername="db.p-under">
+                        <layout>
+                            @child
+                        </layout>
+                        <face>
+                            <div class="row-default grid grid-cols-[1.07fr_1fr] gap-8 mb-12">
+                                <div class="p-img w-full rounded-3xl overflow-hidden h-[370px]">
+                                    <img class="w-full h-full" src="/@image" alt="">
+                                </div>
+                                <div class="detail-tour w-full flex flex-col items-start pt-4">
+                                    <h2 class="text-zinc-900 danaBold text-2xl mt-1">@title</h2>
+                                    <p class="leading-[21px] text-justify text-zinc-900 text-xs	 mt-3">@largetext</p>
+                                </div>
+                            </div>
+                        </face>
+                    </basis>
+                </div>
             </div>
         </div>
     </section>
@@ -368,14 +391,17 @@
                                         <script type="text/template">
                                             <div>
                                                 <div class="flex gap-8">
-                                                    <div class="float-right"><input type="text" class="contactUsInput codeinputm"
+                                                    <div class="float-right"><input type="text"
+                                                                                    class="contactUsInput codeinputm"
                                                                                     name="captcha" maxlength="4"
-                                                                                    placeholder="کد امنیتی"/><input type="hidden"
-                                                                                                                    name="captchaid"
-                                                                                                                    value="@captcha@"/>
+                                                                                    placeholder="کد امنیتی"/><input
+                                                            type="hidden"
+                                                            name="captchaid"
+                                                            value="@captcha@"/>
                                                     </div>
                                                     <div class="flex items-center gap-6">
-                                                        <img draggable="false" src="/@captcha@" loading="lazy" height="55"
+                                                        <img draggable="false" src="/@captcha@" loading="lazy"
+                                                             height="55"
                                                              alt="captcha" class="rounded-[100px]"/>
                                                         <svg width="48" height="48" onclick="refreshCaptchaFaq()"
                                                              class="text-zinc-900 cursor-pointer">
@@ -465,7 +491,7 @@
                         این
                         متن
                     </p>
-                    <a href=""
+                    <a href="article-list.bc"
                        class="btn btn-primary text-white text-base h-[55px] rounded-[100px] px-[24px] flex items-center mt-5">
                         بیشتر بخوانید
                     </a>

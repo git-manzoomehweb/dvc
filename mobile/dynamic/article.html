@@ -14,7 +14,7 @@
     <member name="p-under" type="view" propertyid=""/>
 </basis>
 
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
     <member name="article" type="list" link="article.bc" perpage="3" order="ord" propertyid="7244,7249,7248,3088243"/>
     </member>
 </basis>
@@ -38,8 +38,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>article mobi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|(خرید بلیط هواپیما - رزرو آنلاین پرواز داخلی و خارجی - تعطیلات رویایی)##]
+    </title>
+    <meta name="description" content="[##cms.seo.description|(خرید آنلاین بلیط هواپیما داخلی و خارجی با بهترین قیمت. بلیط چارتر و سیستمی برای کیش، مشهد، ایروان ، مسقط . تعطیلات رویای ، آسان‌ترین راه رزرو پرواز با پشتیبانی ۲۴ ساعته.)##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value"/>
+        </face>
+        <face>
+            <meta property="@key" content="@value"/>
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa-test.inc" pageindex="[##cms.cms.pageindex##]" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
     <basis core="call" file="style-test.inc" pageindex="[##cms.cms.pageindex##]"/>
 </head>
@@ -117,29 +134,15 @@
     <section class="s-info-blog mt-15 px-4">
         <div class="p-blog-info w-full flex flex-col  gap-6">
             <div class="flex start w-full flex-col">
-                <div class="editor-tags w-full bg-white shadow-custom-2 rounded-lg flex flex-col items-start p-4">
-                    <basis core="print" datamembername="db.view">
-                        <face filter="TypeID in(150)">
-                            <h5 class="danaBold text-base text-zinc-900">@text</h5>
-                        </face>
-                    </basis>
-                    <div class="text-base text-zinc-900 text-justify leading-6 w-full danaRegular mt-5">
-                        <basis core="print" datamembername="db.view">
-                            <layout>@child</layout>
-
-                            <face filter="TypeID in(129)">
-                                <div class="text-zinc-900 text-sm mb-4 w-full leading-7">
-                                    @largetext
-                                </div>
-                            </face>
-                        </basis>
+                <div class="editor-tags w-full bg-white shadow-custom-2 rounded-lg flex flex-col items-start px-4">
+                    <div class="text-base text-zinc-900 text-justify leading-6 w-full danaRegular">
                         <div class="flex flex-col w-full items-start w-full my-5">
                             <basis core="list" datamembername="db.view">
                                 <face filter="TypeID in(250)">
-                                    <div class="title flex items-center mt-7 w-full justify-between">
+                                    <div class="title flex items-center mt-4 title-editor w-full justify-between">
                                         <h5 class="danaBold text-base text-zinc-900">@text</h5>
                                     </div>
-                                    <div class="mt-3 text-xs"><p>@largetext</p></div>
+                                    <div class="mt-3 text-xs item-editor-mobi"><p>@largetext</p></div>
                                 </face>
                             </basis>
                         </div>
@@ -150,7 +153,6 @@
                             </face>
                         </basis>
                     </div>
-
                 </div>
                 <div class="w-full mt-6  flex px-3 py-6 flex-col items-start rounded-lg bg-white box-visa-comment">
                     <h3 class="danaBold  text-zinc-900 text-base">نظر کاربران</h3>
