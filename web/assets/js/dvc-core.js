@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
         function fetchEngine() {
             try {
                 const xhrobj = new XMLHttpRequest()
-                xhrobj.open('GET', 'search-engine.bc')
-                xhrobj.send()
+                xhrobj.open('GET', 'search-engine.bc');
+                xhrobj.send();
 
                 xhrobj.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 setTimeout(waitForFiles, 500)
             }
         }
+
         waitForFiles()
     }
 })
@@ -227,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const defaultBtn = document.querySelector(".tab-btn[data-default='true']");
     const defaultBtnHotel = document.querySelector(".tab-btn_hotel[data-default='true']");
     const defaultBtnPopular = document.querySelector(".tab-btn_popular[data-default='true']");
-    if (defaultBtn ||defaultBtnHotel||defaultBtnPopular) {
+    if (defaultBtn || defaultBtnHotel || defaultBtnPopular) {
         defaultBtn.click();
         defaultBtnHotel.click();
         defaultBtnPopular.click();
@@ -399,6 +400,7 @@ async function OnProcessedEditObjectAbout(args) {
     }
 }
 
+
 async function RenderFormAbout() {
     var inputElementEmail = document.querySelector(
         '.form-about input[data-bc-text-input]',
@@ -460,3 +462,121 @@ function ShareSocialMedia(event, containerid) {
         bgactivation.classList.add("right-0", "!mx-0", "h-full", "w-full", "p-0");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const fetchContentHeader = document.querySelector('.result-id')
+    const contentCache = new Map()
+    let swiperInstance = null
+
+    // همه تب‌ها
+    const tabs = document.querySelectorAll('.btn-tab a')
+
+    // ---------- Loader ----------
+    function showLoader() {
+        fetchContentHeader.innerHTML =
+            '<div class="flex justify-center mt-20"><span class="fetch-loader"></span></div>'
+    }
+
+    // ---------- Active Tab ----------
+    function setActiveTab(activeTab) {
+        tabs.forEach(tab => {
+            tab.classList.remove('active-visa')
+            tab.classList.add('bg-zinc-100', 'text-zinc-600')
+        })
+
+        activeTab.classList.remove('bg-zinc-100', 'text-zinc-600')
+        activeTab.classList.add('active-visa')
+    }
+
+    // ---------- Load Category ----------
+    async function loadCategory(dataId, tabEl = null) {
+        if (!dataId) return
+
+        if (tabEl) setActiveTab(tabEl)
+
+        const cacheKey = dataId
+
+        showLoader()
+
+        if (contentCache.has(cacheKey)) {
+            fetchContentHeader.innerHTML = contentCache.get(cacheKey)
+            initSwiperSafe()
+            return
+        }
+
+        try {
+            const response = await fetch(`/load-items-test.bc?catid=${dataId}`)
+            if (!response.ok) throw new Error(response.status)
+
+            const data = await response.text()
+            contentCache.set(cacheKey, data)
+            fetchContentHeader.innerHTML = data
+
+            initSwiperSafe()
+
+        } catch (error) {
+            fetchContentHeader.innerHTML =
+                `<p class="text-red-500">خطا در بارگذاری محتوا</p>`
+        }
+    }
+
+    // ---------- Swiper ----------
+    function initSwiperSafe() {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                initSwiper()
+            })
+        })
+    }
+
+    function initSwiper() {
+        const swiperEl = document.querySelector('.swiper-thumbnail-visa')
+        if (!swiperEl) return
+
+        if (swiperInstance) {
+            swiperInstance.destroy(true, true)
+            swiperInstance = null
+        }
+
+        swiperInstance = new Swiper(swiperEl, {
+            rtl: true,
+            observer: true,
+            observeParents: true,
+            watchSlidesProgress: true,
+            slidesPerView: 5,
+            spaceBetween: 20,
+            loop: false,
+            navigation: {
+                nextEl: swiperEl.querySelector('.swiper-button-next-visa'),
+                prevEl: swiperEl.querySelector('.swiper-button-prev-visa'),
+            },
+            breakpoints: {
+                1024: { slidesPerView: 5 },
+                768: { slidesPerView: 3 },
+                480: { slidesPerView: 1 },
+            }
+        })
+    }
+
+    // ---------- Init First Tab ----------
+    if (tabs.length) {
+        tabs[0].click()
+    }
+
+    window.loadCategory = loadCategory
+})
+

@@ -56,12 +56,12 @@
         </face>
     </basis>
     <!-- pwa metatags -->
-    <basis core="call" file="pwa-test.inc" />
+    <basis core="call" file="pwa.inc" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
-    <basis core="call" file="style-test.inc"/>
+    <basis core="call" file="style.inc"/>
 </head>
 <body>
-<basis core="call" file="header-test.inc"/>
+<basis core="call" file="header.inc"/>
 
 
 <main>
@@ -109,7 +109,7 @@
                                     <li class="" itemprop="itemListElement" itemscope=""
                                         itemtype="https://schema.org/ListItem">
                                         <a class="text-xs text-white" itemprop="item"
-                                           href="/article-test.bc?catid=@parentcatid"
+                                           href="/article.bc?catid=@parentcatid"
                                            aria-label="@title">
                                             <span class="text-white text-xs">></span>
                                             <span itemprop="name">@title</span>
@@ -198,7 +198,6 @@
                                 </face>
                             </basis>
                         </div>
-                    </div>
                     <div class="w-full mt-6 h-[300px] flex px-3 py-6 flex-col items-start rounded-lg bg-white box-visa-comment">
                         <h3 class="danaBold  text-zinc-900 text-xl">نظر کاربران</h3>
                         <form action="/Tem1_OpinionAction.bc" method="POST"
@@ -482,9 +481,9 @@
 
 
 <!--footer-->
-<basis core="call" file="footer-test.bc"/>
+<basis core="call" file="footer.bc"/>
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
-<basis core="call" file="script-test.inc"/>
+<basis core="call" file="script.inc"/>
 </body>
 </html>

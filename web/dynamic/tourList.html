@@ -1,5 +1,5 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
-    <member name="tours" type="list" link="tour-list.bc" perpage="2" pageno="[##cms.query.pagenum|(1)##]"
+    <member name="tours" type="list" link="tour.bc" perpage="2" pageno="[##cms.query.pagenum|(1)##]"
             propertyid="8181,3088230,8076,8077,10000504,3088231" order="ord"/>
     </member>
     <member name="paging" type="list" request="paging" count="3" parentname="tours"/>
@@ -53,12 +53,12 @@
         </face>
     </basis>
     <!-- pwa metatags -->
-    <basis core="call" file="pwa-test.inc" />
+    <basis core="call" file="pwa.inc" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
-    <basis core="call" file="style-test.inc"/>
+    <basis core="call" file="style.inc"/>
 </head>
 <body>
-<basis core="call" file="header-test.inc"/>
+<basis core="call" file="header.inc"/>
 
 <main>
     <!--s-main-tour-->
@@ -502,10 +502,10 @@
 </main>
 
 
-<basis core="call" file="footer-test.bc"/>
+<basis core="call" file="footer.bc"/>
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
-<basis core="call" file="script-test.inc"/>
+<basis core="call" file="script.inc"/>
 </body>
 </html>

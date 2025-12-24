@@ -31,6 +31,10 @@
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
     </member>
 </basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
+    <member name="faq-title" type="view" postsql="select * from [db.faq] where TypeID in(128)"/>
+    </member>
+</basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219183">
     <member name="popular-destinations" type="list" link="Popular-destinations.bc" propertyid="3088231" order="ord"/>
@@ -50,7 +54,10 @@
     <member name="service" type="list" link="service.bc" order="ord" propertyid="7244,7249"/>
     </member>
 </basis>
-
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
+    <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
+    </member>
+</basis>
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -74,14 +81,18 @@
             <meta property="@key" content="@value"/>
         </face>
     </basis>
+    <!-- samandehi-enamad optional -->
+    <meta name="enamad" content="" />
+    <meta name="samandehi" content="" />
     <!-- pwa metatags -->
-    <basis core="call" file="pwa-test.inc"/>
+    <basis core="call" file="pwa.inc"/>
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
-    <basis core="call" file="style-test.inc"/>
+    <basis core="call" file="style.inc"/>
+
 </head>
 
 <body>
-<basis core="call" file="header-test.inc"/>
+<basis core="call" file="header.inc"/>
 
 
 <!--main-->
@@ -93,7 +104,13 @@
             <div class="top w-full  h-[750px] pt-30">
                 <div class="c-container">
                     <div class="search flex flex-col items-center pt-8 h-[585px] justify-between">
-                        <basis core="call" file="search/engine/ver.1/Fa" pageindexid="1"/>
+                        <div class="search-banner">
+                            <div class="search-box-container">
+                                <div id="search-box" class="dir-rtl">
+                                    <div class="flex justify-center"><span class="loader"></span></div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="flex flex-col view-more-items ease items-center justify-center">
                             <img width="36" src="/images/mouse.png" alt="">
@@ -176,7 +193,7 @@
                         <layout>@child</layout>
                         <face>
                             <div data-category="@prp_3088231" class="swiper-slide swiper-slide-tabs tab-content">
-                                <div class="thumbnail-tour  w-full rounded-3xl p-3 flex flex-col items-center">
+                                <div class="thumbnail-tour w-full rounded-3xl p-3 flex flex-col items-center">
                                     <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
                                         <a class="w-full h-[222px] relative" href="/@link" aria-label="@title">
                                             <img class="w-full h-full" src="/@image" draggable="false" alt="tour">
@@ -412,7 +429,14 @@
                 <svg width="194" height="6">
                     <use href="/images/sprite-icons.svg#line-title-hotel"></use>
                 </svg>
-                <span class="text-zinc-500 mt-1 text-xs">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+                <basis core="print" datamembername="db.faq-title">
+                    <layout>@child</layout>
+                    <face>
+                        <div>
+                            <span >@text</span>
+                        </div>
+                    </face>
+                </basis>
             </div>
             <div class="w-full my-8 grid grid-cols-[1fr_1.5fr] gap-8">
                 <img class="w-full" src="/images/img-faq.png" alt="">
@@ -628,7 +652,7 @@
                         این
                         متن
                     </p>
-                    <a href="/article-list.bc"
+                    <a href="/article-list.bc?catid=219222"
                        class="btn btn-primary text-white text-base h-[55px] rounded-[100px] px-[24px] flex items-center mt-5">
                         بیشتر بخوانید
                     </a>
@@ -644,54 +668,26 @@
                 <svg width="266" height="6">
                     <use href="/images/sprite-icons.svg#icon-line-title-tour"></use>
                 </svg>
-                <span class="text-zinc-600 danaRegular mt-3 text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+                <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
+                       nullvalue="219252">
+                    <layout>@child</layout>
+                    <face filter="catid=219252">
+                        <div class="text-zinc-600 danaRegular mt-3 text-xs	"><span>@urldescription</span></div>
+                    </face>
+                </basis>
                 <div class="btn-tab w-full flex items-center justify-center mt-7 gap-2">
-                    <a class="px-[17px] transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                       href="">ویزای توریستی</a>
-                    <a class="px-[17px] transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                       href="">اقامت</a>
-                    <a class="px-[17px] transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                       href="">تحصیلی</a>
-                    <a class="px-[17px] transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                       href="">فرهنگی</a>
+                    <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
+                           nullvalue="219252">
+                        <layout>@child</layout>
+                        <face filter="catid<>219252">
+                            <a onclick="loadCategory('@catid', this)" class="px-[17px] transition-colors cursor-pointer  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</a>
+                        </face>
+                    </basis>
                 </div>
             </div>
-            <div class="p-list-visa bg-white w-full">
-                <div class="swiper bg-white swiper-thumbnail-visa py-5">
-                    <div class="swiper-wrapper">
-                        <basis core="list" datamembername="db.visa">
-                            <layout>@child</layout>
-                            <face>
-                                <div data-category="@prp_219253" class="swiper-slide">
-                                    <a href="@link"
-                                       class="item-visa shadow-custom-1 w-full relative bg-color-2 h-[85px] rounded-[100px] px-[8px]">
-                                        <div class="img overflow-hidden h-[85px] rounded-[100px] w-full relative">
-                                            <div class="back-bg p-2 gap-3 flex items-center justify-between w-full h-full absolute right-0 top-0 z-5 bg-[#0000008A]">
-                                                <div class="flex items-center gap-2">
-                                                    <img class="w-[60px] h-[60px] rounded-[50%]" src="/@image"
-                                                         alt="@title">
-                                                    <div class="flex flex-col items-start">
-                                                        <span class="text-white text-xs	 danaRegular">ویزای</span>
-                                                        <h2 class="text-white text-base danaBold mt-1">@title</h2>
-                                                    </div>
-                                                </div>
-                                                <div class="ml-[2rem]">
-                                                    <svg width="14" height="26">
-                                                        <use href="/images/sprite-icons.svg#icon-arrow-left"></use>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <img class="w-full h-full" src="/images/img-ib.jpg" alt="">
-                                        </div>
-                                    </a>
-                                </div>
-                            </face>
-                        </basis>
 
+            <div class="p-list-visa bg-white w-full result-id">
 
-                    </div>
-
-                </div>
             </div>
             <div class="w-full flex items-center mt-3 justify-center">
                 <div class="bg-slider p-2 rounded-[50px] flex items-center w-auto h-[60px] gap-2 bg-zinc-100">
@@ -777,11 +773,11 @@
     </section>
 </main>
 
-<basis core="call" file="footer-test.bc"/>
+<basis core="call" file="footer.bc"/>
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
-<basis core="call" file="script-test.inc"/>
+<basis core="call" file="script.inc"/>
 </body>
 
 </html>

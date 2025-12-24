@@ -16,12 +16,12 @@
 </basis>
 
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
-    <member name="scalarEN" type="scalar" typeid="150" />
+    <member name="scalarEN" type="scalar"  />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
     <member name="p-under" type="view" propertyid="" />
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid]">
     <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"
             pageno="[##cms.query.pagenum|(1)##]"  perpage="1" />
     </member>
@@ -56,14 +56,14 @@
         </face>
     </basis>
     <!-- pwa metatags -->
-    <basis core="call" file="pwa-test.inc" />
+    <basis core="call" file="pwa.inc" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
-    <basis core="call" file="style-test.inc" />
+    <basis core="call" file="style.inc" />
 </head>
 
 <body>
 
-<basis core="call" file="header-test.inc" />
+<basis core="call" file="header.inc" />
 
 <!--main-->
 <main>
@@ -123,7 +123,7 @@
                             </face>
                         </basis>
                     </ul>
-                    <form method="get" action="/search-content-test.bc"
+                    <form method="get" action="/search-content.bc"
                           class="box-search w-[55%] flex items-center gap-2 mt-5">
                         <input type="hidden" name="t" value="article">
                         <div class="flex items-center w-full gap-2">
@@ -499,11 +499,11 @@
 
 
 <!--footer-->
-<basis core="call" file="footer-test.bc" />
+<basis core="call" file="footer.bc" />
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
-<basis core="call" file="script-test.inc" />
+<basis core="call" file="script.inc" />
 </body>
 
 </html>
