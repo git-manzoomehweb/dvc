@@ -32,7 +32,7 @@
     </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
-    <member name="faq-title" type="view" postsql="select * from [db.faq] where TypeID in(128)"/>
+    <member name="faq-title" type="view" postsql="select * from [db.faq-title] where TypeID in(128)"/>
     </member>
 </basis>
 
@@ -88,7 +88,6 @@
     <basis core="call" file="pwa.inc"/>
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
     <basis core="call" file="style.inc"/>
-
 </head>
 
 <body>
@@ -111,7 +110,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="flex flex-col view-more-items ease items-center justify-center">
                             <img width="36" src="/images/mouse.png" alt="">
                             <span class="text-white text-[15px] danaRegular">بیشتر ببینید</span>
@@ -773,7 +771,7 @@
     </section>
 </main>
 
-<basis core="call" file="footer.bc"/>
+<basis core="call" file="footer.inc"/>
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>

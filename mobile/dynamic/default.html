@@ -58,7 +58,8 @@
     <!-- Title & Description -->
     <title>[##cms.seo.title|(خرید بلیط هواپیما - رزرو آنلاین پرواز داخلی و خارجی - تعطیلات رویایی)##]
     </title>
-    <meta name="description" content="[##cms.seo.description|(خرید آنلاین بلیط هواپیما داخلی و خارجی با بهترین قیمت. بلیط چارتر و سیستمی برای کیش، مشهد، ایروان ، مسقط . تعطیلات رویای ، آسان‌ترین راه رزرو پرواز با پشتیبانی ۲۴ ساعته.)##]">
+    <meta name="description"
+          content="[##cms.seo.description|(خرید آنلاین بلیط هواپیما داخلی و خارجی با بهترین قیمت. بلیط چارتر و سیستمی برای کیش، مشهد، ایروان ، مسقط . میسان گشت، آسان‌ترین راه رزرو پرواز با پشتیبانی ۲۴ ساعته.)##]">
     <!-- Title & Description -->
     <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
         <member type="list" name="list" request="taglist" preview=""></member>
@@ -71,12 +72,14 @@
             <meta property="@key" content="@value"/>
         </face>
     </basis>
+    <!-- samandehi-enamad optional -->
+    <meta name="enamad" content="" />
+    <meta name="samandehi" content="" />
     <!-- pwa metatags -->
     <basis core="call" file="pwa.inc" pageindex="[##cms.cms.pageindex##]" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
     <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]"/>
 </head>
-
 <body>
 <basis core="call" file="header.inc" pageindex="[##cms.cms.pageindex##]"/>
 
@@ -88,8 +91,14 @@
     <!--s-search-engine-->
     <section class="s-main-mobi pt-30">
         <div class="px-4 w-full flex flex-col">
-            <div>
-                <basis core="call" file="search/engine/ver.1/Fa" pageindexid="2" />
+            <div class="w-full">
+                <div class="search-banner  w-full">
+                    <div class="search-box-container mobile-search-box">
+                        <div id="search-box" class="dir-rtl">
+                            <div class="flex justify-center"><span class="loader"></span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="flex flex-col mb-7 view-more-items ease items-center justify-center">
                 <img width="36" src="/images/mouse.png" alt="">
@@ -743,7 +752,7 @@
     </section>
 </main>
 
-<basis core="call" file="footer.bc" pageindex="[##cms.cms.pageindex##]"/>
+<basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]"/>
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>

@@ -10,6 +10,14 @@
     <member name="service" type="list" link="service.bc" order="ord" propertyid="7244,7249,3088232"/>
     </member>
 </basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
+    <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
+    </member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
+    <member name="faq-title" type="view"/>
+    </member>
+</basis>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,14 +70,13 @@
                 <div class="box-about w-full  relative overflow-hidden rounded-xl">
                     <div class="box-detail py-4 px-3 w-full h-full flex flex-col relative z-10">
                         <div class="btn-tab w-full py-2 overflow-x-auto overflow-y-hidden flex items-center justify-start mt-3 gap-2">
-                            <a class="px-[17px] transition-colors  flex-shrink-0   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                               href="">ویزای توریستی</a>
-                            <a class="px-[17px] transition-colors flex-shrink-0 hover:bg-secondary-200 rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                               href="">اقامت</a>
-                            <a class="px-[17px] transition-colors flex-shrink-0 hover:bg-secondary-200 rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                               href="">تحصیلی</a>
-                            <a class="px-[17px] transition-colors flex-shrink-0 hover:bg-secondary-200 rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                               href="">فرهنگی</a>
+                            <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
+                                   nullvalue="219252">
+                                <layout>@child</layout>
+                                <face filter="catid<>219252">
+                                    <a onclick="loadCategory('@catid', this)" class="px-[17px] flex-shrink-0 transition-colors cursor-pointer  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</a>
+                                </face>
+                            </basis>
                         </div>
                         <h3 class="danaRegular text-sm	 text-zinc-900 mt-8">خدمات آژانس</h3>
                         <h2 class="danaBold text-base mt-1 text-zinc-900">تعطیلات رویایی</h2>
@@ -339,7 +346,14 @@
                 <path d="M132.773 2.88672L129.887 -3.26633e-05L127 2.88672L129.887 5.77347L132.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77348 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM129.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L129.887 3.38672V2.88672Z"
                       fill="#CFAA65"/>
             </svg>
-            <span class="text-zinc-500 text-xs	 text-center mt-1">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+            <basis core="print" datamembername="db.faq-title">
+                <layout>@child</layout>
+                <face filter="typeID=128">
+                    <div class="text-zinc-500 mt-1 text-center text-xs">
+                        <span >@text</span>
+                    </div>
+                </face>
+            </basis>
         </div>
         <div class="w-full my-8 grid  gap-8">
             <div class="w-full container p-faq flex flex-col gap-4">

@@ -15,12 +15,12 @@
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
-    <member name="article" type="list" link="article.bc" perpage="3" order="ord" propertyid="7244,7249,7248,3088243"/>
+    <member name="article" type="list" link="article.bc" perpage="3" order="ord" propertyid="7244,7249,7248,3088243,7245"/>
     </member>
 </basis>
 
 <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id##]">
-    <member name="view" type="view" propertyid="7244,7249,7246,7248,3088243"/>
+    <member name="view" type="view" propertyid="7244,7249,7246,7248,3088243,7245"/>
 
 </basis>
 <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.nid##]">
@@ -72,7 +72,12 @@
         <div class="c-container">
             <div class="flex flex-col justify-between relative h-[750px] pb-4">
                 <div class="box-main-tour pt-12  h-[450px] w-full flex flex-col items-center justify-center">
-                    <h4 class="text-zinc-200 leading-[16px] text-4xl">istanbul</h4>
+                    <basis core="print" datamembername="db.view">
+                        <face filter="TypeID in(150)">
+                            <h4 class="text-zinc-200 leading-[16px] text-4xl">@prp_7245</h4>
+                        </face>
+                    </basis>
+
                     <basis core="print" datamembername="db.view">
                         <face filter="TypeID in(150)">
                             <h1 class="text-zinc-900 text-4xl danaBold relative bottom-3">@text</h1>

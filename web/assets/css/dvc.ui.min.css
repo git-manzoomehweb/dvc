@@ -417,9 +417,11 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .my-5 {
                         margin-block: calc(var(--spacing) * 5);
                     }
+
                     .my-6 {
                         margin-block: calc(var(--spacing) * 6);
                     }
+
                     .my-8 {
                         margin-block: calc(var(--spacing) * 8);
                     }
@@ -431,15 +433,19 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .my-12 {
                         margin-block: calc(var(--spacing) * 12);
                     }
+
                     .my-14 {
                         margin-block: calc(var(--spacing) * 14);
                     }
+
                     .my-16 {
                         margin-block: calc(var(--spacing) * 16);
                     }
+
                     .my-18 {
                         margin-block: calc(var(--spacing) * 18);
                     }
+
                     .my-20 {
                         margin-block: calc(var(--spacing) * 20);
                     }
@@ -495,21 +501,27 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .mt-15 {
                         margin-top: calc(var(--spacing) * 15);
                     }
+
                     .mt-16 {
                         margin-top: calc(var(--spacing) * 16);
                     }
+
                     .mt-18 {
                         margin-top: calc(var(--spacing) * 18);
                     }
+
                     .mt-20 {
                         margin-top: calc(var(--spacing) * 20);
                     }
+
                     .mt-22 {
                         margin-top: calc(var(--spacing) * 22);
                     }
+
                     .mt-24 {
                         margin-top: calc(var(--spacing) * 24);
                     }
+
                     .mt-25 {
                         margin-top: calc(var(--spacing) * 25);
                     }
@@ -557,30 +569,39 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .mb-9 {
                         margin-bottom: calc(var(--spacing) * 9);
                     }
+
                     .mb-10 {
                         margin-bottom: calc(var(--spacing) * 10);
                     }
+
                     .mb-11 {
                         margin-bottom: calc(var(--spacing) * 11);
                     }
+
                     .mb-12 {
                         margin-bottom: calc(var(--spacing) * 12);
                     }
+
                     .mb-13 {
                         margin-bottom: calc(var(--spacing) * 13);
                     }
+
                     .mb-14 {
                         margin-bottom: calc(var(--spacing) * 14);
                     }
+
                     .mb-16 {
                         margin-bottom: calc(var(--spacing) * 16);
                     }
+
                     .mb-18 {
                         margin-bottom: calc(var(--spacing) * 18);
                     }
+
                     .mb-20 {
                         margin-bottom: calc(var(--spacing) * 20);
                     }
+
                     .ml-\[1rem\] {
                         margin-left: 1rem;
                     }
@@ -1160,24 +1181,31 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .gap-9 {
                         gap: calc(var(--spacing) * 9);
                     }
+
                     .gap-10 {
                         gap: calc(var(--spacing) * 10);
                     }
+
                     .gap-12 {
                         gap: calc(var(--spacing) * 12);
                     }
+
                     .gap-14 {
                         gap: calc(var(--spacing) * 14);
                     }
+
                     .gap-16 {
                         gap: calc(var(--spacing) * 16);
                     }
+
                     .gap-18 {
                         gap: calc(var(--spacing) * 18);
                     }
+
                     .gap-20 {
                         gap: calc(var(--spacing) * 20);
                     }
+
                     .gap-\[6px\] {
                         gap: 6px;
                     }
@@ -2766,6 +2794,10 @@ input {
 
 
 /*search-engine*/
+.search-banner, .search-box-container, #search-box {
+    width: 100%;
+}
+
 .reservation-item {
     width: 448px;
     border-radius: 100px;
@@ -2794,7 +2826,6 @@ input {
     color: var(--color-zinc-500);
 }
 
-}
 .reservation-item .module-icon .module-icon-deactive {
     display: flex;
 }
@@ -2813,36 +2844,46 @@ input {
     padding-right: 5px;
 }
 
-#flightSearch {
+.search-box-container .hover\:text-primary:hover {
+    color: var(--primary-900) !important;
+}
+
+.form-search {
     height: 64px;
     background: white;
     border-radius: 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-inline: 12px;
+    padding-inline:0 12px;
     box-shadow: 0px 4px 67.4px 0px #0000000F;
     margin-top: 16px;
 }
 
-.search-flight {
-    background: var(--primary-900);
-    height: 48px;
-    color: white;
-    border: 1px solid var(--primary-900);
-    transition: 0.5s ease;
-    font-size: 16px;
-    border-radius: 100px;
-    width: 107px;
+.reserve-search {
+    height: auto !important;
+    width: 110px !important;
 }
 
-.search-flight svg {
+.search-flight, .search-tour, .search-flighthotel, .search-hotel {
+    background: var(--primary-900) !important;
+    height: 48px !important;
+    color: white !important;
+    border: 1px solid var(--primary-900) !important;
+    transition: 0.5s ease;
+    font-size: 16px !important;
+    border-radius: 100px;
+    width: 107px !important;
+    font-family: 'DanaFaNum' !important;
+}
+
+.search-flight svg, .search-tour svg, .search-flighthotel svg, .search-hotel svg {
     display: none;
 }
 
-.search-flight:hover {
-    background: white;
-    color: var(--primary-900);
+.search-flight:hover, .search-tour:hover, .search-flighthotel:hover, .search-hotel:hover {
+    background: white !important;
+    color: var(--primary-900) !important;
     transition: 0.5s ease;
 }
 
@@ -2854,6 +2895,7 @@ input {
     color: #71717A;
     font-size: 12px;
     margin-right: 56px;
+    margin-top: 3px;
 }
 
 .reserve-field .auto-fit {
@@ -2873,13 +2915,50 @@ input {
 }
 
 .flight-routes {
-    width: 46%;
-    padding-left: 3rem;
+    width: 46% !important;
+    padding-left: 1rem;
+}
+
+.flight-btn, .hotel-btn, .flighthotel-btn, .tour-btn {
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 0 5px 0 12px !important;
+    margin: 0 !important;
+}
+
+.flight-btn:hover .module-icon, .hotel-btn:hover .module-icon, .flighthotel-btn:hover .module-icon, .tour-btn:hover .module-icon {
+    background: var(--primary-900) !important;
+}
+
+.search-box-container .reserve-btn.active-module {
+    background-color: white !important;
+}
+
+.search-box-container .module-icon {
+    display: flex !important;
+}
+
+.search-box-container .reserve-btn.active-module .module-icon {
+    background-color: var(--primary-900);
+    display: flex;
+}
+
+.departure-route .click-content, .destination-route .click-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.departure-route .click-content input, .destination-route .click-content input {
+    font-family: 'DanaFaNum';
 }
 
 /*date-search-engine*/
 .date__searched__container {
-    width: 28%;
+    width: 35% !important;
     height: 47px;
 }
 
@@ -2934,14 +3013,14 @@ input {
 }
 
 .Flightclass-Passenger {
-    width: 20%;
+    width: 20% !important;
 }
 
 .Flightclass-Passenger .reserve-field {
     width: 100%;
 }
 
-.Flightclass-Passenger .label-passengers-flight {
+.Flightclass-Passenger .label-passengers-flight, .formhotel .label-passengers-hotel, .formtour .label-passengers-tour {
     display: flex;
 }
 
@@ -2955,6 +3034,12 @@ input {
     font-size: 16px;
     font-weight: 800;
     padding-right: 14px;
+    margin: 0;
+}
+
+.Flightclass-Passenger .passengers-field div {
+    white-space: nowrap;
+    gap: 2px;
 }
 
 .label-passengers .label-text {
@@ -2974,6 +3059,11 @@ input {
     background: #F4F4F5;
 }
 
+.searchList {
+    border: 1px solid var(--color-zinc-200);
+    border-radius: 16px;
+}
+
 .searchList .reserve-location {
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -2988,22 +3078,268 @@ input {
     background: var(--primary-900);
     color: white;
     border-radius: 4px;
+
 }
 
 .searchList .load-location-options ul li:not(:first-child) {
     border-bottom: 1px solid #f2f2f2;
+    text-align: center;
+    transition: 0.2s ease;
+}
+
+.searchList .load-location-options ul li:not(:first-child):hover {
+    color: var(--primary-900);
+    font-weight: bold;
+}
+
+.searchList .mini-loading {
+    position: unset;
+    margin-top: 1rem;
+}
+
+.searchList .clear-both {
+    width: 100%;
+}
+
+.searchList .clear-both div.leading-9 {
+    display: none;
+}
+
+.searchList .clear-both input {
+    font-family: 'DanaFaNum';
+    width: 100%;
+    border: 1px solid var(--color-zinc-200);
+}
+
+.searchList .clear-both input:focus {
+    font-family: 'DanaFaNum';
+    width: 100%;
+    border: 1px solid var(--color-zinc-200);
+}
+
+.passengerbox {
+    top: 75px;
 }
 
 .passengerbox .passenger-item {
     padding: 4px 0;
     border-bottom: 1px solid #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.passengers-field-f .passenger-counts {
-    padding-right: 54px;
+.passengerbox .passenger-item ul {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
 }
 
+.passengerbox .passenger-item .plus-count, .passengerbox .passenger-item .minus-count {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--primary-900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
 
+.passengerbox {
+    border-radius: 16px;
+    border: 1px solid var(--color-zinc-200);
+}
+
+.Flightclass-Passenger .passengers-field-f {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2px;
+}
+
+.Flightclass-Passenger .passengers-field-f .passenger-counts {
+    padding: 0;
+    font-size: 13px;
+}
+
+.Flightclass-Passenger .passengers-field .show-passengers-dropdown div, .formtour .passengers-field .show-passengers-dropdown div, .formhotel .passengers-field .show-passengers-dropdown div {
+    padding-right: 56px;
+}
+
+.Basis_Date_Box .js-date-input {
+    padding: 20px 63px 0 0 !important;
+    height: 35px !important;
+    margin: 9px 0 0 0 !important;
+    font-family: 'DanaFaNum';
+}
+
+.passengers-field-f {
+    width: 100% !important;
+}
+
+.show-passengers-dropdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Flightclass-Passenger .down-icon, .formhotel .passengers-field .down-icon, .formtour .passengers-field .down-icon {
+    margin: 0 3px 0 0 !important;
+}
+
+#flightHotelSearch {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding:8px 0 16px 8px;
+    border-radius: 8px;
+}
+.Wrapper-CheckHotelDate{
+    padding-right: 12px;
+}
+#flightHotelSearch div:nth-child(2) {
+    width: 100%;
+    align-items: center;
+}
+#flightHotelSearch div:nth-child(2) .departure-date , #flightHotelSearch div:nth-child(2) .return-date{
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+#flightHotelSearch div:last-child {
+    width: 100%;
+}
+
+#flightHotelSearch div:last-child .date__searched__container {
+    width: 60% !important;
+}
+
+#flightHotelSearch div:last-child .date__searched__container .departure-date {
+    width: 50% !important;
+}
+
+.select-age {
+    border: 1px solid var(--color-zinc-200);
+    border-radius: 4px;
+    font-family: 'DanaFaNum';
+    height: 38px;
+}
+
+/*calender*/
+.book-tw__selected {
+    background: var(--primary-900) !important;
+    color: #fff !important;
+}
+
+.book-tw__today {
+    outline: 2px solid var(--primary-900);
+    outline-offset: 2px;
+}
+
+#passenger-adultcount1, .roomcount, .adultcount, .childcount, .infantcount {
+    color: var(--primary-900);
+    padding: 0;
+    margin: 0;
+    font-family: 'DanaFaNum' !important;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.formhotel .passengers-field .passenger-item, .formtour .passengers-field .passenger-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.formhotel .passengers-field .passenger-item ul , .formtour .passengers-field .passenger-item ul{
+    width: auto;
+}
+
+.formhotel .passengers-field .passenger-item .clr , .formtour .passengers-field .passenger-item .clr{
+    display: none;
+}
+
+.numberOfRoom {
+    color: var(--primary-900) !important;
+    font-size: 16px !important;
+}
+
+.search-box-container .Wrapper-CheckHotelDate input:checked ~ .needhotel-label::before, .search-box-container .Wrapper-PrivateCompartment input:checked ~ .PrivateCompartment-label::before {
+    background-color: var(--primary-900) !important;
+}
+
+.exchangeRoute {
+    width: auto !important;
+    height: auto !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-900);
+}
+.exchangeRoute svg{
+    width: 23px;
+    height: 23px;
+    rotate: 90deg;
+}
+.flighttype-dropDown{
+    position: absolute !important;
+    left: 0;
+    top: -4rem;
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    text-align: end;
+}
+#flightSearch{
+    height: auto;
+    border-radius: 50px !important;
+}
+.route-container .route-content{
+    width: 90% !important;
+    padding: 8px 0;
+    height: auto;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--color-zinc-200);
+}
+.route-container .route-content .route-content-inner{
+   display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+.route-container .route-content .route-content-inner .flight-routes{
+    width: 100% !important;
+}
+.route-container .route-content .route-content-inner .flight-routes .reserve-field{
+    width: 50% !important;
+}
+.route-container .route-content .route-content-inner .date__searched__container{
+    width: 100% !important;
+}
+.add-routs{
+    width: auto !important;
+    padding: 0 12px !important;
+    height: 50px !important;
+    border-radius: 100px !important;
+    font-family: 'DanaFaNum' !important;
+    font-size: 16px !important;
+    background: var(--color-zinc-900) !important;
+    color: white !important;
+    display: flex;
+    align-items: center;
+}
+.remove-routs{
+    width: auto !important;
+    padding: 0 12px !important;
+    height: 50px !important;
+    border-radius: 100px !important;
+    font-family: 'DanaFaNum' !important;
+    font-size: 16px !important;
+    background: var(--color-red-500) !important;
+    color: white !important;
+    display: flex;
+    align-items: center;
+}
 /*form-footer  & form-faq*/
 .form-footer, .form-about {
     display: grid;
@@ -3207,17 +3543,22 @@ input {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
+
 .active-visa {
     color: var(--secondary-950) !important;
     background: var(--secondary-200) !important;
 }
+
 /*head*/
-.border-l-head{
+.border-l-head {
     border-left: 1px solid var(--color-zinc-200);
 }
-.btnstyle{
+
+.btnstyle {
     height: 48px;
     background: var(--primary-900);
     border: 1px solid var(--primary-900);
@@ -3226,12 +3567,13 @@ input {
     color: white;
     transition: 0.5s ease;
 }
-.btnstyle:hover{
+
+.btnstyle:hover {
     background: unset;
     color: var(--primary-900);
 }
 
-#firstUsername input , #mailsSelectContainer input{
+#firstUsername input, #mailsSelectContainer input {
     box-shadow: 0px 4px 67px 0px #0000000F;
     background: white;
     border-radius: 100px;
@@ -3242,7 +3584,8 @@ input {
     height: 55px;
     font-size: 16px;
 }
-.login-btn-content button , .login-btn {
+
+.login-btn-content button, .login-btn {
     background: var(--primary-900);
     border: 1px solid var(--primary-900);
     border-radius: 100px;
@@ -3255,18 +3598,19 @@ input {
     transition: 0.6s ease;
 }
 
-.login-btn-content button:hover , .login-btn{
+.login-btn-content button:hover, .login-btn {
     background: white;
     color: var(--primary-900);
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 
-.detail-tour p  img{
+.detail-tour p img {
     width: 100%;
     border-radius: 8px;
 }
-.detail-tour p  {
+
+.detail-tour p {
     width: 100%;
     border-radius: 8px;
 }

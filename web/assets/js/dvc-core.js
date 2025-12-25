@@ -348,7 +348,7 @@ async function RenderFormFaq() {
         '.form-faq input[data-bc-text-input]:last-child',
     )
     inputElementPhone.setAttribute('placeholder', 'شماره تماس')
-    inputElementUsername.setAttribute('placeholder', 'نام و نام خانوادگی')
+    // inputElementUsername.setAttribute('placeholder', 'نام و نام خانوادگی')
 }
 
 

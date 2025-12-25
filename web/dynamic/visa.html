@@ -15,6 +15,10 @@
 <basis core="dbsource" source="media" lid="1" name="view" usedforid="[##cms.query.id##]" sourcemid="article">
     <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
+    <member name="faq-title" type="view"/>
+    </member>
+</basis>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -130,24 +134,15 @@
                         </div>
                     </div>
                     <div class="w-full flex flex-col items-start">
-                        <div class="btn-tab w-full flex items-center justify-start  gap-2">
-                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
-                               href="">ویزای توریستی</a>
-                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
-                               href="">مشاوره</a>
-                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
-                               href="">دانشجویی</a>
-                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
-                               href="">ثبت شرکت</a>
-                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
-                               href="">دانش آموزی</a>
-                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
-                               href="">استارتاپ</a>
-                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
-                               href="">تحصیلی</a>
-                            <a class="px-[17px] transition-colors   hover:bg-secondary-200 rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm	"
-                               href="">فرهنگی</a>
-
+                        <div class="btn-tab w-full flex items-center justify-start mt-7 gap-2">
+                            <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
+                                   nullvalue="219252">
+                                <layout>@child</layout>
+                                <face filter="catid<>219252">
+                                    <a onclick="loadCategory('@catid', this)"
+                                       class="px-[17px] transition-colors cursor-pointer  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-white text-zinc-600 danaRegular text-sm">@title</a>
+                                </face>
+                            </basis>
                         </div>
                         <div class="bg-white w-full rounded-3xl p-6 mt-6  shadow-custom-2 flex flex-col items-start">
                             <basis core="list" datamembername="db.view">
@@ -182,7 +177,14 @@
                 <svg width="194" height="6">
                     <use href="/images/sprite-icons.svg#line-title-hotel"></use>
                 </svg>
-                <span class="text-zinc-500 mt-1 text-xs">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+                <basis core="print" datamembername="db.faq-title">
+                    <layout>@child</layout>
+                    <face filter="typeID=128">
+                        <div class="text-zinc-500 mt-1 text-xs">
+                            <span>@text</span>
+                        </div>
+                    </face>
+                </basis>
             </div>
             <div class="w-full my-8 grid grid-cols-[1fr_1.5fr] gap-8">
                 <img class="w-full" src="/images/img-faq.png" alt="">
