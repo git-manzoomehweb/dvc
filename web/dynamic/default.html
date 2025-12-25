@@ -27,6 +27,9 @@
             propertyid="3088232,3088223,3088222,3088221,3088220,3088219,7249,7245" order="ord"/>
     </member>
 </basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
+    <member name="hotel-title"  type="tree" request="cat" parentid="219096" order="ord"></member>
+</basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
     </member>
@@ -102,7 +105,7 @@
         <div class="p-main w-full">
             <div class="top w-full  h-[750px] pt-30">
                 <div class="c-container">
-                    <div class="search flex flex-col items-center pt-8 h-[585px] justify-between">
+                    <div class="search  flex flex-col items-center pt-8 h-[585px] justify-between">
                         <div class="search-banner">
                             <div class="search-box-container">
                                 <div id="search-box" class="dir-rtl">
@@ -322,7 +325,14 @@
                 <svg width="194" height="6">
                     <use href="/images/sprite-icons.svg#line-title-hotel"></use>
                 </svg>
-                <span class="text-zinc-600 mt-3 text-xs">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+                <basis core="print" datamembername="db.hotel-title">
+                    <layout>@child</layout>
+                    <face>
+                        <div class="text-zinc-600 mt-3 text-xs">
+                            <span >@urldescription</span>
+                        </div>
+                    </face>
+                </basis>
                 <div class="btn-tab w-full flex items-center justify-center mt-3 gap-2">
                     <a data-tab="cat_1" data-default="true" onclick="openTabHotel(event, 'محبوب ترین')"
                        class="px-[17px] tab-btn_hotel transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">محبوبت
@@ -430,7 +440,7 @@
                 <basis core="print" datamembername="db.faq-title">
                     <layout>@child</layout>
                     <face>
-                        <div>
+                        <div class="text-zinc-600 mt-3 text-xs">
                             <span >@text</span>
                         </div>
                     </face>
