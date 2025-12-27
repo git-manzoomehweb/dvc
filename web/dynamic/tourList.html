@@ -1,17 +1,13 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
     <member name="tours" type="list" link="tour.bc" perpage="2" pageno="[##cms.query.pagenum|(1)##]"
             propertyid="8181,3088230,8076,8077,10000504,3088231" order="ord"/>
-    </member>
     <member name="paging" type="list" request="paging" count="3" parentname="tours"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.qid##]">
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
-    </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.gid##]">
-    <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"
-            postsql="SELECT * FROM [db.article] ORDER BY ord ASC LIMIT 3;"/>
-    </member>
+    <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"/>
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid|(0)##]">
@@ -30,12 +26,11 @@
     <member name="p-under" type="list" size="" propertyid=""/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
-    <member name="faq-title" type="view"/>
-    </member>
+    <member name="faq-title" type="view" postsql="select * from [db.faq-title] where TypeID in(128)"/>
 </basis>
+
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
-    <member name="article-title" type="view"/>
-    </member>
+    <member name="article-title" type="tree" request="cat" parentid="219222" order="ord"/>
 </basis>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,10 +80,19 @@
                             <h1 class="text-zinc-900 text-4xl danaBold relative bottom-3">@column1</h1>
                         </face>
                     </basis>
-                    <p class="text-zinc-500 text-xs	 danaRegular relative bottom-1">متنی آزمایشی و بی‌معنی در صنعت
-                        چاپ، صفحه‌آرایی و طراحی گرافیک
-                        گفته می‌شود. طراح گرافیک از این متن </p>
+                    <basis core="print" datamembername="db.tours-header">
+                        <layout>@child</layout>
+
+                        <face filter="RowNumber=1">
+                            <div class="text-zinc-500 text-xs	 danaRegular relative bottom-1">
+                                <p >@urldescription</p>
+                            </div>
+                        </face>
+                    </basis>
                     <ul class="breadcrumb flex items-center gap-2 mt-2">
+                        <li class="text-secondary" itemprop="itemListElement">
+                            <a href="/"><span class="text-xs text-zinc-900" itemprop="name">صفحه اصلی</span></a>
+                        </li>
                         <basis core="print" datamembername="db.navigation">
                             <face filter="RowNumber=max(RowNumber) and parentcatid<>218576">
                                 <li class="text-secondary" itemprop="itemListElement" itemscope=""
@@ -98,26 +102,9 @@
                                     <meta itemprop="position" content="@rownumber"/>
                                 </li>
                             </face>
-                            <face filter="link is null and parentcatid<>218576">
-                                <li class="" itemprop="itemListElement" itemscope=""
-                                    itemtype="https://schema.org/ListItem">
-                                    <a class="text-xs" itemprop="item" href="/tour-list.bc?catid=@parentcatid"
-                                       aria-label="@title">
-                                        <span class="text-zinc-900 text-xs">></span>
-                                        <span itemprop="name">@title</span>
-                                        <meta itemprop="position" content="@rownumber"/>
-                                    </a></li>
-                            </face>
-                            <face filter="parentcatid<>218576">
-                                <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                                    <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
-                                        <span class="text-zinc-900 text-xs">></span>
-                                        <span itemprop="name">@title</span>
-                                        <meta itemprop="position" content="@rownumber"/>
-                                    </a></li>
-                            </face>
                         </basis>
                     </ul>
+
                 </div>
                 <div class="flex flex-col  items-center justify-center">
                     <img width="36" src="/images/mouse.png" alt="">
@@ -246,7 +233,7 @@
                             </face>
                             <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
                                 <li
-                                        class="flex items-center justify-center w-12 h-12 p-2 rounded-lg transition-all duration-300 bg-primary-900 page-no">
+                                        class="flex items-center justify-center w-12 h-12 p-2 rounded-[50%] transition-all duration-300 bg-primary-900 page-no">
                                     <a class="flex items-center justify-center w-full h-full text-white cursor-pointer page-number bg-primary-900"
                                        href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
                                 </li>
@@ -254,7 +241,7 @@
                             <face
                                     filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'='') ">
                                 <li
-                                        class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
+                                        class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-[50%] bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
                                     <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
                                        href="/[##cms.cms.link_page##]&pagenum=@page">@page</a>
                                 </li>
@@ -262,7 +249,7 @@
                             <face
                                     filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') ">
                                 <li
-                                        class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
+                                        class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-[50%] bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
                                     <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
                                        href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
                                 </li>
@@ -466,7 +453,14 @@
                 <svg width="214" height="6">
                     <use href="/images/sprite-icons.svg#line-title-blog"></use>
                 </svg>
-                <span class="text-zinc-600 danaRegular mt-3 text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+                <basis core="print" datamembername="db.article-title">
+                    <layout>@child</layout>
+                    <face filter="catid=219222">
+                        <div class="text-zinc-600 danaRegular mt-3 text-xs">
+                            <span>@urldescription</span>
+                        </div>
+                    </face>
+                </basis>
             </div>
             <div class="p-list-blog w-full grid grid-cols-[3fr_1fr] mt-10 gap-5">
                 <div class="start grid grid-cols-3 gap-5 w-full">
