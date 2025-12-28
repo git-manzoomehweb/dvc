@@ -3733,6 +3733,6 @@ input {
     border-radius: 8px;
 }
 
-.box-not-found {
+.box-not-found , .box-loading {
     width: 1280px;
 }

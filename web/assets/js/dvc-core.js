@@ -609,7 +609,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ---------- Loader ----------
     function showLoader() {
         fetchContentVisa.innerHTML =
-            '<div class="flex justify-center mt-12"><span class="fetch-loader"></span></div>'
+            '<div class="flex justify-center box-loading mt-2"><span class="fetch-loader"></span></div>'
     }
 
     // ---------- Active Tab ----------

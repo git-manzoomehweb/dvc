@@ -92,37 +92,14 @@
                            nullvalue="219252">
                         <layout>@child</layout>
                         <face filter="catid<>219252">
-                            <a onclick="loadCategory('@catid', this)"
+                            <a onclick="loadCategoryVisa('@catid', this)"
                                class="px-[17px] transition-colors flex-shrink-0 cursor-pointer  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</a>
                         </face>
                     </basis>
                 </div>
 
-                <div class="p-list-visa px-4 grid  gap-4 bg-white w-full mt-12">
-                    <basis core="list" datamembername="db.visa">
-                        <layout>@child</layout>
-                        <face>
-                            <a href="/@link" class="item-visa shadow-custom-1 bg-color-2 shadow-custom-3 w-full relative  h-[90px] flex items-center rounded-[100px] p-[6px]">
-                                <div class="img overflow-hidden h-[80px] rounded-[100px] w-full relative">
-                                    <div class="back-bg p-2 gap-3 flex items-center justify-between w-full h-full absolute right-0 top-0 z-5 bg-[#0000008A]">
-                                        <div class="flex items-center gap-2">
-                                            <img class="w-[60px] rounded-[50%] pr-[2px]" src="/@image" alt="">
-                                            <div class="flex flex-col items-start">
-                                                <span class="text-white text-xs	 danaRegular">ویزای</span>
-                                                <h2 class="text-white text-xl danaBold mt-1">@title</h2>
-                                            </div>
-                                        </div>
-                                        <div class="ml-[2rem]">
-                                            <svg width="14" height="26">
-                                                <use href="/images/sprite-icons.svg#icon-arrow-left"></use>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <img class="w-full h-full " src="/images/img-ib.jpg" alt="">
-                                </div>
-                            </a>
-                        </face>
-                    </basis>
+                <div class="p-list-visa px-4 grid  gap-4 bg-white w-full mt-12  result-id-visa-mobi">
+
                 </div>
                 <div id="paging">
                     <ul class="p-pagination w-full mb-14 mt-12 flex justify-center" id="wibpaging">

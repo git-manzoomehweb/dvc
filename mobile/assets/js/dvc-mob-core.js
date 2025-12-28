@@ -553,3 +553,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.loadCategory = loadCategory
 })
+
+document.addEventListener("DOMContentLoaded", () => {
+    const fetchContentVisa = document.querySelector('.result-id-visa-mobi')
+    const contentCacheVisa = new Map()
+    // همه تب‌ها
+    const tabsVisa = document.querySelectorAll('.btn-tab a')
+    // ---------- Loader ----------
+    function showLoader() {
+        fetchContentVisa.innerHTML =
+            '<div class="flex justify-center box-loading mt-2"><span class="fetch-loader"></span></div>'
+    }
+
+    // ---------- Active Tab ----------
+    function setActiveTab(activeTab) {
+        tabsVisa.forEach(tab => {
+            tab.classList.remove('active-visa')
+            tab.classList.add('bg-zinc-100', 'text-zinc-600')
+        })
+
+        activeTab.classList.remove('bg-zinc-100', 'text-zinc-600')
+        activeTab.classList.add('active-visa')
+    }
+
+    // ---------- Load Category ----------
+    async function loadCategoryVisa(dataId, tabEl = null) {
+        if (!dataId) return
+
+        if (tabEl) setActiveTab(tabEl)
+
+        const cacheKey = dataId
+
+        showLoader()
+        if (contentCacheVisa.has(cacheKey)) {
+            fetchContentVisa.innerHTML = contentCacheVisa.get(cacheKey)
+            return
+        }
+        try {
+            const response = await fetch(`/visa-load-items.bc?catid=${dataId}`)
+            if (!response.ok) throw new Error(response.status)
+
+            const data = await response.text()
+            contentCacheVisa.set(cacheKey, data)
+            fetchContentVisa.innerHTML = data
+
+        } catch (error) {
+            fetchContentVisa.innerHTML =
+                `<p class="text-red-500">خطا در بارگذاری محتوا</p>`
+        }
+    }
+
+
+    window.loadCategoryVisa = loadCategoryVisa
+})
