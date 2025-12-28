@@ -5,7 +5,6 @@
 <basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="[##cms.query.id##]">
     <member name="navigation" type="tree" request="navigationcat" />
 </basis>
-
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
     <member name="p-under" type="view" propertyid=""/>
 </basis>
@@ -13,7 +12,13 @@
     <member name="view" type="view" propertyid="7249"/>
 </basis>
 <basis core="dbsource" source="media" lid="1" name="view" usedforid="[##cms.query.id##]" sourcemid="article">
-    <member type="list" name="gallery" format="4" order="ord"></member>
+    <member type="list" name="gallery" format="4" order="ord"/>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
+    <member name="faq-title" type="view"/>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
+    <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
 </basis>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,14 +71,14 @@
                 گفته می‌شود. طراح گرافیک از این متن </p>
             <ul class="breadcrumb flex items-center gap-2 mt-2">
                 <basis core="print" datamembername="db.navigation">
-                    <face filter="RowNumber=max(RowNumber) and title<>'ریشه'">
+                    <face filter="RowNumber=max(RowNumber)">
                         <li class="text-secondary">
                             <span class="text-zinc-900 text-xs">></span>
                             <span class="text-xs text-secondary-950" itemprop="name">@title</span>
-                            <meta itemprop="position" content="@rownumber" />
+                            <meta itemprop="position" content="@rownumber"/>
                         </li>
                     </face>
-                    <face filter="link is null and title<>'ریشه'">
+                    <face filter="link is null and title <> 'ریشه' and catid = 219253">
                         <li class="" itemprop="itemListElement">
                             <a class="text-xs" itemprop="item" aria-label="@title">
                                 <span class="text-zinc-900 text-xs">></span>
@@ -81,12 +86,12 @@
                                 <meta itemprop="position" content="@rownumber"/>
                             </a></li>
                     </face>
-                    <face filter="title<>'ریشه'">
-                        <li  itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                    <face filter="title <> 'ریشه' and catid = 219253">
+                        <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
                             <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
-                                <span class="text-zinc-900 text-xs	">></span>
+                                <span class="text-zinc-900 text-xs">></span>
                                 <span itemprop="name">@title</span>
-                                <meta itemprop="position" content="@rownumber" />
+                                <meta itemprop="position" content="@rownumber"/>
                             </a></li>
                     </face>
                 </basis>
@@ -116,10 +121,10 @@
                     </basis>
                 </div>
                 <div class="bottom w-full pb-8 px-6 flex flex-col items-center relative z-10 gap-3">
-                    <a href=""
+                    <a target="_blank" href="/https://visaonline.ir"
                        class="btn border border-secondary-900 rounded-[100px] h-12 w-full flex items-center text-secondary-900 justify-center">درخواست
                         ویزا</a>
-                    <a href=""
+                    <a target="_blank" href="/https://visaonline.ir"
                        class="btn bg-secondary-900 rounded-[100px] h-12 w-full flex items-center text-color-1 justify-center">درخواست
                         ویزا</a>
                 </div>
@@ -296,7 +301,7 @@
 
 
 
-<basis core="call" file="footer.bc" pageindex="[##cms.cms.pageindex##]"/>
+<basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]"/>
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>

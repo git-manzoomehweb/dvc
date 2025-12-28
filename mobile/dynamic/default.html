@@ -27,8 +27,15 @@
             propertyid="3088232,3088223,3088222,3088221,3088220,3088219,7249,7245" order="ord"/>
     </member>
 </basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
+    <member name="hotel-title" type="tree" request="cat" parentid="219096" order="ord"></member>
+</basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
+    </member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
+    <member name="faq-title" type="view" postsql="select * from [db.faq-title] where TypeID in(128)"/>
     </member>
 </basis>
 
@@ -36,14 +43,23 @@
     <member name="popular-destinations" type="list" link="Popular-destinations.bc" propertyid="3088231" order="ord"/>
     </member>
 </basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219183">
+    <member name="popular-title" type="tree" request="cat" parentid="219183" order="ord"/>
+</basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
     <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"/>
     </member>
 </basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
+    <member name="article-title" type="tree" request="cat" parentid="219222" order="ord"/>
+</basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219252">
     <member name="visa" type="list" link="visa.bc" propertyid="3088232" order="ord"/>
     </member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
+    <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219234">
     <member name="service" type="list" link="service.bc" order="ord" propertyid="7244,7249"/>
@@ -73,10 +89,10 @@
         </face>
     </basis>
     <!-- samandehi-enamad optional -->
-    <meta name="enamad" content="" />
-    <meta name="samandehi" content="" />
+    <meta name="enamad" content=""/>
+    <meta name="samandehi" content=""/>
     <!-- pwa metatags -->
-    <basis core="call" file="pwa.inc" pageindex="[##cms.cms.pageindex##]" />
+    <basis core="call" file="pwa.inc" pageindex="[##cms.cms.pageindex##]"/>
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
     <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]"/>
 </head>
@@ -142,18 +158,27 @@
                 <path d="M169.773 2.88672L166.887 -3.26633e-05L164 2.88672L166.887 5.77347L169.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77347 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM166.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L166.887 3.38672V2.88672Z"
                       fill="#CFAA65"/>
             </svg>
-            <span class="text-zinc-600 mt-3  px-4 text-xs text-center">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
-            <div class="btn-tab w-full flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2 flex items-center justify-center my-5 gap-2">
-                <a data-tab="cat_1" data-default="true" onclick="openTab(event, 'محبوب ترین تورها')"
-                   class="px-[17px] tab-btn flex-shrink-0  transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">محبوبت
-                    ترین</a>
-                <a data-tab="cat_1" onclick="openTab(event, 'جدیدترین')"
-                   class="px-[17px] tab-btn flex-shrink-0 transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
-                >جدیدترین تورها</a>
-                <a data-tab="cat_1" onclick="openTab(event, 'مهیج ترین')"
-                   class="px-[17px] tab-btn flex-shrink-0 transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
-                >مهیج ترین</a>
-            </div>
+            <basis core="print" datamembername="db.tours-header">
+                <layout>@child</layout>
+
+                <face filter="RowNumber=1">
+                    <div class="text-zinc-600 mt-3  px-4 text-xs text-center">
+                        <span class="text-zinc-600 mt-3 text-xs">@urldescription</span>
+                    </div>
+                </face>
+        </div>
+        </basis>
+        <div class="btn-tab w-full flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2 flex items-center justify-center my-5 gap-2">
+            <a data-tab="cat_1" data-default="true" onclick="openTab(event, 'محبوب ترین تورها')"
+               class="px-[17px] tab-btn flex-shrink-0  transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">محبوبت
+                ترین</a>
+            <a data-tab="cat_1" onclick="openTab(event, 'جدیدترین')"
+               class="px-[17px] tab-btn flex-shrink-0 transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
+            >جدیدترین تورها</a>
+            <a data-tab="cat_1" onclick="openTab(event, 'مهیج ترین')"
+               class="px-[17px] tab-btn flex-shrink-0 transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
+            >مهیج ترین</a>
+        </div>
         </div>
         <div class="w-full px-4">
             <div class="swiper swiper-thumbnail-tour py-5">
@@ -226,7 +251,7 @@
                             <use href="/images/sprite-icons.svg#icon-next"></use>
                         </svg>
                     </button>
-                    <a href=""
+                    <a href="/tours"
                        class="btn-view h-10 text-white px-[24px] bg-primary-900  text-xs	 danaRegular flex items-center rounded-[50px]">
                         مشاهده همه
                     </a>
@@ -266,7 +291,7 @@
                         </face>
                     </basis>
                     <a class="btn-primary w-full"
-                       href="">
+                       href="/Our-Story">
                         بیشتر بخوانید
                     </a>
                 </div>
@@ -291,7 +316,14 @@
                 <path d="M207.773 2.88672L204.887 -3.26633e-05L202 2.88672L204.887 5.77347L207.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77347 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM204.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L204.887 3.38672V2.88672Z"
                       fill="#CFAA65"/>
             </svg>
-            <span class="text-zinc-600 text-xs	 px-4 text-center mt-3">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+            <basis core="print" datamembername="db.hotel-title">
+                <layout>@child</layout>
+                <face>
+                    <div class="text-zinc-600 text-xs px-4 text-center mt-3">
+                        <span>@urldescription</span>
+                    </div>
+                </face>
+            </basis>
             <div class="btn-tab w-full  flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2">
                 <a data-tab="cat_1" data-default="true" onclick="openTabHotel(event, 'محبوب ترین')"
                    class="px-[17px] flex-shrink-0 tab-btn_hotel transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">محبوبت
@@ -312,9 +344,10 @@
                     <basis core="list" datamembername="db.hotels">
                         <layout>@child</layout>
                         <face>
-                            <div data-category="@prp_3088232" class="swiper-slide swiper-slide-tabs tab-content-hotel">
+                            <div data-category="@prp_3088232" class="swiper-slide  tab-content-hotel">
                                 <div class="thumbnail-tour bg-white w-full rounded-3xl p-3 flex flex-col items-center">
-                                    <a href="@link" aria-label="@title" class="img rounded-[9px] h-[150px] w-full overflow-hidden relative">
+                                    <a href="@link" aria-label="@title"
+                                       class="img rounded-[9px] h-[150px] w-full overflow-hidden relative">
                                         <img class="w-full h-full " src="/@image" draggable="false"
                                              alt="tour">
                                         <button class="absolute right-3 top-3 z-10">
@@ -372,7 +405,7 @@
                             <use href="/images/sprite-icons.svg#icon-next"></use>
                         </svg>
                     </button>
-                    <a href=""
+                    <a href="/hotels"
                        class="btn-view h-10 text-white px-[24px] bg-primary-900  text-xs	 danaRegular flex items-center rounded-[50px]">
                         مشاهده همه
                     </a>
@@ -395,7 +428,14 @@
                 <path d="M132.773 2.88672L129.887 -3.26633e-05L127 2.88672L129.887 5.77347L132.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77348 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM129.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L129.887 3.38672V2.88672Z"
                       fill="#CFAA65"/>
             </svg>
-            <span class="text-zinc-500 text-xs	 text-center mt-1">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+            <basis core="print" datamembername="db.faq-title">
+                <layout>@child</layout>
+                <face>
+                    <div class="text-zinc-500 text-xs	 text-center mt-1">
+                        <span>@text</span>
+                    </div>
+                </face>
+            </basis>
         </div>
         <div class="w-full my-8 grid  gap-8">
             <div class="w-full container p-faq flex flex-col gap-4">
@@ -430,7 +470,7 @@
                                     </div>
                                     <div class="w-full mt-5">
                                         <a class="rounded-[100px] text-white danaRegular text-base w-full px-[24px] h-12 flex items-center justify-center bg-primary-900"
-                                           href="">
+                                           href="/Frequently-asked-questions">
                                             مشاهده ویدیو
                                         </a>
                                     </div>
@@ -471,14 +511,17 @@
                                         <script type="text/template">
                                             <div>
                                                 <div class="flex gap-8">
-                                                    <div class="float-right"><input type="text" class="contactUsInput codeinputm"
+                                                    <div class="float-right"><input type="text"
+                                                                                    class="contactUsInput codeinputm"
                                                                                     name="captcha" maxlength="4"
-                                                                                    placeholder="کد امنیتی"/><input type="hidden"
-                                                                                                                    name="captchaid"
-                                                                                                                    value="@captcha@"/>
+                                                                                    placeholder="کد امنیتی"/><input
+                                                            type="hidden"
+                                                            name="captchaid"
+                                                            value="@captcha@"/>
                                                     </div>
                                                     <div class="flex items-center gap-6">
-                                                        <img draggable="false" src="/@captcha@" loading="lazy" height="55"
+                                                        <img draggable="false" src="/@captcha@" loading="lazy"
+                                                             height="55"
                                                              alt="captcha" class="rounded-[100px]"/>
                                                         <svg width="48" height="48" onclick="refreshCaptchaFaq()"
                                                              class="text-zinc-900 cursor-pointer">
@@ -522,7 +565,14 @@
                 <path d="M149.773 2.88672L146.887 -3.26633e-05L144 2.88672L146.887 5.77347L149.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77347 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM146.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L146.887 3.38672V2.88672Z"
                       fill="#CFAA65"/>
             </svg>
-            <span class="text-zinc-600 px-4 danaRegular mt-3 text-xs	 text-center">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+            <basis core="print" datamembername="db.popular-title">
+                <layout>@child</layout>
+                <face filter="catid=219183">
+                    <div class="text-zinc-600 px-4 danaRegular mt-3 text-xs text-center">
+                        <span>@urldescription</span>
+                    </div>
+                </face>
+            </basis>
             <div class="btn-tab w-full  flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2">
                 <a data-tab="cat_1" data-default="true" onclick="openTabPopular(event, 'محبوب ترین تورها')"
                    class="px-[17px] tab-btn_popular flex-shrink-0 transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">محبوبت
@@ -541,15 +591,16 @@
                     <basis core="print" datamembername="db.popular-destinations">
                         <layout>@child</layout>
                         <face>
-                            <div data-category="@prp_3088231" class="swiper-slide tab-content-popular">
-                                <a href="/@link" class="item-popular-destinations  shadow-custom-3 w-full relative bg-white h-[90px] rounded-xl p-[6px]">
-                                <div class="img overflow-hidden rounded-xl w-full h-full relative">
-                                    <div class="back-bg flex items-center justify-center w-full h-full absolute right-0 top-0 z-5 bg-[#0000007A]">
-                                        <h3 class="text-white danaBold text-xl">@title</h3>
+                            <div data-category="@prp_3088231" class="swiper-slide tab-content-popular h-[90px]">
+                                <a href="/@link"
+                                   class="item-popular-destinations  shadow-custom-3 w-full relative bg-white h-[90px] rounded-xl p-[6px]">
+                                    <div class="img overflow-hidden rounded-xl w-full h-full relative">
+                                        <div class="back-bg flex items-center justify-center w-full h-[90px] absolute right-0 top-0 z-5 bg-[#0000007A]">
+                                            <h3 class="text-white danaBold text-xl">@title</h3>
+                                        </div>
+                                        <img class="w-full h-[90px]" src="/@image" alt="">
                                     </div>
-                                    <img class="w-full h-full" src="/@image" alt="">
-                                </div>
-                            </a>
+                                </a>
                             </div>
                         </face>
                     </basis>
@@ -568,7 +619,14 @@
                 <path d="M149.773 2.88672L146.887 -3.26633e-05L144 2.88672L146.887 5.77347L149.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77347 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM146.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L146.887 3.38672V2.88672Z"
                       fill="#CFAA65"/>
             </svg>
-            <span class="text-zinc-600 danaRegular text-center mt-3 text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+            <basis core="print" datamembername="db.article-title">
+                <layout>@child</layout>
+                <face filter="catid=219222">
+                    <div class="text-zinc-600 danaRegular text-center mt-3 text-xs">
+                        <span>@urldescription</span>
+                    </div>
+                </face>
+            </basis>
         </div>
         <div class="p-list-blog px-4 w-full grid  mt-10 gap-5">
             <div class="start flex overflow-x-auto overflow-y-hidden py-3 px-4  gap-3 w-full">
@@ -615,53 +673,27 @@
                 <path d="M265.773 2.88672L262.887 -3.26633e-05L260 2.88672L262.887 5.77347L265.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77347 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM262.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L262.887 3.38672V2.88672Z"
                       fill="#CFAA65"/>
             </svg>
-            <span class="text-zinc-600 px-4 text-center danaRegular mt-3 text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
-            <div class="btn-tab w-full  flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2">
-                <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
-                   href="">محبوبت ترین</a>
-                <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
-                   href="">جدیدترین تورها</a>
-                <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
-                   href="">بهترین قیمت</a>
-                <a class="px-[12px] w-[37%] flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
-                   href="">بهترین قیمت</a>
+            <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
+                   nullvalue="219252">
+                <layout>@child</layout>
+                <face filter="catid=219252">
+                    <div class="text-zinc-600 px-4 text-center danaRegular mt-3 text-xs"><span>@urldescription</span>
+                    </div>
+                </face>
+            </basis>
+            <div class="btn-tab w-full flex items-center justify-center mt-7 gap-2">
+                <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
+                       nullvalue="219252">
+                    <layout>@child</layout>
+                    <face filter="catid<>219252">
+                        <a onclick="loadCategory('@catid', this)"
+                           class="px-[17px] transition-colors cursor-pointer flex-shrink-0  rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</a>
+                    </face>
+                </basis>
             </div>
+
         </div>
-        <div class="p-list-visa bg-white w-full px-4 mt-4">
-            <div class="swiper bg-white swiper-thumbnail-visa py-5">
-                <div class="swiper-wrapper">
-
-                    <basis core="list" datamembername="db.visa">
-                        <layout>@child</layout>
-                        <face>
-                            <div class="swiper-slide">
-                                <a href="/@link"
-                                   class="item-visa shadow-custom-1 w-full relative bg-color-2 h-[60px] rounded-[100px] px-[8px]">
-                                    <div class="img overflow-hidden h-[60px] rounded-[100px] w-full relative">
-                                        <div class="back-bg p-2 gap-3 flex items-center justify-between w-full h-full absolute right-0 top-0 z-5 bg-[#0000008A]">
-                                            <div class="flex items-center gap-2">
-                                                <img class="w-[46px] rounded-[50%]" src="/@image" alt="">
-                                                <div class="flex flex-col items-start">
-                                                    <span class="text-white text-xs	 danaRegular">ویزای</span>
-                                                    <h2 class="text-white text-base danaBold mt-1">@title</h2>
-                                                </div>
-                                            </div>
-                                            <div class="ml-[1rem]">
-                                                <svg width="14" height="26">
-                                                    <use href="/images/sprite-icons.svg#icon-arrow-left"></use>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <img class="w-full h-full" src="/images/img-ib.jpg" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                        </face>
-                    </basis>
-
-                </div>
-
-            </div>
+        <div class="p-list-visa bg-white w-full px-4 mt-4 result-id">
         </div>
         <div class="w-full flex items-center mt-3 justify-center">
             <div class="bg-slider p-2 rounded-[50px] flex items-center w-auto h-[60px] gap-2 bg-zinc-100">
@@ -670,7 +702,7 @@
                         <use href="/images/sprite-icons.svg#icon-next"></use>
                     </svg>
                 </button>
-                <a href=""
+                <a href="/visa"
                    class="btn-view h-10 text-white px-[24px] bg-primary-900  text-xs	 danaRegular flex items-center rounded-[50px]">
                     مشاهده همه
                 </a>
@@ -711,7 +743,8 @@
                                                   fill="#CFAA65"/>
                                         </svg>
                                     </div>
-                                    <a class="mt-4" href="">  <h5 class="danaBold ease text-zinc-900 text-base mt-4">@title</h5></a>
+                                    <a class="mt-4" href=""><h5 class="danaBold ease text-zinc-900 text-base mt-4">
+                                        @title</h5></a>
                                     <div class="w-full ease   detail-items flex-col">
                                         <div class="text-zinc-600 text-xs	 w-[240px] text-justify my-2">
                                             <p>@prp_7244</p>

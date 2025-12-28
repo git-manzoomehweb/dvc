@@ -4236,10 +4236,6 @@ body {
     border-top: 1px;
 }
 
-.title h2 {
-    font-size: 22px !important;
-}
-
 .border-secondary-900 {
     border-color: var(--secondary-900);
 }
@@ -4399,4 +4395,13 @@ body {
 
 .main-content{
     margin-top: 7rem !important;
+}
+.px-5 {
+    padding-inline: calc(var(--spacing) * 5);
+}
+.pr-5 {
+    padding-right: calc(var(--spacing) * 5);
+}
+.img-country{
+    border: 3px solid #fff;
 }

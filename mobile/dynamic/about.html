@@ -1,22 +1,17 @@
 <basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
-    <member name="info" type="view"></member>
+    <member name="info" type="view"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
-    </member>
 </basis>
-
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219234">
     <member name="service" type="list" link="service.bc" order="ord" propertyid="7244,7249,3088232"/>
-    </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
     <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
-    </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
-    <member name="faq-title" type="view"/>
-    </member>
+    <member name="faq-title" type="view" postsql="select * from [db.faq-title] where TypeID in(128)"/>
 </basis>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,8 +58,6 @@
                        </face>
                    </basis>
                </div>
-
-
             </div>
             <div class="flex flex-col  mt-8 gap-4 w-full">
                 <div class="box-about w-full  relative overflow-hidden rounded-xl">
@@ -337,7 +330,6 @@
         </div>
     </section>
 
-
     <!-- s-faq-->
     <section class="s-faq  py-2 px-4 mt-15 mb-24">
         <div class="title w-full flex flex-col items-center justify-center gap-[6px]">
@@ -348,9 +340,9 @@
             </svg>
             <basis core="print" datamembername="db.faq-title">
                 <layout>@child</layout>
-                <face filter="typeID=128">
-                    <div class="text-zinc-500 mt-1 text-center text-xs">
-                        <span >@text</span>
+                <face>
+                    <div class="text-zinc-500 text-xs	 text-center mt-1">
+                        <span>@text</span>
                     </div>
                 </face>
             </basis>
@@ -388,7 +380,7 @@
                                     </div>
                                     <div class="w-full mt-5">
                                         <a class="rounded-[100px] text-white danaRegular text-base w-full px-[24px] h-12 flex items-center justify-center bg-primary-900"
-                                           href="">
+                                           href="/Frequently-asked-questions">
                                             مشاهده ویدیو
                                         </a>
                                     </div>
@@ -429,14 +421,17 @@
                                         <script type="text/template">
                                             <div>
                                                 <div class="flex gap-8">
-                                                    <div class="float-right"><input type="text" class="contactUsInput codeinputm"
+                                                    <div class="float-right"><input type="text"
+                                                                                    class="contactUsInput codeinputm"
                                                                                     name="captcha" maxlength="4"
-                                                                                    placeholder="کد امنیتی"/><input type="hidden"
-                                                                                                                    name="captchaid"
-                                                                                                                    value="@captcha@"/>
+                                                                                    placeholder="کد امنیتی"/><input
+                                                            type="hidden"
+                                                            name="captchaid"
+                                                            value="@captcha@"/>
                                                     </div>
                                                     <div class="flex items-center gap-6">
-                                                        <img draggable="false" src="/@captcha@" loading="lazy" height="55"
+                                                        <img draggable="false" src="/@captcha@" loading="lazy"
+                                                             height="55"
                                                              alt="captcha" class="rounded-[100px]"/>
                                                         <svg width="48" height="48" onclick="refreshCaptchaFaq()"
                                                              class="text-zinc-900 cursor-pointer">
@@ -476,7 +471,7 @@
 
 
 
-<basis core="call" file="footer.bc" pageindex="[##cms.cms.pageindex##]"/>
+<basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]"/>
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>

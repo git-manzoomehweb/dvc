@@ -8,7 +8,7 @@
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
     </member>
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.Gid##]">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.gid##]">
     <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"
             postsql="SELECT * FROM [db.article] ORDER BY ord ASC LIMIT 3;"/>
     </member>
@@ -523,7 +523,7 @@
 </main>
 
 
-<basis core="call" file="footer.bc"/>
+<basis core="call" file="footer.inc"/>
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>

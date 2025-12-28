@@ -1,39 +1,21 @@
 <basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="[##cms.query.id##]">
     <member name="navigation" type="tree" request="navigationcat"/>
 </basis>
-
-<basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
-    <member name="scalar" type="scalar" typeid="150"/>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
+    <member name="article" type="list" link="article.bc" perpage="3" order="ord" propertyid="7244,7249,7248,3088243,7245"/>
 </basis>
-
-<basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
-    <member name="scalarEN" type="scalar" typeid="150"/>
-</basis>
-
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
-    <member name="p-under" type="view" propertyid=""/>
-</basis>
-
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
-    <member name="article" type="list" link="article.bc" perpage="3" order="ord" propertyid="7244,7249,7248,3088243"/>
-    </member>
-</basis>
-
 <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id##]">
-    <member name="view" type="view" propertyid="7244,7249,7246,7248,3088243"/>
-
-</basis><basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.nid##]">
-    <member name="last-news" type="list" propertyid="7244,7249,7246"/>
+    <member name="view" type="view" propertyid="7244,7249,7246,7248,3088243,7245"/>
 </basis>
-
 <basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
     <member name="comment" type="list" order="ord" request="listcomment"/>
 </basis>
 <basis core='dbsource' name='captcha' source='trust_login8'>
-    <member name='code' type='scalar' request='captcha'></member>
+    <member name='code' type='scalar' request='captcha'/>
 </basis>
-
-
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
+    <member name="article-title" type="tree" request="cat" parentid="219222" order="ord"/>
+</basis>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,8 +74,6 @@
                         <face filter="RowNumber=max(RowNumber) and title <> 'ریشه'">
                             <li class="text-secondary" itemprop="itemListElement" itemscope=""
                                 itemtype="https://schema.org/ListItem">
-                                <a href="" class="text-xs text-zinc-900">@title</a>
-                                <span class="text-zinc-900 text-xs">></span>
                                 <span class="text-xs text-secondary-950" itemprop="name">@title</span>
                                 <meta itemprop="position" content="@rownumber"/>
                             </li>
@@ -113,7 +93,7 @@
                             <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
                                 <a class="text-xs text-zinc-900" itemprop="item" href="@link" aria-label="@title">
                                     <span itemprop="name">@title</span>
-                                    <span class="text-zinc-900 text-xs	">></span>
+                                    <span class="text-zinc-900 text-xs">></span>
                                     <meta itemprop="position" content="@rownumber"/>
                                 </a></li>
                         </face>
@@ -263,7 +243,14 @@
                 <path d="M149.773 2.88672L146.887 -3.26633e-05L144 2.88672L146.887 5.77347L149.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77347 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM146.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L146.887 3.38672V2.88672Z"
                       fill="#CFAA65"/>
             </svg>
-            <span class="text-zinc-600 danaRegular text-center mt-3 text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+            <basis core="print" datamembername="db.article-title">
+                <layout>@child</layout>
+                <face filter="catid=219222">
+                    <div class="text-zinc-600 danaRegular text-center mt-3 text-xs">
+                        <span>@urldescription</span>
+                    </div>
+                </face>
+            </basis>
         </div>
         <div class="p-list-blog px-4 w-full grid  mt-10 gap-5">
             <div class="start flex overflow-x-auto overflow-y-hidden py-3 px-4  gap-3 w-full">
@@ -308,7 +295,7 @@
 
 
 
-<basis core="call" file="footer.bc" pageindex="[##cms.cms.pageindex##]"/>
+<basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]"/>
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>

@@ -2217,13 +2217,6 @@ input, button, a {
     transform: rotate(180deg) scale(1.1);
 }
 
-.popular-destinations .swiper-slide {
-    text-align: center;
-    height: calc((100% - 30px) / 2) !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .popular-destinations {
     padding-block: 2rem;
@@ -2463,7 +2456,7 @@ input, button, a {
 }
 
 .tab-content.active, .tab-content-hotel.active, .tab-content-popular.active {
-    display: block;
+    display: flex;
 }
 
 .images-about {
@@ -2492,9 +2485,6 @@ input {
     padding-inline: 20px;
 }
 
-.swiper-slide-tabs {
-    width: 329px !important;
-}
 .border-secondary-900 {
     border-color: var(--secondary-900);
 }
@@ -3273,4 +3263,28 @@ input {
     background: white;
     color: var(--primary-900);
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.item-popular-destinations img{
+    height: 90px !important;
+}
+.active-visa {
+    color: var(--secondary-950) !important;
+    background: var(--secondary-200) !important;
+}
+.fetch-loader {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e5e7eb;
+    border-top-color: #d97706;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+.editor-hotel{
+    gap: 8px;
 }

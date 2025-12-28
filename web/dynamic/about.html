@@ -1,25 +1,17 @@
 <basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
-    <member name="info" type="view"></member>
+    <member name="info" type="view"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
-    </member>
 </basis>
-
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219234">
     <member name="service" type="list" link="service.bc" order="ord" propertyid="7244,7249,3088232"/>
-    </member>
-</basis>
-<basis core="dbsource" source="basiscore" name="db" mid="10" lid="1">
-    <member name="offices" type="list" propertyid="8142"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
     <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
-    </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
-    <member name="faq-title" type="view"/>
-    </member>
+    <member name="faq-title" type="view" postsql="select * from [db.faq-title] where TypeID in(128)"/>
 </basis>
 <!DOCTYPE html>
 <html lang="en">
@@ -325,8 +317,8 @@
                 </svg>
                 <basis core="print" datamembername="db.faq-title">
                     <layout>@child</layout>
-                    <face filter="typeID=128">
-                        <div class="text-zinc-500 mt-1 text-xs">
+                    <face>
+                        <div class="text-zinc-600 mt-3 text-xs">
                             <span>@text</span>
                         </div>
                     </face>
@@ -366,7 +358,7 @@
                                         </p>
                                         <div class="w-full mt-5">
                                             <a class="rounded-[100px] text-white danaRegular text-base w-[180px] px-[24px] h-12 flex items-center justify-center btn-primary"
-                                               href="">
+                                               href="/Frequently-asked-questions">
                                                 مشاهده ویدیو
                                             </a>
                                         </div>
@@ -450,14 +442,13 @@
 
                 </div>
             </div>
-
         </div>
     </section>
 </main>
 
 
 <!--footer-->
-<basis core="call" file="footer.bc"/>
+<basis core="call" file="footer.inc"/>
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>

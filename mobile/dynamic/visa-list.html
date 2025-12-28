@@ -1,17 +1,16 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
-    <member name="visa" perpage="2" type="list" link="visa.bc" pageno="[##cms.query.pagenum|(1)##]" propertyid="3088232" order="ord"/>
-    </member>
+    <member name="visa" perpage="1" type="list" link="visa.bc" pageno="[##cms.query.pagenum|(1)##]" propertyid="3088232" order="ord"/>
     <member name="paging" type="list" request="paging" count="3" parentname="visa" />
 </basis>
-
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219252">
+    <member name="visa" perpage="1" type="list" link="visa.bc" pageno="[##cms.query.pagenum|(1)##]" propertyid="3088232" order="ord"/>
+</basis>
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
     <member name="scalar" type="scalar" typeid="150" />
 </basis>
-
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
     <member name="scalarEN" type="scalar" typeid="150" />
 </basis>
-
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
     <member name="p-under" type="list"  propertyid="" />
 </basis>
@@ -19,7 +18,10 @@
     <member name="comment" type="list" order="ord" request="listcomment"/>
 </basis>
 <basis core='dbsource' name='captcha' source='trust_login8'>
-    <member name='code' type='scalar' request='captcha'></member>
+    <member name='code' type='scalar' request='captcha'/>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
+    <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
 </basis>
 
 
@@ -71,9 +73,13 @@
                         <h1 class="text-zinc-900 text-base danaBold relative bottom-3">@column1</h1>
                     </face>
                 </basis>
-                <p class="text-zinc-500 px-4 text-xs	 text-center danaRegular relative bottom-1">متنی آزمایشی و بی‌معنی در صنعت
-                    چاپ، صفحه‌آرایی و طراحی گرافیک
-                    گفته می‌شود. طراح گرافیک از این متن </p>
+                <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
+                       nullvalue="219252">
+                    <layout>@child</layout>
+                    <face filter="catid=219252">
+                        <div class="text-zinc-500 px-4 text-xs	 text-center danaRegular relative bottom-1"><span>@urldescription</span></div>
+                    </face>
+                </basis>
                 <form method="get" action="/search-content.bc" class="box-search px-4 w-full flex flex-col items-center gap-2 mt-5">
                     <input autocomplete="on" required class="w-full bg-white shadow-custom-1 h-[55px] rounded-[100px] px-[24px]" type="text"
                            placeholder="جستجوی ">
@@ -81,16 +87,17 @@
                         جستجو
                     </button>
                 </form>
-                <div class="btn-tab w-full overflow-x-scroll overflow-y-hidden py-2 flex items-center justify-start pr-4 mt-5 gap-2">
-                    <a class="px-[17px] w-[37%] flex-shrink-0 text-center transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                       href="">ویزای توریستی</a>
-                    <a class="px-[17px] w-[37%] flex-shrink-0 text-center transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                       href="">اقامت</a>
-                    <a class="px-[17px] w-[37%] flex-shrink-0 text-center transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                       href="">تحصیلی</a>
-                    <a class="px-[17px] w-[37%] flex-shrink-0 text-center transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                       href="">فرهنگی</a>
+                <div class="btn-tab w-full flex items-center justify-center mt-7 gap-2">
+                    <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
+                           nullvalue="219252">
+                        <layout>@child</layout>
+                        <face filter="catid<>219252">
+                            <a onclick="loadCategory('@catid', this)"
+                               class="px-[17px] transition-colors flex-shrink-0 cursor-pointer  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</a>
+                        </face>
+                    </basis>
                 </div>
+
                 <div class="p-list-visa px-4 grid  gap-4 bg-white w-full mt-12">
                     <basis core="list" datamembername="db.visa">
                         <layout>@child</layout>
@@ -102,7 +109,7 @@
                                             <img class="w-[60px] rounded-[50%] pr-[2px]" src="/@image" alt="">
                                             <div class="flex flex-col items-start">
                                                 <span class="text-white text-xs	 danaRegular">ویزای</span>
-                                                <h2 class="text-white text-2xl danaBold mt-1">@title</h2>
+                                                <h2 class="text-white text-xl danaBold mt-1">@title</h2>
                                             </div>
                                         </div>
                                         <div class="ml-[2rem]">
@@ -150,7 +157,7 @@
                                 </face>
                                 <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
                                     <li
-                                            class="flex items-center justify-center w-12 h-12 p-2 rounded-lg transition-all duration-300 bg-primary-900 page-no">
+                                            class="flex items-center justify-center w-12 h-12 p-2 rounded-[50%] transition-all duration-300 bg-primary-900 page-no">
                                         <a class="flex items-center justify-center w-full h-full text-white cursor-pointer page-number bg-primary-900"
                                            href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
                                     </li>
@@ -209,7 +216,7 @@
                     </layout>
                     <face>
                         <div class="detail-tour w-full flex flex-col gap-2 items-start pt-4">
-                            <h2 class="text-zinc-900 danaBold text-2xl mt-1">@title</h2>
+                            <h2 class="text-zinc-900 danaBold text-xl mt-1">@title</h2>
                             <img class="w-full rounded-xl" src="/@image" alt="">
                         </div>
                     </face>
@@ -358,7 +365,7 @@
 
 
 
-<basis core="call" file="footer.bc" pageindex="[##cms.cms.pageindex##]"/>
+<basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]"/>
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>

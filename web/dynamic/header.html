@@ -18,7 +18,7 @@
         <div class="p-header flex items-center justify-between">
             <div class="social-media flex items-center gap-1">
                 <basis core="call" file="authentication/modal" lid="1"></basis>
-                <a class="item-social" href="">
+                <a rel="noopener" class="item-social" href="/">
                     <svg width="48" height="48">
                         <use href="/images/sprite-icons.svg#icon-tel-header"></use>
                     </svg>
@@ -26,7 +26,7 @@
                 <basis core="list" datamembername="db.info">
                     <layout>@child</layout>
                     <face filter="TypeID in('245') and text in('اینستاگرام')">
-                        <a class="item-social" href="/@largetext">
+                        <a rel="noopener" class="item-social" href="@largetext">
                             <svg width="48" height="48">
                                 <use href="/images/sprite-icons.svg#icon-insta-header"></use>
                             </svg>
@@ -37,12 +37,12 @@
             <div class="menu">
                 <ul class="flex items-center">
                     <li class="border-l-head px-[1.5rem] text-zinc-900 h-10 flex items-center"><a
-                            href="">خانه</a></li>
+                            href="/">خانه</a></li>
                     <basis core="tree" datamembername="db.tours-header" idcol="catid" parentidcol="parentid"
                            nullvalue="219094">
                         <layout>
                             <li class="border-l-head group-links relative px-[1.5rem] px-5 h-10 flex items-center">
-                                <a href="@link" class="text-zinc-900">تورها </a>
+                                <a href="/tours" class="text-zinc-900">تورها </a>
                                 <svg class="mr-2" width="24" height="24">
                                     <use href="/images/sprite-icons.svg#icon-arrow-down"></use>
                                 </svg>
@@ -156,11 +156,11 @@
                         </face>
 
                     </basis>
-                    <li class="border-l-head px-[1.5rem] text-zinc-900 h-10 flex items-center"><a href="">هتل</a></li>
+                    <li class="border-l-head px-[1.5rem] text-zinc-900 h-10 flex items-center"><a href="/hotels">هتل</a></li>
                     <basis core="tree" datamembername="db.visa-header" idcol="catid" parentidcol="parentid" nullvalue="219252">
                         <layout>
                             <li class="border-l-head group-links relative px-[1.5rem] px-5 h-10 flex items-center">
-                                <span class="text-zinc-900">ویزاها  </span>
+                                <a href="/visa" class="text-zinc-900">ویزاها  </a>
                                 <svg class="mr-2" width="24" height="24">
                                     <use href="/images/sprite-icons.svg#icon-arrow-down"></use>
                                 </svg>
@@ -278,7 +278,7 @@
                            nullvalue="219097">
                         <layout>
                             <li class="group-links relative px-[1.5rem] px-5 h-10 flex items-center">
-                                <span class="text-zinc-900">وبلاگ ها  </span>
+                                <a href="/Tourism-articles" class="text-zinc-900">وبلاگ ها  </a>
                                 <svg class="mr-2" width="24" height="24">
                                     <use href="/images/sprite-icons.svg#icon-arrow-down"></use>
                                 </svg>
@@ -392,7 +392,6 @@
                         </face>
 
                     </basis>
-
                 </ul>
             </div>
             <a href="/default.bc" aria-label="logo" class="logo">

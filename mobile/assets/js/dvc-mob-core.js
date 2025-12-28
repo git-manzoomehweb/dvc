@@ -142,29 +142,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-
-// swiper-thumbnail-tour
-var swiper = new Swiper(".swiper-thumbnail-tour", {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    navigation: {
-        nextEl: ".swiper-button-next-tour",
-        prevEl: ".swiper-button-prev-tour",
-    },
-});
-
-
-// swiper-thumbnail-hotel
-var swiper = new Swiper(".swiper-thumbnail-hotel", {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    navigation: {
-        nextEl: ".swiper-button-next-hotel",
-        prevEl: ".swiper-button-prev-hotel",
-    },
-});
-
 // swiper-thumbnail-visa
 var swiper = new Swiper(".swiper-thumbnail-visa", {
     slidesPerView: 1.6,
@@ -188,15 +165,6 @@ var swiper = new Swiper(".swiper-img-visa", {
     },
 });
 
-
-var swiper = new Swiper(".popular-destinations", {
-    slidesPerView: 1.4,
-    grid: {
-        fill: 'row',
-        rows: 2
-    },
-    spaceBetween: 12,
-});
 
 // swiper-comment-user
 var swiper = new Swiper(".swiper-comment-user", {
@@ -227,13 +195,24 @@ var swiper = new Swiper(".swiper-comment-user", {
 });
 
 
+//---------------slider-tour
+let swiperTour;
+function initSwiperTour() {
+    if (swiperTour) {
+        swiperTour.destroy(true, true);
+    }
 
-
-
-
-
-
-
+    swiperTour = new Swiper(".swiper-thumbnail-tour", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: ".swiper-button-next-tour",
+            prevEl: ".swiper-button-prev-tour",
+        },
+        observer: true,
+        observeParents: true,
+    });
+}
 function openTab(evt, tabName) {
     const allBtns = document.querySelectorAll(".btn-tab .tab-btn");
     allBtns.forEach(btn => btn.classList.remove("active"));
@@ -254,8 +233,31 @@ function openTab(evt, tabName) {
         `.tab-content[data-category="${tabName}"]`
     );
     matchedContents.forEach(item => item.classList.add("active"));
+    setTimeout(() => {
+        initSwiperTour();
+    }, 50);
 }
+//---------------slider-tour
 
+
+//---------------slider-hotel
+let swiperHotel;
+function initSwiperHotel() {
+    if (swiperHotel) {
+        swiperHotel.destroy(true, true);
+    }
+
+    swiperHotel = new Swiper(".swiper-thumbnail-hotel", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: ".swiper-button-next-hotel",
+            prevEl: ".swiper-button-prev-hotel",
+        },
+        observer: true,
+        observeParents: true,
+    });
+}
 function openTabHotel(evt, tabName) {
     const allBtnsHotel = document.querySelectorAll(".btn-tab .tab-btn_hotel");
     allBtnsHotel.forEach(btn => btn.classList.remove("active"));
@@ -276,29 +278,49 @@ function openTabHotel(evt, tabName) {
         `.tab-content-hotel[data-category="${tabName}"]`
     );
     matchedContents.forEach(item => item.classList.add("active"));
+    setTimeout(() => {
+        initSwiperHotel();
+    }, 50);
 }
+//---------------slider-hotel
 
-function openTabPopular(evt, tabName) {
-    const allBtnsPopular = document.querySelectorAll(".btn-tab .tab-btn_popular");
-    allBtnsPopular.forEach(btn => btn.classList.remove("active"));
-    const contents = document.querySelectorAll(".tab-content-popular");
-    contents.forEach(c => c.classList.remove("active"));
-    const defaultTab = document.querySelector(".btn-tab[data-default='true']");
-    if (defaultTab) {
-        const btn = defaultTab.querySelector(".tab-btn_popular");
-        if (btn) {
-            btn.click();
-        }
+
+
+//---------------popular-tour
+let swiperPopular;
+function initSwiper() {
+    if (swiperPopular) {
+        swiperPopular.destroy(true, true);
     }
-    const clickedBtn = evt.target.closest(".tab-btn_popular");
-    if (clickedBtn) {
-        clickedBtn.classList.add("active");
-    }
-    const matchedContents = document.querySelectorAll(
-        `.tab-content-popular[data-category="${tabName}"]`
-    );
-    matchedContents.forEach(item => item.classList.add("active"));
+
+    swiperPopular = new Swiper(".popular-destinations", {
+        slidesPerView: 1.4,
+        spaceBetween: 12,
+        observer: true,
+        observeParents: true,
+    });
 }
+function openTabPopular(evt, tabName) {
+
+    document.querySelectorAll(".tab-btn_popular")
+        .forEach(btn => btn.classList.remove("active"));
+
+    document.querySelectorAll(".tab-content-popular")
+        .forEach(c => c.classList.remove("active"));
+
+    evt.target.closest(".tab-btn_popular").classList.add("active");
+
+    document
+        .querySelectorAll(`.tab-content-popular[data-category="${tabName}"]`)
+        .forEach(el => el.classList.add("active"));
+
+    setTimeout(() => {
+        initSwiper();
+    }, 50);
+}
+//----------------popular-tour
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const defaultBtn = document.querySelector(".tab-btn[data-default='true']");
@@ -427,3 +449,107 @@ async function RenderFormFaq() {
     inputElementPhone.setAttribute('placeholder', 'شماره تماس')
     // inputElementUsername.setAttribute('placeholder', 'نام و نام خانوادگی')
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const fetchContentHeader = document.querySelector('.result-id')
+    const contentCache = new Map()
+    let swiperInstance = null
+
+    // همه تب‌ها
+    const tabs = document.querySelectorAll('.btn-tab a')
+
+    // ---------- Loader ----------
+    function showLoader() {
+        fetchContentHeader.innerHTML =
+            '<div class="flex justify-center mt-20"><span class="fetch-loader"></span></div>'
+    }
+
+    // ---------- Active Tab ----------
+    function setActiveTab(activeTab) {
+        tabs.forEach(tab => {
+            tab.classList.remove('active-visa')
+            tab.classList.add('bg-zinc-100', 'text-zinc-600')
+        })
+
+        activeTab.classList.remove('bg-zinc-100', 'text-zinc-600')
+        activeTab.classList.add('active-visa')
+    }
+
+    // ---------- Load Category ----------
+    async function loadCategory(dataId, tabEl = null) {
+        if (!dataId) return
+
+        if (tabEl) setActiveTab(tabEl)
+
+        const cacheKey = dataId
+
+        showLoader()
+
+        if (contentCache.has(cacheKey)) {
+            fetchContentHeader.innerHTML = contentCache.get(cacheKey)
+            initSwiperSafe()
+            return
+        }
+
+        try {
+            const response = await fetch(`/load-items-test.bc?catid=${dataId}`)
+            if (!response.ok) throw new Error(response.status)
+
+            const data = await response.text()
+            contentCache.set(cacheKey, data)
+            fetchContentHeader.innerHTML = data
+
+            initSwiperSafe()
+
+        } catch (error) {
+            fetchContentHeader.innerHTML =
+                `<p class="text-red-500">خطا در بارگذاری محتوا</p>`
+        }
+    }
+
+    // ---------- Swiper ----------
+    function initSwiperSafe() {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                initSwiperVisa()
+            })
+        })
+    }
+
+    function initSwiperVisa() {
+        const swiperEl = document.querySelector('.swiper-thumbnail-visa')
+        if (!swiperEl) return
+
+        if (swiperInstance) {
+            swiperInstance.destroy(true, true)
+            swiperInstance = null
+        }
+
+        swiperInstance = new Swiper(swiperEl, {
+            rtl: true,
+            observer: true,
+            observeParents: true,
+            watchSlidesProgress: true,
+            slidesPerView: 1.5,
+            spaceBetween: 20,
+            loop: false,
+            navigation: {
+                nextEl: swiperEl.querySelector('.swiper-button-next-visa'),
+                prevEl: swiperEl.querySelector('.swiper-button-prev-visa'),
+            },
+            breakpoints: {
+                1024: { slidesPerView: 3.5 },
+                768: { slidesPerView: 2.5 },
+                480: { slidesPerView: 1.5 },
+            }
+        })
+    }
+
+    // ---------- Init First Tab ----------
+    if (tabs.length) {
+        tabs[0].click()
+    }
+
+    window.loadCategory = loadCategory
+})

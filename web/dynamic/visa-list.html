@@ -1,29 +1,27 @@
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219252">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
     <member name="visa" perpage="1" type="list" link="visa.bc" pageno="[##cms.query.pagenum|(1)##]" propertyid="3088232" order="ord"/>
-    </member>
     <member name="paging" type="list" request="paging" count="3" parentname="visa" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219252">
     <member name="visa" perpage="1" type="list" link="visa.bc" pageno="[##cms.query.pagenum|(1)##]" propertyid="3088232" order="ord"/>
-    </member>
 </basis>
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
     <member name="scalar" type="scalar" typeid="150" />
 </basis>
-
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
     <member name="scalarEN" type="scalar" typeid="150" />
 </basis>
-
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
     <member name="p-under" type="list"  propertyid="" />
 </basis>
-
 <basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
     <member name="comment" type="list" order="ord" request="listcomment"/>
 </basis>
 <basis core='dbsource' name='captcha' source='trust_login8'>
-    <member name='code' type='scalar' request='captcha'></member>
+    <member name='code' type='scalar' request='captcha'/>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
+    <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
 </basis>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,26 +73,31 @@
 
                         </face>
                     </basis>
-                    <p class="text-zinc-500 text-xs	 danaRegular relative bottom-1">متنی آزمایشی و بی‌معنی در صنعت
-                        چاپ، صفحه‌آرایی و طراحی گرافیک
-                        گفته می‌شود. طراح گرافیک از این متن </p>
+                    <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
+                           nullvalue="219252">
+                        <layout>@child</layout>
+                        <face filter="catid=219252">
+                            <div class="text-zinc-600 danaRegular mt-3 text-xs	"><span>@urldescription</span></div>
+                        </face>
+                    </basis>
                     <form method="get" action="/search-content.bc" class="box-search w-[55%] flex items-center gap-2 mt-5">
                         <input class="w-[80%] bg-white shadow-custom-1 h-[55px] rounded-[100px] px-[24px]" type="text"
-                               placeholder="جستجوی ">
-                        <button type="submit" autocomplete="on" required class="h-[55px] w-[20%] btn-primary rounded-[100px] text-white">
+                               placeholder="جستجوی " autocomplete="on" required>
+                        <button type="submit"  class="h-[55px] w-[20%] btn-primary rounded-[100px] text-white">
                             جستجو
                         </button>
                     </form>
-                    <div class="btn-tab w-full flex items-center justify-center mt-5 gap-2">
-                        <a class="px-[17px] transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                           href="">ویزای توریستی</a>
-                        <a class="px-[17px] transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                           href="">اقامت</a>
-                        <a class="px-[17px] transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                           href="">تحصیلی</a>
-                        <a class="px-[17px] transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm	"
-                           href="">فرهنگی</a>
+                    <div class="btn-tab w-full flex items-center justify-center mt-7 gap-2">
+                        <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
+                               nullvalue="219252">
+                            <layout>@child</layout>
+                            <face filter="catid<>219252">
+                                <a onclick="loadCategory('@catid', this)"
+                                   class="px-[17px] transition-colors cursor-pointer  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</a>
+                            </face>
+                        </basis>
                     </div>
+
                     <div class="p-list-visa grid grid-cols-5 gap-x-5 gap-y-11 bg-white w-full mt-12">
                         <basis core="list" datamembername="db.visa">
                             <layout>@child</layout>
@@ -154,7 +157,7 @@
                                     </face>
                                     <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
                                         <li
-                                                class="flex items-center justify-center w-12 h-12 p-2 rounded-lg transition-all duration-300 bg-primary-900 page-no">
+                                                class="flex items-center justify-center w-12 h-12 p-2 rounded-[50%] transition-all duration-300 bg-primary-900 page-no">
                                             <a class="flex items-center justify-center w-full h-full text-white cursor-pointer page-number bg-primary-900"
                                                href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
                                         </li>
@@ -369,7 +372,7 @@
 
 
 <!--footer-->
-<basis core="call" file="footer.bc"/>
+<basis core="call" file="footer.inc"/>
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>

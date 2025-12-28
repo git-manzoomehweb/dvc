@@ -693,7 +693,9 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .h-\[80px\] {
                         height: 80px;
                     }
-
+                    .h-\[75px\] {
+                        height: 85px;
+                    }
                     .h-\[85px\] {
                         height: 85px;
                     }
@@ -2777,10 +2779,6 @@ header .item-social:hover {
 
 .swiper-thumbnail-hotel {
     padding: 2rem 12px !important;
-}
-
-.swiper-slide-tabs {
-    width: 413px !important;
 }
 
 .btn-tab .active {

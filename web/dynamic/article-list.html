@@ -1,37 +1,32 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219094">
     <member name="tours" type="list" link="tour.bc" propertyid="8181,3088230,8076,8077,10000504,3088231"
             order="ord" />
-    </member>
 </basis>
-
-
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219234">
-    <member name="service" type="list" link="service.bc" order="ord" propertyid="7244,7249" />
-    </member>
-</basis>
-
-
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
     <member name="scalar" type="scalar" typeid="150" />
 </basis>
-
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
     <member name="scalarEN" type="scalar"  />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
     <member name="p-under" type="view" propertyid="" />
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid]">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
     <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"
             pageno="[##cms.query.pagenum|(1)##]"  perpage="1" />
-    </member>
     <member name="paging" type="list" request="paging" count="3" parentname="article" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid|(0)##]">
     <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid|(0)##]" />
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.nid##]">
-    <member name="lastNews" type="view" />
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
+    <member name="article-title" type="tree" request="cat" parentid="219222" order="ord"/>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219234">
+    <member name="service" type="list" link="service.bc" order="ord" propertyid="7244,7249"/>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
+    <member name="service-title" type="tree" link="visa.bc" request="cat" parentid="219234" order="ord"/>
 </basis>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,38 +82,25 @@
                             <h1 class="text-zinc-900 text-4xl danaBold relative bottom-3">@column1</h1>
                         </face>
                     </basis>
-                    <p class="text-zinc-500 text-xs	 danaRegular relative bottom-1">متنی آزمایشی و بی‌معنی در صنعت
-                        چاپ، صفحه‌آرایی و طراحی گرافیک
-                        گفته می‌شود. طراح گرافیک از این متن </p>
+                    <basis core="print" datamembername="db.article-title">
+                        <layout>@child</layout>
+                        <face filter="catid=219222">
+                            <div class="text-zinc-500 text-xs danaRegular relative bottom-1">
+                                <p>@urldescription</p>
+                            </div>
+                        </face>
+                    </basis>
                     <ul class="breadcrumb flex items-center gap-2 mt-2">
+                        <li class="text-secondary" itemprop="itemListElement">
+                            <a href="/"><span class="text-xs text-zinc-900" itemprop="name">صفحه اصلی</span></a>
+                        </li>
                         <basis core="print" datamembername="db.navigation">
-                            <face filter="RowNumber=max(RowNumber) and parentcatid<>218577">
+                            <face filter="RowNumber=max(RowNumber) and parentcatid<>218576">
                                 <li class="text-secondary" itemprop="itemListElement" itemscope=""
                                     itemtype="https://schema.org/ListItem">
-                                    <a href="" class="text-xs text-zinc-900">صفحه اصلی</a>
                                     <span class="text-zinc-900 text-xs	">></span>
                                     <span class="text-xs text-secondary-950" itemprop="name">@title</span>
-                                    <meta itemprop="position" content="@rownumber" />
-                                </li>
-                            </face>
-                            <face filter="link is null and parentcatid<>218577">
-                                <li class="" itemprop="itemListElement" itemscope=""
-                                    itemtype="https://schema.org/ListItem">
-                                    <a class="text-xs" itemprop="item" href="/tour-list.bc?catid=@parentcatid"
-                                       aria-label="@title">
-                                        <span class="text-zinc-900 text-xs">></span>
-                                        <span itemprop="name">@title</span>
-                                        <meta itemprop="position" content="@rownumber" />
-                                    </a>
-                                </li>
-                            </face>
-                            <face filter="parentcatid<>218577">
-                                <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                                    <a class="text-xs" itemprop="item" href="@link" aria-label="@title">
-                                        <span class="text-zinc-900 text-xs	">></span>
-                                        <span itemprop="name">@title</span>
-                                        <meta itemprop="position" content="@rownumber" />
-                                    </a>
+                                    <meta itemprop="position" content="@rownumber"/>
                                 </li>
                             </face>
                         </basis>
@@ -153,15 +135,13 @@
                         و طراحی گرافیک گفته می‌شود. طراح</span>
             </div>
             <div class="w-full box-latest-news h-[380px] mt-6 rounded-3xl p-5">
-                <basis core="list" datamembername="db.article">
+                <basis core="print" datamembername="db.article">
                     <layout>@child</layout>
                     <face filter="ord=1">
-                        <div
-                                class="thumbnail-blog relative h-[340px] w-[45%] flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
+                        <div class="thumbnail-blog relative h-[340px] w-[45%] flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
                             <h2><a class="text-zinc-900 danaBold text-zinc-900 text-base" href="@link">@title</a>
                             </h2>
-                            <p
-                                    class="leading-[21px] relative z-10 text-xs	h-[165px] text-justify danaRegular text-zinc-700 mt-3">
+                            <p class="leading-[21px] relative z-10 text-xs	h-[165px] text-justify danaRegular text-zinc-700 mt-3">
                                 @prp_7244
                             </p>
                             <div class="w-full flex items-center justify-start gap-2 mt-3">
@@ -199,21 +179,25 @@
                 <svg width="214" height="6">
                     <use href="/images/sprite-icons.svg#line-title-blog"></use>
                 </svg>
-                <span class="text-zinc-600 danaRegular mt-3 text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی
-                        و طراحی گرافیک گفته می‌شود. طراح</span>
+                <basis core="print" datamembername="db.article-title">
+                    <layout>@child</layout>
+                    <face filter="catid=219222">
+                        <div class="text-zinc-500 text-xs danaRegular relative bottom-1">
+                            <p>@urldescription</p>
+                        </div>
+                    </face>
+                </basis>
             </div>
             <div class="p-list-blog w-full  mt-10 gap-5">
                 <div class="list grid grid-cols-3 gap-x-5  gap-y-7 w-full">
                     <basis core="list" datamembername="db.article">
                         <layout>@child</layout>
                         <face>
-                            <div
-                                    class="thumbnail-blog relative w-full flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
+                            <div class="thumbnail-blog relative w-full flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
                                 <h2><a class="text-zinc-900 danaBold text-zinc-900 text-base"
                                        href="@link">@title</a>
                                 </h2>
-                                <p
-                                        class="leading-[21px] relative z-10 text-xs	h-[165px] text-justify danaRegular text-zinc-700 mt-3">
+                                <p class="leading-[21px] relative z-10 text-xs	h-[165px] text-justify danaRegular text-zinc-700 mt-3">
                                     @prp_7244
                                 </p>
                                 <div class="w-full flex items-center justify-start gap-2 mt-3">
@@ -243,8 +227,7 @@
                 </div>
                 <div id="paging">
                     <ul class="p-pagination w-full my-10 flex justify-center" id="wibpaging">
-                        <div
-                                class="pagination px-[8px] rounded-[50px] w-[290px] h-[64px] direction-ltr flex items-center justify-between bg-zinc-100">
+                        <div class="pagination px-[8px] rounded-[50px] w-[290px] h-[64px] direction-ltr flex items-center justify-between bg-zinc-100">
                             <basis core="print" datamembername="db.paging">
                                 <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">
                                     <li class="prev-page">
@@ -275,7 +258,7 @@
                                 </face>
                                 <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
                                     <li
-                                            class="flex items-center justify-center w-12 h-12 p-2 rounded-lg transition-all duration-300 bg-primary-900 page-no">
+                                            class="flex items-center justify-center w-12 h-12 p-2 rounded-[50%] transition-all duration-300 bg-primary-900 page-no">
                                         <a class="flex items-center justify-center w-full h-full text-white cursor-pointer page-number bg-primary-900"
                                            href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
                                     </li>
@@ -283,7 +266,7 @@
                                 <face
                                         filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'='') ">
                                     <li
-                                            class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
+                                            class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-[50%] bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
                                         <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
                                            href="/[##cms.cms.link_page##]&pagenum=@page">@page</a>
                                     </li>
@@ -291,7 +274,7 @@
                                 <face
                                         filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') ">
                                     <li
-                                            class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
+                                            class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-[50%] bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
                                         <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
                                            href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
                                     </li>
@@ -324,25 +307,32 @@
         </div>
     </section>
     <!-- s-vacation-tours-->
-    <section class="s-vacation-tours  py-2 mt-25">
+    <section class="s-vacation-tours  py-2 mt-25 mb-24">
         <div class="c-container">
             <div class="title w-full flex flex-col items-center justify-center gap-[12px]">
                 <h2 class="danaBold text-4xl">تور های تعطیلات رویایی</h2>
                 <svg width="266" height="6">
                     <use href="/images/sprite-icons.svg#icon-line-title-tour"></use>
                 </svg>
-                <span class="text-zinc-600 mt-3 text-xs">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی
-                        گرافیک گفته می‌شود. طراح</span>
+                <basis core="print" datamembername="db.tours-header">
+                    <layout>@child</layout>
+
+                    <div>
+                        <face filter="RowNumber=1">
+                            <span class="text-zinc-600 mt-3 text-xs">@urldescription</span>
+                        </face>
+                    </div>
+                </basis>
                 <div class="btn-tab w-full flex items-center justify-center my-5 gap-2">
                     <a data-tab="cat_1" data-default="true" onclick="openTab(event, 'محبوب ترین تورها')"
                        class="px-[17px] tab-btn  transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">محبوبت
                         ترین</a>
                     <a data-tab="cat_1" onclick="openTab(event, 'جدیدترین')"
-                       class="px-[17px] tab-btn transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">جدیدترین
-                        تورها</a>
+                       class="px-[17px] tab-btn transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
+                    >جدیدترین تورها</a>
                     <a data-tab="cat_1" onclick="openTab(event, 'مهیج ترین')"
-                       class="px-[17px] tab-btn transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">مهیج
-                        ترین</a>
+                       class="px-[17px] tab-btn transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
+                    >مهیج ترین</a>
                 </div>
             </div>
             <div class="swiper swiper-thumbnail-tour py-5">
@@ -351,15 +341,17 @@
                         <layout>@child</layout>
                         <face>
                             <div data-category="@prp_3088231" class="swiper-slide swiper-slide-tabs tab-content">
-                                <div class="thumbnail-tour  w-full rounded-3xl p-3 flex flex-col items-center">
+                                <div class="thumbnail-tour w-full rounded-3xl p-3 flex flex-col items-center">
                                     <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
-                                        <img class="w-full h-full " src="/@image" draggable="false" alt="/@title">
+                                        <a class="w-full h-[222px] relative" href="/@link" aria-label="@title">
+                                            <img class="w-full h-full" src="/@image" draggable="false" alt="tour">
+                                        </a>
                                         <button class="absolute right-3 top-3 z-10">
                                             <img width="36" src="/images/favorite.png" alt="">
                                         </button>
                                     </div>
                                     <div class="w-full flex flex-col gap-1 items-start mt-6">
-                                        <h3><a class="font-bold danaBold text-lg" href="@link">@title</a></h3>
+                                        <h3><a class="font-bold danaBold text-lg" href="/@link">@title</a></h3>
                                         <span class="text-primary-700 text-xs">@prp_3088230</span>
                                     </div>
                                     <div class="w-full mt-6 grid grid-cols-4">
@@ -369,7 +361,7 @@
                                                     <use href="/images/sprite-icons.svg#icon-days"></use>
                                                 </svg>
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">10@prp_8076</span>
+                                            <span class="text-zinc-600 text-xs danaRegular">@prp_8076</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
@@ -387,7 +379,7 @@
                                             <div class="h-9 flex items-end">
                                                 <img width="26" src="/images/airline.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">@prp_10000504</span>
+                                            <span class="text-zinc-600 text-xs danaRegular">@prp_10000504</span>
                                         </div>
 
 
@@ -403,22 +395,19 @@
                 </div>
 
             </div>
-
             <div class="w-full flex items-center mt-3 justify-center">
                 <div class="bg-slider p-2 rounded-[50px] flex items-center w-auto h-[60px] gap-2 bg-zinc-100">
-                    <button
-                            class="swiper-button-next-tour  w-10 h-10 rounded-[50%] flex items-center justify-center bg-white">
+                    <button class="swiper-button-next-tour  w-10 h-10 rounded-[50%] flex items-center justify-center bg-white">
                         <svg class="ease" width="9" height="16">
                             <use href="/images/sprite-icons.svg#icon-next"></use>
                         </svg>
 
                     </button>
-                    <a href=""
-                       class="btn-view h-10 text-white px-[24px] btn-primary-sm  text-xs	 danaRegular flex items-center rounded-[50px]">
+                    <a href="/tours"
+                       class="btn-view h-10 text-white px-[24px] btn-primary-sm  text-xs danaRegular flex items-center rounded-[50px]">
                         مشاهده همه
                     </a>
-                    <button
-                            class="swiper-button-prev-tour w-10 h-10 rounded-[50%] flex items-center justify-center bg-white">
+                    <button class="swiper-button-prev-tour w-10 h-10 rounded-[50%] flex items-center justify-center bg-white">
                         <svg class="ease" width="9" height="16">
                             <use href="/images/sprite-icons.svg#icon-prev"></use>
                         </svg>
@@ -435,35 +424,33 @@
                     <h2 class="text-secondary-900 text-[23px] danaBold">خدمات آژانس</h2>
                     <h6 class="text-zinc-900 text-4xl danaBold mt-2">تعطیلات رویایی</h6>
                     <a href="/@link"
-                       class="btn-more border-primary-900 h-[55px] px-[24px] mt-4 text-primary-900 border-1 rounded-[100px] flex items-center">
+                       class="btn-more border-primary-900 h-[55px] px-[24px] mt-4 text-primary-900 border rounded-[100px] flex items-center">
                         مشاهده بیشتر
                     </a>
                 </div>
                 <div class="box-services w-[86%]  h-[325px] relative rounded-[50px]">
                     <div class="detail relative  mx-auto h-full z-10 flex flex-col">
-                        <p
-                                class="text-zinc-900 w-[78%] mx-auto text-justify relative top-7 text-sm mt-4 leading-[25px]">
-                            لورم
-                            ایپسوم متن ساختگی با
-                            تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
-                            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
-                            تکنولوژی مورد نیاز</p>
+                        <basis core="print" datamembername="db.service-title">
+                            <layout>@child</layout>
+                            <face filter="catid=219234">
+                                <div class="text-zinc-900 w-[78%] mx-auto text-justify relative top-7 text-sm mt-4 leading-[25px]">
+                                    <p>@urldescription</p>
+                                </div>
+                            </face>
+                        </basis>
 
                         <div class="items relative top-10 flex  items-center justify-center gap-7 w-full">
                             <basis core="list" datamembername="db.service">
                                 <layout>@child</layout>
                                 <face>
-                                    <div
-                                            class="item-services w-auto  h-[270px] rounded-xl p-3 flex flex-col items-center justify-center">
-                                        <div
-                                                class="bg-white box-svg ease w-[70px] h-[70px] rounded-[1rem] flex items-center justify-center">
+                                    <div class="item-services w-auto  h-[270px] rounded-xl p-3 flex flex-col items-center justify-center">
+                                        <div class="bg-white box-svg ease w-[70px] h-[70px] rounded-[1rem] flex items-center justify-center">
                                             <svg width="37" height="37">
                                                 <use href="/images/sprite-icons.svg#icon-service"></use>
                                             </svg>
                                         </div>
-                                        <a class="mt-4" href="@link">
-                                            <h5 class="danaBold ease text-secondary-950 text-base mt-4">@title</h5>
-                                        </a>
+                                        <a class="mt-4" href="@link"><h5
+                                                class="danaBold ease text-secondary-950 text-base mt-4">@title</h5></a>
                                         <div class="w-full ease hidden  detail-items flex-col">
                                             <p class="text-zinc-600 text-xs	 w-[240px] text-justify my-2">
                                                 @prp_7244
@@ -472,8 +459,7 @@
                                                 <span class="text-zinc-900 text-xs	 danaRegular">مشاهده بیشتر</span>
                                                 <a href="/@link">
                                                     <svg width="48" height="48">
-                                                        <use href="/images/sprite-icons.svg#icon-circle-arrow">
-                                                        </use>
+                                                        <use href="/images/sprite-icons.svg#icon-circle-arrow"></use>
                                                     </svg>
                                                 </a>
                                             </div>
@@ -499,7 +485,7 @@
 
 
 <!--footer-->
-<basis core="call" file="footer.bc" />
+<basis core="call" file="footer.inc" />
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
