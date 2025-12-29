@@ -1,0 +1,31 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
+    <member name="visa" type="list" link="visa.bc" propertyid="3088232,219253,219252" order="ord"/>
+    </member>
+</basis>
+
+<basis core="list" datamembername="db.visa">
+    <layout>@child</layout>
+    <face>
+        <a href="@link" class="item-visa shadow-custom-1 w-full relative bg-color-2 h-[80px] rounded-[100px] px-[8px]">
+            <div class="img overflow-hidden h-[85px] rounded-[100px] w-full relative">
+                <div class="back-bg p-2 gap-3 flex items-center justify-between w-full h-full absolute right-0 top-0 z-5 bg-[#0000008A]">
+                    <div class="flex items-center gap-2">
+                        <img class="w-[60px] h-[60px] rounded-[50%]" src="/@image"
+                             alt="@title">
+                        <div class="flex flex-col items-start">
+                            <span class="text-white text-xs	 danaRegular">ویزای</span>
+                            <h2 class="text-white text-base danaBold mt-1">@title</h2>
+                        </div>
+                    </div>
+                    <div class="ml-[2rem]">
+                        <svg width="14" height="26">
+                            <use href="/images/sprite-icons.svg#icon-arrow-left"></use>
+                        </svg>
+                    </div>
+                </div>
+                <img class="w-full h-full" src="/images/img-ib.jpg" alt="">
+            </div>
+        </a>
+    </face>
+</basis>
+

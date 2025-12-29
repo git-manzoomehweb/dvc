@@ -23,7 +23,7 @@
     <member name="article-title" type="tree" request="cat" parentid="219222" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219234">
-    <member name="service" type="list" link="service.bc" order="ord" propertyid="7244,7249"/>
+    <member name="service" type="list" link="article.bc" order="ord" propertyid="7244,7249"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
     <member name="service-title" type="tree" link="visa.bc" request="cat" parentid="219234" order="ord"/>
@@ -423,7 +423,7 @@
                 <div class="start-text absolute right-0 flex flex-col z-10 items-start">
                     <h2 class="text-secondary-900 text-[23px] danaBold">خدمات آژانس</h2>
                     <h6 class="text-zinc-900 text-4xl danaBold mt-2">تعطیلات رویایی</h6>
-                    <a href="/@link"
+                    <a href="/Services"
                        class="btn-more border-primary-900 h-[55px] px-[24px] mt-4 text-primary-900 border rounded-[100px] flex items-center">
                         مشاهده بیشتر
                     </a>
@@ -438,7 +438,6 @@
                                 </div>
                             </face>
                         </basis>
-
                         <div class="items relative top-10 flex  items-center justify-center gap-7 w-full">
                             <basis core="list" datamembername="db.service">
                                 <layout>@child</layout>
@@ -449,7 +448,7 @@
                                                 <use href="/images/sprite-icons.svg#icon-service"></use>
                                             </svg>
                                         </div>
-                                        <a class="mt-4" href="@link"><h5
+                                        <a class="mt-4" href="/@link"><h5
                                                 class="danaBold ease text-secondary-950 text-base mt-4">@title</h5></a>
                                         <div class="w-full ease hidden  detail-items flex-col">
                                             <p class="text-zinc-600 text-xs	 w-[240px] text-justify my-2">
@@ -464,18 +463,15 @@
                                                 </a>
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </face>
                             </basis>
 
                         </div>
                     </div>
                     <div class="img w-full h-full absolute right-0 top-0">
-                        <img class="w-full h-full" src="/images/img-services.png" alt="">
+                        <img class="w-full h-full" src="/images/img-services.png" alt="bg-service">
                     </div>
-
                 </div>
             </div>
         </div>

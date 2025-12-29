@@ -191,56 +191,56 @@ video {
     border-color: #000;
 }
 #Login_box .shine-hover {
-    background-color: var(--secondary);
-    border: 1px solid var(--secondary);
+    background-color: var(--color-zinc-400);
+    border: 1px solid var(--color-zinc-400);
     color: #fff;
 }
 #Login_box .shine-hover:hover {
-    background-color: var(--secondary);
+    background-color: var(--color-zinc-400);
 }
 .login_info i {
-    color: var(--secondary) !important;
+    color: var(--color-zinc-400) !important;
 }
 .radioButton:checked + label span::after {
-    color: var(--secondary);
-    border: 2px solid var(--secondary);
+    color: var(--color-zinc-400);
+    border: 2px solid var(--color-zinc-400);
 }
 .airport_filter,
 .airport_filter_des {
-    border-bottom: 1px dashed var(--secondary);
+    border-bottom: 1px dashed var(--color-zinc-400);
 }
 .details-btn:hover {
-    background-color: var(--secondary);
+    background-color: var(--color-zinc-400);
     color: #fff;
 }
 .btn-item button {
-    background-color: var(--secondary);
-    border: 1px solid var(--secondary);
+    background-color: var(--color-zinc-400);
+    border: 1px solid var(--color-zinc-400);
 }
 .details-btn {
-    border: 1px solid var(--secondary);
+    border: 1px solid var(--color-zinc-400);
 }
 .flight-duration-stop:before {
-    background-color: var(--secondary);
-    border: 1px solid var(--secondary);
+    background-color: var(--color-zinc-400);
+    border: 1px solid var(--color-zinc-400);
 }
 .details-row-middle_1 {
-    border-left: 2px dashed var(--secondary);
+    border-left: 2px dashed var(--color-zinc-400);
 }
 .details-circle::before,
 .details-circle::after {
-    border: 2px solid var(--secondary);
+    border: 2px solid var(--color-zinc-400);
 }
 .section-input_list input[type="checkbox"]:checked + label span.checkbox::after,
 .section-input_list input[type="radio"]:checked + label span.checkbox::after {
-    color: var(--secondary);
+    color: var(--color-zinc-400);
 }
 .section-input_list
 input[type="checkbox"]:checked
 + label
 span.checkbox::before,
 .section-input_list input[type="radio"]:checked + label span.checkbox::before {
-    border-color: var(--secondary);
+    border-color: var(--color-zinc-400);
 }
 fieldset hr {
     background-color: var(--primary);
@@ -251,21 +251,21 @@ fieldset hr {
 .rangevalSecond_2,
 .rangevalSecond_2 span,
 .rangevalFirst_2 span {
-    color: var(--primary);
+    color: var(--primary-900);
 }
 .filter-container:not(:last-child) {
-    border-bottom: 1px dashed var(--secondary);
+    border-bottom: 1px dashed var(--color-zinc-400);
 }
 .sort-items li.active,
 .sort-items li:hover {
-    color: var(--secondary);
+    color: var(--color-zinc-400);
 }
 .confirm {
-    border: 1px solid var(--secondary);
+    border: 1px solid var(--color-zinc-400);
 }
 .confirm:hover {
     background-color: #fff;
-    color: var(--secondary);
+    color: var(--color-zinc-400);
 }
 .minus-btn {
     background-color: rgb(153, 0, 0);
@@ -278,20 +278,20 @@ fieldset hr {
 }
 .after-btn:hover,
 .before-btn:hover {
-    background-color: var(--secondary);
+    background-color: var(--color-zinc-400);
     color: #fff;
-    border: 1px solid var(--secondary);
+    border: 1px solid var(--color-zinc-400);
 }
 .flight-summary-info .dash i {
-    color: var(--secondary);
+    color: var(--color-zinc-400);
 }
 .close-research {
-    border: 1px solid var(--secondary);
-    color: var(--secondary);
+    border: 1px solid var(--color-zinc-400);
+    color: var(--color-zinc-400);
 }
 .flight_type .active,
 .flight_type li:hover {
-    color: var(--secondary);
+    color: var(--color-zinc-400);
 }
 .btn-item button:hover {
     background-color: #fff !important;
@@ -299,19 +299,19 @@ fieldset hr {
     box-shadow: 0 10px 13px -10px #0c2d33;
 }
 .searched-item button:hover {
-    background-color: var(--primary);
+    background-color: var(--primary-600);
     box-shadow: 0 10px 13px -10px #0c2d33;
 }
 .exchange-icon:hover {
-    background-color: var(--primary);
+    background-color: var(--primary-600);
     color: #fff;
 }
 .exchange-icon {
-    border: 1px solid var(--primary);
-    color: var(--primary);
+    border: 1px solid var(--primary-600);
+    color: var(--primary-600);
 }
 .searched-flight {
-    border-bottom: 1px dashed var(--secondary);
+    border-bottom: 1px dashed var(--color-zinc-400);
 }
 .progress-bar {
     background-color: var(--secondary) !important;
@@ -336,24 +336,24 @@ fieldset hr {
     background-color: var(--primary);
 }
 .Basis_Calendar .month_change i:hover {
-    color: var(--secondary);
+    color: var(--color-zinc-400);
 }
 .Basis_Calendar .current_day {
-    background-color: var(--secondary) !important;
+    background-color: var(--color-zinc-400) !important;
 }
 .Basis_Calendar .selected_day {
-    background-color: var(--secondary);
+    background-color: var(--color-zinc-400);
 }
 .ui-datepicker-today .ui-state-highlight,
 .ui-datepicker table thead th,
 .ui-datepicker .ui-datepicker-buttonpane button,
 .ui-datepicker-buttonpane .ui-datepicker-current:focus {
-    background-color: var(--secondary);
+    background-color: var(--color-zinc-400);
 }
 .ui-datepicker th,
 .ui-datepicker .ui-datepicker-prev span,
 .ui-datepicker .ui-datepicker-next span {
-    color: var(--secondary);
+    color: var(--color-zinc-400);
 }
 .ui-datepicker-buttonpane .ui-state-default:hover,
 .ui-datepicker-buttonpane .ui-state-default:focus,
@@ -365,10 +365,10 @@ fieldset hr {
     background-color: var(--primary) !important;
 }
 .name-tour {
-    color: var(--secondary);
+    color: var(--color-zinc-400);
 }
 .item-tour:hover {
-    background-color: var(--secondary);
+    background-color: var(--color-zinc-400);
     color: #fff;
 }
 .tour-info-tlt {
@@ -409,47 +409,47 @@ fieldset hr {
 /*<!--------------------------------END CSS LIST TEMPLATE 3-------------------------------*/
 /*<!--------------------------------START CSS VIEW TEMPLATE 3-------------------------------*/
 .flight-duration-stop::before {
-    background-color: var(--secondary);
-    border: 1px solid var(--secondary);
+    background-color: var(--color-zinc-400);
+    border: 1px solid var(--color-zinc-400);
 }
 .next-btn {
     background-color: var(--primary);
 }
 .next-btn:hover {
-    background-color: var(--secondary);
+    background-color: var(--color-zinc-400);
 }
 .prev-passengers {
-    border-bottom: 2px solid var(--secondary);
-    color: var(--secondary);
+    border-bottom: 2px solid var(--color-zinc-400);
+    color: var(--color-zinc-400);
 }
 .prev-passengers svg {
-    fill: var(--secondary);
+    fill: var(--color-zinc-400);
 }
 .prev-passengers:hover {
-    border-color: var(--secondary) !important;
-    color: var(--secondary) !important;
+    border-color: var(--color-zinc-400) !important;
+    color: var(--color-zinc-400) !important;
 }
 .prev-passengers:hover svg {
-    fill: var(--secondary);
+    fill: var(--color-zinc-400);
 }
 .passengers-prev-title svg {
-    fill: var(--secondary);
+    fill: var(--color-zinc-400);
 }
 .passenger-title {
-    color: var(--secondary);
+    color: var(--color-zinc-400);
 }
 .details-item-title {
-    color: var(--secondary);
+    color: var(--color-zinc-400);
 }
 .nav-details li:hover,
 .nav-details li.active {
-    color: var(--secondary);
+    color: var(--color-zinc-400);
 }
 .nav-details li::before {
-    border-top: 3px solid var(--secondary);
+    border-top: 3px solid var(--color-zinc-400);
 }
 .brief-container .head-items .title {
-    background-color: var(--secondary);
+    background-color: var(--color-zinc-400);
     color: #fff;
 }
 .buyer-type ul li.active,
@@ -462,10 +462,10 @@ fieldset hr {
     color: var(--primary);
 }
 .login-btn {
-    background-color: var(--secondary);
+    background-color: var(--color-zinc-400);
 }
 .login-link {
-    border: 1px solid var(--secondary);
+    border: 1px solid var(--color-zinc-400);
     color: var(--primary);
 }
 .login-link:hover {
@@ -473,22 +473,22 @@ fieldset hr {
     color: #fff !important;
 }
 .login-btn:hover {
-    background-color: var(--secondary);
+    background-color: var(--color-zinc-400);
 }
 .login-btn:hover {
     box-shadow: 0 10px 13px -10px #0c2d33;
 }
 .login-title i {
-    color: var(--secondary);
+    color: var(--color-zinc-400);
 }
 .bottom-content .action-loading {
-    background-color: var(--secondary);
+    background-color: var(--color-zinc-400);
 }
 .select-passnger {
-    background-color: var(--secondary);
+    background-color: var(--color-zinc-400);
 }
 .inside-title {
-    border-right: 3px solid var(--secondary);
+    border-right: 3px solid var(--color-zinc-400);
 }
 .duration-details {
     border-bottom: 2px dashed var(--primary);
@@ -500,10 +500,10 @@ fieldset hr {
 /*<!--------------------------------END CSS VIEW TEMPLATE 3-------------------------------*/
 /*<!--------------------------MAIN COLORS------------------------------->*/
 .background-color_1 {
-    background-color: var(--primary);
+    background-color: var(--primary-600);
 }
 .background-color_2 {
-    background-color: var(--secondary);
+    background-color: var(--color-zinc-400);
 }
 .background-color_3 {
     background-color: #363215;
@@ -518,7 +518,7 @@ fieldset hr {
     color: var(--primary);
 }
 .color_2 {
-    color: var(--secondary);
+    color: var(--color-zinc-400);
 }
 .color_3 {
     color: #252563;
@@ -554,4 +554,33 @@ i[class^="flaticon-"]:before {
     text-transform: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+.hover\:book-bg-secondary-400:hover{
+    background: var(--color-zinc-400) !important;
+}
+
+main header , main footer{
+    direction: rtl;
+}
+main .content{
+    margin-top: 3rem;
+}
+.py-9{
+    padding-block: 2.5rem;
+}
+.flex{
+    display: flex !important;
+}
+.px-6{
+    padding-inline: 1.5rem;
+}
+.download-button-wrapp button.share-b{
+    font-family: 'DanaFaNum';
+}
+.s-footer {
+    background: linear-gradient(180deg, #FAF7F3 0%, #FFFFFF 100%);
+    margin-top: 2rem;
+}
+header .menu .mr-2{
+    margin-right: 6px;
 }

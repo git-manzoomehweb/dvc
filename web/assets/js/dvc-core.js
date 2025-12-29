@@ -33,8 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             },
                         )
 
-                        const r = document.querySelector('.flighttype-field')
-                        r.classList.add('flighttype-dropDown')
 
                         const scripts = container.getElementsByTagName('script')
                         for (let i = 0; i < scripts.length; i++) {
@@ -69,25 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 
-// swiper-thumbnail-tour
-var swiper = new Swiper(".swiper-thumbnail-tour", {
-    slidesPerView: 3,
-    spaceBetween: 20,
-    navigation: {
-        nextEl: ".swiper-button-next-tour",
-        prevEl: ".swiper-button-prev-tour",
-    },
-});
 
-// swiper-thumbnail-hotel
-var swiper = new Swiper(".swiper-thumbnail-hotel", {
-    slidesPerView: 3,
-    spaceBetween: 20,
-    navigation: {
-        nextEl: ".swiper-button-next-hotel",
-        prevEl: ".swiper-button-prev-hotel",
-    },
-});
 
 // swiper-thumbnail-visa
 var swiper = new Swiper(".swiper-thumbnail-visa", {
@@ -139,25 +119,27 @@ var swiper = new Swiper(".swiper-comment-user", {
     }
 });
 // faq
-const panels = document.querySelectorAll(".panel");
 
-function removeActiveClasses() {
-    panels.forEach((panel) => {
-        panel.classList.remove("active");
+
+
+//---------------slider-tour
+let swiperTour;
+function initSwiperTour() {
+    if (swiperTour) {
+        swiperTour.destroy(true, true);
+    }
+
+    swiperTour = new Swiper(".swiper-thumbnail-tour", {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: ".swiper-button-next-tour",
+            prevEl: ".swiper-button-prev-tour",
+        },
+        observer: true,
+        observeParents: true,
     });
 }
-
-panels.forEach((panel) => {
-    panel.addEventListener("click", () => {
-        if (panel.classList.contains("active")) {
-            removeActiveClasses();
-        } else {
-            removeActiveClasses();
-            panel.classList.add("active");
-        }
-    });
-});
-
 function openTab(evt, tabName) {
     const allBtns = document.querySelectorAll(".btn-tab .tab-btn");
     allBtns.forEach(btn => btn.classList.remove("active"));
@@ -178,8 +160,30 @@ function openTab(evt, tabName) {
         `.tab-content[data-category="${tabName}"]`
     );
     matchedContents.forEach(item => item.classList.add("active"));
+    setTimeout(() => {
+        initSwiperTour();
+    }, 50);
 }
+//---------------slider-tour
 
+
+//---------------slider-hotel
+let swiperHotel;
+function initSwiperHotel() {
+    if (swiperHotel) {
+        swiperHotel.destroy(true, true);
+    }
+    swiperHotel = new Swiper(".swiper-thumbnail-hotel", {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: ".swiper-button-next-hotel",
+            prevEl: ".swiper-button-prev-hotel",
+        },
+        observer: true,
+        observeParents: true,
+    });
+}
 function openTabHotel(evt, tabName) {
     const allBtnsHotel = document.querySelectorAll(".btn-tab .tab-btn_hotel");
     allBtnsHotel.forEach(btn => btn.classList.remove("active"));
@@ -200,29 +204,60 @@ function openTabHotel(evt, tabName) {
         `.tab-content-hotel[data-category="${tabName}"]`
     );
     matchedContents.forEach(item => item.classList.add("active"));
+    setTimeout(() => {
+        initSwiperHotel();
+    }, 50);
 }
+//---------------slider-hotel
+
 
 function openTabPopular(evt, tabName) {
-    const allBtnsPopular = document.querySelectorAll(".btn-tab .tab-btn_popular");
-    allBtnsPopular.forEach(btn => btn.classList.remove("active"));
-    const contents = document.querySelectorAll(".tab-content-popular");
-    contents.forEach(c => c.classList.remove("active"));
-    const defaultTab = document.querySelector(".btn-tab[data-default='true']");
-    if (defaultTab) {
-        const btn = defaultTab.querySelector(".tab-btn_popular");
-        if (btn) {
-            btn.click();
-        }
-    }
-    const clickedBtn = evt.target.closest(".tab-btn_popular");
-    if (clickedBtn) {
-        clickedBtn.classList.add("active");
-    }
-    const matchedContents = document.querySelectorAll(
-        `.tab-content-popular[data-category="${tabName}"]`
-    );
-    matchedContents.forEach(item => item.classList.add("active"));
+
+    document.querySelectorAll(".tab-btn_popular")
+        .forEach(btn => btn.classList.remove("active"));
+
+    document.querySelectorAll(".tab-content-popular")
+        .forEach(c => c.classList.remove("active"));
+
+    evt.target.closest(".tab-btn_popular").classList.add("active");
+
+    document
+        .querySelectorAll(`.tab-content-popular[data-category="${tabName}"]`)
+        .forEach(el => el.classList.add("active"));
+
+    setTimeout(() => {
+        initSwiper();
+    }, 50);
 }
+
+
+
+
+
+
+
+
+
+
+
+const panels = document.querySelectorAll(".panel");
+
+function removeActiveClasses() {
+    panels.forEach((panel) => {
+        panel.classList.remove("active");
+    });
+}
+
+panels.forEach((panel) => {
+    panel.addEventListener("click", () => {
+        if (panel.classList.contains("active")) {
+            removeActiveClasses();
+        } else {
+            removeActiveClasses();
+            panel.classList.add("active");
+        }
+    });
+});
 
 document.addEventListener("DOMContentLoaded", function () {
     const defaultBtn = document.querySelector(".tab-btn[data-default='true']");
@@ -463,20 +498,6 @@ function ShareSocialMedia(event, containerid) {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
     const fetchContentHeader = document.querySelector('.result-id')
     const contentCache = new Map()
@@ -519,7 +540,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
-            const response = await fetch(`/load-items-test.bc?catid=${dataId}`)
+            const response = await fetch(`/load-items.bc?catid=${dataId}`)
             if (!response.ok) throw new Error(response.status)
 
             const data = await response.text()
@@ -580,3 +601,55 @@ document.addEventListener("DOMContentLoaded", () => {
     window.loadCategory = loadCategory
 })
 
+document.addEventListener("DOMContentLoaded", () => {
+    const fetchContentVisa = document.querySelector('.result-id-visa')
+    const contentCacheVisa = new Map()
+    // همه تب‌ها
+    const tabsVisa = document.querySelectorAll('.btn-tab a')
+    // ---------- Loader ----------
+    function showLoader() {
+        fetchContentVisa.innerHTML =
+            '<div class="flex justify-center mt-12"><span class="fetch-loader"></span></div>'
+    }
+
+    // ---------- Active Tab ----------
+    function setActiveTab(activeTab) {
+        tabsVisa.forEach(tab => {
+            tab.classList.remove('active-visa')
+            tab.classList.add('bg-zinc-100', 'text-zinc-600')
+        })
+
+        activeTab.classList.remove('bg-zinc-100', 'text-zinc-600')
+        activeTab.classList.add('active-visa')
+    }
+
+    // ---------- Load Category ----------
+    async function loadCategoryVisa(dataId, tabEl = null) {
+        if (!dataId) return
+
+        if (tabEl) setActiveTab(tabEl)
+
+        const cacheKey = dataId
+
+        showLoader()
+        if (contentCacheVisa.has(cacheKey)) {
+            fetchContentVisa.innerHTML = contentCacheVisa.get(cacheKey)
+            return
+        }
+        try {
+            const response = await fetch(`/visa-load-items.bc?catid=${dataId}`)
+            if (!response.ok) throw new Error(response.status)
+
+            const data = await response.text()
+            contentCacheVisa.set(cacheKey, data)
+            fetchContentVisa.innerHTML = data
+
+        } catch (error) {
+            fetchContentVisa.innerHTML =
+                `<p class="text-red-500">خطا در بارگذاری محتوا</p>`
+        }
+    }
+
+
+    window.loadCategoryVisa = loadCategoryVisa
+})

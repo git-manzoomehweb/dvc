@@ -531,9 +531,11 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .mb-9 {
                         margin-bottom: calc(var(--spacing) * 9);
                     }
+
                     .mb-10 {
                         margin-bottom: calc(var(--spacing) * 10);
                     }
+
                     .ml-\[1rem\] {
                         margin-left: 1rem;
                     }
@@ -1404,27 +1406,35 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .pt-14 {
                         padding-top: calc(var(--spacing) * 14);
                     }
+
                     .pt-16 {
                         padding-top: calc(var(--spacing) * 16);
                     }
+
                     .pt-18 {
                         padding-top: calc(var(--spacing) * 18);
                     }
+
                     .pt-20 {
                         padding-top: calc(var(--spacing) * 20);
                     }
+
                     .pt-22 {
                         padding-top: calc(var(--spacing) * 22);
                     }
+
                     .pt-24 {
                         padding-top: calc(var(--spacing) * 24);
                     }
+
                     .pt-26 {
                         padding-top: calc(var(--spacing) * 26);
                     }
+
                     .pt-28 {
                         padding-top: calc(var(--spacing) * 28);
                     }
+
                     .pt-30 {
                         padding-top: calc(var(--spacing) * 30);
                     }
@@ -2780,16 +2790,19 @@ input {
     border-radius: 50%;
     background: #F4F4F5;
 }
+
 .date__searched__container .label-dates svg:first-child use, .label-routes svg:first-child use {
     transform-box: fill-box;
     transform-origin: center;
     transform: translate(16px, 14px);
 }
+
 .label-passengers svg:first-child use {
     transform-box: fill-box;
     transform-origin: center;
     transform: translate(16px, 14px);
 }
+
 .Flightclass-Passenger .flightclass-field {
     display: none;
 }
@@ -2887,9 +2900,11 @@ input {
     padding: 0 5px 0 12px !important;
     margin: 0 !important;
 }
+
 .search-box-container .module-icon {
     display: flex !important;
 }
+
 .search-box-container .reserve-btn.active-module .module-icon {
     background-color: var(--primary-900);
     display: flex;
@@ -2905,6 +2920,7 @@ input {
 .departure-route .click-content input, .destination-route .click-content input {
     font-family: 'DanaFaNum';
 }
+
 .search-flight, .search-tour, .search-flighthotel, .search-hotel {
     background: var(--primary-900) !important;
     height: 48px !important;
@@ -2920,19 +2936,21 @@ input {
 .search-flight svg, .search-tour svg, .search-flighthotel svg, .search-hotel svg {
     display: none;
 }
+
 .formhotel .passengers-field .passenger-item, .formtour .passengers-field .passenger-item {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.formhotel .passengers-field .passenger-item ul , .formtour .passengers-field .passenger-item ul{
+.formhotel .passengers-field .passenger-item ul, .formtour .passengers-field .passenger-item ul {
     width: auto !important;
 }
 
-.formhotel .passengers-field .passenger-item .clr , .formtour .passengers-field .passenger-item .clr{
+.formhotel .passengers-field .passenger-item .clr, .formtour .passengers-field .passenger-item .clr {
     display: none !important;
 }
+
 .search-box-container .Wrapper-CheckHotelDate input:checked ~ .needhotel-label::before, .search-box-container .Wrapper-PrivateCompartment input:checked ~ .PrivateCompartment-label::before {
     background-color: var(--primary-900) !important;
 }
@@ -2945,11 +2963,13 @@ input {
     justify-content: center;
     background: var(--primary-900);
 }
-.exchangeRoute svg{
+
+.exchangeRoute svg {
     width: 23px;
     height: 23px;
     rotate: 90deg;
 }
+
 #passenger-adultcount1, .roomcount, .adultcount, .childcount, .infantcount {
     color: var(--primary-900);
     padding: 0;
@@ -2958,16 +2978,19 @@ input {
     font-weight: 600;
     font-size: 18px;
 }
+
 .select-age {
     border: 1px solid var(--color-zinc-200);
     border-radius: 4px;
     font-family: 'DanaFaNum';
     height: 38px;
 }
+
 .Flightclass-Passenger .passengers-field-f .passenger-counts {
     padding: 0;
     font-size: 13px;
 }
+
 .searchList .clear-both input {
     font-family: 'DanaFaNum';
     width: 100%;
@@ -2979,6 +3002,7 @@ input {
     width: 100%;
     border: 1px solid var(--color-zinc-200);
 }
+
 .searchList .mini-loading {
     position: unset;
     margin-top: 1rem;
@@ -3015,81 +3039,99 @@ input {
     justify-content: center;
     color: white;
 }
-.close-searchList{
+
+.close-searchList {
     background: var(--primary-900) !important;
 }
-.date__searched__container .reserve-field{
+
+.date__searched__container .reserve-field {
     width: 100% !important;
 }
-.date__searched__container .reserve-field input{
+
+.date__searched__container .reserve-field input {
     padding: 15px 63px 0 0;
     font-family: 'DanaFaNum';
 }
+
 .search-box-container .reserve-btn.active-module {
     background-color: white !important;
 }
+
 .search-box-container .reserve-btn.active-module .module-name {
     color: var(--color-zinc-900);
     display: flex;
 }
-.departure-route{
+
+.departure-route {
     height: auto !important;
 }
-.destination-route{
+
+.destination-route {
     height: auto !important;
     padding: 0 0 12px 0 !important;
 }
-.departure-date{
+
+.departure-date {
     height: auto !important;
     padding: 0 0 40px 0 !important;
 }
-.return-date{
+
+.return-date {
     height: auto !important;
     padding: 6px 0 40px 0 !important;
 }
-.reserve-search{
+
+.reserve-search {
     height: auto !important;
 }
-.fixed-passengerbox{
+
+.fixed-passengerbox {
     z-index: 999;
 }
-.passenger-item{
+
+.passenger-item {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-bottom: 18px !important;
 }
-.passenger-item .clr{
+
+.passenger-item .clr {
     display: none !important;
 }
-.needhotel-label{
+
+.needhotel-label {
     color: var(--color-zinc-900);
 }
-#tourSearch .departure-route , #hotelSearch .departure-route {
+
+#tourSearch .departure-route, #hotelSearch .departure-route {
     border-bottom: 1px solid var(--color-zinc-200);
     padding-bottom: 15px;
     height: auto !important;
 }
+
 .numberOfRoom {
     color: var(--primary-900) !important;
     font-size: 16px !important;
 }
-.passengers-field .show-passengers-dropdown div{
+
+.passengers-field .show-passengers-dropdown div {
     padding: 0 56px 0 0 !important;
 }
-.passengers-field{
+
+.passengers-field {
     height: auto !important;
 }
-.label-passengers{
+
+.label-passengers {
     width: 100% !important;
     display: flex;
     justify-content: space-between;
 }
 
 
-
 /*form-footer  & form-faq*/
-.form-footer , .form-about{
+.form-footer, .form-about {
     display: grid;
     place-items: center;
 }
@@ -3110,7 +3152,7 @@ input {
     width: 100%;
 }
 
-.form-footer input[type=text], .form-faq input[type=text] , .form-about input[type=text]{
+.form-footer input[type=text], .form-faq input[type=text], .form-about input[type=text] {
     box-shadow: 0px 4px 67px 0px #0000000F !important;
     background: white !important;
     border-radius: 100px !important;
@@ -3122,22 +3164,22 @@ input {
     font-size: 16px !important;
 }
 
-.form-footer input[type=text]::placeholder, .form-faq input[type=text]::placeholder , .form-about input[type=text]::placeholder{
+.form-footer input[type=text]::placeholder, .form-faq input[type=text]::placeholder, .form-about input[type=text]::placeholder {
     color: var(--color-zinc-500);
 }
 
-.form-footer .gap-8, .form-faq .gap-8 , .form-about .gap-8{
+.form-footer .gap-8, .form-faq .gap-8, .form-about .gap-8 {
     width: 100%;
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 8px;
 }
 
-.form-footer .gap-8 svg, .form-faq .gap-8 svg ,  .form-about .gap-8 svg{
+.form-footer .gap-8 svg, .form-faq .gap-8 svg, .form-about .gap-8 svg {
     display: none;
 }
 
-.form-footer .gap-8 img, .form-faq .gap-8 img ,  .form-about .gap-8 img {
+.form-footer .gap-8 img, .form-faq .gap-8 img, .form-about .gap-8 img {
     width: 100%;
     height: 55px;
 }
@@ -3184,14 +3226,17 @@ input {
 .form-faq [data-bc-part] {
     width: 100%;
 }
-.load-captcha img{
+
+.load-captcha img {
     height: 55px;
 }
-.textarea-comment{
+
+.textarea-comment {
     padding: 16px 24px 0 0;
     resize: none;
 }
-.thumbnail-comment p{
+
+.thumbnail-comment p {
     height: 120px;
     overflow-y: auto;
 }
@@ -3210,18 +3255,22 @@ input {
     width: 100%;
     border-radius: 8px;
 }
-.item-editor-mobi{
+
+.item-editor-mobi {
     gap: 12px;
     display: grid;
 }
-.title-editor{
+
+.title-editor {
     margin-top: 2rem;
 }
+
 /*head*/
-.border-l-head{
+.border-l-head {
     border-left: 1px solid var(--color-zinc-200);
 }
-.btnstyle{
+
+.btnstyle {
     height: 48px;
     background: var(--primary-900);
     border: 1px solid var(--primary-900);
@@ -3230,12 +3279,13 @@ input {
     color: white;
     transition: 0.5s ease;
 }
-.btnstyle:hover{
+
+.btnstyle:hover {
     background: unset;
     color: var(--primary-900);
 }
 
-#firstUsername input , #mailsSelectContainer input{
+#firstUsername input, #mailsSelectContainer input {
     box-shadow: 0px 4px 67px 0px #0000000F;
     background: white;
     border-radius: 100px;
@@ -3246,7 +3296,8 @@ input {
     height: 55px;
     font-size: 16px;
 }
-.login-btn-content button , .login-btn {
+
+.login-btn-content button, .login-btn {
     background: var(--primary-900);
     border: 1px solid var(--primary-900);
     border-radius: 100px;
@@ -3259,18 +3310,21 @@ input {
     transition: 0.6s ease;
 }
 
-.login-btn-content button:hover , .login-btn{
+.login-btn-content button:hover, .login-btn {
     background: white;
     color: var(--primary-900);
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
-.item-popular-destinations img{
+
+.item-popular-destinations img {
     height: 90px !important;
 }
+
 .active-visa {
     color: var(--secondary-950) !important;
     background: var(--secondary-200) !important;
 }
+
 .fetch-loader {
     width: 40px;
     height: 40px;
@@ -3285,6 +3339,12 @@ input {
         transform: rotate(360deg);
     }
 }
-.editor-hotel{
+
+.editor-hotel {
     gap: 8px;
+}
+
+.searchList .justify-between .label-search-list {
+    width: 32%;
+    background: var(--primary-600) !important;
 }

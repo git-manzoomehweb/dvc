@@ -1,69 +1,56 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db">
-    <member name="tourCategory" link="Categories-of-tours.bc" type="tree" request="cat" parentid="219145"
-            postsql="select * from [db.tourCategory] where parentid in(219145)"
-    ></member>
+    <member name="tourCategory" link="tourCategory.bc" type="tree" request="cat" parentid="219145"
+            postsql="select * from [db.tourCategory] where parentid in(219145)"/>
 </basis>
-
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219094">
     <member name="tours" type="list" link="tour.bc" propertyid="8181,3088230,8076,8077,10000504,3088231" order="ord"/>
-    </member>
-</basis>
 
+</basis>
 <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1"
        usedforid="2390878">
     <member name="about" typeid="129" type="view"/>
 </basis>
 <basis core="dbsource" source="media" lid="1" name="db"
        usedforid="2390878" sourcemid="article">
-    <member type="list" name="gallery" format="4" order="ord"></member>
-</basis>
-
-<basis core="dbsource" source="media" lid="1" name="db"
-       usedforid="2390878" sourcemid="article">
-    <member type="list" name="gallery" format="4" order="ord"></member>
+    <member type="list" name="gallery" format="4" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219096">
     <member name="hotels" type="list" link="hotel.bc"
             propertyid="3088232,3088223,3088222,3088221,3088220,3088219,7249,7245" order="ord"/>
-    </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
-    <member name="hotel-title" type="tree" request="cat" parentid="219096" order="ord"></member>
+    <member name="hotel-title" type="tree" request="cat" parentid="219096" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
-    </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
     <member name="faq-title" type="view" postsql="select * from [db.faq-title] where TypeID in(128)"/>
-    </member>
 </basis>
-
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219183">
-    <member name="popular-destinations" type="list" link="Popular-destinations.bc" propertyid="3088231" order="ord"/>
-    </member>
+    <member name="popular-destinations" type="list" link="tour.bc" propertyid="3088231" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219183">
     <member name="popular-title" type="tree" request="cat" parentid="219183" order="ord"/>
 </basis>
-
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
-    <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"/>
-    </member>
+    <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"
+            postsql="SELECT * FROM [db.article] ORDER BY ord ASC LIMIT 3;"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
     <member name="article-title" type="tree" request="cat" parentid="219222" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219252">
-    <member name="visa" type="list" link="visa.bc" propertyid="3088232" order="ord"/>
-    </member>
+    <member name="visa" type="list" link="visa.bc" propertyid="3088232,219253,219252" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
     <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219234">
-    <member name="service" type="list" link="service.bc" order="ord" propertyid="7244,7249"/>
-    </member>
+    <member name="service" type="list" link="Services" order="ord" propertyid="7244,7249"/>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
+    <member name="service-title" type="tree" link="visa.bc" request="cat" parentid="219234" order="ord"/>
 </basis>
 
 <!DOCTYPE html>
@@ -71,30 +58,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+
     <!-- Title & Description -->
-    <title>[##cms.seo.title|(خرید بلیط هواپیما - رزرو آنلاین پرواز داخلی و خارجی - تعطیلات رویایی)##]
-    </title>
+    <title>خرید بلیط هواپیما | رزرو تور داخلی و خارجی | تعطیلات رویایی</title>
     <meta name="description"
-          content="[##cms.seo.description|(خرید آنلاین بلیط هواپیما داخلی و خارجی با بهترین قیمت. بلیط چارتر و سیستمی برای کیش، مشهد، ایروان ، مسقط . میسان گشت، آسان‌ترین راه رزرو پرواز با پشتیبانی ۲۴ ساعته.)##]">
-    <!-- Title & Description -->
-    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
-        <member type="list" name="list" request="taglist" preview=""></member>
-    </basis>
-    <basis core="print" datamembername="tag.list">
-        <face filter="key = 'canonical'">
-            <link rel="canonical" href="@value"/>
-        </face>
-        <face>
-            <meta property="@key" content="@value"/>
-        </face>
-    </basis>
+          content="خرید آنلاین بلیط هواپیما، رزرو تورهای داخلی و خارجی، رزرو هتل و پرواز با بهترین قیمت در تعطیلات رویایی. برنامه‌ریزی سفر آسان، سریع و مطمئن با پشتیبانی ۲۴ ساعته.">
+
+    <!-- canonical for Homepage -->
+    <link rel="canonical" href="[##cms.request.:scheme##]://[##cms.request.full-url##]" />
+
+    <!-- Open Graph -->
+    <meta name="og:locale" content="fa_IR">
+    <meta property="og:title" content="خرید بلیط هواپیما | رزرو تور داخلی و خارجی | تعطیلات رویایی">
+    <meta property="og:url" content="[##cms.request.:scheme##]://[##cms.request.full-url##]">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="تعطیلات رویایی">
+    <meta property="og:image" content="https://royalholidays.ir/images/royalholidays_1200x630.png">
+    <meta property="og:image:alt" content="تعطیلات رویایی | خرید بلیط هواپیما، تور داخلی و خارجی">
+    <meta property="og:description"
+          content="رزرو آنلاین بلیط هواپیما، هتل و انواع تورهای داخلی و خارجی با تعطیلات رویایی. تجربه سفری لذت‌بخش، مقرون‌به‌صرفه و مطمئن.">
+
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:type" content="image/png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@RoyalHolidays">
+    <meta name="twitter:creator" content="Royal Holidays (تعطیلات رویایی)">
+    <meta name="twitter:image" content="https://royalholidays.ir/images/royalholidays_1200x630.png">
+    <meta name="twitter:title" content="تعطیلات رویایی | خرید بلیط هواپیما و رزرو تور">
+    <meta name="twitter:description"
+          content="رزرو بلیط هواپیما، هتل و تورهای داخلی و خارجی با تعطیلات رویایی. خرید آسان، ارزان و همراه با پشتیبانی ۲۴ ساعته.">
+
+    <meta property="seo:robots" content="index, follow" />
+
     <!-- samandehi-enamad optional -->
-    <meta name="enamad" content=""/>
-    <meta name="samandehi" content=""/>
+    <meta name="enamad" content="" />
+    <meta name="samandehi" content="" />
+
     <!-- pwa metatags -->
-    <basis core="call" file="pwa.inc" pageindex="[##cms.cms.pageindex##]"/>
+    <basis core="call" file="pwa.inc" pageindex="[##cms.cms.pageindex##]" />
+
+    <!-- define -->
+    <link rel="preload" as="image"
+          imageSrcSet="https://royalholidays.ir/images/royalholidays_hero.webp"
+          fetchpriority="high" />
+
+    <!-- common styles for all page -->
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
-    <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]"/>
+    <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]" />
 </head>
 <body>
 <basis core="call" file="header.inc" pageindex="[##cms.cms.pageindex##]"/>
@@ -139,7 +152,7 @@
                 </div>
             </layout>
             <face>
-                <a href="/@link"
+                <a href="/Categories-of-tours"
                    class="item-category-tour w-1/6 flex-shrink-0 relative ease  py-2 flex flex-col items-center justify-center gap-3">
                     <img class="relative z-5" width="36" src="/@image" alt="">
                     <span class="DanaRegular text-xs text-[#171717] relative z-5">@title</span>
@@ -719,11 +732,15 @@
         <div class="flex flex-col items-start  ">
             <div class="box-services w-full  h-[330px] relative rounded-[50px]">
                 <div class="detail relative  mx-auto h-full z-10 flex flex-col items-center">
-                    <p class="text-zinc-900 w-[78%] mx-auto text-justify text-xs   pt-6	 mt-4 leading-[25px]">لورم
-                        ایپسوم متن ساختگی با
-                        تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
-                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
-                        تکنولوژی مورد نیاز</p>
+                    <basis core="print" datamembername="db.service-title">
+                        <layout>@child</layout>
+                        <face filter="catid=219234">
+                            <div class="text-zinc-900 w-[78%] mx-auto text-justify relative top-7 text-sm mt-4 leading-[25px]">
+                                <p>@urldescription</p>
+                            </div>
+                        </face>
+                    </basis>
+
                     <div class="items absolute top-[150px] w-[95%] mx-auto overflow-x-auto overflow-y-hidden top-[40px] pt-2 pb-5  px-8 flex  items-center justify-start gap-7">
                         <basis core="list" datamembername="db.service">
                             <layout>@child</layout>
@@ -742,7 +759,7 @@
                                                   fill="#CFAA65"/>
                                         </svg>
                                     </div>
-                                    <a class="mt-4" href=""><h5 class="danaBold ease text-zinc-900 text-base mt-4">
+                                    <a class="mt-4" href="/Services"><h5 class="danaBold ease text-zinc-900 text-base mt-4">
                                         @title</h5></a>
                                     <div class="w-full ease   detail-items flex-col">
                                         <div class="text-zinc-600 text-xs	 w-[240px] text-justify my-2">
@@ -750,7 +767,7 @@
                                         </div>
                                         <div class="w-full flex items-center justify-between mt-1">
                                             <span class="text-zinc-900 text-xs	 danaRegular">مشاهده بیشتر</span>
-                                            <a href="/@link">
+                                            <a href="/Services">
                                                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <rect width="48" height="48" rx="24" fill="#004BA0"/>
@@ -775,7 +792,7 @@
             <div class="w-full   flex flex-col z-10 mt-[8rem] items-start">
                 <h2 class="text-secondary-900 text-xs	 danaBold">خدمات آژانس</h2>
                 <h6 class="text-zinc-900 text-xl danaBold mt-2">تعطیلات رویایی</h6>
-                <a href=""
+                <a href="/Services"
                    class="btn-more border-primary-900 text-sm	 h-[55px] px-[24px] mt-4 text-primary-900 border rounded-[100px] w-full justify-center flex items-center">
                     مشاهده بیشتر
                 </a>
@@ -783,12 +800,10 @@
         </div>
     </section>
 </main>
+<script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
 
 <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]"/>
 
-<!--scripts-->
-<script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
-<basis core="call" file="script.inc" pageindex="[##cms.cms.pageindex##]"/>
 </body>
 
 </html>

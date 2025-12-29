@@ -1813,7 +1813,7 @@
 
 }
 :root {
-    --primary: #e3f2fd;
+    --primary: #1a8be3;
     --primary-50: #e3f2fd;
     --primary-100: #bbdffa;
     --primary-200: #91ccf8;
@@ -4404,4 +4404,10 @@ body {
 }
 .img-country{
     border: 3px solid #fff;
+}
+.layout__body__container{
+    margin-top: 9rem !important;
+}
+.s-footer {
+    background: linear-gradient(180deg, #FAF7F3 0%, #FFFFFF 100%);
 }

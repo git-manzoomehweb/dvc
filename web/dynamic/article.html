@@ -8,6 +8,9 @@
 <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id##]">
     <member name="view" type="view" propertyid="7244,7249,7246,7248,3088243,7245"/>
 </basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="2" usedforid="[##cms.query.id##]">
+    <member name="viewEN" type="view" propertyid="7244,7249,7246,7248,3088243,7245"/>
+</basis>
 <basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
     <member name="comment" type="list" order="ord" request="listcomment"/>
 </basis>
@@ -56,9 +59,9 @@
         <div class="c-container">
             <div class="flex flex-col justify-between relative h-[750px] pb-4">
                 <div class="box-main-tour pt-12  h-[450px] w-full flex flex-col items-center justify-center">
-                    <basis core="print" datamembername="db.view">
-                        <face filter="TypeID in(150)">
-                            <h4 class="text-zinc-200 leading-[16px] text-4xl">@prp_7245</h4>
+                    <basis core="print" datamembername="db.viewEN">
+                        <face >
+                            <h4 class="text-zinc-200 leading-[16px] text-4xl">@text</h4>
                         </face>
                     </basis>
 

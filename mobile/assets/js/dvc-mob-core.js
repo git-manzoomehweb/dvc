@@ -493,7 +493,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
-            const response = await fetch(`/load-items-test.bc?catid=${dataId}`)
+            const response = await fetch(`/load-items.bc?catid=${dataId}`)
             if (!response.ok) throw new Error(response.status)
 
             const data = await response.text()

@@ -28,7 +28,7 @@
     <member name="faq-title" type="view" postsql="select * from [db.faq-title] where TypeID in(128)"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219183">
-    <member name="popular-destinations" type="list" link="Popular-destinations.bc" propertyid="3088231" order="ord"/>
+    <member name="popular-destinations" type="list" link="tour.bc" propertyid="3088231" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219183">
     <member name="popular-title" type="tree" request="cat" parentid="219183" order="ord"/>
@@ -47,7 +47,7 @@
     <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219234">
-    <member name="service" type="list" link="service.bc" order="ord" propertyid="7244,7249"/>
+    <member name="service" type="list" link="article.bc" order="ord" propertyid="7244,7249"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
     <member name="service-title" type="tree" link="visa.bc" request="cat" parentid="219234" order="ord"/>
@@ -59,30 +59,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+
     <!-- Title & Description -->
-    <title>[##cms.seo.title|(خرید بلیط هواپیما - رزرو آنلاین پرواز داخلی و خارجی - تعطیلات رویایی)##]
-    </title>
+    <title>خرید بلیط هواپیما | رزرو تور داخلی و خارجی | تعطیلات رویایی</title>
     <meta name="description"
-          content="[##cms.seo.description|(خرید آنلاین بلیط هواپیما داخلی و خارجی با بهترین قیمت. بلیط چارتر و سیستمی برای کیش، مشهد، ایروان ، مسقط . میسان گشت، آسان‌ترین راه رزرو پرواز با پشتیبانی ۲۴ ساعته.)##]">
-    <!-- Title & Description -->
-    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
-        <member type="list" name="list" request="taglist" preview=""></member>
-    </basis>
-    <basis core="print" datamembername="tag.list">
-        <face filter="key = 'canonical'">
-            <link rel="canonical" href="@value"/>
-        </face>
-        <face>
-            <meta property="@key" content="@value"/>
-        </face>
-    </basis>
+          content="خرید آنلاین بلیط هواپیما، رزرو تورهای داخلی و خارجی، رزرو هتل و پرواز با بهترین قیمت در تعطیلات رویایی. برنامه‌ریزی سفر آسان، سریع و مطمئن با پشتیبانی ۲۴ ساعته.">
+
+    <!-- canonical for Homepage -->
+    <link rel="canonical" href="[##cms.request.:scheme##]://[##cms.request.full-url##]" />
+
+    <!-- Open Graph -->
+    <meta name="og:locale" content="fa_IR">
+    <meta property="og:title" content="خرید بلیط هواپیما | رزرو تور داخلی و خارجی | تعطیلات رویایی">
+    <meta property="og:url" content="[##cms.request.:scheme##]://[##cms.request.full-url##]">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="تعطیلات رویایی">
+    <meta property="og:image" content="https://royalholidays.ir/images/royalholidays_1200x630.png">
+    <meta property="og:image:alt" content="تعطیلات رویایی | خرید بلیط هواپیما، تور داخلی و خارجی">
+    <meta property="og:description"
+          content="رزرو آنلاین بلیط هواپیما، هتل و انواع تورهای داخلی و خارجی با تعطیلات رویایی. تجربه سفری لذت‌بخش، مقرون‌به‌صرفه و مطمئن.">
+
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:type" content="image/png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@RoyalHolidays">
+    <meta name="twitter:creator" content="Royal Holidays (تعطیلات رویایی)">
+    <meta name="twitter:image" content="https://royalholidays.ir/images/royalholidays_1200x630.png">
+    <meta name="twitter:title" content="تعطیلات رویایی | خرید بلیط هواپیما و رزرو تور">
+    <meta name="twitter:description"
+          content="رزرو بلیط هواپیما، هتل و تورهای داخلی و خارجی با تعطیلات رویایی. خرید آسان، ارزان و همراه با پشتیبانی ۲۴ ساعته.">
+
+    <meta property="seo:robots" content="index, follow" />
+
     <!-- samandehi-enamad optional -->
-    <meta name="enamad" content=""/>
-    <meta name="samandehi" content=""/>
+    <meta name="enamad" content="" />
+    <meta name="samandehi" content="" />
+
     <!-- pwa metatags -->
-    <basis core="call" file="pwa.inc"/>
+    <basis core="call" file="pwa.inc" />
+
+    <!-- define -->
+    <link rel="preload" as="image"
+          imageSrcSet="https://royalholidays.ir/images/royalholidays_hero.webp"
+          fetchpriority="high" />
+
+    <!-- common styles for all page -->
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
-    <basis core="call" file="style.inc"/>
+    <basis core="call" file="style.inc" />
 </head>
 
 <body>
@@ -140,7 +166,7 @@
                     <div class="list-category-tour mt-12 w-full grid grid-cols-10">@child</div>
                 </layout>
                 <face>
-                    <a href="/Categories-of-tours"
+                    <a href="/Categories-of-tours" aria-label="@title"
                        class="item-category-tour relative ease w-full py-2 flex flex-col items-center justify-center gap-3">
                         <img class="relative z-5" width="36" src="/@image" alt="@title">
                         <span class="DanaRegular text-[17px] text-[#171717] relative z-5">@title</span>
@@ -184,7 +210,7 @@
                     <basis core="list" datamembername="db.tours">
                         <layout>@child</layout>
                         <face>
-                            <div data-category="@prp_3088231" class="swiper-slide swiper-slide-tabs tab-content">
+                            <div data-category="@prp_3088231" class="swiper-slide  tab-content">
                                 <div class="thumbnail-tour w-full rounded-3xl p-3 flex flex-col items-center">
                                     <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
                                         <a class="w-full h-[222px] relative" href="/@link" aria-label="@title">
@@ -269,7 +295,7 @@
                         <basis core="list" datamembername="db.gallery">
                             <layout>@child</layout>
                             <face>
-                                <a href="/@link">
+                                <a aria-label="img-gallery" href="/@link">
                                     <img class="w-full h-[180px] rounded-3xl" src="/@largeIMG" alt="">
                                 </a>
                             </face>
@@ -342,7 +368,7 @@
                     <basis core="list" datamembername="db.hotels">
                         <layout>@child</layout>
                         <face>
-                            <div data-category="@prp_3088232" class="swiper-slide swiper-slide-tabs tab-content-hotel">
+                            <div data-category="@prp_3088232" class="swiper-slide  tab-content-hotel">
                                 <div class="thumbnail-tour  bg-white w-full rounded-3xl p-3 flex flex-col items-center">
                                     <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
                                         <a class="w-full h-full" href="@link" aria-label="@title">
@@ -594,7 +620,7 @@
                                 <div class="back-bg flex items-center justify-center w-full h-full absolute right-0 top-0 z-5 bg-[#0000007A]">
                                     <h3 class="text-white danaBold text-xl">@title</h3>
                                 </div>
-                                <img class="w-full h-full" src="/@image" alt="">
+                                <img class="w-full h-full" src="/@image" alt="@title">
                             </div>
                         </a>
                     </face>
@@ -658,14 +684,12 @@
                 </div>
                 <div class="end w-full flex flex-col items-start">
                     <img class="w-full ease hover:grayscale h-[200px] rounded-xl" src="/images/img-blog.png"
-                         alt="">
+                         alt="blog-more">
                     <h3 class="danaBold text-xl text-zinc-900 mt-6">برای دیدن مقاله های بیشتر</h3>
                     <p class="leading-[21px] relative z-10 text-xs	 text-justify danaRegular mt-3 text-zinc-600">
-                        متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از
-                        این
-                        متن
+                        برای دیدن مقاله‌های بیشتر، روی لینک کلیک کنید و شگفتی‌ها را کشف کنید.
                     </p>
-                    <a href="/Tourism-articles"
+                    <a href="/blogs"
                        class="btn btn-primary text-white text-base h-[55px] rounded-[100px] px-[24px] flex items-center mt-5">
                         بیشتر بخوانید
                     </a>
@@ -730,22 +754,21 @@
                 <div class="start-text absolute right-0 flex flex-col z-10 items-start">
                     <h2 class="text-secondary-900 text-[23px] danaBold">خدمات آژانس</h2>
                     <h6 class="text-zinc-900 text-4xl danaBold mt-2">تعطیلات رویایی</h6>
-                    <a href="/@link"
+                    <a href="/Services"
                        class="btn-more border-primary-900 h-[55px] px-[24px] mt-4 text-primary-900 border rounded-[100px] flex items-center">
                         مشاهده بیشتر
                     </a>
                 </div>
                 <div class="box-services w-[86%]  h-[325px] relative rounded-[50px]">
                     <div class="detail relative  mx-auto h-full z-10 flex flex-col">
-                      <basis core="print" datamembername="db.service-title">
-                          <layout>@child</layout>
-                          <face filter="catid=219234">
-                              <div class="text-zinc-900 w-[78%] mx-auto text-justify relative top-7 text-sm mt-4 leading-[25px]">
-                                 <p>@urldescription</p>
-                              </div>
-                          </face>
-                      </basis>
-
+                        <basis core="print" datamembername="db.service-title">
+                            <layout>@child</layout>
+                            <face filter="catid=219234">
+                                <div class="text-zinc-900 w-[78%] mx-auto text-justify relative top-7 text-sm mt-4 leading-[25px]">
+                                    <p>@urldescription</p>
+                                </div>
+                            </face>
+                        </basis>
                         <div class="items relative top-10 flex  items-center justify-center gap-7 w-full">
                             <basis core="list" datamembername="db.service">
                                 <layout>@child</layout>
@@ -756,7 +779,7 @@
                                                 <use href="/images/sprite-icons.svg#icon-service"></use>
                                             </svg>
                                         </div>
-                                        <a class="mt-4" href="@link"><h5
+                                        <a class="mt-4" href="/@link"><h5
                                                 class="danaBold ease text-secondary-950 text-base mt-4">@title</h5></a>
                                         <div class="w-full ease hidden  detail-items flex-col">
                                             <p class="text-zinc-600 text-xs	 w-[240px] text-justify my-2">
@@ -771,18 +794,15 @@
                                                 </a>
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </face>
                             </basis>
 
                         </div>
                     </div>
                     <div class="img w-full h-full absolute right-0 top-0">
-                        <img class="w-full h-full" src="/images/img-services.png" alt="">
+                        <img class="w-full h-full" src="/images/img-services.png" alt="bg-service">
                     </div>
-
                 </div>
             </div>
         </div>
