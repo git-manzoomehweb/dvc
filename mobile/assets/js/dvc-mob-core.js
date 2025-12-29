@@ -139,57 +139,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// swiper-thumbnail-visa
-var swiper = new Swiper(".swiper-thumbnail-visa", {
-    slidesPerView: 1.6,
-    spaceBetween: 20,
-    navigation: {
-        nextEl: ".swiper-button-next-visa",
-        prevEl: ".swiper-button-prev-visa",
-    },
-});
-
-// swiper-img-visa
-var swiper = new Swiper(".swiper-img-visa", {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    navigation: {
-        nextEl: ".swiper-button-next-visa",
-        prevEl: ".swiper-button-prev-visa",
-    },
-    pagination: {
-        el: ".swiper-pagination",
-    },
-});
-
-
-// swiper-comment-user
-var swiper = new Swiper(".swiper-comment-user", {
-    scrollbar: {
-        el: ".swiper-scrollbar-comment",
-        hide: false,
-        draggable: true,
-        snapOnRelease: true,
-    },
-    slidesPerView: 1.2,
-    spaceBetween: 14,
-    freeMode: true,
-    navigation: {
-        nextEl: ".swiper-button-next-comment",
-        prevEl: ".swiper-button-prev-comment",
-    },
-    breakpoints: {
-        640: {
-            slidesPerView: 1,
-        },
-        768: {
-            slidesPerView: 2,
-        },
-        1024: {
-            slidesPerView: 3,
-        }
-    }
-});
 
 
 //---------------slider-tour
@@ -543,18 +492,15 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 
-    // ---------- Init First Tab ----------
-    if (tabs.length == 'ویزای توریستی') {
-        tabs[0].click()
-    }
 
 
     window.loadCategory = loadCategory
 })
 
 document.addEventListener("DOMContentLoaded", () => {
-    const fetchContentVisa = document.getElementById('result-id-visa-mobi')
+    const fetchContentVisa = document.querySelector('.result-id-visa')
     const contentCacheVisa = new Map()
+
     // همه تب‌ها
     const tabsVisa = document.querySelectorAll('.btn-tab .item-btn-tab')
     // ---------- Loader ----------
@@ -604,3 +550,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.loadCategoryVisa = loadCategoryVisa
 })
+
+
+// swiper-thumbnail-visa
+var swiper = new Swiper(".swiper-thumbnail-visa", {
+    slidesPerView: 1.6,
+    spaceBetween: 20,
+    navigation: {
+        nextEl: ".swiper-button-next-visa",
+        prevEl: ".swiper-button-prev-visa",
+    },
+});
+
+// swiper-img-visa
+var swiper = new Swiper(".swiper-img-visa", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    navigation: {
+        nextEl: ".swiper-button-next-visa",
+        prevEl: ".swiper-button-prev-visa",
+    },
+    pagination: {
+        el: ".swiper-pagination",
+    },
+});
+
+
+// swiper-comment-user
+var swiperComment = new Swiper(".swiper-comment-user", {
+    scrollbar: {
+        el: ".swiper-scrollbar-comment",
+        hide: false,
+        draggable: true,
+        snapOnRelease: true,
+    },
+    slidesPerView: 1.2,
+    spaceBetween: 14,
+    freeMode: true,
+    navigation: {
+        nextEl: ".swiper-button-next-comment",
+        prevEl: ".swiper-button-prev-comment",
+    },
+    breakpoints: {
+        640: {
+            slidesPerView: 1,
+        },
+        768: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 3,
+        }
+    }
+});

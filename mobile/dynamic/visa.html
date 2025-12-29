@@ -131,22 +131,13 @@
             </div>
             <div class="w-full flex flex-col items-start">
                 <div class="btn-tab w-full  flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2">
-                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
-                       href="">ویزای توریستی</a>
-                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
-                       href="">مشاوره</a>
-                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
-                       href="">دانشجویی</a>
-                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
-                       href="">ثبت شرکت</a>
-                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
-                       href="">دانش آموزی</a>
-                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
-                       href="">استارتاپ</a>
-                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
-                       href="">تحصیلی</a>
-                    <a class="px-[12px]  flex-shrink-0 transition-colors text-center hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm	"
-                       href="">فرهنگی</a>
+                    <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
+                           nullvalue="219252">
+                        <layout>@child</layout>
+                        <face filter="catid<>219252">
+                            <div onclick="loadCategory('@catid', this)" class="px-[17px] item-btn-tab flex-shrink-0 transition-colors cursor-pointer  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</div>
+                        </face>
+                    </basis>
                 </div>
                 <div class="bg-white w-full rounded-3xl p-6 mt-6  shadow-custom-2 flex flex-col items-start">
                     <basis core="list" datamembername="db.view">

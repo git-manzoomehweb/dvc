@@ -1,9 +1,6 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
-    <member name="visa" perpage="1" type="list" link="visa.bc" pageno="[##cms.query.pagenum|(1)##]" propertyid="3088232" order="ord"/>
+    <member name="visa" perpage="1" type="list" link="visa.bc" pageno="[##cms.query.pagenum|(1)##]" size="227x87" propertyid="3088232" order="ord"/>
     <member name="paging" type="list" request="paging" count="3" parentname="visa" />
-</basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219252">
-    <member name="visa" perpage="1" type="list" link="visa.bc" pageno="[##cms.query.pagenum|(1)##]" propertyid="3088232" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
     <member name="scalar" type="scalar" typeid="150" />
@@ -23,8 +20,6 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
     <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
 </basis>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,13 +87,13 @@
                            nullvalue="219252">
                         <layout>@child</layout>
                         <face filter="catid<>219252">
-                            <a onclick="loadCategoryVisa('@catid', this)"
-                               class="px-[17px] transition-colors flex-shrink-0 cursor-pointer  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</a>
+                            <button onclick="loadCategoryVisa('@catid', this)"
+                               class="px-[17px] transition-colors flex-shrink-0 cursor-pointer item-btn-tab  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</button>
                         </face>
                     </basis>
                 </div>
 
-                <div id="result-id-visa-mobi" class="p-list-visa px-4 grid  gap-4 bg-white w-full mt-12 ">
+                <div class="p-list-visa px-4 grid  gap-4 bg-white result-id-visa w-full mt-12 ">
 
                 </div>
                 <div id="paging">
@@ -341,10 +336,12 @@
 
 
 
+<!--scripts-->
+<script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
 
 <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]"/>
 
-<!--scripts-->
-<script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
+
+
 </body>
 </html>

@@ -114,9 +114,14 @@
                                 <div class="h-[85px] flex items-center">
                                     <img width="85" src="/images/mail.png" alt="">
                                 </div>
-                                <a href="mail:" class="btn-primary w-full">
-                                    تماس با ما
-                                </a>
+                                <basis core="view" datamembername="db.info">
+                                    <face filter="TypeID in(242)">
+                                        <a href="mailto:@text" class="btn-primary w-full">
+                                            تماس با ما
+                                        </a>
+                                    </face>
+                                </basis>
+
                             </div>
                         </div>
                         <div class="box-detail-contact w-full bg-zinc-50 rounded-3xl  flex flex-col p-3 h-auto">
