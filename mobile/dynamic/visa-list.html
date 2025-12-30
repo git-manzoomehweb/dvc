@@ -12,7 +12,7 @@
     <member name="scalarEN" type="scalar" typeid="150" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
-    <member name="p-under" type="list"  propertyid="" />
+    <member name="p-under" type="view"  propertyid="" />
 </basis>
 <basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
     <member name="comment" type="list" order="ord" request="listcomment"/>
@@ -98,7 +98,7 @@
                     </basis>
                 </div>
 
-                <div class="p-list-visa px-4 grid  gap-4 bg-white w-full mt-12  result-id-visa-mobi">
+                <div id="result-id-visa-mobi" class="p-list-visa px-4 grid  gap-4 bg-white w-full mt-12 ">
 
                 </div>
                 <div id="paging">
@@ -191,10 +191,10 @@
                     <layout>
                         <div class="row-default grid  gap-8">@child</div>
                     </layout>
-                    <face>
+                    <face filter="TypeID=250">
                         <div class="detail-tour w-full flex flex-col gap-2 items-start pt-4">
-                            <h2 class="text-zinc-900 danaBold text-xl mt-1">@title</h2>
-                            <img class="w-full rounded-xl" src="/@image" alt="">
+                            <h2 class="text-zinc-900 danaBold text-base mt-1">@text</h2>
+                            <p class="leading-[21px] text-justify text-zinc-900 text-xs w-full mt-3">@largetext</p>
                         </div>
                     </face>
                 </basis>
@@ -346,6 +346,5 @@
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
-<basis core="call" file="script.inc" pageindex="[##cms.cms.pageindex##]"/>
 </body>
 </html>

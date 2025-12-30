@@ -55,7 +55,7 @@
                         </layout>
                         <face level="end" filter="link is null">
                             <li class="relative">
-                                <a href="/@link" class="block px-4 py-2 hover:text-primary_2 max-lg:block max-lg:w-full">@title</a>
+                                <a href="/tour-list.bc?catid=@catid" class="block px-4 py-2 hover:text-primary_2 max-lg:block max-lg:w-full">@title</a>
                             </li>
                         </face>
                         <face level="end">
@@ -67,7 +67,7 @@
                         <face level="1" filter="link is null">
                             <li class="relative has-sub-menu link-underMenu-one items-center rounded-xl h-8 justify-center">
                                 <div class="w-full flex items-center justify-between items-center p-3">
-                                    <span> @title </span>
+                                    <span>@title</span>
                                     <svg  width="24" height="24">
                                         <use href="/images/sprite-icons.svg#icon-arrow-down"></use>
                                     </svg>
@@ -80,7 +80,7 @@
                         <face level="1">
                             <li class="relative has-sub-menu link-underMenu-one items-center rounded-xl h-8 justify-center">
                                 <div class="w-full flex items-center justify-between items-center p-3">
-                                    <span class="text-zinc-900"> @title </span>
+                                    <span class="text-zinc-900">@title</span>
                                     <svg  width="24" height="24">
                                         <use href="/images/sprite-icons.svg#icon-arrow-down"></use>
                                     </svg>
@@ -154,7 +154,6 @@
                                 </ul>
                             </li>
                         </face>
-
                     </basis>
                     <li class="border-l-head px-6 text-zinc-900 h-10 flex items-center"><a href="/hotels">هتل</a></li>
                     <basis core="tree" datamembername="db.visa-header" idcol="catid" parentidcol="parentid" nullvalue="219252">
@@ -278,7 +277,7 @@
                            nullvalue="219097">
                         <layout>
                             <li class="group-links relative px-6 px-5 h-10 flex items-center">
-                                <a href="/Tourism-articles" class="text-zinc-900">وبلاگ ها  </a>
+                                <a href="/blogs" class="text-zinc-900">وبلاگ ها  </a>
                                 <svg class="mr-2" width="24" height="24">
                                     <use href="/images/sprite-icons.svg#icon-arrow-down"></use>
                                 </svg>

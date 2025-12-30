@@ -1,11 +1,11 @@
 <basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
-    <member name="info" type="view"/>
+    <member name="info" type="view" size="385x149"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219234">
-    <member name="service" type="list" link="service.bc" order="ord" propertyid="7244,7249,3088232"/>
+    <member name="service" type="list" link="article.bc" order="ord" propertyid="7244,7249,3088232"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
     <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
@@ -180,8 +180,8 @@
                                            nullvalue="219252">
                                         <layout>@child</layout>
                                         <face filter="catid<>219252">
-                                            <a onclick="loadCategory('@catid', this)"
-                                               class="px-[17px] transition-colors cursor-pointer  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</a>
+                                            <div onclick="loadCategory('@catid', this)"
+                                               class="px-[17px] transition-colors item-btn-tab cursor-pointer  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</div>
                                         </face>
                                     </basis>
                                 </div>

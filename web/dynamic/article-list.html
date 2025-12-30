@@ -1,5 +1,5 @@
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219094">
-    <member name="tours" type="list" link="tour.bc" propertyid="8181,3088230,8076,8077,10000504,3088231"
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.tid##]">
+    <member name="tours" size="385x222" type="list" link="tour.bc" propertyid="8181,3088230,8076,8077,10000504,3088231"
             order="ord" />
 </basis>
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
@@ -28,6 +28,10 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
     <member name="service-title" type="tree" link="visa.bc" request="cat" parentid="219234" order="ord"/>
 </basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.nid##]">
+    <member name="last-news" type="view" propertyid="" />
+</basis>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,7 +139,7 @@
                         و طراحی گرافیک گفته می‌شود. طراح</span>
             </div>
             <div class="w-full box-latest-news h-[380px] mt-6 rounded-3xl p-5">
-                <basis core="print" datamembername="db.article">
+                <basis core="print" datamembername="db.last-news">
                     <layout>@child</layout>
                     <face filter="ord=1">
                         <div class="thumbnail-blog relative h-[340px] w-[45%] flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
@@ -182,7 +186,7 @@
                 <basis core="print" datamembername="db.article-title">
                     <layout>@child</layout>
                     <face filter="catid=219222">
-                        <div class="text-zinc-500 text-xs danaRegular relative bottom-1">
+                        <div class="text-zinc-500 text-xs danaRegular relative mt-3 bottom-1">
                             <p>@urldescription</p>
                         </div>
                     </face>

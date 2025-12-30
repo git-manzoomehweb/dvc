@@ -22,8 +22,8 @@
     <member name="scalarEN" type="scalar" typeid="150"/>
 </basis>
 
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" usedforid="[##cms.query.aid##]">
-    <member name="p-under" type="list" size="" propertyid=""/>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
+    <member name="p-under" type="view" size="" propertyid=""/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
     <member name="faq-title" type="view" postsql="select * from [db.faq-title] where TypeID in(128)"/>
@@ -289,20 +289,34 @@
     <section class="s-details mt-8">
         <div class="c-container">
             <div class="p-details w-full flex flex-col gap-12">
-                <div class="w-full">
-                    <basis core="list" datamembername="db.p-under">
+                <div class="w-full flex flex-col items-start">
+                    <basis core="print" datamembername="db.p-under">
                         <layout>
                             @child
                         </layout>
-                        <face>
-                            <div class="row-default grid grid-cols-[1.07fr_1fr] gap-8 mb-12">
-                                <div class="p-img w-full rounded-3xl overflow-hidden h-[370px]">
-                                    <img class="w-full h-full" src="/@image" alt="">
-                                </div>
-                                <div class="detail-tour w-full flex flex-col items-start pt-4">
-                                    <h2 class="text-zinc-900 danaBold text-2xl mt-1">@title</h2>
-                                    <p>----</p>
-                                </div>
+                        <face filter="TypeID=150">
+                            <div class="detail-tour w-full flex flex-col items-start pt-4">
+                                <h2 class="text-zinc-900 danaBold text-2xl mt-1 mb-3">@text</h2>
+                            </div>
+                        </face>
+                    </basis>
+                    <basis core="print" datamembername="db.p-under">
+                        <layout>
+                            @child
+                        </layout>
+                        <face filter="TypeID=129">
+                            <div class="text-xs text-justify text-zinc-900 leading-5">
+                               <p>@largetext</p>
+                            </div>
+                        </face>
+                    </basis>
+                    <basis core="print" datamembername="db.p-under">
+                        <layout>
+                            @child
+                        </layout>
+                        <face filter="TypeID=250">
+                            <div class="text-xs text-justify text-zinc-900 flex flex-col gap-2">
+                                <p>@largetext</p>
                             </div>
                         </face>
                     </basis>

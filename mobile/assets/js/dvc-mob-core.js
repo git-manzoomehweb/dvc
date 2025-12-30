@@ -33,8 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             },
                         )
 
-                        const r = document.querySelector('.flighttype-field')
-                        r.classList.add('flighttype-dropDown')
 
                         const scripts = container.getElementsByTagName('script')
                         for (let i = 0; i < scripts.length; i++) {
@@ -111,7 +109,6 @@ if (window.innerWidth >= 1024) {
         headerMenu.style.transform = "translateX(1024px)";
         document.body.classList.remove("overflow-hidden");
     });
-
     bars3.addEventListener("click", function () {
         headerMenu.style.transform = "translateX(0)";
         document.body.classList.add("overflow-hidden");
@@ -457,12 +454,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let swiperInstance = null
 
     // همه تب‌ها
-    const tabs = document.querySelectorAll('.btn-tab a')
+    const tabs = document.querySelectorAll('.btn-tab .item-btn-tab')
 
     // ---------- Loader ----------
     function showLoader() {
         fetchContentHeader.innerHTML =
-            '<div class="flex justify-center mt-20"><span class="fetch-loader"></span></div>'
+            '<div class="flex justify-center mt-2"><span class="fetch-loader"></span></div>'
     }
 
     // ---------- Active Tab ----------
@@ -531,7 +528,7 @@ document.addEventListener("DOMContentLoaded", () => {
             observer: true,
             observeParents: true,
             watchSlidesProgress: true,
-            slidesPerView: 1.5,
+            slidesPerView: 1.2,
             spaceBetween: 20,
             loop: false,
             navigation: {
@@ -547,18 +544,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ---------- Init First Tab ----------
-    if (tabs.length) {
+    if (tabs.length == 'ویزای توریستی') {
         tabs[0].click()
     }
+
 
     window.loadCategory = loadCategory
 })
 
 document.addEventListener("DOMContentLoaded", () => {
-    const fetchContentVisa = document.querySelector('.result-id-visa-mobi')
+    const fetchContentVisa = document.getElementById('result-id-visa-mobi')
     const contentCacheVisa = new Map()
     // همه تب‌ها
-    const tabsVisa = document.querySelectorAll('.btn-tab a')
+    const tabsVisa = document.querySelectorAll('.btn-tab .item-btn-tab')
     // ---------- Loader ----------
     function showLoader() {
         fetchContentVisa.innerHTML =

@@ -1,6 +1,6 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
     <member name="tours" type="list" link="tour.bc" perpage="2" pageno="[##cms.query.pagenum|(1)##]"
-            propertyid="8181,3088230,8076,8077,10000504,3088231" order="ord"/>
+            propertyid="8181,3088230,8076,8077,10000504,3088231"  size="385x222" order="ord"/>
     <member name="paging" type="list" request="paging" count="3" parentname="tours"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.qid##]">
@@ -21,9 +21,8 @@
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
     <member name="scalarEN" type="scalar" typeid="150"/>
 </basis>
-
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" usedforid="[##cms.query.aid##]">
-    <member name="p-under" type="list" size="" propertyid=""/>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
+    <member name="p-under" type="view" size="" propertyid=""/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
     <member name="faq-title" type="view" postsql="select * from [db.faq-title] where TypeID in(128)"/>
@@ -285,22 +284,40 @@
         </div>
     </section>
     <!--s-details-->
-    <section class="s-details mt-1">
+    <section class="s-details mt-1 px-4">
         <div class="p-details w-full flex flex-col gap-8 px-4">
-            <basis core="print" datamembername="db.p-under">
-                <layout>
-                    <div class="row-default grid  gap-8">@child</div>
-                </layout>
-                <face>
-                    <div class="p-img w-full rounded-lg overflow-hidden h-[165px]">
-                        <img class="w-full h-full" src="/@image" alt="">
-                    </div>
-                    <div class="detail-tour w-full flex flex-col items-start pt-4">
-                        <h2 class="text-zinc-900 danaBold text-base mt-1">@title</h2>
-                        <p class="leading-[21px] text-justify text-zinc-900 text-xs	 mt-4">@largetext</p>
-                    </div>
-                </face>
-            </basis>
+            <div class="w-full flex flex-col items-start">
+                <basis core="print" datamembername="db.p-under">
+                    <layout>
+                        @child
+                    </layout>
+                    <face filter="TypeID=150">
+                        <div class="detail-tour w-full flex flex-col items-start pt-4">
+                            <h2 class="text-zinc-900 danaBold text-xl mt-1 mb-3">@text</h2>
+                        </div>
+                    </face>
+                </basis>
+                <basis core="print" datamembername="db.p-under">
+                    <layout>
+                        @child
+                    </layout>
+                    <face filter="TypeID=129">
+                        <div class="text-xs text-justify text-zinc-900 leading-5">
+                            <p>@largetext</p>
+                        </div>
+                    </face>
+                </basis>
+                <basis core="print" datamembername="db.p-under">
+                    <layout>
+                        @child
+                    </layout>
+                    <face filter="TypeID=250">
+                        <div class="text-xs text-justify text-zinc-900 flex flex-col gap-2">
+                            <p>@largetext</p>
+                        </div>
+                    </face>
+                </basis>
+            </div>
         </div>
     </section>
     <!-- s-faq-->

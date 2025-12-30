@@ -3,8 +3,7 @@
             postsql="select * from [db.tourCategory] where parentid in(219145)"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219094">
-    <member name="tours" type="list" link="tour.bc" propertyid="8181,3088230,8076,8077,10000504,3088231" order="ord"/>
-
+    <member name="tours"  type="list" link="tour.bc" propertyid="8181,3088230,8076,8077,10000504,3088231" order="ord"  size="385x222"/>
 </basis>
 <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1"
        usedforid="2390878">
@@ -12,11 +11,11 @@
 </basis>
 <basis core="dbsource" source="media" lid="1" name="db"
        usedforid="2390878" sourcemid="article">
-    <member type="list" name="gallery" format="4" order="ord"/>
+    <member type="list" name="gallery" format="4" order="ord" size="260x181"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219096">
     <member name="hotels" type="list" link="hotel.bc"
-            propertyid="3088232,3088223,3088222,3088221,3088220,3088219,7249,7245" order="ord"/>
+            propertyid="3088232,3088223,3088222,3088221,3088220,3088219,7249,7245" order="ord" size="385x222"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
     <member name="hotel-title" type="tree" request="cat" parentid="219096" order="ord"/>
@@ -28,26 +27,26 @@
     <member name="faq-title" type="view" postsql="select * from [db.faq-title] where TypeID in(128)"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219183">
-    <member name="popular-destinations" type="list" link="tour.bc" propertyid="3088231" order="ord"/>
+    <member name="popular-destinations" type="list" link="tour.bc" propertyid="3088231"  order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219183">
     <member name="popular-title" type="tree" request="cat" parentid="219183" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
     <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"
-            postsql="SELECT * FROM [db.article] ORDER BY ord ASC LIMIT 3;"/>
+            postsql="SELECT * FROM [db.article] ORDER BY ord ASC LIMIT 3;"  />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
     <member name="article-title" type="tree" request="cat" parentid="219222" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219252">
-    <member name="visa" type="list" link="visa.bc" propertyid="3088232,219253,219252" order="ord"/>
+    <member name="visa" type="list" link="visa.bc" propertyid="3088232,219253,219252" size="227x87" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
     <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219234">
-    <member name="service" type="list" link="Services" order="ord" propertyid="7244,7249"/>
+    <member name="service" type="list" link="article.bc" order="ord" propertyid="7244,7249"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
     <member name="service-title" type="tree" link="visa.bc" request="cat" parentid="219234" order="ord"/>
@@ -284,9 +283,7 @@
                     <basis core="list" datamembername="db.gallery">
                         <layout>@child</layout>
                         <face>
-                            <a href="/@link">
                                 <img class="w-full h-[100px] rounded-3xl" src="/@largeIMG" alt="">
-                            </a>
                         </face>
                     </basis>
 
@@ -494,11 +491,11 @@
                 </basis>
 
             </div>
-            <img class="w-full" src="/images/img-faq.png" alt="">
+            <img class="w-full" src="/images/img-faq.webp" alt="">
         </div>
         <div class="w-full flex flex-col items-center gap-6 mt-8">
             <div class="w-full flex flex-col items-center gap-6">
-                <h3 class="text-zinc-900 text-xl danaBold">ارتباط با کارشناسان ما جهت مشاوره رایگان</h3>
+                <h3 class="text-zinc-900 text-base danaBold">ارتباط با کارشناسان ما جهت مشاوره رایگان</h3>
                 <div class="w-full" id="form-faq">
                     <div class="form-faq grid grid-cols-[2fr_1fr_1fr] gap-2 w-full mx-auto">
                         <basis core="schema" run="atclient"
@@ -693,13 +690,13 @@
                     </div>
                 </face>
             </basis>
-            <div class="btn-tab w-full flex items-center justify-center mt-7 gap-2">
+            <div class="btn-tab w-full flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2 flex items-center justify-center my-5 gap-2">
                 <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
                        nullvalue="219252">
                     <layout>@child</layout>
                     <face filter="catid<>219252">
-                        <a onclick="loadCategory('@catid', this)"
-                           class="px-[17px] transition-colors cursor-pointer flex-shrink-0  rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</a>
+                        <div onclick="loadCategory('@catid', this)"
+                           class="px-[17px] transition-colors cursor-pointer flex-shrink-0 item-btn-tab  rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</div>
                     </face>
                 </basis>
             </div>
@@ -785,7 +782,7 @@
                     </div>
                 </div>
                 <div class="img w-full h-full absolute right-0 top-0">
-                    <img class="w-full h-full object-cover rounded-xl" src="/images/img-services.png" alt="">
+                    <img class="w-full h-full object-cover rounded-xl" src="/images/img-services.webp" alt="">
                 </div>
 
             </div>

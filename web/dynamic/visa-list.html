@@ -12,7 +12,7 @@
     <member name="scalarEN" type="scalar" typeid="150" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
-    <member name="p-under" type="list"  propertyid="" />
+    <member name="p-under" type="view"  propertyid="" />
 </basis>
 <basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
     <member name="comment" type="list" order="ord" request="listcomment"/>
@@ -92,8 +92,8 @@
                                nullvalue="219252">
                             <layout>@child</layout>
                             <face filter="catid<>219252">
-                                <a onclick="loadCategoryVisa('@catid', this)"
-                                   class="px-[17px] transition-colors cursor-pointer  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</a>
+                                <div onclick="loadCategoryVisa('@catid', this)"
+                                   class="px-[17px] transition-colors cursor-pointer item-btn-tab  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</div>
                             </face>
                         </basis>
                     </div>
@@ -189,17 +189,14 @@
     <section class="s-details mt-8">
         <div class="c-container">
             <div class="p-details w-full flex flex-col gap-12">
-                <basis core="print" datamembername="db.p-under">
+                <basis core="list" datamembername="db.p-under">
                     <layout>
-                        <div class="row-default grid grid-cols-[1.07fr_1fr] gap-8">@child</div>
+                        <div class="row-default grid  gap-8">@child</div>
                     </layout>
-                    <face>
-                        <div class="p-img w-full rounded-3xl overflow-hidden h-[370px]">
-                            <img class="w-full h-full" src="/@image" alt="">
-                        </div>
-                        <div class="detail-tour w-full flex flex-col items-start pt-4">
-                            <h2 class="text-zinc-900 danaBold text-2xl mt-1">@title</h2>
-                            <p class="leading-[21px] text-justify text-zinc-900 text-xs	 mt-3">@largetext</p>
+                    <face filter="TypeID=250">
+                        <div class="detail-tour w-full flex flex-col gap-2 items-start pt-4">
+                            <h2 class="text-zinc-900 danaBold text-2xl mt-1">@text</h2>
+                            <p class="leading-[21px] text-justify text-zinc-900 text-xsw-full mt-3">@largetext</p>
                         </div>
                     </face>
                 </basis>
@@ -217,7 +214,7 @@
                         <path d="M300.773 2.88672L297.887 -3.26633e-05L295 2.88672L297.887 5.77347L300.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77347 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM297.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L297.887 3.38672V2.88672Z"
                               fill="#CFAA65"/>
                     </svg>
-                    <span class="text-zinc-300 danaRegular mt-3 text-xs	">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+                    <span class="text-zinc-600 danaRegular mt-3 text-xs">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
                 </div>
                 <div class="row-visa mt-8 w-full flex items-center justify-between">
                     <div class="slider-img w-[40%]">

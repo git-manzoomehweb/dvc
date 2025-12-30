@@ -504,12 +504,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let swiperInstance = null
 
     // همه تب‌ها
-    const tabs = document.querySelectorAll('.btn-tab a')
+    const tabs = document.querySelectorAll('.btn-tab .item-btn-tab')
 
     // ---------- Loader ----------
     function showLoader() {
         fetchContentHeader.innerHTML =
-            '<div class="flex justify-center mt-20"><span class="fetch-loader"></span></div>'
+            '<div class="flex justify-center mt-2"><span class="fetch-loader"></span></div>'
     }
 
     // ---------- Active Tab ----------
@@ -605,7 +605,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const fetchContentVisa = document.querySelector('.result-id-visa')
     const contentCacheVisa = new Map()
     // همه تب‌ها
-    const tabsVisa = document.querySelectorAll('.btn-tab a')
+    const tabsVisa = document.querySelectorAll('.btn-tab .item-btn-tab')
     // ---------- Loader ----------
     function showLoader() {
         fetchContentVisa.innerHTML =
