@@ -7,9 +7,6 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219234">
     <member name="service" type="list" link="article.bc" order="ord" propertyid="7244,7249,3088232"/>
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
-    <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
-</basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
     <member name="faq-title" type="view" postsql="select * from [db.faq-title] where TypeID in(128)"/>
 </basis>
@@ -180,16 +177,6 @@
                     <div class="w-full flex flex-col gap-7">
                         <div class="box-about w-full h-[550px] relative overflow-hidden rounded-3xl">
                             <div class="box-detail p-6 w-full h-full flex flex-col relative z-10">
-                                <div class="btn-tab w-full flex items-center justify-start mt-7 gap-2">
-                                    <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
-                                           nullvalue="219252">
-                                        <layout>@child</layout>
-                                        <face filter="catid<>219252">
-                                            <div onclick="loadCategory('@catid', this)"
-                                               class="px-[17px] transition-colors item-btn-tab cursor-pointer  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</div>
-                                        </face>
-                                    </basis>
-                                </div>
                                 <h3 class="danaBold text-xl text-zinc-900 mt-8">خدمات آژانس</h3>
                                 <h2 class="danaBold text-4xl text-zinc-900">تعطیلات رویایی</h2>
                                 <div class="danaRegular text-sm	 text-justify text-zinc-900 mt-2">

@@ -386,14 +386,12 @@ async function OnProcessedEditObjectFaq(args) {
 }
 
 async function RenderFormFaq() {
-    var inputElementPhone = document.querySelector(
-        '.form-faq input[data-bc-text-input]:first-child',
-    )
-    var inputElementUsername = document.querySelector(
-        '.form-faq input[data-bc-text-input]:last-child',
-    )
-    inputElementPhone.setAttribute('placeholder', 'شماره تماس')
-    // inputElementUsername.setAttribute('placeholder', 'نام و نام خانوادگی')
+    const inputs = document.querySelectorAll('.form-faq [data-bc-text-input]')
+
+    if (inputs.length >= 2) {
+        inputs[0].placeholder = 'شماره تماس'
+        inputs[1].placeholder = 'نام و نام خانوادگی'
+    }
 }
 
 
@@ -493,7 +491,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+// ---------- Init Default Tab ----------
+    if (tabs.length > 0) {
+        const firstTab = tabs[0]
+        const firstId = firstTab.getAttribute('onclick')
+            ?.match(/loadCategory\('(.+?)'/)?.[1]
 
+        if (firstId) {
+            loadCategory(firstId, firstTab)
+        }
+    }
     window.loadCategory = loadCategory
 })
 
@@ -547,7 +554,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    if (tabsVisa.length > 0) {
+        const firstTabVisa = tabsVisa[0]
+        const firstIdVisa = firstTabVisa.getAttribute('onclick')
+            ?.match(/loadCategoryVisa\('(.+?)'/)?.[1]
 
+        if (firstIdVisa) {
+            loadCategoryVisa(firstIdVisa, firstTabVisa)
+        }
+    }
     window.loadCategoryVisa = loadCategoryVisa
 })
 
@@ -560,6 +575,17 @@ var swiper = new Swiper(".swiper-thumbnail-visa", {
         nextEl: ".swiper-button-next-visa",
         prevEl: ".swiper-button-prev-visa",
     },
+    breakpoints: {
+        640: {
+            slidesPerView: 1,
+        },
+        768: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 3,
+        }
+    }
 });
 
 // swiper-img-visa
@@ -593,7 +619,7 @@ var swiperComment = new Swiper(".swiper-comment-user", {
     },
     breakpoints: {
         640: {
-            slidesPerView: 1,
+            slidesPerView: 1.2,
         },
         768: {
             slidesPerView: 2,

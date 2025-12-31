@@ -118,369 +118,7 @@
 
 
 
-
-
-        <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db"
-               q="[##cms.query.search-content-name##]">
-            <member name="tour-list" type="list" link="tour.bc" propertyid="8077,8076,8181,10000504,3087727"
-                    perpage="12" size="395x237" order="ord" />
-        </basis>
-        <div>
-            <basis core="list" datamembername="db.tour-list">
-                <layout>
-                    <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-20 mb-14">
-                        <h2 class="text-3xl font-bold text-zinc-900 mb-7 text-center">تور ها</h2>
-                        <div class="grid grid-cols-3 gap-x-2 gap-y-3 mt-8">
-                            <!-- items -->
-                            @child
-                        </div>
-                    </section>
-                </layout>
-                <face filter="link is null and prp_3087727 is null">
-                    <a href="/tour.bc?id=@id"
-                       class="flex flex-col justify-end group border-[3px] border-solid border-zinc-200 bg-white rounded-t-[50px] p-3 transition-all duration-300 hover:border-primary-600">
-                        <div class="relative">
-                            <img src="@00395X00237prp"
-                                 class="h-60 object-cover rounded-t-[40px] transition-all duration-300 group-hover:grayscale"
-                                 alt="@title" width="100%" height="240" loading="lazy">
-                        </div>
-                        <div class="flex flex-col gap-2 mt-4">
-                            <h2 class="font-bold">@title</h2>
-                            <div
-                                    class="flex items-center justify-between divide-x divide-x-reverse border border-solid rounded-xl px-3 py-2">
-                                    <span class="flex items-center gap-2 text-xs">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-calender"></use>
-                                        </svg>
-                                        @prp_8077
-                                    </span>
-                                <span class="flex items-center font-medium gap-2 text-xs pr-7">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-clock"></use>
-                                        </svg>
-                                        @prp_8076
-                                    </span>
-                                <span class="flex items-center gap-2 text-xs pr-7">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-airline"></use>
-                                        </svg>
-                                        @prp_10000504
-                                    </span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <span class="text-zinc-500 text-xs font-medium">قیمت از:</span>
-                                    <div class="text-zinc-900 text-lg font-medium">@prp_8181</div>
-                                </div>
-                                <span
-                                        class="relative group/leveltwo w-32 z-10 overflow-hidden border border-solid border-primary-900 flex items-center gap-3 justify-center h-10 text-white bg-primary-900 rounded-lg transition-all duration-300 hover:text-primary-900">مشاهده
-                                        تور
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                    class="transition-all duration-300 group-hover/leveltwo:fill-primary-900"
-                                                    d="M4.64645 9.64645C4.45118 9.84171 4.45118 10.1583 4.64645 10.3536L7.82843 13.5355C8.02369 13.7308 8.34027 13.7308 8.53553 13.5355C8.7308 13.3403 8.7308 13.0237 8.53553 12.8284L5.70711 10L8.53553 7.17157C8.7308 6.97631 8.7308 6.65973 8.53553 6.46447C8.34027 6.2692 8.02369 6.2692 7.82843 6.46447L4.64645 9.64645ZM15 10V9.5L5 9.5V10V10.5L15 10.5V10Z"
-                                                    fill="#fff" />
-                                        </svg>
-
-                                        <span
-                                                class="absolute w-full inset-0 transition-transform duration-300 h-10 origin-right scale-x-0 -z-10 bg-zinc-50 group-hover/leveltwo:scale-x-100"></span>
-                                    </span>
-                            </div>
-                        </div>
-                    </a>
-                </face>
-                <face filter="prp_3087727 is null">
-                    <a href="@link"
-                       class="flex flex-col justify-end group border-[3px] border-solid border-zinc-200 bg-white rounded-t-[50px] p-3 transition-all duration-300 hover:border-primary-600">
-                        <div class="relative">
-                            <img src="@00395X00237prp"
-                                 class="h-60 object-cover rounded-t-[40px] transition-all duration-300 group-hover:grayscale"
-                                 alt="@title" width="100%" height="240" loading="lazy">
-                        </div>
-                        <div class="flex flex-col gap-2 mt-4">
-                            <h2 class="font-bold">@title</h2>
-                            <div
-                                    class="flex items-center justify-between divide-x divide-x-reverse border border-solid rounded-xl px-3 py-2">
-                                    <span class="flex items-center gap-2 text-xs">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-calender"></use>
-                                        </svg>
-                                        @prp_8077
-                                    </span>
-                                <span class="flex items-center font-medium gap-2 text-xs pr-7">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-clock"></use>
-                                        </svg>
-                                        @prp_8076
-                                    </span>
-                                <span class="flex items-center gap-2 text-xs pr-7">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-airline"></use>
-                                        </svg>
-                                        @prp_10000504
-                                    </span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <span class="text-zinc-500 text-xs font-medium">قیمت از:</span>
-                                    <div class="text-zinc-900 text-lg font-medium">@prp_8181</div>
-                                </div>
-                                <span
-                                        class="relative group/leveltwo w-32 z-10 overflow-hidden border border-solid border-primary-900 flex items-center gap-3 justify-center h-10 text-white bg-primary-900 rounded-lg transition-all duration-300 hover:text-primary-900">مشاهده
-                                        تور
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                    class="transition-all duration-300 group-hover/leveltwo:fill-primary-900"
-                                                    d="M4.64645 9.64645C4.45118 9.84171 4.45118 10.1583 4.64645 10.3536L7.82843 13.5355C8.02369 13.7308 8.34027 13.7308 8.53553 13.5355C8.7308 13.3403 8.7308 13.0237 8.53553 12.8284L5.70711 10L8.53553 7.17157C8.7308 6.97631 8.7308 6.65973 8.53553 6.46447C8.34027 6.2692 8.02369 6.2692 7.82843 6.46447L4.64645 9.64645ZM15 10V9.5L5 9.5V10V10.5L15 10.5V10Z"
-                                                    fill="#fff" />
-                                        </svg>
-
-                                        <span
-                                                class="absolute w-full inset-0 transition-transform duration-300 h-10 origin-right scale-x-0 -z-10 bg-zinc-50 group-hover/leveltwo:scale-x-100"></span>
-                                    </span>
-                            </div>
-                        </div>
-                    </a>
-                </face>
-                <face filter="link is null">
-                    <a href="/tour.bc?id=@id"
-                       class="flex flex-col justify-end group border-[3px] border-solid border-zinc-200 bg-white rounded-t-[50px] p-3 transition-all duration-300 hover:border-primary-600">
-                        <div class="relative">
-                            <img src="@00395X00237prp"
-                                 class="h-60 object-cover rounded-t-[40px] transition-all duration-300 group-hover:grayscale"
-                                 alt="@title" width="100%" height="240" loading="lazy">
-                            <div
-                                    class="absolute bottom-0 left-0 rounded-tr-3xl bg-specialcolor-1 py-3 px-4 text-white">
-                                @prp_3087727</div>
-                        </div>
-                        <div class="flex flex-col gap-2 mt-4">
-                            <h2 class="font-bold">@title</h2>
-                            <div
-                                    class="flex items-center justify-between divide-x divide-x-reverse border border-solid rounded-xl px-3 py-2">
-                                    <span class="flex items-center gap-2 text-xs">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-calender"></use>
-                                        </svg>
-                                        @prp_8077
-                                    </span>
-                                <span class="flex items-center font-medium gap-2 text-xs pr-7">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-clock"></use>
-                                        </svg>
-                                        @prp_8076
-                                    </span>
-                                <span class="flex items-center gap-2 text-xs pr-7">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-airline"></use>
-                                        </svg>
-                                        @prp_10000504
-                                    </span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <span class="text-zinc-500 text-xs font-medium">قیمت از:</span>
-                                    <div class="text-zinc-900 text-lg font-medium">@prp_8181</div>
-                                </div>
-                                <span
-                                        class="relative group/leveltwo w-32 z-10 overflow-hidden border border-solid border-primary-900 flex items-center gap-3 justify-center h-10 text-white bg-primary-900 rounded-lg transition-all duration-300 hover:text-primary-900">مشاهده
-                                        تور
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                    class="transition-all duration-300 group-hover/leveltwo:fill-primary-900"
-                                                    d="M4.64645 9.64645C4.45118 9.84171 4.45118 10.1583 4.64645 10.3536L7.82843 13.5355C8.02369 13.7308 8.34027 13.7308 8.53553 13.5355C8.7308 13.3403 8.7308 13.0237 8.53553 12.8284L5.70711 10L8.53553 7.17157C8.7308 6.97631 8.7308 6.65973 8.53553 6.46447C8.34027 6.2692 8.02369 6.2692 7.82843 6.46447L4.64645 9.64645ZM15 10V9.5L5 9.5V10V10.5L15 10.5V10Z"
-                                                    fill="#fff" />
-                                        </svg>
-
-                                        <span
-                                                class="absolute w-full inset-0 transition-transform duration-300 h-10 origin-right scale-x-0 -z-10 bg-zinc-50 group-hover/leveltwo:scale-x-100"></span>
-                                    </span>
-                            </div>
-                        </div>
-                    </a>
-                </face>
-                <face>
-                    <a href="@link"
-                       class="flex flex-col justify-end group border-[3px] border-solid border-zinc-200 bg-white rounded-t-[50px] p-3 transition-all duration-300 hover:border-primary-600">
-                        <div class="relative">
-                            <img src="@00395X00237prp"
-                                 class="h-60 object-cover rounded-t-[40px] transition-all duration-300 group-hover:grayscale"
-                                 alt="@title" width="100%" height="240" loading="lazy">
-                            <div
-                                    class="absolute bottom-0 left-0 rounded-tr-3xl bg-specialcolor-1 py-3 px-4 text-white">
-                                @prp_3087727</div>
-                        </div>
-                        <div class="flex flex-col gap-2 mt-4">
-                            <h2 class="font-bold">@title</h2>
-                            <div
-                                    class="flex items-center justify-between divide-x divide-x-reverse border border-solid rounded-xl px-3 py-2">
-                                    <span class="flex items-center gap-2 text-xs">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-calender"></use>
-                                        </svg>
-                                        @prp_8077
-                                    </span>
-                                <span class="flex items-center font-medium gap-2 text-xs pr-7">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-clock"></use>
-                                        </svg>
-                                        @prp_8076
-                                    </span>
-                                <span class="flex items-center gap-2 text-xs pr-7">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-airline"></use>
-                                        </svg>
-                                        @prp_10000504
-                                    </span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <span class="text-zinc-500 text-xs font-medium">قیمت از:</span>
-                                    <div class="text-zinc-900 text-lg font-medium">@prp_8181</div>
-                                </div>
-                                <span
-                                        class="relative group/leveltwo w-32 z-10 overflow-hidden border border-solid border-primary-900 flex items-center gap-3 justify-center h-10 text-white bg-primary-900 rounded-lg transition-all duration-300 hover:text-primary-900">مشاهده
-                                        تور
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                    class="transition-all duration-300 group-hover/leveltwo:fill-primary-900"
-                                                    d="M4.64645 9.64645C4.45118 9.84171 4.45118 10.1583 4.64645 10.3536L7.82843 13.5355C8.02369 13.7308 8.34027 13.7308 8.53553 13.5355C8.7308 13.3403 8.7308 13.0237 8.53553 12.8284L5.70711 10L8.53553 7.17157C8.7308 6.97631 8.7308 6.65973 8.53553 6.46447C8.34027 6.2692 8.02369 6.2692 7.82843 6.46447L4.64645 9.64645ZM15 10V9.5L5 9.5V10V10.5L15 10.5V10Z"
-                                                    fill="#fff" />
-                                        </svg>
-
-                                        <span
-                                                class="absolute w-full inset-0 transition-transform duration-300 h-10 origin-right scale-x-0 -z-10 bg-zinc-50 group-hover/leveltwo:scale-x-100"></span>
-                                    </span>
-                            </div>
-                        </div>
-                    </a>
-                </face>
-            </basis>
-        </div>
-
-
-
-
-        <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" q="[##cms.query.search-content-name##]">
-            <member name="hotel-list" type="list" link="hotel.bc" propertyid="177441,177442,3087720" perpage="12"
-                    size="395x237" order="ord" />
-        </basis>
-
-        <section class="hotel-list-section mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-20 mb-20">
-            <basis core="list" datamembername="db.hotel-list">
-                <layout>
-                    <input type="hidden" class="hotelname" value="[##cms.query.q##]" />
-                    <input type="hidden" class="hotelcity" value="[##cms.query.q2##]" />
-                    <input type="hidden" class="hotelstar" value="[##cms.query.q3##]" />
-                    <h2 class="text-2xl font-bold text-zinc-900 mb-7 text-center">هتل ها</h2>
-                    <div class="grid grid-cols-3 gap-3 mt-8 hotel-list-container">
-                        <!-- items -->
-                        @child
-                    </div>
-
-                </layout>
-                <face filter="link is null">
-                    <a href="/hotel.bc?id=@id"
-                       class="hotel-list-search flex flex-col group border-[3px] border-solid border-zinc-200 bg-white rounded-t-[50px] p-3 transition-all duration-300 hover:border-primary-600">
-                        <img src="@00395X00237prp"
-                             class="h-60 object-cover rounded-t-[40px] transition-all duration-300 group-hover:grayscale"
-                             alt="@title" width="100%" height="240" loading="lazy">
-                        <div class="flex flex-col gap-2 mt-4">
-                            <h2 class="font-medium title-hotel">@title</h2>
-                            <div class="flex items-center gap-2 border border-solid rounded-xl px-3 py-2">
-                                    <span class="flex flex-1 items-center gap-2 text-xs">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-rate"></use>
-                                        </svg>
-                                        امتیاز @prp_177441
-                                    </span>
-                                <span class="h-6 w-px border border-zinc-200"></span>
-                                <span class="flex flex-1 items-center justify-center font-medium gap-2 text-xs">
-                                        <svg width="20" height="20" class="flex-shrink-0 star-hotel"
-                                             data-star="@prp_177442">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-hotel-star"></use>
-                                        </svg>
-                                        @prp_177442 ستاره
-                                    </span>
-                                <span class="h-6 w-px border border-zinc-200"></span>
-                                <span class="flex flex-1 items-center justify-end gap-2 text-xs">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-pin"></use>
-                                        </svg>
-                                        <span class="city-hotel">@prp_3087720</span>
-                                    </span>
-                            </div>
-                            <span
-                                    class="flex items-center gap-2 justify-center h-10 text-primary-900 rounded-lg group-hover:bg-primary-50">مشاهده
-                                    هتل
-                                    <svg class="transition-all duration-300 group-hover:translate-x-4" width="48"
-                                         height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                              d="M28.3128 30.9999L21.3127 23.9999L28.3128 16.9999L27.2521 15.9392L19.1914 23.9999L27.2521 32.0605L28.3128 30.9999Z"
-                                              fill="#FD7523" />
-                                    </svg>
-                                </span>
-                        </div>
-                    </a>
-                </face>
-                <face>
-                    <a href="@link"
-                       class="hotel-list-search flex flex-col group border-[3px] border-solid border-zinc-200 bg-white rounded-t-[50px] p-3 transition-all duration-300 hover:border-primary-600">
-
-                        <img src="@00395X00237prp"
-                             class="h-60 object-cover rounded-t-[40px] transition-all duration-300 group-hover:grayscale"
-                             alt="@title" width="100%" height="240" loading="lazy">
-                        <div class="flex flex-col gap-2 mt-4">
-                            <h2 class="font-medium title-hotel">@title</h2>
-                            <div class="flex items-center gap-2 border border-solid rounded-xl px-3 py-2">
-                                    <span class="flex flex-1 items-center gap-2 text-xs">
-                                        <svg width="20" height="20" class="flex-shrink-0 star-hotel"
-                                             data-star="@prp_177442">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-rate"></use>
-                                        </svg>
-                                        امتیاز @prp_177441
-                                    </span>
-                                <span class="h-6 w-px border border-zinc-200"></span>
-                                <span class="flex flex-1 items-center justify-center font-medium gap-2 text-xs">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-hotel-star"></use>
-                                        </svg>
-                                        @prp_177442 ستاره
-                                    </span>
-                                <span class="h-6 w-px border border-zinc-200"></span>
-                                <span class="flex flex-1 items-center justify-end gap-2 text-xs">
-                                        <svg width="20" height="20" class="flex-shrink-0">
-                                            <use xlink:href="./images/sprite-icons.svg#icon-pin"></use>
-                                        </svg>
-                                        <span class="city-hotel">@prp_3087720</span>
-                                    </span>
-                            </div>
-                            <span
-                                    class="flex items-center gap-2 justify-center h-10 text-primary-900 rounded-lg group-hover:bg-primary-50">مشاهده
-                                    هتل
-                                    <svg class="transition-all duration-300 group-hover:translate-x-4" width="48"
-                                         height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                              d="M28.3128 30.9999L21.3127 23.9999L28.3128 16.9999L27.2521 15.9392L19.1914 23.9999L27.2521 32.0605L28.3128 30.9999Z"
-                                              fill="#FD7523" />
-                                    </svg>
-                                </span>
-                        </div>
-                    </a>
-                </face>
-            </basis>
-
-        </section>
-
-
-
-
-
-        <div
-                class="all-cat-item grid grid-cols-4 gap-3 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-20 mb-20">
+        <div class="all-cat-item grid grid-cols-4 gap-3 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-20 mb-20">
 
             <basis core="dbsource" source="basiscore" lid="1" mid="1" name="article">
                 <member name="cat" type="tree" request="cat" parentid="151251" order="ord">
@@ -614,8 +252,7 @@
                     pageno="[##cms.query.pagenum|(1)##]" order="ord" />
             <member name="paging" type="list" request="paging" count="3" parentname="article-list" />
         </basis>
-        <section class="relative z-10 pt-12 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-20 mb-20">
-
+        <section class="relative z-10 pt-12 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-40 mb-20">
             <basis core="list" datamembername="db.article-list">
                 <layout>
                     <div class="title w-full flex flex-col items-center justify-center gap-[6px]">
@@ -773,10 +410,161 @@
             </div>
         </section>
     </basis>
+    <basis core="group" if=" '[##cms.query.t##]' = 'visa'">
+        <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" q="[##cms.query.search-content-name##]">
+            <member name="visa-list" type="list" link="visa.bc" propertyid="3088232,219253,219252" perpage="3"
+                    pageno="[##cms.query.pagenum|(1)##]" order="ord" />
+            <member name="paging" type="list" request="paging" count="3" parentname="visa-list" />
+        </basis>
+
+
+        <section class="relative z-10 pt-12 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-40 mb-20">
+            <basis core="list" datamembername="db.visa-list">
+                <layout>
+                    <div class="title w-full flex flex-col items-center justify-center gap-[6px]">
+                        <h2 class="danaBold text-2xl">ویزا</h2>
+                        <svg width="214" height="6">
+                            <use href="/images/sprite-icons.svg#line-title-blog"></use>
+                        </svg>
+                    </div>
+                    <div class="grid grid-cols-5 gap-x-5  gap-y-7 mt-12">
+                        @child
+                    </div>
+                </layout>
+                <face filter="link is null">
+                    <article>
+                        <a href="@link" class="item-visa shadow-custom-1 w-full relative bg-color-2 h-[80px] rounded-[100px] px-[8px]">
+                            <div class="img overflow-hidden h-[85px] rounded-[100px] w-full relative">
+                                <div class="back-bg p-2 gap-3 flex items-center justify-between w-full h-full absolute right-0 top-0 z-5 bg-[#0000008A]">
+                                    <div class="flex items-center gap-2">
+                                        <img class="w-[60px] h-[60px] rounded-[50%]" src="/@image"
+                                             alt="@title">
+                                        <div class="flex flex-col items-start">
+                                            <span class="text-white text-xs	 danaRegular">ویزای</span>
+                                            <h2 class="text-white text-base danaBold mt-1">@title</h2>
+                                        </div>
+                                    </div>
+                                    <div class="ml-[2rem]">
+                                        <svg width="14" height="26">
+                                            <use href="/images/sprite-icons.svg#icon-arrow-left"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <img class="w-full h-full" src="/images/img-ib.jpg" alt="">
+                            </div>
+                        </a>
+                    </article>
+                </face>
+                <face>
+                    <article>
+                        <a href="@link" class="item-visa shadow-custom-1 w-full relative bg-color-2 h-[80px] rounded-[100px] px-[8px]">
+                            <div class="img overflow-hidden h-[85px] rounded-[100px] w-full relative">
+                                <div class="back-bg p-2 gap-3 flex items-center justify-between w-full h-full absolute right-0 top-0 z-5 bg-[#0000008A]">
+                                    <div class="flex items-center gap-2">
+                                        <img class="w-[60px] h-[60px] rounded-[50%]" src="/@image"
+                                             alt="@title">
+                                        <div class="flex flex-col items-start">
+                                            <span class="text-white text-xs	 danaRegular">ویزای</span>
+                                            <h2 class="text-white text-base danaBold mt-1">@title</h2>
+                                        </div>
+                                    </div>
+                                    <div class="ml-[2rem]">
+                                        <svg width="14" height="26">
+                                            <use href="/images/sprite-icons.svg#icon-arrow-left"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <img class="w-full h-full" src="/images/img-ib.jpg" alt="">
+                            </div>
+                        </a>
+                    </article>
+                </face>
+            </basis>
+
+            <div id="paging">
+                <ul class="p-pagination w-full mb-14 mt-12 flex justify-center" id="wibpaging">
+                    <div class="pagination px-[8px] rounded-[50px] w-[290px] h-[64px] direction-ltr flex items-center justify-between bg-zinc-100">
+                        <basis core="print" datamembername="db.paging">
+                            <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">
+                                <li class="prev-page">
+                                    <a aria-label="angle-left" href="/[##cms.cms.link_page##]&pagenum=@page">
+                                        <svg width="48" height="48">
+                                            <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                            <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'<>'')">
+                                <li class="prev-page">
+                                    <a aria-label="angle-left" href="/[##cms.cms.pageurl##]?pagenum=@page">
+                                        <svg width="48" height="48">
+                                            <use href="/images/sprite-icons.svg#icon-circle-prev"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                        </basis>
+                        <basis core="print" datamembername="db.paging">
+                            <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')">
+                                <li
+                                        class="flex items-center justify-center w-12 h-12 p-2 rounded-[50%] transition-all duration-300 bg-primary-900 page-no">
+                                    <a class="flex items-center justify-center w-full h-full text-white rounded-[50%] cursor-pointer page-number bg-primary-900"
+                                       href="/[##cms.cms.link_page##]&pagenum=@page">@page</a>
+                                </li>
+                            </face>
+                            <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
+                                <li
+                                        class="flex items-center justify-center w-12 h-12 p-2 rounded-lg transition-all duration-300 bg-primary-900 page-no">
+                                    <a class="flex items-center justify-center w-full h-full text-white cursor-pointer page-number bg-primary-900"
+                                       href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
+                                </li>
+                            </face>
+                            <face
+                                    filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'='') ">
+                                <li
+                                        class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
+                                    <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                                       href="/[##cms.cms.link_page##]&pagenum=@page">@page</a>
+                                </li>
+                            </face>
+                            <face
+                                    filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') ">
+                                <li
+                                        class="flex items-center justify-center w-12 h-12 p-2 text-zinc-600 rounded-lg bg-zinc-200 transition-all duration-300 hover:bg-primary-900 hover:text-white page-no">
+                                    <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                                       href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a>
+                                </li>
+                            </face>
+                        </basis>
+                        <basis core="print" datamembername="db.paging">
+                            <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'='')">
+                                <li class="next-page">
+                                    <a aria-label="angle-right" href="/[##cms.cms.link_page##]&pagenum=@page">
+                                        <svg width="48" height="48">
+                                            <use href="/images/sprite-icons.svg#icon-circle-next"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                            <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'<>'')">
+                                <li class="next-page">
+                                    <a aria-label="angle-right" href="/[##cms.cms.pageurl##]?pagenum=@page">
+                                        <svg width="48" height="48">
+                                            <use href="/images/sprite-icons.svg#icon-circle-next"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                        </basis>
+                    </div>
+                </ul>
+            </div>
+        </section>
+    </basis>
+
 </main>
 
-
+<basis core="call" file="footer.inc" />
 <basis core="call" file="script.inc"/>
 </body>
-
 </html>

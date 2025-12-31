@@ -121,22 +121,25 @@
                     </basis>
                 </div>
                 <div class="bottom w-full pb-8 px-6 flex flex-col items-center relative z-10 gap-3">
-                    <a target="_blank" href="/https://visaonline.ir"
+                    <a target="_blank" href="https://visaonline.ir"
                        class="btn border border-secondary-900 rounded-[100px] h-12 w-full flex items-center text-secondary-900 justify-center">درخواست
                         ویزا</a>
-                    <a target="_blank" href="/https://visaonline.ir"
+                    <a target="_blank" href="https://visaonline.ir"
                        class="btn bg-secondary-900 rounded-[100px] h-12 w-full flex items-center text-color-1 justify-center">درخواست
                         ویزا</a>
                 </div>
             </div>
             <div class="w-full flex flex-col items-start">
                 <div class="btn-tab w-full  flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2">
-                    <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
-                           nullvalue="219252">
-                        <layout>@child</layout>
-                        <face filter="catid<>219252">
-                            <div onclick="loadCategory('@catid', this)" class="px-[17px] item-btn-tab flex-shrink-0 transition-colors cursor-pointer  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</div>
-                        </face>
+                    <basis core="print" datamembername="db.view">
+                        <layout>
+                            @child
+                        </layout>
+                        <div class="w-full">
+                            <face filter="TypeID in(250)">
+                                <a href="#@text" class="px-[17px] transition-colors flex-shrink-0 cursor-pointer item-btn-tab   px-4 rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@text</a>
+                            </face>
+                        </div>
                     </basis>
                 </div>
                 <div class="bg-white w-full rounded-3xl p-6 mt-6  shadow-custom-2 flex flex-col items-start">
@@ -147,7 +150,7 @@
                         <div class="w-full">
                             <face filter="TypeID in(250)">
                                 <div class="flex w-full flex-col items-start mt-6">
-                                    <h2 class="text-zinc-900 font-bold danaBold text-xl mt-1">@text</h2>
+                                    <h2 id="@text" class="text-zinc-900 font-bold danaBold text-xl mt-1">@text</h2>
                                     <div class="text-xs text-zinc-900 mt-6">
                                         <p>@largetext</p>
                                     </div>
@@ -217,7 +220,7 @@
                 </basis>
 
             </div>
-            <img class="w-full" src="/images/img-faq.png" alt="">
+            <img class="w-full" src="/images/img-faq.webp" alt="">
         </div>
         <div class="w-full flex flex-col items-center gap-6 mt-14">
             <h3 class="text-zinc-900 text-xl danaBold">ارتباط با کارشناسان ما جهت مشاوره رایگان</h3>

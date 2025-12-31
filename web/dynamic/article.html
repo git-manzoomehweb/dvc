@@ -394,6 +394,11 @@
                     <div class="swiper-wrapper">
                         <basis core="list" datamembername="db.comment">
                             <layout>@child</layout>
+                            <else-layout>
+                                <div class="w-full h-[120px] border border-zinc-200 box-not-found rounded-xl flex items-center justify-center">
+                                    <h3 class="font-bold text-zinc-900 text-xl">نظری ثبت نشده است</h3>
+                                </div>
+                            </else-layout>
                             <face>
                                 <div class="swiper-slide">
                                     <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">

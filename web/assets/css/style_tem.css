@@ -584,3 +584,11 @@ main .content{
 header .menu .mr-2{
     margin-right: 6px;
 }
+header{
+    padding: 0 10px !important;
+}
+header .Login_Information{
+    padding: 0;
+    margin: 0;
+    position: unset;
+}

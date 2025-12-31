@@ -117,13 +117,15 @@
                         </face>
                     </basis>
                 </ul>
-                <div class="box-search w-full flex flex-col items-center gap-2 mt-5">
+                <form method="get" action="/search-content.bc" class="box-search w-full flex flex-col items-center gap-2 mt-5">
+                    <input type="hidden" name="t" value="article">
                     <input class="w-full bg-white shadow-custom-1 h-[55px] rounded-[100px] px-[24px]" type="text"
-                           placeholder="جستجوی مقاله">
-                    <button class="h-[55px] w-full btn-primary rounded-[100px] text-white">
+                           placeholder="جستجوی مقاله" autocomplete="on" required
+                           name="search-content-name">
+                    <button type="submit" class="h-[55px] w-full btn-primary rounded-[100px] text-white">
                         جستجو
                     </button>
-                </div>
+                </form>
             </div>
         </div>
     </section>
@@ -429,7 +431,7 @@
                         <basis core="list" datamembername="db.service">
                             <layout>@child</layout>
                             <face>
-                                <div class="item-services bg-white flex-shrink-0 w-full shadow-custom-2  h-[270px] rounded-xl p-3 flex flex-col items-start justify-center">
+                                <div class="item-services bg-white flex-shrink-0 w-full  shadow-custom-2  h-[270px] rounded-xl p-3 flex flex-col items-start justify-center">
                                     <div class="bg-secondary-200 box-svg ease w-[70px] h-[70px] rounded-[1rem] flex items-center justify-center">
                                         <svg width="37" height="37" viewBox="0 0 37 37" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -446,7 +448,7 @@
                                     <a class="mt-4" href=""><h5 class="danaBold ease text-zinc-900 text-base mt-4">
                                         @title</h5></a>
                                     <div class="w-full ease   detail-items flex-col">
-                                        <div class="text-zinc-600 text-xs	 w-[240px] text-justify my-2">
+                                        <div class="text-zinc-600 text-xs	 w-full text-justify my-2">
                                             <p>@prp_7244</p>
                                         </div>
                                         <div class="w-full flex items-center justify-between mt-1">

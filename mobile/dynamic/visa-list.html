@@ -76,13 +76,14 @@
                     </face>
                 </basis>
                 <form method="get" action="/search-content.bc" class="box-search px-4 w-full flex flex-col items-center gap-2 mt-5">
-                    <input autocomplete="on" required class="w-full bg-white shadow-custom-1 h-[55px] rounded-[100px] px-[24px]" type="text"
-                           placeholder="جستجوی ">
+                    <input type="hidden" name="t" value="visa">
+                    <input autocomplete="on" name="search-content-name" required class="w-full bg-white shadow-custom-1 h-[55px] rounded-[100px] px-[24px]" type="text"
+                           placeholder="جستجوی " >
                     <button type="submit" class="h-[55px] w-full btn-primary rounded-[100px] text-white">
                         جستجو
                     </button>
                 </form>
-                <div class="btn-tab w-full flex items-center justify-center mt-7 gap-2">
+                <div class="btn-tab w-full flex items-center overflow-x-scroll justify-start pr-4 mt-7 gap-2">
                     <basis core="print" datamembername="db.visaCat" idcol="catid" parentidcol="parentid"
                            nullvalue="219252">
                         <layout>@child</layout>

@@ -1,15 +1,16 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
-    <member name="visa" perpage="1" type="list" link="visa.bc" pageno="[##cms.query.pagenum|(1)##]" size="227x87" propertyid="3088232" order="ord"/>
-    <member name="paging" type="list" request="paging" count="3" parentname="visa" />
+    <member name="visa" perpage="1" type="list" link="visa.bc" pageno="[##cms.query.pagenum|(1)##]" size="227x87"
+            propertyid="3088232" order="ord"/>
+    <member name="paging" type="list" request="paging" count="3" parentname="visa"/>
 </basis>
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
-    <member name="scalar" type="scalar" typeid="150" />
+    <member name="scalar" type="scalar" typeid="150"/>
 </basis>
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="2" usedforid="[##cms.query.catid|(0)##]">
-    <member name="scalarEN" type="scalar" typeid="150" />
+    <member name="scalarEN" type="scalar" typeid="150"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
-    <member name="p-under" type="view"  propertyid="" />
+    <member name="p-under" type="view" propertyid=""/>
 </basis>
 <basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
     <member name="comment" type="list" order="ord" request="listcomment"/>
@@ -43,13 +44,12 @@
         </face>
     </basis>
     <!-- pwa metatags -->
-    <basis core="call" file="pwa.inc" />
+    <basis core="call" file="pwa.inc"/>
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
     <basis core="call" file="style.inc"/>
 </head>
 <body>
 <basis core="call" file="header.inc"/>
-
 
 
 <!--main-->
@@ -77,10 +77,12 @@
                             <div class="text-zinc-600 danaRegular mt-3 text-xs	"><span>@urldescription</span></div>
                         </face>
                     </basis>
-                    <form method="get" action="/search-content.bc" class="box-search w-[55%] flex items-center gap-2 mt-5">
+                    <form method="get" action="/search-content.bc"
+                          class="box-search w-[55%] flex items-center gap-2 mt-5">
+                        <input type="hidden" name="t" value="visa">
                         <input class="w-[80%] bg-white shadow-custom-1 h-[55px] rounded-[100px] px-[24px]" type="text"
-                               placeholder="جستجوی " autocomplete="on" required>
-                        <button type="submit"  class="h-[55px] w-[20%] btn-primary rounded-[100px] text-white">
+                               placeholder="جستجوی " autocomplete="on" name="search-content-name" required>
+                        <button type="submit" class="h-[55px] w-[20%] btn-primary rounded-[100px] text-white">
                             جستجو
                         </button>
                     </form>
@@ -90,7 +92,9 @@
                             <layout>@child</layout>
                             <face filter="catid<>219252">
                                 <div onclick="loadCategoryVisa('@catid', this)"
-                                   class="px-[17px] transition-colors cursor-pointer item-btn-tab  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">@title</div>
+                                     class="px-[17px] transition-colors cursor-pointer item-btn-tab  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-zinc-100 text-zinc-600 danaRegular text-sm">
+                                    @title
+                                </div>
                             </face>
                         </basis>
                     </div>
@@ -183,17 +187,20 @@
     </section>
 
     <!--s-details-->
-    <section class="s-details mt-8">
+    <section class="s-details  mt-8">
         <div class="c-container">
-            <div class="p-details w-full flex flex-col gap-12">
+            <div class="p-details editor-content w-full flex flex-col gap-12">
+
                 <basis core="list" datamembername="db.p-under">
                     <layout>
-                        <div class="row-default grid  gap-8">@child</div>
+
                     </layout>
                     <face filter="TypeID=250">
-                        <div class="detail-tour w-full flex flex-col gap-2 items-start pt-4">
-                            <h2 class="text-zinc-900 danaBold text-2xl mt-1">@text</h2>
-                            <p class="leading-[21px] text-justify text-zinc-900 text-xsw-full mt-3">@largetext</p>
+                        <div class="row-default   w-full gap-8">
+                            <div class="detail-tour flex flex-col w-full  pt-4">
+                                <h2 class="text-zinc-900 title-editor danaBold text-2xl mt-1">@text</h2>
+                                <div class="leading-[21px] text-justify text-zinc-900 text-xsw-full mt-3">@largetext</div>
+                            </div>
                         </div>
                     </face>
                 </basis>
@@ -255,7 +262,8 @@
                             <input name="productid" value="[##cms.query.id##]" type="hidden">
                             <input name="mid" value="1" type="hidden">
                             <div class="w-[62%] gap-2  grid grid-cols-[1.4fr_1fr_0.7fr]">
-                                <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]" type="text" name="Captcha" placeholder="کد امنیتی" required="">
+                                <input class="h-[55px] w-full text-base bg-white rounded-[100px] shadow-custom-1 px-[20px]"
+                                       type="text" name="Captcha" placeholder="کد امنیتی" required="">
 
                                 <span class="load-captcha ">
                                                     <img class="w-full h-[55px] rounded-[100px]" alt="کد امنیتی"
@@ -335,11 +343,6 @@
     </section>
 
 </main>
-
-
-
-
-
 
 
 <!--footer-->

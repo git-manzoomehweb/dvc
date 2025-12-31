@@ -204,6 +204,11 @@
                         <div class="swiper-wrapper">
                             <basis core="list" datamembername="db.comment">
                                 <layout>@child</layout>
+                                <else-layout>
+                                    <div class="w-full py-9 border border-zinc-200 box-not-found rounded-xl flex items-center justify-center">
+                                        <h3 class="font-bold text-zinc-900 text-base">نظری ثبت نشده است</h3>
+                                    </div>
+                                </else-layout>
                                 <face>
                                     <div class="swiper-slide">
                                         <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
@@ -300,6 +305,35 @@
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
+<script>
+    // swiper-comment-user
+    var swiperComment = new Swiper(".swiper-comment-user", {
+        scrollbar: {
+            el: ".swiper-scrollbar-comment",
+            hide: false,
+            draggable: true,
+            snapOnRelease: true,
+        },
+        slidesPerView: 1.2,
+        spaceBetween: 14,
+        freeMode: true,
+        navigation: {
+            nextEl: ".swiper-button-next-comment",
+            prevEl: ".swiper-button-prev-comment",
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 1.2,
+            },
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            }
+        }
+    });
+</script>
 <basis core="call" file="script.inc" pageindex="[##cms.cms.pageindex##]"/>
 </body>
 </html>

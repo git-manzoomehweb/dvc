@@ -224,10 +224,6 @@ function openTabPopular(evt, tabName) {
     document
         .querySelectorAll(`.tab-content-popular[data-category="${tabName}"]`)
         .forEach(el => el.classList.add("active"));
-
-    setTimeout(() => {
-        initSwiper();
-    }, 50);
 }
 
 
@@ -263,9 +259,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const defaultBtn = document.querySelector(".tab-btn[data-default='true']");
     const defaultBtnHotel = document.querySelector(".tab-btn_hotel[data-default='true']");
     const defaultBtnPopular = document.querySelector(".tab-btn_popular[data-default='true']");
-    if (defaultBtn || defaultBtnHotel || defaultBtnPopular) {
+    if (defaultBtn) {
         defaultBtn.click();
+        defaultBtnPopular.click();
+    }
+    if (defaultBtnHotel) {
         defaultBtnHotel.click();
+    }
+    if (defaultBtnPopular) {
         defaultBtnPopular.click();
     }
 });
@@ -376,14 +377,12 @@ async function OnProcessedEditObjectFaq(args) {
 }
 
 async function RenderFormFaq() {
-    var inputElementPhone = document.querySelector(
-        '.form-faq input[data-bc-text-input]:first-child',
-    )
-    var inputElementUsername = document.querySelector(
-        '.form-faq input[data-bc-text-input]:last-child',
-    )
-    inputElementPhone.setAttribute('placeholder', 'شماره تماس')
-    // inputElementUsername.setAttribute('placeholder', 'نام و نام خانوادگی')
+    const inputs = document.querySelectorAll('.form-faq [data-bc-text-input]')
+
+    if (inputs.length >= 2) {
+        inputs[0].placeholder = 'شماره تماس'
+        inputs[1].placeholder = 'نام و نام خانوادگی'
+    }
 }
 
 
@@ -505,6 +504,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // همه تب‌ها
     const tabs = document.querySelectorAll('.btn-tab .item-btn-tab')
+    // ---------- Init First Tab ----------
+
 
     // ---------- Loader ----------
     function showLoader() {
@@ -593,9 +594,17 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 
-    // ---------- Init First Tab ----------
-    if (tabs.length) {
-        tabs[0].click()
+// ---------- Init Default Tab ----------
+    if (tabs.length > 0) {
+        const firstTab = tabs[0]
+        const firstId = firstTab.getAttribute('onclick')
+            ?.match(/loadCategory\('(.+?)'/)?.[1]
+
+        if (firstId) {
+            loadCategory(firstId, firstTab)
+        } else {
+            console.error('Cannot detect catid for first tab')
+        }
     }
 
     window.loadCategory = loadCategory
@@ -650,6 +659,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    if (tabsVisa.length > 0) {
+        const firstTabVisa = tabsVisa[0]
+        const firstIdVisa = firstTabVisa.getAttribute('onclick')
+            ?.match(/loadCategoryVisa\('(.+?)'/)?.[1]
 
+        if (firstIdVisa) {
+            loadCategoryVisa(firstIdVisa, firstTabVisa)
+        } else {
+            console.error('Cannot detect catid for first tab')
+        }
+    }
     window.loadCategoryVisa = loadCategoryVisa
 })
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const container = document.querySelector(".row-default");
+    const titleEditor = document.querySelector(".row-default:nth-child(even) .title-editor");
+    if (!container) return;
+    const paragraphs = container.querySelectorAll("p");
+    paragraphs.forEach(p => {
+        if (p.querySelector("img")) {
+            titleEditor.style.paddingRight= '53%'
+        }
+    });
+});
+
