@@ -4373,3 +4373,6 @@ body {
 .s-footer {
     background: linear-gradient(180deg, #FAF7F3 0%, #FFFFFF 100%);
 }
+.cursor-pointer{
+    cursor: pointer !important;
+}
