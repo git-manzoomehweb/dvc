@@ -3,7 +3,7 @@
 </basis>
 
 <!--footer-->
-<footer class="s-footer  w-full py-6">
+<footer class="s-footer footer-landing-items  w-full py-6">
     <div class="row-one px-4 w-full flex flex-col items-center justify-center gap-2">
         <img class="w-[100px]" src="/images/logo-footer.png" alt="">
         <svg class="mt-1" width="110" height="6" viewBox="0 0 150 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,12 +66,9 @@
             <div class="col-1 w-full flex relative flex-col items-start justify-end gap-4">
                 <h5 class="danaBold text-sm	 text-zinc-900">دسته بندی</h5>
                 <ul class="flex ul-link-footer w-full relative flex-col items-start">
-                    <li class="w-full h-[37px]"><a class="text-zinc-700 w-full ease hover:pr-2  danaRegular text-xs	"
-                                                   href="">پرواز</a></li>
-                    <li class="w-full h-[37px]"><a class="text-zinc-700 w-full ease hover:pr-2  danaRegular text-xs	"
-                                                   href="">هتل</a></li>
-                    <li class="w-full h-[37px]"><a class="text-zinc-700 w-full ease hover:pr-2  danaRegular text-xs	"
-                                                   href="">تور ها</a></li>
+                    <li data-id="flight" data-nav="flight" onclick="check_searchHistory('flight'); check_landing('flight')" class="w-full h-[37px]"><a class="text-zinc-700 w-full ease hover:pr-2  danaRegular text-xs">پرواز</li>
+                    <li data-id="hotel" data-nav="hotel" onclick="check_searchHistory('hotel'); check_landing('hotel')" class="w-full h-[37px]"><a class="text-zinc-700 w-full ease hover:pr-2  danaRegular text-xs">هتل</li>
+                    <li data-id="tour" data-nav="tour" onclick="check_searchHistory('tour'); check_landing('tour')" class="w-full h-[37px]"><a class="text-zinc-700 w-full ease hover:pr-2  danaRegular text-xs">تور</li>
                     <li class="w-full h-[37px]"><a class="text-zinc-700 w-full ease hover:pr-2  danaRegular text-xs	"
                                                    href="/Travel-insurance">بیمه مسافرتی</a></li>
                     <li class="w-[90%] h-[37px]"><a
@@ -191,7 +188,7 @@
     </div>
     <div class="row-four px-4 w-full flex flex-col items-center mt-8">
         <div class="top w-full flex flex-col items-center justify-between">
-            <div class="w-full">
+            <div class="w-full px-2">
                 <basis core="list" datamembername="db.info">
                     <layout>
                         <div class="social-media w-full flex item-center justify-between gap-7">
@@ -230,21 +227,21 @@
                 </basis>
             </div>
 
-            <div class="p-enamad mt-3 flex item-center gap-3">
+            <div class="p-enamad mt-3 flex item-center direction-ltr gap-3">
                 <div class="item-enamd w-[50px] h-[63px] border border-zinc-300 flex items-center rounded justify-center">
                     <img class="w-[45px]" src="/images/enamad.png" alt="">
                 </div>
                 <div class="item-enamd w-[50px] h-[63px] border border-zinc-300 flex items-center rounded justify-center">
-                    <img class="w-[45px]" src="/images/enamad.png" alt="">
+                    <img class="w-[45px]" src="/images/enamad1.png" alt="">
                 </div>
                 <div class="item-enamd w-[50px] h-[63px] border border-zinc-300 flex items-center rounded justify-center">
-                    <img class="w-[45px]" src="/images/enamad.png" alt="">
+                    <img class="w-[45px]" src="/images/enamad2.png" alt="">
                 </div>
                 <div class="item-enamd w-[50px] h-[63px] border border-zinc-300 flex items-center rounded justify-center">
-                    <img class="w-[45px]" src="/images/enamad.png" alt="">
+                    <img class="w-[45px]" src="/images/enamad3.png" alt="">
                 </div>
                 <div class="item-enamd w-[50px] h-[63px] border border-zinc-300 flex items-center rounded justify-center">
-                    <img class="w-[45px]" src="/images/enamad.png" alt="">
+                    <img class="w-[45px]" src="/images/enamad4.png" alt="">
                 </div>
 
             </div>

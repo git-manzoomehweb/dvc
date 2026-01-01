@@ -5,7 +5,7 @@
 
 <!--footer-->
 
-<footer class="s-footer  w-full py-9">
+<footer class="s-footer footer-landing-items  w-full py-9">
     <div class="c-container">
         <div class="row-one w-full flex flex-col items-center justify-center gap-2">
             <a aria-label="logo-footer" href="/">
@@ -28,15 +28,10 @@
             <div class="col-1 w-full flex relative flex-col items-start justify-end gap-4">
                 <h5 class="danaBold text-base text-zinc-900">دسته بندی</h5>
                 <ul class="flex ul-link-footer w-full relative flex-col items-start gap-4">
-                    <li class="w-full"><a class="text-zinc-700 w-full ease hover:pr-2  danaRegular text-sm	"
-                                          href="#">پرواز</a>
-                    </li>
-                    <li class="w-full"><a class="text-zinc-700 w-full ease hover:pr-2  danaRegular text-sm	"
-                                          href="#">هتل</a>
-                    </li>
-                    <li class="w-full"><a class="text-zinc-700 w-full ease hover:pr-2  danaRegular text-sm	"
-                                          href="#">تور
-                        ها</a></li>
+                    <li data-id="flight" data-nav="flight" onclick="check_searchHistory('flight'); check_landing('flight')" class="w-full text-zinc-700 cursor-pointer  ease hover:pr-2  danaRegular text-sm">پرواز</li>
+                    <li data-id="hotel" data-nav="hotel" onclick="check_searchHistory('hotel'); check_landing('hotel')" class="w-full text-zinc-700 cursor-pointer  ease hover:pr-2  danaRegular text-sm">هتل</li>
+                    <li data-id="tour" data-nav="tour" onclick="check_searchHistory('tour'); check_landing('tour')" class="w-full text-zinc-700 cursor-pointer  ease hover:pr-2  danaRegular text-sm">تور</li>
+
                     <li class="w-full"><a class="text-zinc-700 w-full ease hover:pr-2  danaRegular text-sm	"
                                           href="/Travel-insurance">بیمه
                         مسافرتی</a></li>
@@ -206,21 +201,21 @@
         </div>
         <div class="row-four w-full flex flex-col items-center mt-8">
             <div class="top w-full flex items-center justify-between">
-                <div class="p-enamad flex item-center gap-3">
+                <div class="p-enamad flex item-center gap-3 direction-ltr">
                     <a rel="noopener" aria-label="enamad" href="" class="item-enamd w-[63px] h-[63px] border-1 border-zinc-300 flex items-center rounded justify-center">
                         <img class="w-[45px]" src="/images/enamad.png" alt="">
                     </a>
                     <a rel="noopener" aria-label="enamad" href="" class="item-enamd w-[63px] h-[63px] border-1 border-zinc-300 flex items-center rounded justify-center">
-                        <img class="w-[45px]" src="/images/enamad.png" alt="">
+                        <img class="w-[45px]" src="/images/enamad1.png" alt="">
                     </a>
                     <a rel="noopener" aria-label="enamad" href="" class="item-enamd w-[63px] h-[63px] border-1 border-zinc-300 flex items-center rounded justify-center">
-                        <img class="w-[45px]" src="/images/enamad.png" alt="">
+                        <img class="w-[45px]" src="/images/enamad2.png" alt="">
                     </a>
                     <a rel="noopener" aria-label="enamad" href="" class="item-enamd w-[63px] h-[63px] border-1 border-zinc-300 flex items-center rounded justify-center">
-                        <img class="w-[45px]" src="/images/enamad.png" alt="">
+                        <img class="w-[45px]" src="/images/enamad3.png" alt="">
                     </a>
                     <a rel="noopener" aria-label="enamad" href="" class="item-enamd w-[63px] h-[63px] border-1 border-zinc-300 flex items-center rounded justify-center">
-                        <img class="w-[45px]" src="/images/enamad.png" alt="">
+                        <img class="w-[45px]" src="/images/enamad4.png" alt="">
                     </a>
                 </div>
                 <div>

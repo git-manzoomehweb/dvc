@@ -7,7 +7,9 @@
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.gid##]">
-    <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"/>
+    <member name="article" type="list"  link="article.bc" order="ord" propertyid="7244,7249"
+      postsql="SELECT * FROM [db.article] ORDER BY ord ASC LIMIT 3;"
+    />
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid|(0)##]">
@@ -484,7 +486,7 @@
                 <div class="start grid grid-cols-3 gap-5 w-full">
                     <basis core="list" datamembername="db.article">
                         <layout>@child</layout>
-                        <face filter="ord in(1,2,3)">
+                        <face>
                             <div class="thumbnail-blog relative w-full flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
                                 <h2><a class="text-zinc-900 danaBold text-zinc-900 text-base"
                                        href="@link">@title</a>

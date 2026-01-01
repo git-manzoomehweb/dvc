@@ -199,7 +199,8 @@
                         <div class="row-default   w-full gap-8">
                             <div class="detail-tour flex flex-col w-full  pt-4">
                                 <h2 class="text-zinc-900 title-editor danaBold text-2xl mt-1">@text</h2>
-                                <div class="leading-[21px] text-justify text-zinc-900 text-xsw-full mt-3">@largetext</div>
+                                <div class="leading-[21px] text-justify text-zinc-900 text-xsw-full mt-3">@largetext
+                                </div>
                             </div>
                         </div>
                     </face>
@@ -218,7 +219,7 @@
                         <path d="M300.773 2.88672L297.887 -3.26633e-05L295 2.88672L297.887 5.77347L300.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77347 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM297.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L297.887 3.38672V2.88672Z"
                               fill="#CFAA65"/>
                     </svg>
-                    <span class="text-zinc-600 danaRegular mt-3 text-xs">متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح</span>
+                    <span class="text-zinc-600 danaRegular mt-3 text-xs">نمونه‌ای از ویزاهای موفق دریافت‌شده توسط مجموعه ما برای متقاضیان.</span>
                 </div>
                 <div class="row-visa mt-8 w-full flex items-center justify-between">
                     <div class="slider-img w-[40%]">
@@ -246,7 +247,8 @@
                     </div>
                     <div class="w-[58%] h-[300px] flex px-3 py-6 flex-col items-start rounded-lg bg-white box-visa-comment">
                         <h3 class="danaBold  text-zinc-900 text-xl">نظر کاربران</h3>
-                        <form action="/Tem1_OpinionAction.bc" method="POST"
+                        <form  action="/Tem1_OpinionAction.bc" method="POST"
+                               id="opinionForm"
                               class="w-full mt-5 flex  gap-2 flex-col justify-between">
                             <input type="hidden" name="title" value="[##cms.seo.title##]">
                             <div class="grid grid-cols-2 w-full gap-2">
@@ -271,7 +273,7 @@
                                                     <input type="hidden" value="[##captcha.code.captcha##]"
                                                            name="Captchaid">
                                                 </span>
-                                <button type="submit"
+                                <button  type="submit"
                                         class="h-[55px] btn-primary rounded-[100px] text-white">
                                     ارسال
                                 </button>
@@ -288,8 +290,9 @@
                                     <div id="ballsWaveG_8" class="ballsWaveG"></div>
                                 </div>
                             </div>
-                            <div class="Message-Form text-center mt-6"></div>
+                            <div id="Message-Form" class="Message-Form text-center"></div>
                         </form>
+
                     </div>
                 </div>
                 <div class="row-user-comments w-full grid grid-cols-[0.7fr_3fr] gap-8 mt-10">
@@ -297,7 +300,7 @@
                         <svg width="110" height="88">
                             <use href="/images/sprite-icons.svg#icon-kama"></use>
                         </svg>
-                        <h5 class="text-secondary-950 text-base mt-6">نظر کاربران درباره ما</h5>
+                        <h5 class="text-secondary-950 text-base mt-6">نظر کاربران ، درباره ما</h5>
                         <h3 class="danaBold text-xl mt-3">نظر کاربران تعطیلات رویای</h3>
                         <div class="option-slider mt-12 flex items-center justify-between w-full gap-2">
                             <button class="swiper-button-prev-comment">

@@ -29,7 +29,7 @@
     <member name="service-title" type="tree" link="visa.bc" request="cat" parentid="219234" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.nid##]">
-    <member name="last-news" type="view" propertyid="" />
+    <member name="last-news" type="list" propertyid="7244,7249" />
 </basis>
 
 <!DOCTYPE html>
@@ -141,10 +141,9 @@
             <div class="w-full box-latest-news h-[380px] mt-6 rounded-3xl p-5">
                 <basis core="print" datamembername="db.last-news">
                     <layout>@child</layout>
-                    <face filter="ord=1">
+                    <face filter="id=2390878">
                         <div class="thumbnail-blog relative h-[340px] w-[45%] flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
-                            <h2><a class="text-zinc-900 danaBold text-zinc-900 text-base" href="@link">@title</a>
-                            </h2>
+                            <h2><a class="text-zinc-900 danaBold text-zinc-900 text-base" href="@link">@title</a></h2>
                             <p class="leading-[21px] relative z-10 text-xs	h-[165px] text-justify danaRegular text-zinc-700 mt-3">
                                 @prp_7244
                             </p>

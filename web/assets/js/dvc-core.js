@@ -67,8 +67,6 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 
-
-
 // swiper-thumbnail-visa
 var swiper = new Swiper(".swiper-thumbnail-visa", {
     slidesPerView: 5,
@@ -121,9 +119,9 @@ var swiper = new Swiper(".swiper-comment-user", {
 // faq
 
 
-
 //---------------slider-tour
 let swiperTour;
+
 function initSwiperTour() {
     if (swiperTour) {
         swiperTour.destroy(true, true);
@@ -140,6 +138,7 @@ function initSwiperTour() {
         observeParents: true,
     });
 }
+
 function openTab(evt, tabName) {
     const allBtns = document.querySelectorAll(".btn-tab .tab-btn");
     allBtns.forEach(btn => btn.classList.remove("active"));
@@ -164,11 +163,13 @@ function openTab(evt, tabName) {
         initSwiperTour();
     }, 50);
 }
+
 //---------------slider-tour
 
 
 //---------------slider-hotel
 let swiperHotel;
+
 function initSwiperHotel() {
     if (swiperHotel) {
         swiperHotel.destroy(true, true);
@@ -184,6 +185,7 @@ function initSwiperHotel() {
         observeParents: true,
     });
 }
+
 function openTabHotel(evt, tabName) {
     const allBtnsHotel = document.querySelectorAll(".btn-tab .tab-btn_hotel");
     allBtnsHotel.forEach(btn => btn.classList.remove("active"));
@@ -208,6 +210,7 @@ function openTabHotel(evt, tabName) {
         initSwiperHotel();
     }, 50);
 }
+
 //---------------slider-hotel
 
 
@@ -225,15 +228,6 @@ function openTabPopular(evt, tabName) {
         .querySelectorAll(`.tab-content-popular[data-category="${tabName}"]`)
         .forEach(el => el.classList.add("active"));
 }
-
-
-
-
-
-
-
-
-
 
 
 const panels = document.querySelectorAll(".panel");
@@ -323,7 +317,7 @@ async function RenderFormFooter() {
     var inputElementVisa7 = document.querySelector(
         '.footer-form-email input[data-bc-text-input]',
     )
-    inputElementVisa7.setAttribute('placeholder', 'ایمیل')
+    inputElementVisa7.setAttribute('placeholder', 'ایمیل خود را وارد کنید')
 }
 
 
@@ -439,7 +433,7 @@ async function RenderFormAbout() {
     var inputElementEmail = document.querySelector(
         '.form-about input[data-bc-text-input]',
     )
-    inputElementEmail.setAttribute('placeholder', 'ایمیل')
+    inputElementEmail.setAttribute('placeholder', 'ایمیل خود را وارد کنید')
 }
 
 function ShareSocialMedia(event, containerid) {
@@ -587,9 +581,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 prevEl: swiperEl.querySelector('.swiper-button-prev-visa'),
             },
             breakpoints: {
-                1024: { slidesPerView: 5 },
-                768: { slidesPerView: 3 },
-                480: { slidesPerView: 1 },
+                1024: {slidesPerView: 5},
+                768: {slidesPerView: 3},
+                480: {slidesPerView: 1},
             }
         })
     }
@@ -615,6 +609,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const contentCacheVisa = new Map()
     // همه تب‌ها
     const tabsVisa = document.querySelectorAll('.btn-tab .item-btn-tab')
+
     // ---------- Loader ----------
     function showLoader() {
         fetchContentVisa.innerHTML =
@@ -666,13 +661,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (firstIdVisa) {
             loadCategoryVisa(firstIdVisa, firstTabVisa)
-        } else {
-            console.error('Cannot detect catid for first tab')
         }
     }
     window.loadCategoryVisa = loadCategoryVisa
 })
-
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -682,8 +674,176 @@ document.addEventListener("DOMContentLoaded", function () {
     const paragraphs = container.querySelectorAll("p");
     paragraphs.forEach(p => {
         if (p.querySelector("img")) {
-            titleEditor.style.paddingRight= '53%'
+            titleEditor.style.paddingRight = '53%'
         }
     });
 });
 
+// -----------------
+const target = document.querySelector("main");
+document.addEventListener("DOMContentLoaded", function () {
+    if (document.querySelector(".footer-landing-items")) {
+        const homePaths = [
+            "/",
+            "/flight",
+            "/hotel",
+            "/flighthotel",
+            "/tour",
+            "/insurance",
+        ];
+
+        const currentPath = window.location.pathname;
+        const isHomePage = homePaths.includes(currentPath);
+        const isNotHome = !isHomePage;
+
+        const flightItem = document.querySelectorAll('li[data-id="flight"]');
+        const hotelItem = document.querySelectorAll('li[data-id="hotel"]');
+        const flightHotelItem = document.querySelectorAll(
+            'li[data-id="flighthotel"]'
+        );
+        const tourItem = document.querySelectorAll('li[data-id="tour"]');
+        const trainItem = document.querySelectorAll('li[data-id="train"]');
+        const insuranceItem = document.querySelectorAll('li[data-id="insurance"]');
+        if (isNotHome) {
+            if (flightItem) {
+                flightItem.forEach((item) => {
+                    item.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        window.location.href = "/flight";
+                    });
+                });
+            }
+            if (tourItem) {
+                tourItem.forEach((item) => {
+                    item.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        window.location.href = "/tour";
+                    });
+                });
+            }
+            if (trainItem) {
+                trainItem.forEach((item) => {
+                    item.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        window.location.href = "/train";
+                    });
+                });
+            }
+            if (insuranceItem) {
+                insuranceItem.forEach((item) => {
+                    item.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        window.location.href = "/insurance";
+                    });
+                });
+            }
+            if (flightHotelItem) {
+                flightHotelItem.forEach((item) => {
+                    item.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        window.location.href = "/flighthotel";
+                    });
+                });
+            }
+
+            if (hotelItem) {
+                hotelItem.forEach((item) => {
+                    item.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        window.location.href = "/hotel";
+                    });
+                });
+            }
+        } else {
+            if (flightItem) {
+                flightItem.forEach((item) => {
+                    item.addEventListener("click", function () {
+                        if (target) {
+                            target.scrollIntoView({behavior: "smooth"});
+                        }
+                        check_searchHistory("flight");
+                        check_landing("flight");
+                    });
+                });
+            }
+            if (tourItem) {
+                tourItem.forEach((item) => {
+                    item.addEventListener("click", function () {
+                        if (target) {
+                            target.scrollIntoView({behavior: "smooth"});
+                        }
+                        check_searchHistory("tour");
+                        check_landing("tour");
+                    });
+                });
+            }
+            if (trainItem) {
+                trainItem.forEach((item) => {
+                    item.addEventListener("click", function () {
+                        if (target) {
+                            target.scrollIntoView({behavior: "smooth"});
+                        }
+                        check_searchHistory("train");
+                        check_landing("train");
+                    });
+                });
+            }
+            if (insuranceItem) {
+                insuranceItem.forEach((item) => {
+                    item.addEventListener("click", function () {
+                        if (target) {
+                            target.scrollIntoView({behavior: "smooth"});
+                        }
+                        check_searchHistory("insurance");
+                        check_landing("insurance");
+                    });
+                });
+            }
+            if (flightHotelItem) {
+                flightHotelItem.forEach((item) => {
+                    item.addEventListener("click", function () {
+                        if (target) {
+                            target.scrollIntoView({behavior: "smooth"});
+                        }
+                        check_searchHistory("flighthotel");
+                        check_landing("flighthotel");
+                    });
+                });
+            }
+            if (hotelItem) {
+                hotelItem.forEach((item) => {
+                    item.addEventListener("click", function () {
+                        if (target) {
+                            target.scrollIntoView({behavior: "smooth"});
+                        }
+                        check_searchHistory("hotel");
+                        check_landing("hotel");
+                    });
+                });
+            }
+        }
+    }
+});
+
+
+document.getElementById("opinionForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const messageDiv = document.getElementById("Message-Form");
+
+    fetch("/Tem1_OpinionAction.bc", {
+        method: "POST",
+        body: formData,
+        headers: {
+            "X-Requested-With": "XMLHttpRequest"
+        }
+    })
+        .then(res => res.text())
+        .then(data => {
+            messageDiv.innerHTML = data;
+        })
+        .catch(() => {
+            messageDiv.innerHTML = `<span class="text-red-500">خطا در ارتباط با سرور</span>`;
+        });
+});
