@@ -801,3 +801,31 @@ var swiperComment = new Swiper(".swiper-comment-user", {
 });
 
 
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    // گرفتن همه input ها داخل footer-form-email
+    const inputs = document.querySelectorAll('.footer-form-email input[data-bc-text-input]');
+
+    inputs.forEach(input => {
+        input.setAttribute('type', 'email');
+        input.setAttribute('required', 'required');
+    });
+
+});
+
+// اعتبارسنجی ایمیل
+document.addEventListener('input', function (e) {
+    const input = e.target;
+
+    if (input.tagName === 'INPUT' && input.closest('.footer-form-email')) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (input.value && !emailRegex.test(input.value)) {
+            input.setCustomValidity('لطفاً فقط ایمیل معتبر وارد کنید');
+        } else {
+            input.setCustomValidity('');
+        }
+    }
+});

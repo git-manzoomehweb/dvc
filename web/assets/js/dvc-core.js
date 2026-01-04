@@ -267,15 +267,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // form-footer
 function uploadDocumentFooter(args) {
-    document.querySelector('#form-footer .Loading_Form').style.display =
-        'block'
-    const captcha = document
-        .querySelector('#form-footer')
-        .querySelector("#captchaContainer input[name='captcha']").value
-    const captchaid = document
-        .querySelector('#form-footer')
-        .querySelector("#captchaContainer input[name='captchaid']").value
+    const form = document.querySelector('#form-footer')
+    const textMail = document.getElementById('text-email')
+    const emailInput = form.querySelector('[data-bc-text-input]')
+    const emailValue = emailInput?.value.trim()
+
+    // الگوی ساده اعتبارسنجی ایمیل
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    if (!emailRegex.test(emailValue)) {
+        textMail.innerHTML= 'لطفاً یک ایمیل معتبر وارد کنید'
+        emailInput.focus()
+        return // جلوگیری از ثبت فرم
+    }
+
+    // اگر ایمیل معتبر بود، ادامه بده
+    form.querySelector('.Loading_Form').style.display = 'block'
+
+    const captcha = form.querySelector("#captchaContainer input[name='captcha']").value
+    const captchaid = form.querySelector("#captchaContainer input[name='captchaid']").value
     const stringJson = JSON.stringify(args.source?.rows[0])
+
     $bc.setSource('cms.uploadFooter', {
         value: stringJson,
         captcha: captcha,
@@ -283,6 +295,7 @@ function uploadDocumentFooter(args) {
         run: true,
     })
 }
+
 
 function refreshCaptchaFooter(e) {
     $bc.setSource('captcha.refreshFooter', true)
@@ -314,10 +327,12 @@ async function OnProcessedEditObjectFooter(args) {
 }
 
 async function RenderFormFooter() {
-    var inputElementVisa7 = document.querySelector(
-        '.footer-form-email input[data-bc-text-input]',
-    )
-    inputElementVisa7.setAttribute('placeholder', 'ایمیل خود را وارد کنید')
+    const inputElementVisa7 = document.querySelector(
+        '.footer-form-email [data-bc-text-input]'
+    );
+
+    inputElementVisa7.setAttribute('placeholder', 'ایمیل خود را وارد کنید');
+
 }
 
 
@@ -847,3 +862,5 @@ document.getElementById("opinionForm").addEventListener("submit", function (e) {
             messageDiv.innerHTML = `<span class="text-red-500">خطا در ارتباط با سرور</span>`;
         });
 });
+
+
