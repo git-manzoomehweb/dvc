@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             (selector) => {
                                 const dateInputs = document.querySelectorAll(selector)
                                 dateInputs.forEach((input) => {
-                                    input.placeholder = ''
+                                    input.placeholder = 'انتخاب تاریخ'
                                 })
                             },
                         )
@@ -142,27 +142,31 @@ function initSwiperTour() {
 function openTab(evt, tabName) {
     const allBtns = document.querySelectorAll(".btn-tab .tab-btn");
     allBtns.forEach(btn => btn.classList.remove("active"));
+
     const contents = document.querySelectorAll(".tab-content");
     contents.forEach(c => c.classList.remove("active"));
-    const defaultTab = document.querySelector(".btn-tab[data-default='true']");
-    if (defaultTab) {
-        const btn = defaultTab.querySelector(".tab-btn");
-        if (btn) {
-            btn.click();
-        }
-    }
+
     const clickedBtn = evt.target.closest(".tab-btn");
     if (clickedBtn) {
         clickedBtn.classList.add("active");
     }
-    const matchedContents = document.querySelectorAll(
-        `.tab-content[data-category="${tabName}"]`
-    );
-    matchedContents.forEach(item => item.classList.add("active"));
+
+    // ✅ حالت پیش‌فرض: نمایش همه
+    if (tabName === "all") {
+        contents.forEach(item => item.classList.add("active"));
+    } else {
+        const matchedContents = document.querySelectorAll(
+            `.tab-content[data-category="${tabName}"]`
+        );
+        matchedContents.forEach(item => item.classList.add("active"));
+    }
+
     setTimeout(() => {
         initSwiperTour();
-    }, 50);
+    }, 0);
 }
+
+
 
 //---------------slider-tour
 
@@ -205,29 +209,79 @@ function openTabHotel(evt, tabName) {
     const matchedContents = document.querySelectorAll(
         `.tab-content-hotel[data-category="${tabName}"]`
     );
-    matchedContents.forEach(item => item.classList.add("active"));
+    // ✅ حالت پیش‌فرض: نمایش همه
+    if (tabName === "all") {
+        contents.forEach(item => item.classList.add("active"));
+    } else {
+        const matchedContents = document.querySelectorAll(
+            `.tab-content-hotel[data-category="${tabName}"]`
+        );
+        matchedContents.forEach(item => item.classList.add("active"));
+    }
     setTimeout(() => {
         initSwiperHotel();
-    }, 50);
+    }, 0);
 }
 
 //---------------slider-hotel
 
-
 function openTabPopular(evt, tabName) {
+    // جلوگیری از رفتارهای پیش‌فرض (اگر بعداً دکمه تبدیل به <a> شد)
+    if (evt && typeof evt.preventDefault === "function") evt.preventDefault();
 
-    document.querySelectorAll(".tab-btn_popular")
-        .forEach(btn => btn.classList.remove("active"));
+    // 1) غیر فعال کردن همه دکمه‌ها
+    document
+        .querySelectorAll(".tab-btn_popular")
+        .forEach((btn) => btn.classList.remove("active"));
 
-    document.querySelectorAll(".tab-content-popular")
-        .forEach(c => c.classList.remove("active"));
+    // 2) مخفی/غیرفعال کردن همه آیتم‌ها
+    document
+        .querySelectorAll(".tab-content-popular")
+        .forEach((c) => c.classList.remove("active"));
 
-    evt.target.closest(".tab-btn_popular").classList.add("active");
+    // 3) فعال کردن دکمه کلیک‌شده
+    const clickedBtn =
+        (evt && evt.currentTarget) ||
+        (evt && evt.target && evt.target.closest(".tab-btn_popular"));
 
+    if (clickedBtn) clickedBtn.classList.add("active");
+
+    // 4) اگر all بود => همه آیتم‌ها
+    if (tabName === "all") {
+        document
+            .querySelectorAll(".tab-content-popular")
+            .forEach((el) => el.classList.add("active"));
+        return;
+    }
+
+    // 5) فیلتر بر اساس data-category
     document
         .querySelectorAll(`.tab-content-popular[data-category="${tabName}"]`)
-        .forEach(el => el.classList.add("active"));
+        .forEach((el) => el.classList.add("active"));
 }
+
+// ✅ پیش‌فرض: "همه" فعال باشد و همه آیتم‌ها نمایش داده شوند
+document.addEventListener("DOMContentLoaded", function () {
+    const allBtn = document.querySelector('.tab-btn_popular[data-tab="all"]');
+
+    if (allBtn) {
+        // اجرای تابع با یک evt ساختگی که currentTarget داشته باشد
+        openTabPopular({ preventDefault() {}, currentTarget: allBtn }, "all");
+    } else {
+        // اگر دکمه "همه" نبود، حداقل همه آیتم‌ها نمایش داده شوند
+        document
+            .querySelectorAll(".tab-content-popular")
+            .forEach((el) => el.classList.add("active"));
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const defaultBtn = document.querySelector(".btn-tab[data-default='true'] .tab-btn");
+    if (defaultBtn) {
+        defaultBtn.click();
+    }
+});
 
 
 const panels = document.querySelectorAll(".panel");
@@ -862,5 +916,3 @@ document.getElementById("opinionForm").addEventListener("submit", function (e) {
             messageDiv.innerHTML = `<span class="text-red-500">خطا در ارتباط با سرور</span>`;
         });
 });
-
-

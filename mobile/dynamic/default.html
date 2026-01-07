@@ -1,9 +1,10 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db">
-    <member name="tourCategory" link="tourCategory.bc" type="tree" request="cat" parentid="219145"
+    <member name="tourCategory" link="tour-list.bc" type="tree" request="cat" parentid="219145"
             postsql="select * from [db.tourCategory] where parentid in(219145)"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219094">
-    <member name="tours"  type="list" link="tour.bc" propertyid="8181,3088230,8076,8077,10000504,3088231" order="ord"  size="385x222"/>
+    <member name="tours" type="list" link="tour.bc" propertyid="8181,3088230,8076,8077,10000504,3088231" order="ord"
+            size="385x222"/>
 </basis>
 <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1"
        usedforid="2390878">
@@ -26,21 +27,25 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="2390891">
     <member name="faq-title" type="view" postsql="select * from [db.faq-title] where TypeID in(128)"/>
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219183">
-    <member name="popular-destinations" type="list" link="tour.bc" propertyid="3088231"  order="ord"/>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db">
+    <member name="popular-destinations" link="tour-list.bc" type="tree" request="cat" parentid="219183"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="219183">
     <member name="popular-title" type="tree" request="cat" parentid="219183" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
     <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"
-            postsql="SELECT * FROM [db.article] ORDER BY ord ASC LIMIT 3;"  />
+            postsql="SELECT * FROM [db.article] ORDER BY ord ASC LIMIT 3;"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219222">
     <member name="article-title" type="tree" request="cat" parentid="219222" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219252">
-    <member name="visa" type="list" link="visa.bc" propertyid="3088232,219253,219252" size="227x87" order="ord"/>
+    <member name="visa" type="list" typeid="159" link="visa.bc" propertyid="3088232,219253,219252" size="227x87" order="ord"/>
+</basis>
+<basis core="dbsource" source="media" lid="1" name="db"
+       usedforid="219252" sourcemid="article">
+    <member type="list" name="galleryVisa" format="4" order="ord" size="227x87"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db">
     <member name="visaCat" type="tree" link="visa.bc" request="cat" parentid="219252" order="ord"/>
@@ -128,14 +133,14 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col mb-7 view-more-items ease items-center justify-center">
+            <a href="#s-two" class="flex flex-col mb-7 view-more-items ease items-center justify-center">
                 <img width="36" src="/images/mouse.png" alt="">
                 <span class="text-white text-[15px]">بیشتر ببینید</span>
-            </div>
+            </a>
         </div>
     </section>
     <!--s-category-tour-->
-    <section class="s-category-tour mt-12">
+    <section id="s-two" class="s-category-tour mt-12">
         <div class="title w-full flex flex-col items-center justify-center gap-[12px]">
             <h2 class="danaBold  text-base">دسته بندی تور ها</h2>
             <svg width="122" height="6" viewBox="0 0 122 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -151,7 +156,14 @@
                 </div>
             </layout>
             <face>
-                <a href="/Categories-of-tours"
+                <a href="/tour-list.bc?catid=@catid"
+                   class="item-category-tour w-1/6 flex-shrink-0 relative ease  py-2 flex flex-col items-center justify-center gap-3">
+                    <img class="relative z-5" width="36" src="/@image" alt="">
+                    <span class="DanaRegular text-xs text-[#171717] relative z-5">@title</span>
+                </a>
+            </face>
+            <face filter="link is null">
+                <a href="/@link"
                    class="item-category-tour w-1/6 flex-shrink-0 relative ease  py-2 flex flex-col items-center justify-center gap-3">
                     <img class="relative z-5" width="36" src="/@image" alt="">
                     <span class="DanaRegular text-xs text-[#171717] relative z-5">@title</span>
@@ -179,8 +191,12 @@
                     </div>
                 </face>
             </basis>
-            <div class="btn-tab w-full flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2 flex items-center justify-center my-5 gap-2">
-                <a data-tab="cat_1" data-default="true" onclick="openTab(event, 'محبوب ترین تورها')"
+            <div data-default="true" class="btn-tab w-full flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2 flex items-center justify-center my-5 gap-2">
+                <div data-tab="cat_1"  onclick="openTabHotel(event, 'all')"
+                     class="px-[17px] cursor-pointer flex-shrink-0 tab-btn transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">
+                    همه
+                </div>
+                <a data-tab="cat_1"  onclick="openTab(event, 'محبوب ترین تورها')"
                    class="px-[17px] tab-btn flex-shrink-0  transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">محبوبت
                     ترین</a>
                 <a data-tab="cat_1" onclick="openTab(event, 'جدیدترین')"
@@ -205,10 +221,6 @@
                                             <img class="w-full h-full rounded-[9px]" src="/@image" draggable="false"
                                                  alt="/@title">
                                         </a>
-
-                                        <button class="absolute right-3 top-3 z-10">
-                                            <img width="36" src="/images/favorite.png" alt="">
-                                        </button>
                                     </div>
                                     <div class="w-full flex flex-col gap-1 items-start mt-6">
                                         <h3><a class="font-bold danaBold text-base" href="">@title</a></h3>
@@ -283,16 +295,16 @@
                     <basis core="list" datamembername="db.gallery">
                         <layout>@child</layout>
                         <face>
-                                <img class="w-full h-[100px] rounded-3xl" src="/@largeIMG" alt="">
+                             <img class="w-full h-[100px] rounded-3xl" src="/@largeIMG" alt="">
                         </face>
                     </basis>
 
                 </div>
                 <div class="p-detail flex flex-col pt-1 items-start gap-5 gap-6">
+                    <h2 class="text-base danaBold">تعطیلات رویایی</h2>
                     <basis core="print" datamembername="db.about">
                         <layout>@child</layout>
                         <face filter="TypeID in(129)">
-                            <h2 class="text-base danaBold">@text</h2>
                             <div class="text-xs	 danaRegular text-justify leading-6 text-[#202020]">
                                 @largetext
                             </div>
@@ -333,8 +345,12 @@
                     </div>
                 </face>
             </basis>
-            <div class="btn-tab w-full  flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2">
-                <a data-tab="cat_1" data-default="true" onclick="openTabHotel(event, 'محبوب ترین')"
+            <div data-default="true" class="btn-tab w-full  flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2">
+                <div data-tab="cat_1"  onclick="openTabHotel(event, 'all')"
+                     class="px-[17px] cursor-pointer flex-shrink-0 tab-btn_hotel transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">
+                    همه
+                </div>
+                <a data-tab="cat_1" onclick="openTabHotel(event, 'محبوب ترین')"
                    class="px-[17px] flex-shrink-0 tab-btn_hotel transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">محبوبت
                     ترین</a>
                 <a data-tab="cat_1" onclick="openTabHotel(event, 'جدیدترین')"
@@ -359,9 +375,6 @@
                                        class="img rounded-[9px] h-[150px] w-full overflow-hidden relative">
                                         <img class="w-full h-full " src="/@image" draggable="false"
                                              alt="tour">
-                                        <button class="absolute right-3 top-3 z-10">
-                                            <img width="36" src="/images/favorite.png" alt="">
-                                        </button>
                                     </a>
                                     <div class="w-full flex flex-col gap-1 items-start mt-3">
                                         <h3><a class="font-bold danaBold text-base" href="/@link">@title</a></h3>
@@ -582,25 +595,45 @@
                     </div>
                 </face>
             </basis>
-            <div class="btn-tab w-full  flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2">
-                <a data-tab="cat_1" data-default="true" onclick="openTabPopular(event, 'محبوب ترین تورها')"
-                   class="px-[17px] tab-btn_popular flex-shrink-0 transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">محبوبت
-                    ترین</a>
-                <a data-tab="cat_1" onclick="openTabPopular(event, 'جدیدترین')"
-                   class="px-[17px] tab-btn_popular flex-shrink-0 transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
-                >جدیدترین تورها</a>
-                <a data-tab="cat_1" onclick="openTabPopular(event, 'مهیج ترین')"
-                   class="px-[17px] tab-btn_popular flex-shrink-0 transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
-                >مهیج ترین</a>
+            <div  class="btn-tab w-full overflow-y-hidden overflow-x-auto flex items-center justify-center my-5 gap-2">
+                <div data-tab="all"
+                     onclick="openTabPopular(event, 'all')"
+                     class="px-[17px] flex-shrink-0 cursor-pointer tab-btn_popular transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">
+                    همه
+                </div>
+                <basis core="print" datamembername="db.popular-destinations">
+                    <layout>@child</layout>
+                    <face filter="parentid=219183">
+                        <div data-tab="cat_1" onclick="openTabPopular(event, '@catid')"
+                             class="px-[17px] cursor-pointer flex-shrink-0 tab-btn_popular transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">
+                            @title
+                        </div>
+                    </face>
+
+                </basis>
             </div>
+
         </div>
         <div class="w-full pr-4">
             <div class="swiper popular-destinations">
                 <div class="swiper-wrapper">
                     <basis core="print" datamembername="db.popular-destinations">
                         <layout>@child</layout>
-                        <face>
-                            <div data-category="@prp_3088231" class="swiper-slide tab-content-popular h-[90px]">
+                        <face filter="parentid <> 218576 and parentid <> 219183">
+                            <div data-category="@parentid" href="/tour-list.bc?catid=@catid" class="swiper-slide tab-content-popular h-[90px]">
+                                <a href="/tour-list.bc?catid=@catid"
+                                   class="item-popular-destinations  shadow-custom-3 w-full relative bg-white h-[90px] rounded-xl p-[6px]">
+                                    <div class="img overflow-hidden rounded-xl w-full h-full relative">
+                                        <div class="back-bg flex items-center justify-center w-full h-[90px] absolute right-0 top-0 z-5 bg-[#0000007A]">
+                                            <h3 class="text-white danaBold text-xl">@title</h3>
+                                        </div>
+                                        <img class="w-full h-[90px]" src="/@image" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                        </face>
+                        <face filter="parentid <> 218576 and parentid <> 219183 and link is null">
+                            <div data-category="@parentid" href="/tour-list.bc?catid=@catid" class="swiper-slide tab-content-popular h-[90px]">
                                 <a href="/@link"
                                    class="item-popular-destinations  shadow-custom-3 w-full relative bg-white h-[90px] rounded-xl p-[6px]">
                                     <div class="img overflow-hidden rounded-xl w-full h-full relative">
@@ -612,6 +645,7 @@
                                 </a>
                             </div>
                         </face>
+
                     </basis>
 
                 </div>

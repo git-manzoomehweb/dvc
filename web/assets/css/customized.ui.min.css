@@ -4320,20 +4320,6 @@ body {
     width: 100%;
 }
 
-.link-underMenu-one {
-    position: relative;
-    color: #00;
-    height: 40px;
-    padding-inline: 12px;
-
-}
-
-.link-underMenu-one:hover {
-    position: relative;
-    color: var(--text-zinc-900);
-    background: var(--secondary-900);
-
-}
 
 .link-underMenu-one:hover .underMenu-two {
     display: flex;
@@ -4373,6 +4359,101 @@ body {
 .s-footer {
     background: linear-gradient(180deg, #FAF7F3 0%, #FFFFFF 100%);
 }
-.cursor-pointer{
+
+.cursor-pointer {
     cursor: pointer !important;
+}
+
+/*header*/
+header .menu .p-first-link:hover .first-link {
+    color: var(--secondary-900);
+}
+
+
+header .menu li .svg-one, header .menu li .svg-two {
+    transition: 0.5s ease;
+}
+
+header .menu li:hover .svg-one {
+    rotate: 180deg;
+}
+
+header .menu .link-underMenu-one:hover .svg-two {
+    rotate: 90deg;
+}
+
+.item-undermenu-two {
+    padding: 10px 4px 0 4px !important;
+    height: 30px;
+}
+
+.underMenu-one .ul-underMenu-one:hover a{
+    color: var(--secondary-900);
+    margin-right: 4px;
+}
+
+.underMenu-one .ul-underMenu-one  a{
+    transition: 0.5s ease;
+}
+.ul-underMenu-one .underMenu-two  a{
+    color: var(--color-zinc-900);
+    transition: 0.5s ease;
+}
+.ul-underMenu-one .underMenu-two:hover a{
+    color: var(--secondary-900);
+    margin-right: 4px;
+}
+.link-underMenu-one {
+    position: relative;
+    color: #00;
+    height: 40px !important;
+    padding-inline: 12px
+}
+
+.link-underMenu-one:hover {
+    position: relative;
+    color: var(--text-zinc-900);
+    background: linear-gradient(90deg, rgba(255, 245, 224, 1) 0%, rgba(252, 222, 164, 1) 50%, rgba(207, 170, 101, 1) 100%);
+}
+
+.btnstyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    background: var(--primary-50);
+    padding: 0 12px;
+    border-radius: 50%;
+    color: #fff;
+    transition: .5s;
+    border: none
+}
+
+#firstUsername input, #mailsSelectContainer input {
+    box-shadow: 0 4px 67px 0 #0000000F;
+    background: #fff;
+    border-radius: 100px;
+    width: 100%;
+    padding: 0 24px;
+    border: none;
+    height: 50px;
+    font-size: 13px
+}
+.btn-primary, .login-btn, .login-btn-content button {
+    background: var(--primary-900);
+    border: 1px solid var(--primary-900);
+    border-radius: 100px;
+    height: 50px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .6s
+}
+.s-main .top{
+    min-height: 750px;
+}
+.s-main .top .search{
+    min-height: 585px;
 }
