@@ -328,52 +328,7 @@ var swiper = new Swiper(".swiper-services-item", {
     }
 });
 
-//---------------slider-tour
-let swiperTour;
 
-function initSwiperTour() {
-    if (swiperTour) {
-        swiperTour.destroy(true, true);
-    }
-
-    swiperTour = new Swiper(".swiper-thumbnail-tour", {
-        slidesPerView: 3,
-        spaceBetween: 20,
-        navigation: {
-            nextEl: ".swiper-button-next-tour",
-            prevEl: ".swiper-button-prev-tour",
-        },
-        observer: true,
-        observeParents: true,
-    });
-}
-
-function openTab(evt, tabName) {
-    const allBtns = document.querySelectorAll(".btn-tab .tab-btn");
-    allBtns.forEach(btn => btn.classList.remove("active"));
-
-    const contents = document.querySelectorAll(".tab-content");
-    contents.forEach(c => c.classList.remove("active"));
-
-    const clickedBtn = evt.target.closest(".tab-btn");
-    if (clickedBtn) {
-        clickedBtn.classList.add("active");
-    }
-
-    // ✅ حالت پیش‌فرض: نمایش همه
-    if (tabName === "all") {
-        contents.forEach(item => item.classList.add("active"));
-    } else {
-        const matchedContents = document.querySelectorAll(
-            `.tab-content[data-category="${tabName}"]`
-        );
-        matchedContents.forEach(item => item.classList.add("active"));
-    }
-
-    setTimeout(() => {
-        initSwiperTour();
-    }, 0);
-}
 
 
 
@@ -957,3 +912,49 @@ document.getElementById("opinionForm").addEventListener("submit", function (e) {
 
 
 
+//---------------slider-tour
+let swiperTour;
+
+function initSwiperTour() {
+    if (swiperTour) {
+        swiperTour.destroy(true, true);
+    }
+
+    swiperTour = new Swiper(".swiper-thumbnail-tour", {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: ".swiper-button-next-tour",
+            prevEl: ".swiper-button-prev-tour",
+        },
+        observer: true,
+        observeParents: true,
+    });
+}
+
+function openTab(evt, tabName) {
+    const allBtns = document.querySelectorAll(".btn-tab .tab-btn");
+    allBtns.forEach(btn => btn.classList.remove("active"));
+
+    const contents = document.querySelectorAll(".tab-content");
+    contents.forEach(c => c.classList.remove("active"));
+
+    const clickedBtn = evt.target.closest(".tab-btn");
+    if (clickedBtn) {
+        clickedBtn.classList.add("active");
+    }
+
+    // ✅ حالت پیش‌فرض: نمایش همه
+    if (tabName === "all") {
+        contents.forEach(item => item.classList.add("active"));
+    } else {
+        const matchedContents = document.querySelectorAll(
+            `.tab-content[data-category="${tabName}"]`
+        );
+        matchedContents.forEach(item => item.classList.add("active"));
+    }
+
+    setTimeout(() => {
+        initSwiperTour();
+    }, 0);
+}

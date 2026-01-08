@@ -4473,3 +4473,6 @@ header .menu .link-underMenu-one:hover .svg-two {
     width: 20px;
     height: 20px;
 }
+.p-pagination .pagination{
+    width: auto !important;
+}

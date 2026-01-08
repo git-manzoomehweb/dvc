@@ -327,7 +327,7 @@
                     </div>
                 </basis>
                 <div data-default="true" class="btn-tab w-full flex items-center justify-center my-5 gap-2">
-                    <div data-tab="cat_all"   onclick="openTab(event, 'all')"
+                    <div data-tab="cat_all" onclick="openTab(event, 'all')"
                          class="px-[17px] tab-btn  transition-colors  hover:bg-[#F6F0E6] cursor-pointer rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">
                         همه
                     </div>
@@ -351,7 +351,7 @@
                     <basis core="list" datamembername="db.tours">
                         <layout>@child</layout>
                         <face>
-                            <div data-category="@prp_3088231" class="swiper-slide swiper-slide-tabs tab-content">
+                            <div data-category="@prp_3088231" class="swiper-slide  tab-content">
                                 <div class="thumbnail-tour w-full rounded-3xl p-3 flex flex-col items-center">
                                     <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
                                         <a class="w-full h-[222px] relative" href="/@link" aria-label="@title">
@@ -360,7 +360,10 @@
                                     </div>
                                     <div class="w-full flex flex-col gap-1 items-start mt-6">
                                         <h3><a class="font-bold danaBold text-lg" href="/@link">@title</a></h3>
-                                        <span class="text-primary-700 text-xs">@prp_3088230</span>
+                                        <span class="text-primary-700 text-xs">
+                                            شروع سفر از :
+                                            <span class="title-data">@prp_3088230</span>
+                                            </span>
                                     </div>
                                     <div class="w-full mt-6 grid grid-cols-4">
                                         <div class="item flex flex-col items-center justify-center gap-2">
@@ -494,6 +497,7 @@
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
 <basis core="call" file="script.inc" />
+
 </body>
 
 </html>
