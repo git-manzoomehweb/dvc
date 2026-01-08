@@ -2369,7 +2369,6 @@ a, button, input {
 .date__searched__container .label-dates svg:first-child use, .label-passengers svg:first-child use, .label-routes svg:first-child use {
     transform-box: fill-box;
     transform-origin: center;
-    transform: translate(16px, 14px)
 }
 
 .return-date .label-dates {
@@ -2725,22 +2724,15 @@ a, button, input {
 .border-l-head {
     border-left: 1px solid var(--color-zinc-200)
 }
-
-.btnstyle {
-    height: 48px;
-    background: var(--primary-900);
-    border: 1px solid var(--primary-900);
-    padding: 0 12px;
-    border-radius: 8px;
-    color: #fff;
-    transition: .5s
+.btnstyle .hasNot-login-icon {
+    width: auto !important;
+    height: auto !important;
+    padding: 3px !important;
+    display: flex !important;
 }
-
-.btnstyle:hover {
-    background: unset;
-    color: var(--primary-900)
+.Login_Information{
+    background: unset !important;
 }
-
 #firstUsername input, #mailsSelectContainer input {
     box-shadow: 0 4px 67px 0 #0000000F;
     background: #fff;
@@ -2749,11 +2741,11 @@ a, button, input {
     padding: 0 24px;
     border: none;
     height: 55px;
-    font-size: 16px
+    font-size: 13px !important;
 }
 
-.login-btn, .login-btn-content button {
-    background: var(--primary-900);
+.login-btn-content button {
+    background: var(--primary-900) ;
     border: 1px solid var(--primary-900);
     border-radius: 100px;
     height: 55px;
@@ -2764,8 +2756,7 @@ a, button, input {
     justify-content: center;
     transition: .6s
 }
-
-.login-btn, .login-btn-content button:hover {
+ .login-btn-content button:hover {
     background: #fff;
     color: var(--primary-900);
     box-shadow: rgba(0, 0, 0, .19) 0 10px 20px, rgba(0, 0, 0, .23) 0 6px 6px
@@ -2883,4 +2874,20 @@ a, button, input {
 .book-module__type label {
     display: flex;
     align-items: center
+}
+
+.border-primary-900 {
+    border-color: var(--primary-900)
+}
+
+.modal-video {
+    background: #00000098;
+    padding: 2rem;
+    z-index: 10000;
+}
+
+.modal-video .box-video {
+    width: 100%;
+    height: 50%;
+    background: white;
 }

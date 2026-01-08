@@ -326,16 +326,24 @@
                         </face>
                     </div>
                 </basis>
-                <div class="btn-tab w-full flex items-center justify-center my-5 gap-2">
-                    <a data-tab="cat_1" data-default="true" onclick="openTab(event, 'محبوب ترین تورها')"
-                       class="px-[17px] tab-btn  transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">محبوبت
-                        ترین</a>
-                    <a data-tab="cat_1" onclick="openTab(event, 'جدیدترین')"
-                       class="px-[17px] tab-btn transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
-                    >جدیدترین تورها</a>
-                    <a data-tab="cat_1" onclick="openTab(event, 'مهیج ترین')"
-                       class="px-[17px] tab-btn transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
-                    >مهیج ترین</a>
+                <div data-default="true" class="btn-tab w-full flex items-center justify-center my-5 gap-2">
+                    <div data-tab="cat_all"   onclick="openTab(event, 'all')"
+                         class="px-[17px] tab-btn  transition-colors  hover:bg-[#F6F0E6] cursor-pointer rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">
+                        همه
+                    </div>
+                    <div data-tab="cat_1" onclick="openTab(event, 'محبوب ترین تورها')"
+                         class="px-[17px] tab-btn  transition-colors  hover:bg-[#F6F0E6] cursor-pointer rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">
+                        محبوبت
+                        ترین
+                    </div>
+                    <div data-tab="cat_1" onclick="openTab(event, 'جدیدترین')"
+                         class="px-[17px] tab-btn transition-colors hover:bg-[#F6F0E6] cursor-pointer rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
+                    >جدیدترین تورها
+                    </div>
+                    <div data-tab="cat_1" onclick="openTab(event, 'مهیج ترین')"
+                         class="px-[17px] tab-btn transition-colors hover:bg-[#F6F0E6] cursor-pointer rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
+                    >مهیج ترین
+                    </div>
                 </div>
             </div>
             <div class="swiper swiper-thumbnail-tour py-5">
@@ -349,9 +357,6 @@
                                         <a class="w-full h-[222px] relative" href="/@link" aria-label="@title">
                                             <img class="w-full h-full" src="/@image" draggable="false" alt="tour">
                                         </a>
-                                        <button class="absolute right-3 top-3 z-10">
-                                            <img width="36" src="/images/favorite.png" alt="">
-                                        </button>
                                     </div>
                                     <div class="w-full flex flex-col gap-1 items-start mt-6">
                                         <h3><a class="font-bold danaBold text-lg" href="/@link">@title</a></h3>

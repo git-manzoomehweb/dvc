@@ -65,7 +65,199 @@ document.addEventListener('DOMContentLoaded', function () {
         waitForFiles()
     }
 })
+document.addEventListener("DOMContentLoaded", () => {
+    const fetchContentVisa = document.querySelector('.result-id-visa')
+    const contentCacheVisa = new Map()
+    // همه تب‌ها
+    const tabsVisa = document.querySelectorAll('.btn-tab .item-btn-tab')
 
+    // ---------- Loader ----------
+    function showLoader() {
+        fetchContentVisa.innerHTML =
+            '<div class="flex justify-center box-loading mt-2"><span class="fetch-loader"></span></div>'
+    }
+
+    // ---------- Active Tab ----------
+    function setActiveTab(activeTab) {
+        tabsVisa.forEach(tab => {
+            tab.classList.remove('active-visa')
+            tab.classList.add('bg-zinc-100', 'text-zinc-600')
+        })
+
+        activeTab.classList.remove('bg-zinc-100', 'text-zinc-600')
+        activeTab.classList.add('active-visa')
+    }
+
+    // ---------- Load Category ----------
+    async function loadCategoryVisa(dataId, tabEl = null) {
+        if (!dataId) return
+
+        if (tabEl) setActiveTab(tabEl)
+
+        const cacheKey = dataId
+
+        showLoader()
+        if (contentCacheVisa.has(cacheKey)) {
+            fetchContentVisa.innerHTML = contentCacheVisa.get(cacheKey)
+            return
+        }
+        try {
+            const response = await fetch(`/visa-load-items.bc?catid=${dataId}`)
+            if (!response.ok) throw new Error(response.status)
+
+            const data = await response.text()
+            contentCacheVisa.set(cacheKey, data)
+            fetchContentVisa.innerHTML = data
+
+        } catch (error) {
+            fetchContentVisa.innerHTML =
+                `<p class="text-red-500">خطا در بارگذاری محتوا</p>`
+        }
+    }
+
+    if (tabsVisa.length > 0) {
+        const firstTabVisa = tabsVisa[0]
+        const firstIdVisa = firstTabVisa.getAttribute('onclick')
+            ?.match(/loadCategoryVisa\('(.+?)'/)?.[1]
+
+        if (firstIdVisa) {
+            loadCategoryVisa(firstIdVisa, firstTabVisa)
+        }
+    }
+    window.loadCategoryVisa = loadCategoryVisa
+})
+document.addEventListener("DOMContentLoaded", () => {
+    const fetchContentHeader = document.querySelector('.result-id')
+    const contentCache = new Map()
+    let swiperInstance = null
+
+    // همه تب‌ها
+    const tabs = document.querySelectorAll('.btn-tab .item-btn-tab')
+    // ---------- Init First Tab ----------
+
+
+    // ---------- Loader ----------
+    function showLoader() {
+        fetchContentHeader.innerHTML =
+            '<div class="flex justify-center mt-2"><span class="fetch-loader"></span></div>'
+    }
+
+    // ---------- Active Tab ----------
+    function setActiveTab(activeTab) {
+        tabs.forEach(tab => {
+            tab.classList.remove('active-visa')
+            tab.classList.add('bg-zinc-100', 'text-zinc-600')
+        })
+
+        activeTab.classList.remove('bg-zinc-100', 'text-zinc-600')
+        activeTab.classList.add('active-visa')
+    }
+
+    // ---------- Load Category ----------
+    async function loadCategory(dataId, tabEl = null) {
+        if (!dataId) return
+
+        if (tabEl) setActiveTab(tabEl)
+
+        const cacheKey = dataId
+
+        showLoader()
+
+        if (contentCache.has(cacheKey)) {
+            fetchContentHeader.innerHTML = contentCache.get(cacheKey)
+            initSwiperSafe()
+            return
+        }
+
+        try {
+            const response = await fetch(`/load-items.bc?catid=${dataId}`)
+            if (!response.ok) throw new Error(response.status)
+
+            const data = await response.text()
+            contentCache.set(cacheKey, data)
+            fetchContentHeader.innerHTML = data
+
+            initSwiperSafe()
+
+        } catch (error) {
+            fetchContentHeader.innerHTML =
+                `<p class="text-red-500">خطا در بارگذاری محتوا</p>`
+        }
+    }
+
+    // ---------- Swiper ----------
+    function initSwiperSafe() {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                initSwiper()
+            })
+        })
+    }
+
+    function initSwiper() {
+        const swiperEl = document.querySelector('.swiper-thumbnail-visa')
+        if (!swiperEl) return
+
+        if (swiperInstance) {
+            swiperInstance.destroy(true, true)
+            swiperInstance = null
+        }
+
+        swiperInstance = new Swiper(swiperEl, {
+            rtl: true,
+            observer: true,
+            observeParents: true,
+            watchSlidesProgress: true,
+            slidesPerView: 5,
+            spaceBetween: 20,
+            loop: false,
+            navigation: {
+                nextEl: swiperEl.querySelector('.swiper-button-next-visa'),
+                prevEl: swiperEl.querySelector('.swiper-button-prev-visa'),
+            },
+            breakpoints: {
+                1024: {slidesPerView: 5},
+                768: {slidesPerView: 3},
+                480: {slidesPerView: 1},
+            }
+        })
+    }
+
+// ---------- Init Default Tab ----------
+    if (tabs.length > 0) {
+        const firstTab = tabs[0]
+        const firstId = firstTab.getAttribute('onclick')
+            ?.match(/loadCategory\('(.+?)'/)?.[1]
+
+        if (firstId) {
+            loadCategory(firstId, firstTab)
+        } else {
+            console.error('Cannot detect catid for first tab')
+        }
+    }
+
+    window.loadCategory = loadCategory
+})
+
+
+// modal-video
+const btnVideo = document.querySelector('.btn-view-video')
+const modalVideo = document.getElementById('box-video')
+const modalBox = modalVideo.querySelector('.box-video')
+
+btnVideo.addEventListener('click', () => {
+    modalVideo.classList.remove('hidden')
+    modalVideo.classList.add('flex')
+})
+
+modalVideo.addEventListener('click', () => {
+    modalVideo.classList.add('hidden')
+    modalVideo.classList.remove('flex')
+})
+
+modalBox.addEventListener('click', (e) => {
+    e.stopPropagation()
+})
 
 // swiper-thumbnail-visa
 var swiper = new Swiper(".swiper-thumbnail-visa", {
@@ -118,6 +310,23 @@ var swiper = new Swiper(".swiper-comment-user", {
 });
 // faq
 
+var swiper = new Swiper(".swiper-services-item", {
+    slidesPerView: 2.5,
+    spaceBetween: 12,
+    observer: true,
+    observeParents: true,
+    breakpoints: {
+        640: {
+            slidesPerView: 1,
+        },
+        768: {
+            slidesPerView: 1.5,
+        },
+        1024: {
+            slidesPerView: 2.5,
+        }
+    }
+});
 
 //---------------slider-tour
 let swiperTour;
@@ -560,180 +769,8 @@ function ShareSocialMedia(event, containerid) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const fetchContentHeader = document.querySelector('.result-id')
-    const contentCache = new Map()
-    let swiperInstance = null
-
-    // همه تب‌ها
-    const tabs = document.querySelectorAll('.btn-tab .item-btn-tab')
-    // ---------- Init First Tab ----------
 
 
-    // ---------- Loader ----------
-    function showLoader() {
-        fetchContentHeader.innerHTML =
-            '<div class="flex justify-center mt-2"><span class="fetch-loader"></span></div>'
-    }
-
-    // ---------- Active Tab ----------
-    function setActiveTab(activeTab) {
-        tabs.forEach(tab => {
-            tab.classList.remove('active-visa')
-            tab.classList.add('bg-zinc-100', 'text-zinc-600')
-        })
-
-        activeTab.classList.remove('bg-zinc-100', 'text-zinc-600')
-        activeTab.classList.add('active-visa')
-    }
-
-    // ---------- Load Category ----------
-    async function loadCategory(dataId, tabEl = null) {
-        if (!dataId) return
-
-        if (tabEl) setActiveTab(tabEl)
-
-        const cacheKey = dataId
-
-        showLoader()
-
-        if (contentCache.has(cacheKey)) {
-            fetchContentHeader.innerHTML = contentCache.get(cacheKey)
-            initSwiperSafe()
-            return
-        }
-
-        try {
-            const response = await fetch(`/load-items.bc?catid=${dataId}`)
-            if (!response.ok) throw new Error(response.status)
-
-            const data = await response.text()
-            contentCache.set(cacheKey, data)
-            fetchContentHeader.innerHTML = data
-
-            initSwiperSafe()
-
-        } catch (error) {
-            fetchContentHeader.innerHTML =
-                `<p class="text-red-500">خطا در بارگذاری محتوا</p>`
-        }
-    }
-
-    // ---------- Swiper ----------
-    function initSwiperSafe() {
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                initSwiper()
-            })
-        })
-    }
-
-    function initSwiper() {
-        const swiperEl = document.querySelector('.swiper-thumbnail-visa')
-        if (!swiperEl) return
-
-        if (swiperInstance) {
-            swiperInstance.destroy(true, true)
-            swiperInstance = null
-        }
-
-        swiperInstance = new Swiper(swiperEl, {
-            rtl: true,
-            observer: true,
-            observeParents: true,
-            watchSlidesProgress: true,
-            slidesPerView: 5,
-            spaceBetween: 20,
-            loop: false,
-            navigation: {
-                nextEl: swiperEl.querySelector('.swiper-button-next-visa'),
-                prevEl: swiperEl.querySelector('.swiper-button-prev-visa'),
-            },
-            breakpoints: {
-                1024: {slidesPerView: 5},
-                768: {slidesPerView: 3},
-                480: {slidesPerView: 1},
-            }
-        })
-    }
-
-// ---------- Init Default Tab ----------
-    if (tabs.length > 0) {
-        const firstTab = tabs[0]
-        const firstId = firstTab.getAttribute('onclick')
-            ?.match(/loadCategory\('(.+?)'/)?.[1]
-
-        if (firstId) {
-            loadCategory(firstId, firstTab)
-        } else {
-            console.error('Cannot detect catid for first tab')
-        }
-    }
-
-    window.loadCategory = loadCategory
-})
-
-document.addEventListener("DOMContentLoaded", () => {
-    const fetchContentVisa = document.querySelector('.result-id-visa')
-    const contentCacheVisa = new Map()
-    // همه تب‌ها
-    const tabsVisa = document.querySelectorAll('.btn-tab .item-btn-tab')
-
-    // ---------- Loader ----------
-    function showLoader() {
-        fetchContentVisa.innerHTML =
-            '<div class="flex justify-center box-loading mt-2"><span class="fetch-loader"></span></div>'
-    }
-
-    // ---------- Active Tab ----------
-    function setActiveTab(activeTab) {
-        tabsVisa.forEach(tab => {
-            tab.classList.remove('active-visa')
-            tab.classList.add('bg-zinc-100', 'text-zinc-600')
-        })
-
-        activeTab.classList.remove('bg-zinc-100', 'text-zinc-600')
-        activeTab.classList.add('active-visa')
-    }
-
-    // ---------- Load Category ----------
-    async function loadCategoryVisa(dataId, tabEl = null) {
-        if (!dataId) return
-
-        if (tabEl) setActiveTab(tabEl)
-
-        const cacheKey = dataId
-
-        showLoader()
-        if (contentCacheVisa.has(cacheKey)) {
-            fetchContentVisa.innerHTML = contentCacheVisa.get(cacheKey)
-            return
-        }
-        try {
-            const response = await fetch(`/visa-load-items.bc?catid=${dataId}`)
-            if (!response.ok) throw new Error(response.status)
-
-            const data = await response.text()
-            contentCacheVisa.set(cacheKey, data)
-            fetchContentVisa.innerHTML = data
-
-        } catch (error) {
-            fetchContentVisa.innerHTML =
-                `<p class="text-red-500">خطا در بارگذاری محتوا</p>`
-        }
-    }
-
-    if (tabsVisa.length > 0) {
-        const firstTabVisa = tabsVisa[0]
-        const firstIdVisa = firstTabVisa.getAttribute('onclick')
-            ?.match(/loadCategoryVisa\('(.+?)'/)?.[1]
-
-        if (firstIdVisa) {
-            loadCategoryVisa(firstIdVisa, firstTabVisa)
-        }
-    }
-    window.loadCategoryVisa = loadCategoryVisa
-})
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -916,3 +953,7 @@ document.getElementById("opinionForm").addEventListener("submit", function (e) {
             messageDiv.innerHTML = `<span class="text-red-500">خطا در ارتباط با سرور</span>`;
         });
 });
+
+
+
+

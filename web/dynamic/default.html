@@ -41,7 +41,8 @@
     <member name="article-title" type="tree" request="cat" parentid="219222" order="ord"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219252">
-    <member name="visa" type="list" typeid="159" link="visa.bc" propertyid="3088232,219253,219252" size="227x87" order="ord"/>
+    <member name="visa" type="list" typeid="159" link="visa.bc" propertyid="3088232,219253,219252" size="227x87"
+            order="ord"/>
 </basis>
 <basis core="dbsource" source="media" lid="1" name="db"
        usedforid="219252" sourcemid="article">
@@ -206,7 +207,7 @@
                     </div>
                 </basis>
                 <div data-default="true" class="btn-tab w-full flex items-center justify-center my-5 gap-2">
-                    <div data-tab="cat_all"   onclick="openTab(event, 'all')"
+                    <div data-tab="cat_all" onclick="openTab(event, 'all')"
                          class="px-[17px] tab-btn  transition-colors  hover:bg-[#F6F0E6] cursor-pointer rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">
                         همه
                     </div>
@@ -356,7 +357,7 @@
     <section class="s-popular-hotel  py-2 mt-25">
         <div class="c-container">
             <div class="title w-full flex flex-col items-center justify-center gap-[12px]">
-                <h2 class="danaBold text-4xl">هتل های  تعطیلات رویایی</h2>
+                <h2 class="danaBold text-4xl">هتل های تعطیلات رویایی</h2>
                 <svg width="194" height="6">
                     <use href="/images/sprite-icons.svg#line-title-hotel"></use>
                 </svg>
@@ -371,9 +372,9 @@
                 <div data-default="true" class="btn-tab w-full flex items-center justify-center mt-3 gap-2">
                     <div data-tab="cat_1" data-default="true" onclick="openTabHotel(event, 'all')"
                          class="px-[17px] cursor-pointer tab-btn_hotel transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">
-                       همه
+                        همه
                     </div>
-                    <div data-tab="cat_1"  onclick="openTabHotel(event, 'محبوب ترین')"
+                    <div data-tab="cat_1" onclick="openTabHotel(event, 'محبوب ترین')"
                          class="px-[17px] cursor-pointer tab-btn_hotel transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">
                         محبوبت
                         ترین
@@ -475,6 +476,15 @@
     </section>
     <!-- s-faq-->
     <section class="s-faq  py-2 mt-25">
+        <div id="box-video"
+             class="modal-video  z-10 fixed right-0 top-0 h-full w-full hidden items-center justify-center p-6">
+            <div class="box-video w-full  flex  rounded-xl h-full justify-center items-center">
+                <div class="h-full w-full"><span style="display: block;"></span>
+                    <iframe class="h-full w-full" src=""
+                            allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                </div>
+            </div>
+        </div>
         <div class="c-container">
             <div class="title w-full flex flex-col items-center justify-center gap-[6px]">
                 <h2 class="danaBold mb-0 text-4xl">سوالات متداول </h2>
@@ -523,10 +533,10 @@
                                             @largetext
                                         </p>
                                         <div class="w-full mt-5">
-                                            <a class="rounded-[100px] text-white danaRegular text-base w-[180px] px-[24px] h-12 flex items-center justify-center btn-primary"
-                                               href="/Frequently-asked-questions">
+                                            <button class="rounded-[100px] btn-view-video text-white danaRegular text-base w-[180px] px-[24px] h-12 flex items-center justify-center btn-primary">
                                                 مشاهده ویدیو
-                                            </a>
+                                            </button>
+
                                         </div>
                                     </div>
 
@@ -626,10 +636,10 @@
                         </div>
                     </face>
                 </basis>
-                <div  class="btn-tab w-full flex items-center justify-center my-5 gap-2">
+                <div class="btn-tab w-full flex items-center justify-center my-5 gap-2">
                     <div data-tab="all"
-                            onclick="openTabPopular(event, 'all')"
-                            class="px-[17px] cursor-pointer tab-btn_popular transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">
+                         onclick="openTabPopular(event, 'all')"
+                         class="px-[17px] cursor-pointer tab-btn_popular transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">
                         همه
                     </div>
                     <basis core="print" datamembername="db.popular-destinations">
@@ -659,7 +669,7 @@
                         </a>
                     </face>
                     <face filter="parentid <> 218576 and parentid <> 219183 and link is null">
-                        <a aria-label="@title" data-category="@parentid"  href="/@link"
+                        <a aria-label="@title" data-category="@parentid" href="/@link"
                            class="item-popular-destinations  shadow-custom-1 tab-content-popular w-full relative bg-white h-[90px] rounded-xl p-[8px]">
                             <div class="img overflow-hidden rounded-xl w-full h-full relative">
                                 <div class="back-bg flex items-center justify-center w-full h-full absolute right-0 top-0 z-5 bg-[#0000007A]">
@@ -861,6 +871,7 @@
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
 <basis core="call" file="script.inc"/>
+
 </body>
 
 </html>

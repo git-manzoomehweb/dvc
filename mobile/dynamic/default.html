@@ -192,7 +192,7 @@
                 </face>
             </basis>
             <div data-default="true" class="btn-tab w-full flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2 flex items-center justify-center my-5 gap-2">
-                <div data-tab="cat_1"  onclick="openTabHotel(event, 'all')"
+                <div  onclick="openTab(event, 'all')"
                      class="px-[17px] cursor-pointer flex-shrink-0 tab-btn transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">
                     همه
                 </div>
@@ -351,7 +351,7 @@
                     همه
                 </div>
                 <a data-tab="cat_1" onclick="openTabHotel(event, 'محبوب ترین')"
-                   class="px-[17px] flex-shrink-0 tab-btn_hotel transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">محبوبت
+                   class="px-[17px] flex-shrink-0 tab-btn_hotel transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">محبوبت
                     ترین</a>
                 <a data-tab="cat_1" onclick="openTabHotel(event, 'جدیدترین')"
                    class="flex-shrink-0 px-[17px] tab-btn_hotel transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">جدیدترین </a>
@@ -444,6 +444,16 @@
 
     <!-- s-faq-->
     <section class="s-faq  py-2 px-4 mt-15">
+        <div id="box-video"
+             class="modal-video  z-10 fixed right-0 top-0 h-full w-full hidden items-center justify-center p-6">
+            <div class="box-video w-full  flex bg-white  rounded-xl h-full justify-center items-center">
+                <div class="h-full w-full"><span style="display: block;"></span>
+                    <iframe class="h-full w-full" src=""
+                            allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                </div>
+            </div>
+        </div>
+
         <div class="title w-full flex flex-col items-center justify-center gap-[6px]">
             <h2 class="danaBold mb-0 text-base">سوالات متداول </h2>
             <svg width="133" height="6" viewBox="0 0 133 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -491,10 +501,10 @@
                                         @largetext
                                     </div>
                                     <div class="w-full mt-5">
-                                        <a class="rounded-[100px] text-white danaRegular text-base w-full px-[24px] h-12 flex items-center justify-center bg-primary-900"
-                                           href="/Frequently-asked-questions">
+                                        <div class="rounded-[100px] btn-view-video text-white danaRegular text-base w-full px-[24px] h-12 flex items-center justify-center bg-primary-900"
+                                           >
                                             مشاهده ویدیو
-                                        </a>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -595,7 +605,7 @@
                     </div>
                 </face>
             </basis>
-            <div  class="btn-tab w-full overflow-y-hidden overflow-x-auto flex items-center justify-center my-5 gap-2">
+            <div  data-default="true" class="btn-tab w-full overflow-y-hidden overflow-x-auto flex items-center justify-center my-5 gap-2">
                 <div data-tab="all"
                      onclick="openTabPopular(event, 'all')"
                      class="px-[17px] flex-shrink-0 cursor-pointer tab-btn_popular transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">
@@ -645,9 +655,7 @@
                                 </a>
                             </div>
                         </face>
-
                     </basis>
-
                 </div>
             </div>
         </div>
@@ -834,7 +842,27 @@
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
 
 <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]"/>
+<script>
+    // modal-video
+    const btnVideo = document.querySelector('.btn-view-video')
+    const modalVideo = document.getElementById('box-video')
+    const modalBox = modalVideo.querySelector('.box-video')
 
+    btnVideo.addEventListener('click', () => {
+        modalVideo.classList.remove('hidden')
+        modalVideo.classList.add('flex')
+    })
+
+    modalVideo.addEventListener('click', () => {
+        modalVideo.classList.add('hidden')
+        modalVideo.classList.remove('flex')
+    })
+
+    modalBox.addEventListener('click', (e) => {
+        e.stopPropagation()
+    })
+
+</script>
 </body>
 
 </html>

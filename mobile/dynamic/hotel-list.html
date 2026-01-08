@@ -106,18 +106,18 @@
                         </basis>
                     </ul>
                 </div>
-                <div class="flex flex-col  items-center justify-center">
+                <a href="#s-two" class="flex flex-col  items-center justify-center">
                     <img width="36" src="/images/mouse.png" alt="">
                     <span class="text-white text-[15px] danaRegular">بیشتر ببینید</span>
-                </div>
+                </a>
             </div>
 
         </div>
     </section>
     <!-- s-vacation-hotels-->
-    <section class="s-vacation-tours  py-2  mt-12">
+    <section id="s-two" class="s-vacation-tours  py-2  mt-12">
         <div class="title w-full flex flex-col items-center justify-center gap-[12px]">
-            <h2 class="danaBold text-base">تور های تعطیلات رویایی</h2>
+            <h2 class="danaBold text-base">هتل های تعطیلات رویایی</h2>
             <svg width="170" height="6" viewBox="0 0 170 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M169.773 2.88672L166.887 -3.26633e-05L164 2.88672L166.887 5.77347L169.773 2.88672ZM-3.05176e-05 2.88672L2.88672 5.77347L5.77347 2.88672L2.88672 -3.26633e-05L-3.05176e-05 2.88672ZM166.887 2.88672V2.38672L2.88672 2.38672V2.88672V3.38672L166.887 3.38672V2.88672Z"
                       fill="#CFAA65"/>
@@ -130,18 +130,19 @@
                     </div>
                 </face>
             </basis>
-            <div class="btn-tab w-full  flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2">
-                <a data-tab="cat_1" data-default="true" onclick="openTabHotel(event, 'محبوب ترین')"
-                   class="px-[17px] flex-shrink-0 tab-btn_hotel transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">محبوبت
+            <div data-default="true" class="btn-tab w-full flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2 flex items-center justify-center my-5 gap-2">
+                <a data-tab="cat_1"  onclick="openTab(event, 'all')"
+                   class="px-[17px] tab-btn flex-shrink-0  transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">همه
+                </a>
+                <a data-tab="cat_1"  onclick="openTab(event, 'محبوب ترین تورها')"
+                   class="px-[17px] tab-btn flex-shrink-0  transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">محبوبت
                     ترین</a>
-                <a data-tab="cat_1" onclick="openTabHotel(event, 'جدیدترین')"
-                   class="flex-shrink-0 px-[17px] tab-btn_hotel transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">جدیدترین </a>
-                <a data-tab="cat_1" onclick="openTabHotel(event, 'اقتصادی ترین')"
-                   class="flex-shrink-0 px-[17px] tab-btn_hotel transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">اقتصادی
-                    ترین</a>
-                <a data-tab="cat_1" onclick="openTabHotel(event, 'گران ترین')"
-                   class="flex-shrink-0 px-[17px] tab-btn_hotel transition-colors button-tab hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">گران
-                    ترین</a>
+                <a data-tab="cat_1" onclick="openTab(event, 'جدیدترین')"
+                   class="px-[17px] tab-btn flex-shrink-0 transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
+                >جدیدترین تورها</a>
+                <a data-tab="cat_1" onclick="openTab(event, 'مهیج ترین')"
+                   class="px-[17px] tab-btn flex-shrink-0 transition-colors hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm"
+                >مهیج ترین</a>
             </div>
         </div>
         <div class="w-full mt-6 px-4">
@@ -149,14 +150,11 @@
                 <basis core="list" datamembername="db.hotels">
                     <layout>@child</layout>
                     <face>
-                        <div data-category="@prp_3088232" class="swiper-slide swiper-slide-tabs tab-content-hotel">
+                        <div data-category="@prp_3088232" class="swiper-slide swiper-slide-tabs tab-content">
                             <div class="thumbnail-tour bg-white w-full rounded-3xl p-3 flex flex-col items-center">
                                 <a href="@link" aria-label="@title" class="img rounded-[9px] h-[150px] w-full overflow-hidden relative">
                                     <img class="w-full h-full " src="/@image" draggable="false"
                                          alt="tour">
-                                    <button class="absolute right-3 top-3 z-10">
-                                        <img width="36" src="/images/favorite.png" alt="">
-                                    </button>
                                 </a>
                                 <div class="w-full flex flex-col gap-1 items-start mt-3">
                                     <h3><a class="font-bold danaBold text-base" href="/@link">@title</a></h3>

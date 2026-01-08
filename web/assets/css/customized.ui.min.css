@@ -4457,3 +4457,19 @@ header .menu .link-underMenu-one:hover .svg-two {
 .s-main .top .search{
     min-height: 585px;
 }
+.email-item{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    font-size: 13px;
+    margin: 1em 0;
+    border: 1px solid #e8e8e8;
+    padding: .5em;
+    border-radius: 1em;
+    cursor: pointer;
+}
+.email-item input{
+    width: 20px;
+    height: 20px;
+}

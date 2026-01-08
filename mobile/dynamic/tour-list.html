@@ -108,16 +108,16 @@
                     </ul>
 
                 </div>
-                <div class="flex flex-col  items-center justify-center">
+                <a href="#s-two" class="flex flex-col  items-center justify-center">
                     <img width="36" src="/images/mouse.png" alt="">
                     <span class="text-white text-[15px] danaRegular">بیشتر ببینید</span>
-                </div>
+                </a>
             </div>
 
         </div>
     </section>
     <!-- s-vacation-tours-->
-    <section class="s-vacation-tours  py-2  mt-12">
+    <section id="s-two" class="s-vacation-tours  py-2  mt-12">
         <div class="title w-full flex flex-col items-center justify-center gap-[12px]">
             <h2 class="danaBold text-base">تور های تعطیلات رویایی</h2>
             <svg width="170" height="6" viewBox="0 0 170 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -133,8 +133,11 @@
                     </div>
                 </face>
             </basis>
-            <div class="btn-tab w-full flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2 flex items-center justify-center my-5 gap-2">
-                <a data-tab="cat_1" data-default="true" onclick="openTab(event, 'محبوب ترین تورها')"
+            <div data-default="true" class="btn-tab w-full flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2 flex items-center justify-center my-5 gap-2">
+                <a data-tab="cat_1"  onclick="openTab(event, 'all')"
+                   class="px-[17px] tab-btn flex-shrink-0  transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">همه
+                    </a>
+                <a data-tab="cat_1"  onclick="openTab(event, 'محبوب ترین تورها')"
                    class="px-[17px] tab-btn flex-shrink-0  transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">محبوبت
                     ترین</a>
                 <a data-tab="cat_1" onclick="openTab(event, 'جدیدترین')"
@@ -156,10 +159,6 @@
                                     <img class="w-full h-full rounded-[9px]" src="/@image" draggable="false"
                                          alt="/@title">
                                 </a>
-
-                                <button class="absolute right-3 top-3 z-10">
-                                    <img width="36" src="/images/favorite.png" alt="">
-                                </button>
                             </div>
                             <div class="w-full flex flex-col gap-1 items-start mt-6">
                                 <h3><a class="font-bold danaBold text-base" href="">@title</a></h3>

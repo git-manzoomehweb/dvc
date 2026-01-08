@@ -65,6 +65,120 @@ document.addEventListener('DOMContentLoaded', function () {
         waitForFiles()
     }
 })
+document.addEventListener("DOMContentLoaded", function () {
+    const fetchContentHeader = document.querySelector('.result-id')
+    const contentCache = new Map()
+    let swiperInstance = null
+
+    // همه تب‌ها
+    const tabs = document.querySelectorAll('.btn-tab .item-btn-tab')
+    // ---------- Init First Tab ----------
+
+
+    // ---------- Loader ----------
+    function showLoader() {
+        fetchContentHeader.innerHTML =
+            '<div class="flex justify-center mt-2"><span class="fetch-loader"></span></div>'
+    }
+
+    // ---------- Active Tab ----------
+    function setActiveTab(activeTab) {
+        tabs.forEach(tab => {
+            tab.classList.remove('active-visa')
+            tab.classList.add('bg-zinc-100', 'text-zinc-600')
+        })
+
+        activeTab.classList.remove('bg-zinc-100', 'text-zinc-600')
+        activeTab.classList.add('active-visa')
+    }
+
+    // ---------- Load Category ----------
+    async function loadCategory(dataId, tabEl = null) {
+        if (!dataId) return
+
+        if (tabEl) setActiveTab(tabEl)
+
+        const cacheKey = dataId
+
+        showLoader()
+
+        if (contentCache.has(cacheKey)) {
+            fetchContentHeader.innerHTML = contentCache.get(cacheKey)
+            initSwiperSafe()
+            return
+        }
+
+        try {
+            const response = await fetch(`/load-items.bc?catid=${dataId}`)
+            if (!response.ok) throw new Error(response.status)
+
+            const data = await response.text()
+            contentCache.set(cacheKey, data)
+            fetchContentHeader.innerHTML = data
+
+            initSwiperSafe()
+
+        } catch (error) {
+            fetchContentHeader.innerHTML =
+                `<p class="text-red-500">خطا در بارگذاری محتوا</p>`
+        }
+    }
+
+    // ---------- Swiper ----------
+    function initSwiperSafe() {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                initSwiper()
+            })
+        })
+    }
+
+    function initSwiper() {
+        const swiperEl = document.querySelector('.swiper-thumbnail-visa')
+        if (!swiperEl) return
+
+        if (swiperInstance) {
+            swiperInstance.destroy(true, true)
+            swiperInstance = null
+        }
+
+        swiperInstance = new Swiper(swiperEl, {
+            rtl: true,
+            observer: true,
+            observeParents: true,
+            watchSlidesProgress: true,
+            slidesPerView: 1.2,
+            spaceBetween: 20,
+            loop: false,
+            navigation: {
+                nextEl: swiperEl.querySelector('.swiper-button-next-visa'),
+                prevEl: swiperEl.querySelector('.swiper-button-prev-visa'),
+            },
+            breakpoints: {
+                1024: {slidesPerView: 5},
+                768: {slidesPerView: 3},
+                480: {slidesPerView: 1.2},
+            }
+        })
+    }
+
+// ---------- Init Default Tab ----------
+    if (tabs.length > 0) {
+        const firstTab = tabs[0]
+        const firstId = firstTab.getAttribute('onclick')
+            ?.match(/loadCategory\('(.+?)'/)?.[1]
+
+        if (firstId) {
+            loadCategory(firstId, firstTab)
+        } else {
+            console.error('Cannot detect catid for first tab')
+        }
+    }
+
+    window.loadCategory = loadCategory
+})
+
+
 
 
 // faq
@@ -244,6 +358,7 @@ function openTabHotel(evt, tabName) {
 
 //---------------popular-tour
 let swiperPopular;
+
 function initSwiper() {
     if (swiperPopular) {
         swiperPopular.destroy(true, true);
@@ -256,44 +371,48 @@ function initSwiper() {
         observeParents: true,
     });
 }
+
 function openTabPopular(evt, tabName) {
-    // جلوگیری از رفتارهای پیش‌فرض (اگر بعداً دکمه تبدیل به <a> شد)
     if (evt && typeof evt.preventDefault === "function") evt.preventDefault();
 
-    // 1) غیر فعال کردن همه دکمه‌ها
+    // دکمه‌ها
     document
         .querySelectorAll(".tab-btn_popular")
         .forEach((btn) => btn.classList.remove("active"));
 
-    // 2) مخفی/غیرفعال کردن همه آیتم‌ها
+    // محتواها
     document
         .querySelectorAll(".tab-content-popular")
         .forEach((c) => c.classList.remove("active"));
 
-    // 3) فعال کردن دکمه کلیک‌شده
     const clickedBtn =
-        (evt && evt.currentTarget) ||
-        (evt && evt.target && evt.target.closest(".tab-btn_popular"));
+        evt?.currentTarget || evt?.target?.closest(".tab-btn_popular");
 
     if (clickedBtn) clickedBtn.classList.add("active");
 
-    // 4) اگر all بود => همه آیتم‌ها
     if (tabName === "all") {
         document
             .querySelectorAll(".tab-content-popular")
             .forEach((el) => el.classList.add("active"));
-        return;
+    } else {
+        document
+            .querySelectorAll(`.tab-content-popular[data-category="${tabName}"]`)
+            .forEach((el) => el.classList.add("active"));
     }
 
-    // 5) فیلتر بر اساس data-category
-    document
-        .querySelectorAll(`.tab-content-popular[data-category="${tabName}"]`)
-        .forEach((el) => el.classList.add("active"));
-
+    // ⬅️ همیشه بعد از تغییر DOM
     setTimeout(() => {
         initSwiper();
     }, 0);
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const allBtn = document.querySelector('.tab-btn_popular[data-tab="all"]');
+
+    if (allBtn) {
+        openTabPopular({ currentTarget: allBtn }, "all");
+    }
+});
+
 
 //----------------popular-tour
 
@@ -592,114 +711,6 @@ async function RenderFormFaq() {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    const fetchContentHeader = document.querySelector('.result-id')
-    const contentCache = new Map()
-    let swiperInstance = null
-
-    // همه تب‌ها
-    const tabs = document.querySelectorAll('.btn-tab .item-btn-tab')
-
-    // ---------- Loader ----------
-    function showLoader() {
-        fetchContentHeader.innerHTML =
-            '<div class="flex justify-center mt-2"><span class="fetch-loader"></span></div>'
-    }
-
-    // ---------- Active Tab ----------
-    function setActiveTab(activeTab) {
-        tabs.forEach(tab => {
-            tab.classList.remove('active-visa')
-            tab.classList.add('bg-zinc-100', 'text-zinc-600')
-        })
-
-        activeTab.classList.remove('bg-zinc-100', 'text-zinc-600')
-        activeTab.classList.add('active-visa')
-    }
-
-    // ---------- Load Category ----------
-    async function loadCategory(dataId, tabEl = null) {
-        if (!dataId) return
-
-        if (tabEl) setActiveTab(tabEl)
-
-        const cacheKey = dataId
-
-        showLoader()
-
-        if (contentCache.has(cacheKey)) {
-            fetchContentHeader.innerHTML = contentCache.get(cacheKey)
-            initSwiperSafe()
-            return
-        }
-
-        try {
-            const response = await fetch(`/load-items.bc?catid=${dataId}`)
-            if (!response.ok) throw new Error(response.status)
-
-            const data = await response.text()
-            contentCache.set(cacheKey, data)
-            fetchContentHeader.innerHTML = data
-
-            initSwiperSafe()
-
-        } catch (error) {
-            fetchContentHeader.innerHTML =
-                `<p class="text-red-500">خطا در بارگذاری محتوا</p>`
-        }
-    }
-
-    // ---------- Swiper ----------
-    function initSwiperSafe() {
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                initSwiperVisa()
-            })
-        })
-    }
-
-    function initSwiperVisa() {
-        const swiperEl = document.querySelector('.swiper-thumbnail-visa')
-        if (!swiperEl) return
-
-        if (swiperInstance) {
-            swiperInstance.destroy(true, true)
-            swiperInstance = null
-        }
-
-        swiperInstance = new Swiper(swiperEl, {
-            rtl: true,
-            observer: true,
-            observeParents: true,
-            watchSlidesProgress: true,
-            slidesPerView: 1.2,
-            spaceBetween: 20,
-            loop: false,
-            navigation: {
-                nextEl: swiperEl.querySelector('.swiper-button-next-visa'),
-                prevEl: swiperEl.querySelector('.swiper-button-prev-visa'),
-            },
-            breakpoints: {
-                1024: { slidesPerView: 3.5 },
-                768: { slidesPerView: 2.5 },
-                480: { slidesPerView: 1.5 },
-            }
-        })
-    }
-
-
-// ---------- Init Default Tab ----------
-    if (tabs.length > 0) {
-        const firstTab = tabs[0]
-        const firstId = firstTab.getAttribute('onclick')
-            ?.match(/loadCategory\('(.+?)'/)?.[1]
-
-        if (firstId) {
-            loadCategory(firstId, firstTab)
-        }
-    }
-    window.loadCategory = loadCategory
-})
 
 document.addEventListener("DOMContentLoaded", () => {
     const fetchContentVisa = document.querySelector('.result-id-visa')
@@ -856,3 +867,4 @@ document.addEventListener('input', function (e) {
         }
     }
 });
+
