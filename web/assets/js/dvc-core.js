@@ -240,6 +240,18 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    const container = document.querySelector(".row-default");
+    const titleEditor = document.querySelector(".row-default:nth-child(even) .title-editor");
+    if (!container) return;
+    const paragraphs = container.querySelectorAll("p");
+    paragraphs.forEach(p => {
+        if (p.querySelector("img")) {
+            titleEditor.style.paddingRight = '53%'
+        }
+    });
+});
+
 // modal-video
 const btnVideo = document.querySelector('.btn-view-video')
 const modalVideo = document.getElementById('box-video')
