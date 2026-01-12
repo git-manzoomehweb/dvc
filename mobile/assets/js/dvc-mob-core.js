@@ -179,8 +179,6 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 
-
-
 // faq
 const panels = document.querySelectorAll(".panel");
 
@@ -246,17 +244,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 submenu.style.opacity = "0";
             } else {
 
-                submenu.style.maxHeight = (submenu.scrollHeight*30) + "px";
+                submenu.style.maxHeight = (submenu.scrollHeight * 30) + "px";
                 submenu.style.opacity = "1";
             }
         });
     });
 });
 
-
+document.addEventListener('DOMContentLoaded', function () {
+    const textEmpty = document.querySelectorAll('.item-text-empty')
+    textEmpty.forEach(item => {
+        if (item.innerHTML === '') {
+            item.innerHTML = '----'
+        }
+    })
+})
 
 //---------------slider-tour
 let swiperTour;
+
 function initSwiperTour() {
     if (swiperTour) {
         swiperTour.destroy(true, true);
@@ -269,10 +275,28 @@ function initSwiperTour() {
             nextEl: ".swiper-button-next-tour",
             prevEl: ".swiper-button-prev-tour",
         },
+        breakpoints: {
+            400: {
+                slidesPerView: 1,
+            },
+            500: {
+                slidesPerView: 1.3,
+            },
+            700: {
+                slidesPerView: 2,
+            },
+            900: {
+                slidesPerView: 2.5,
+            },
+            1000:{
+                slidesPerView: 2.8,
+            }
+        },
         observer: true,
         observeParents: true,
     });
 }
+
 function openTab(evt, tabName) {
     const allBtns = document.querySelectorAll(".btn-tab .tab-btn");
     allBtns.forEach(btn => btn.classList.remove("active"));
@@ -299,11 +323,13 @@ function openTab(evt, tabName) {
         initSwiperTour();
     }, 0);
 }
+
 //---------------slider-tour
 
 
 //---------------slider-hotel
 let swiperHotel;
+
 function initSwiperHotel() {
     if (swiperHotel) {
         swiperHotel.destroy(true, true);
@@ -316,10 +342,28 @@ function initSwiperHotel() {
             nextEl: ".swiper-button-next-hotel",
             prevEl: ".swiper-button-prev-hotel",
         },
+        breakpoints: {
+            400: {
+                slidesPerView: 1,
+            },
+            500: {
+                slidesPerView: 1.3,
+            },
+            700: {
+                slidesPerView: 2,
+            },
+            900: {
+                slidesPerView: 2.5,
+            },
+            1000:{
+                slidesPerView: 2.8,
+            }
+        },
         observer: true,
         observeParents: true,
     });
 }
+
 function openTabHotel(evt, tabName) {
     const allBtnsHotel = document.querySelectorAll(".btn-tab .tab-btn_hotel");
     allBtnsHotel.forEach(btn => btn.classList.remove("active"));
@@ -352,8 +396,8 @@ function openTabHotel(evt, tabName) {
         initSwiperHotel();
     }, 0);
 }
-//---------------slider-hotel
 
+//---------------slider-hotel
 
 
 //---------------popular-tour
@@ -405,11 +449,12 @@ function openTabPopular(evt, tabName) {
         initSwiper();
     }, 0);
 }
+
 document.addEventListener("DOMContentLoaded", () => {
     const allBtn = document.querySelector('.tab-btn_popular[data-tab="all"]');
 
     if (allBtn) {
-        openTabPopular({ currentTarget: allBtn }, "all");
+        openTabPopular({currentTarget: allBtn}, "all");
     }
 });
 
@@ -505,7 +550,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 flightItem.forEach((item) => {
                     item.addEventListener("click", function () {
                         if (target) {
-                            target.scrollIntoView({ behavior: "smooth" });
+                            target.scrollIntoView({behavior: "smooth"});
                         }
                         check_searchHistory("flight");
                         check_landing("flight");
@@ -516,7 +561,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 tourItem.forEach((item) => {
                     item.addEventListener("click", function () {
                         if (target) {
-                            target.scrollIntoView({ behavior: "smooth" });
+                            target.scrollIntoView({behavior: "smooth"});
                         }
                         check_searchHistory("tour");
                         check_landing("tour");
@@ -527,7 +572,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 trainItem.forEach((item) => {
                     item.addEventListener("click", function () {
                         if (target) {
-                            target.scrollIntoView({ behavior: "smooth" });
+                            target.scrollIntoView({behavior: "smooth"});
                         }
                         check_searchHistory("train");
                         check_landing("train");
@@ -538,7 +583,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 insuranceItem.forEach((item) => {
                     item.addEventListener("click", function () {
                         if (target) {
-                            target.scrollIntoView({ behavior: "smooth" });
+                            target.scrollIntoView({behavior: "smooth"});
                         }
                         check_searchHistory("insurance");
                         check_landing("insurance");
@@ -549,7 +594,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 flightHotelItem.forEach((item) => {
                     item.addEventListener("click", function () {
                         if (target) {
-                            target.scrollIntoView({ behavior: "smooth" });
+                            target.scrollIntoView({behavior: "smooth"});
                         }
                         check_searchHistory("flighthotel");
                         check_landing("flighthotel");
@@ -560,7 +605,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 hotelItem.forEach((item) => {
                     item.addEventListener("click", function () {
                         if (target) {
-                            target.scrollIntoView({ behavior: "smooth" });
+                            target.scrollIntoView({behavior: "smooth"});
                         }
                         check_searchHistory("hotel");
                         check_landing("hotel");
@@ -572,42 +617,29 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
-
-document.getElementById("opinionForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const formData = new FormData(this);
-    const messageDiv = document.getElementById("Message-Form");
-
-    fetch("/Tem1_OpinionAction.bc", {
-        method: "POST",
-        body: formData,
-        headers: {
-            "X-Requested-With": "XMLHttpRequest"
-        }
-    })
-        .then(res => res.text())
-        .then(data => {
-            messageDiv.innerHTML = data;
-        })
-        .catch(() => {
-            messageDiv.innerHTML = `<span class="text-red-500">خطا در ارتباط با سرور</span>`;
-        });
-});
-
-
 // form-footer
 function uploadDocumentFooter(args) {
-    document.querySelector('#form-footer .Loading_Form').style.display =
-        'block'
-    const captcha = document
-        .querySelector('#form-footer')
-        .querySelector("#captchaContainer input[name='captcha']").value
-    const captchaid = document
-        .querySelector('#form-footer')
-        .querySelector("#captchaContainer input[name='captchaid']").value
+    const form = document.querySelector('#form-footer')
+    const textMail = document.getElementById('text-email')
+    const emailInput = form.querySelector('[data-bc-text-input]')
+    const emailValue = emailInput?.value.trim()
+
+    // الگوی ساده اعتبارسنجی ایمیل
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    if (!emailRegex.test(emailValue)) {
+        textMail.innerHTML = 'لطفاً یک ایمیل معتبر وارد کنید'
+        emailInput.focus()
+        return // جلوگیری از ثبت فرم
+    }
+
+    // اگر ایمیل معتبر بود، ادامه بده
+    form.querySelector('.Loading_Form').style.display = 'block'
+
+    const captcha = form.querySelector("#captchaContainer input[name='captcha']").value
+    const captchaid = form.querySelector("#captchaContainer input[name='captchaid']").value
     const stringJson = JSON.stringify(args.source?.rows[0])
+
     $bc.setSource('cms.uploadFooter', {
         value: stringJson,
         captcha: captcha,
@@ -706,10 +738,10 @@ async function RenderFormFaq() {
 
     if (inputs.length >= 2) {
         inputs[0].placeholder = 'شماره تماس'
+        inputs[0].setAttribute('type', 'number')
         inputs[1].placeholder = 'نام و نام خانوادگی'
     }
 }
-
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -718,6 +750,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // همه تب‌ها
     const tabsVisa = document.querySelectorAll('.btn-tab .item-btn-tab')
+
     // ---------- Loader ----------
     function showLoader() {
         fetchContentVisa.innerHTML =
@@ -839,8 +872,6 @@ var swiperComment = new Swiper(".swiper-comment-user", {
 });
 
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
 
     // گرفتن همه input ها داخل footer-form-email
@@ -866,5 +897,28 @@ document.addEventListener('input', function (e) {
             input.setCustomValidity('');
         }
     }
+});
+
+
+document.getElementById("opinionForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const messageDiv = document.getElementById("Message-Form");
+
+    fetch("/Tem1_OpinionAction.bc", {
+        method: "POST",
+        body: formData,
+        headers: {
+            "X-Requested-With": "XMLHttpRequest"
+        }
+    })
+        .then(res => res.text())
+        .then(data => {
+            messageDiv.innerHTML = data;
+        })
+        .catch(() => {
+            messageDiv.innerHTML = `<span class="text-red-500">خطا در ارتباط با سرور</span>`;
+        });
 });
 

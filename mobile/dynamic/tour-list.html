@@ -1,6 +1,6 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
     <member name="tours" type="list" link="tour.bc" perpage="2" pageno="[##cms.query.pagenum|(1)##]"
-            propertyid="8181,3088230,8076,8077,10000504,3088231"  size="385x222" order="ord"/>
+            propertyid="8181,3088230,8076,8077,10000504,3088231,3088305"  size="385x222" order="ord"/>
     <member name="paging" type="list" request="paging" count="3" parentname="tours"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.qid##]">
@@ -109,7 +109,7 @@
 
                 </div>
                 <a href="#s-two" class="flex flex-col  items-center justify-center">
-                    <img width="36" src="/images/mouse.png" alt="">
+                    <img width="36" src="[##cms.cms.cdn##]/images/mouse.png" alt="">
                     <span class="text-white text-[15px] danaRegular">بیشتر ببینید</span>
                 </a>
             </div>
@@ -153,15 +153,15 @@
                 <basis core="list" datamembername="db.tours">
                     <layout>@child</layout>
                     <face>
-                        <div data-category="@prp_3088231" class="thumbnail-tour tab-content w-full rounded-3xl p-3 flex flex-col items-center">
+                        <a href="/@link" aria-label="@title" data-category="@prp_3088231" class="thumbnail-tour tab-content w-full rounded-3xl p-3 flex flex-col items-center">
                             <div class=" h-[150px] w-full  relative">
-                                <a class="w-full h-full img " href="@link" aria-label="@title">
+                                <div class="w-full h-full img">
                                     <img class="w-full h-full rounded-[9px]" src="/@image" draggable="false"
                                          alt="/@title">
-                                </a>
+                                </div>
                             </div>
                             <div class="w-full flex flex-col gap-1 items-start mt-6">
-                                <h3><a class="font-bold danaBold text-base" href="">@title</a></h3>
+                                <h3><span class="font-bold danaBold text-base">@title</span></h3>
                                 <span class="text-primary-700 text-xs">@prp_3088230</span>
                             </div>
                             <div class="w-full mt-6 grid grid-cols-4">
@@ -171,25 +171,25 @@
                                             <use href="/images/sprite-icons.svg#icon-days"></use>
                                         </svg>
                                     </div>
-                                    <span class="text-zinc-600 text-xs danaRegular">@prp_8076</span>
+                                    <span class="text-zinc-600 text-xs item-text-empty danaRegular">@prp_8076</span>
                                 </div>
                                 <div class="item flex flex-col items-center justify-center gap-2">
                                     <div class="h-9 flex items-end">
                                         <img width="23" src="/images/date.png" alt="">
                                     </div>
-                                    <span class="text-zinc-600 text-xs	 mt-1 danaRegular">@prp_8077</span>
+                                    <span class="text-zinc-600 text-xs	item-text-empty mt-1 danaRegular">@prp_8077</span>
                                 </div>
                                 <div class="item flex flex-col items-center justify-center gap-2">
                                     <div class="h-9 flex items-end">
                                         <img width="26" src="/images/fun.png" alt="">
                                     </div>
-                                    <span class="text-zinc-600 text-xs	 danaRegular">تفریحی</span>
+                                    <span class="text-zinc-600 text-xs	item-text-empty danaRegular">تفریحی</span>
                                 </div>
                                 <div class="item flex flex-col items-center justify-center gap-2">
                                     <div class="h-9 flex items-end">
                                         <img width="26" src="/images/airline.png" alt="">
                                     </div>
-                                    <span class="text-zinc-600 text-xs	 danaRegular">@prp_10000504</span>
+                                    <span class="text-zinc-600 text-xs item-text-empty	 danaRegular">@prp_10000504</span>
                                 </div>
 
 
@@ -198,7 +198,7 @@
                                 <span class="text-zinc-500 danaRegular text-sm">شروع قیمت:</span>
                                 <h5 class="text-base text-zinc-900">@prp_8181</h5>
                             </div>
-                        </div>
+                        </a>
                     </face>
                 </basis>
 
@@ -321,6 +321,16 @@
     </section>
     <!-- s-faq-->
     <section class="s-faq  py-2 px-4 mt-15">
+        <div id="box-video"
+             class="modal-video  z-10 fixed right-0 top-0 h-full w-full hidden items-center justify-center p-6">
+            <div class="box-video w-full  flex bg-white  rounded-xl h-full justify-center items-center">
+                <div class="h-full w-full"><span style="display: block;"></span>
+                    <iframe class="h-full w-full" src=""
+                            allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                </div>
+            </div>
+        </div>
+
         <div class="title w-full flex flex-col items-center justify-center gap-[6px]">
             <h2 class="danaBold mb-0 text-base">سوالات متداول </h2>
             <svg width="133" height="6" viewBox="0 0 133 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -330,7 +340,7 @@
             <basis core="print" datamembername="db.faq-title">
                 <layout>@child</layout>
                 <face>
-                    <div class="text-zinc-500 text-xs text-center mt-1">
+                    <div class="text-zinc-500 text-xs	 text-center mt-1">
                         <span>@text</span>
                     </div>
                 </face>
@@ -368,10 +378,10 @@
                                         @largetext
                                     </div>
                                     <div class="w-full mt-5">
-                                        <a class="rounded-[100px] text-white danaRegular text-base w-full px-[24px] h-12 flex items-center justify-center bg-primary-900"
-                                           href="/Frequently-asked-questions">
+                                        <div class="rounded-[100px] btn-view-video text-white danaRegular text-base w-full px-[24px] h-12 flex items-center justify-center bg-primary-900"
+                                        >
                                             مشاهده ویدیو
-                                        </a>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -381,10 +391,10 @@
                 </basis>
 
             </div>
-            <img class="w-full" src="/images/img-faq.webp" alt="">
+            <img class="w-full" src="[##cms.cms.cdn##]/images/img-faq.webp" alt="">
         </div>
         <div class="w-full flex flex-col items-center gap-6 mt-8">
-            <div class="w-full flex flex-col items-center gap-6 mt-14">
+            <div class="w-full flex flex-col items-center gap-6">
                 <h3 class="text-zinc-900 text-base danaBold">ارتباط با کارشناسان ما جهت مشاوره رایگان</h3>
                 <div class="w-full" id="form-faq">
                     <div class="form-faq grid grid-cols-[2fr_1fr_1fr] gap-2 w-full mx-auto">
@@ -410,14 +420,17 @@
                                         <script type="text/template">
                                             <div>
                                                 <div class="flex gap-8">
-                                                    <div class="float-right"><input type="text" class="contactUsInput codeinputm"
+                                                    <div class="float-right"><input type="text"
+                                                                                    class="contactUsInput codeinputm"
                                                                                     name="captcha" maxlength="4"
-                                                                                    placeholder="کد امنیتی"/><input type="hidden"
-                                                                                                                    name="captchaid"
-                                                                                                                    value="@captcha@"/>
+                                                                                    placeholder="کد امنیتی"/><input
+                                                            type="hidden"
+                                                            name="captchaid"
+                                                            value="@captcha@"/>
                                                     </div>
                                                     <div class="flex items-center gap-6">
-                                                        <img draggable="false" src="/@captcha@" loading="lazy" height="55"
+                                                        <img draggable="false" src="/@captcha@" loading="lazy"
+                                                             height="55"
                                                              alt="captcha" class="rounded-[100px]"/>
                                                         <svg width="48" height="48" onclick="refreshCaptchaFaq()"
                                                              class="text-zinc-900 cursor-pointer">
@@ -475,14 +488,14 @@
                     <layout>@child</layout>
                     <face>
                         <div class="thumbnail-blog w-[290px] flex-shrink-0 relative w-full flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
-                            <h2><a class="text-zinc-900 danaBold text-zinc-900 text-base" href="/@link">@title</a>
+                            <h2 class="h-8"><a class="text-zinc-900 danaBold text-zinc-900 text-base" href="/@link">@title</a>
                             </h2>
-                            <div class="leading-[21px] relative z-10 text-xs	 text-justify danaRegular text-zinc-700 mt-3">
+                            <div class="leading-[21px] relative z-10 text-xs h-[200px]	text-justify danaRegular text-zinc-700 mt-3">
                                 <p class="h-[165px] overflow-y-auto">@prp_7244</p>
                             </div>
                             <div class="w-full flex items-center justify-start gap-2 mt-3">
                                 <img width="17" src="/images/date-blog.png" alt="">
-                                <span class="text-zinc-500 text-xs	">@prp_7249</span>
+                                <span class="text-zinc-500 text-xs	item-text-empty">@prp_7249</span>
                             </div>
                             <a href="/@link" class="w-full relative z-10 flex items-center justify-between mt-7">
                                 <span class="text-primary-900 text-sm	 danaRegular">مشاهده بیشتر</span>

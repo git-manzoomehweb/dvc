@@ -449,7 +449,9 @@ button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-se
                     .my-20 {
                         margin-block: calc(var(--spacing) * 20);
                     }
-
+                    .my-60 {
+                        margin-block: calc(var(--spacing) * 60);
+                    }
                     .my-80 {
                         margin-block: calc(var(--spacing) * 80);
                     }
@@ -3464,7 +3466,12 @@ body {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 23;
 }
-
+.line-clamp-9 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 23;
+}
 .line-clamp-15 {
     overflow: hidden;
     display: -webkit-box;
@@ -4387,21 +4394,12 @@ header .menu .link-underMenu-one:hover .svg-two {
     height: 30px;
 }
 
-.underMenu-one .ul-underMenu-one:hover a{
-    color: var(--secondary-900);
-    margin-right: 4px;
-}
 
-.underMenu-one .ul-underMenu-one  a{
+.underMenu-one .ul-underMenu-one  .link-underMenu-one{
     transition: 0.5s ease;
 }
-.ul-underMenu-one .underMenu-two  a{
+.ul-underMenu-one .underMenu-two  .link-underMenu-two{
     color: var(--color-zinc-900);
-    transition: 0.5s ease;
-}
-.ul-underMenu-one .underMenu-two:hover a{
-    color: var(--secondary-900);
-    margin-right: 4px;
 }
 .link-underMenu-one {
     position: relative;
@@ -4410,10 +4408,11 @@ header .menu .link-underMenu-one:hover .svg-two {
     padding-inline: 12px
 }
 
-.link-underMenu-one:hover {
+.link-underMenu-one:hover , .link-underMenu-two:hover {
     position: relative;
     color: var(--text-zinc-900);
     background: linear-gradient(90deg, rgba(255, 245, 224, 1) 0%, rgba(252, 222, 164, 1) 50%, rgba(207, 170, 101, 1) 100%);
+    border-radius: 12px;
 }
 
 .btnstyle {
@@ -4475,4 +4474,61 @@ header .menu .link-underMenu-one:hover .svg-two {
 }
 .p-pagination .pagination{
     width: auto !important;
+}
+.Message-Form{
+    color: green;
+}
+.bg-secondary {
+    background-color: var(--secondary-900) !important;
+
+}
+.sticky{
+    position: sticky;
+}
+
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--primary-900);
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 2rem;
+    box-sizing: border-box;
+    position: relative;
+    animation: pulse 1s linear infinite;
+}
+.loader:after {
+    content: "";
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--primary-600);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: scaleUp 1s linear infinite;
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+    60%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+@keyframes pulse {
+    0%,
+    60%,
+    100% {
+        transform: scale(1);
+    }
+    80% {
+        transform: scale(1.2);
+    }
 }

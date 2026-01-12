@@ -77,11 +77,10 @@
     <meta property="og:url" content="[##cms.request.:scheme##]://[##cms.request.full-url##]">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="تعطیلات رویایی">
-    <meta property="og:image" content="https://royalholidays.ir/images/royalholidays_1200x630.png">
+    <meta property="og:image" content="[##cms.request.:scheme##]://[##cms.request.full-url##]/images/custom_image_1200x630.png">
     <meta property="og:image:alt" content="تعطیلات رویایی | خرید بلیط هواپیما، تور داخلی و خارجی">
     <meta property="og:description"
           content="رزرو آنلاین بلیط هواپیما، هتل و انواع تورهای داخلی و خارجی با تعطیلات رویایی. تجربه سفری لذت‌بخش، مقرون‌به‌صرفه و مطمئن.">
-
     <meta property="og:image:height" content="630">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:type" content="image/png">
@@ -90,7 +89,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RoyalHolidays">
     <meta name="twitter:creator" content="Royal Holidays (تعطیلات رویایی)">
-    <meta name="twitter:image" content="https://royalholidays.ir/images/royalholidays_1200x630.png">
+    <meta name="twitter:image" content="[##cms.request.:scheme##]://[##cms.request.full-url##]/images/custom_image_1200x630.png">
     <meta name="twitter:title" content="تعطیلات رویایی | خرید بلیط هواپیما و رزرو تور">
     <meta name="twitter:description"
           content="رزرو بلیط هواپیما، هتل و تورهای داخلی و خارجی با تعطیلات رویایی. خرید آسان، ارزان و همراه با پشتیبانی ۲۴ ساعته.">
@@ -106,8 +105,8 @@
 
     <!-- define -->
     <link rel="preload" as="image"
-          imageSrcSet="https://royalholidays.ir/images/royalholidays_hero.webp"
-          fetchpriority="high" />
+          imageSrcSet="[##cms.request.:scheme##]://[##cms.request.full-url##]/images/main-tour.png"
+          fetchpriority="high"/>
 
     <!-- common styles for all page -->
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
@@ -134,7 +133,7 @@
                 </div>
             </div>
             <a href="#s-two" class="flex flex-col mb-7 view-more-items ease items-center justify-center">
-                <img width="36" src="/images/mouse.png" alt="">
+                <img width="36" src="[##cms.cms.cdn##]/images/mouse.png" alt="">
                 <span class="text-white text-[15px]">بیشتر ببینید</span>
             </a>
         </div>
@@ -214,16 +213,16 @@
                     <basis core="list" datamembername="db.tours">
                         <layout>@child</layout>
                         <face>
-                            <div data-category="@prp_3088231" class="swiper-slide swiper-slide-tabs tab-content">
-                                <div class="thumbnail-tour  w-full rounded-3xl p-3 flex flex-col items-center">
+                            <div  data-category="@prp_3088231"  class="swiper-slide swiper-slide-tabs tab-content">
+                                <a href="@link" aria-label="@title" class="thumbnail-tour  w-full rounded-3xl p-3 flex flex-col items-center">
                                     <div class=" h-[150px] w-full  relative">
-                                        <a class="w-full h-full img " href="@link" aria-label="@title">
+                                        <div class="w-full h-full img ">
                                             <img class="w-full h-full rounded-[9px]" src="/@image" draggable="false"
                                                  alt="/@title">
-                                        </a>
+                                        </div>
                                     </div>
                                     <div class="w-full flex flex-col gap-1 items-start mt-6">
-                                        <h3><a class="font-bold danaBold text-base" href="">@title</a></h3>
+                                        <h3><span class="font-bold danaBold text-base">@title</span></h3>
                                         <span class="text-primary-700 text-xs">@prp_3088230</span>
                                     </div>
                                     <div class="w-full mt-6 grid grid-cols-4">
@@ -233,34 +232,32 @@
                                                     <use href="/images/sprite-icons.svg#icon-days"></use>
                                                 </svg>
                                             </div>
-                                            <span class="text-zinc-600 text-xs danaRegular">@prp_8076</span>
+                                            <span class="text-zinc-600 text-xs item-text-empty danaRegular">@prp_8076</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
                                                 <img width="23" src="/images/date.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 mt-1 danaRegular">@prp_8077</span>
+                                            <span class="text-zinc-600 text-xs	item-text-empty mt-1 danaRegular">@prp_8077</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
                                                 <img width="26" src="/images/fun.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">تفریحی</span>
+                                            <span class="text-zinc-600 text-xs	item-text-empty danaRegular">تفریحی</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
                                                 <img width="26" src="/images/airline.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">@prp_10000504</span>
+                                            <span class="text-zinc-600 text-xs item-text-empty	 danaRegular">@prp_10000504</span>
                                         </div>
-
-
                                     </div>
                                     <div class="w-full price flex items-center justify-between mt-5">
                                         <span class="text-zinc-500 danaRegular text-sm	">شروع قیمت:</span>
-                                        <h5 class="text-base text-zinc-900">@prp_8181</h5>
+                                        <h5 class="text-base item-text-empty text-zinc-900">@prp_8181</h5>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </face>
                     </basis>
@@ -370,14 +367,14 @@
                         <layout>@child</layout>
                         <face>
                             <div data-category="@prp_3088232" class="swiper-slide  tab-content-hotel">
-                                <div class="thumbnail-tour bg-white w-full rounded-3xl p-3 flex flex-col items-center">
-                                    <a href="@link" aria-label="@title"
+                                <a href="@link" aria-label="@title" class="thumbnail-tour bg-white w-full rounded-3xl p-3 flex flex-col items-center">
+                                    <div
                                        class="img rounded-[9px] h-[150px] w-full overflow-hidden relative">
                                         <img class="w-full h-full " src="/@image" draggable="false"
                                              alt="tour">
-                                    </a>
+                                    </div>
                                     <div class="w-full flex flex-col gap-1 items-start mt-3">
-                                        <h3><a class="font-bold danaBold text-base" href="/@link">@title</a></h3>
+                                        <h3><span class="font-bold danaBold text-base">@title</span></h3>
                                         <span class="text-secondary-900 text-xs	">@prp_7245</span>
                                     </div>
                                     <div class="w-full mt-4 grid grid-cols-4">
@@ -385,7 +382,7 @@
                                             <div class="h-9 flex items-end">
                                                 <img width="27" src="/images/star.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">
+                                            <span class="text-zinc-600 text-xs	item-text-empty danaRegular">
                                      @prp_3088219
                                     ستاره</span>
                                         </div>
@@ -393,19 +390,19 @@
                                             <div class="h-9 flex items-end">
                                                 <img width="27" src="/images/drink.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 mt-1 danaRegular">@prp_3088220</span>
+                                            <span class="text-zinc-600 text-xs	item-text-empty mt-1 danaRegular">@prp_3088220</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
                                                 <img width="27" src="/images/pin.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">@prp_3088221</span>
+                                            <span class="text-zinc-600 text-xs	item-text-empty danaRegular">@prp_3088221</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
                                                 <img width="27" src="/images/star2.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">@prp_3088222</span>
+                                            <span class="text-zinc-600 text-xs item-text-empty	 danaRegular">@prp_3088222</span>
                                         </div>
 
 
@@ -414,7 +411,7 @@
                                         <span class="text-zinc-500 danaRegular text-sm	">شروع قیمت:</span>
                                         <h5 class="text-base text-zinc-900">@prp_3088223</h5>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </face>
                     </basis>
@@ -514,7 +511,7 @@
                 </basis>
 
             </div>
-            <img class="w-full" src="/images/img-faq.webp" alt="">
+            <img class="w-full" src="[##cms.cms.cdn##]/images/img-faq.webp" alt="">
         </div>
         <div class="w-full flex flex-col items-center gap-6 mt-8">
             <div class="w-full flex flex-col items-center gap-6">
@@ -824,7 +821,7 @@
                     </div>
                 </div>
                 <div class="img w-full h-full absolute right-0 top-0">
-                    <img class="w-full h-full object-cover rounded-xl" src="/images/img-services.webp" alt="">
+                    <img class="w-full h-full object-cover rounded-xl" src="[##cms.cms.cdn##]/images/img-services.webp" alt="">
                 </div>
 
             </div>

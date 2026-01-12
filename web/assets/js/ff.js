@@ -964,5 +964,3 @@ function openTab(evt, tabName) {
         initSwiperTour();
     }, 0);
 }
-
-

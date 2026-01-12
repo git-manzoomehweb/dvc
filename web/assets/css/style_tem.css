@@ -180,7 +180,7 @@ video {
 /*<!--------------------------init CSS------------------------------->*/
 /*<!--------------------------------START CSS LIST TEMPLATE 3-------------------------------*/
 .btn_1 {
-    background-color: var(--primary);
+    background-color: var(--primary-600);
     color: #fff;
 }
 .btn_1:hover {
@@ -191,59 +191,59 @@ video {
     border-color: #000;
 }
 #Login_box .shine-hover {
-    background-color: var(--color-zinc-400);
-    border: 1px solid var(--color-zinc-400);
+    background-color: var(--primary-600);
+    border: 1px solid var(--primary-600);
     color: #fff;
 }
 #Login_box .shine-hover:hover {
-    background-color: var(--color-zinc-400);
+    background-color: var(--primary-600);
 }
 .login_info i {
-    color: var(--color-zinc-400) !important;
+    color: var(--primary-600) !important;
 }
 .radioButton:checked + label span::after {
-    color: var(--color-zinc-400);
-    border: 2px solid var(--color-zinc-400);
+    color: var(--primary-600);
+    border: 2px solid var(--primary-600);
 }
 .airport_filter,
 .airport_filter_des {
-    border-bottom: 1px dashed var(--color-zinc-400);
+    border-bottom: 1px dashed var(--primary-600);
 }
 .details-btn:hover {
-    background-color: var(--color-zinc-400);
+    background-color: var(--primary-600);
     color: #fff;
 }
 .btn-item button {
-    background-color: var(--color-zinc-400);
-    border: 1px solid var(--color-zinc-400);
+    background-color: var(--primary-600);
+    border: 1px solid var(--primary-600);
 }
 .details-btn {
-    border: 1px solid var(--color-zinc-400);
+    border: 1px solid var(--primary-600);
 }
 .flight-duration-stop:before {
-    background-color: var(--color-zinc-400);
-    border: 1px solid var(--color-zinc-400);
+    background-color: var(--primary-600);
+    border: 1px solid var(--primary-600);
 }
 .details-row-middle_1 {
-    border-left: 2px dashed var(--color-zinc-400);
+    border-left: 2px dashed var(--primary-600);
 }
 .details-circle::before,
 .details-circle::after {
-    border: 2px solid var(--color-zinc-400);
+    border: 2px solid var(--primary-600);
 }
 .section-input_list input[type="checkbox"]:checked + label span.checkbox::after,
 .section-input_list input[type="radio"]:checked + label span.checkbox::after {
-    color: var(--color-zinc-400);
+    color: var(--primary-600);
 }
 .section-input_list
 input[type="checkbox"]:checked
 + label
 span.checkbox::before,
 .section-input_list input[type="radio"]:checked + label span.checkbox::before {
-    border-color: var(--color-zinc-400);
+    border-color: var(--primary-600);
 }
 fieldset hr {
-    background-color: var(--primary);
+    background-color: var(--primary-600);
 }
 .rangevalFirst,
 .rangevalSecond,
@@ -254,18 +254,18 @@ fieldset hr {
     color: var(--primary-900);
 }
 .filter-container:not(:last-child) {
-    border-bottom: 1px dashed var(--color-zinc-400);
+    border-bottom: 1px dashed var(--primary-600);
 }
 .sort-items li.active,
 .sort-items li:hover {
-    color: var(--color-zinc-400);
+    color: var(--primary-600);
 }
 .confirm {
-    border: 1px solid var(--color-zinc-400);
+    border: 1px solid var(--primary-600);
 }
 .confirm:hover {
     background-color: #fff;
-    color: var(--color-zinc-400);
+    color: var(--primary-600);
 }
 .minus-btn {
     background-color: rgb(153, 0, 0);
@@ -278,24 +278,24 @@ fieldset hr {
 }
 .after-btn:hover,
 .before-btn:hover {
-    background-color: var(--color-zinc-400);
+    background-color: var(--primary-600);
     color: #fff;
-    border: 1px solid var(--color-zinc-400);
+    border: 1px solid var(--primary-600);
 }
 .flight-summary-info .dash i {
-    color: var(--color-zinc-400);
+    color: var(--primary-600);
 }
 .close-research {
-    border: 1px solid var(--color-zinc-400);
-    color: var(--color-zinc-400);
+    border: 1px solid var(--primary-600);
+    color: var(--primary-600);
 }
 .flight_type .active,
 .flight_type li:hover {
-    color: var(--color-zinc-400);
+    color: var(--primary-600);
 }
 .btn-item button:hover {
     background-color: #fff !important;
-    color: var(--primary) !important;
+    color: var(--primary-600) !important;
     box-shadow: 0 10px 13px -10px #0c2d33;
 }
 .searched-item button:hover {
@@ -311,49 +311,49 @@ fieldset hr {
     color: var(--primary-600);
 }
 .searched-flight {
-    border-bottom: 1px dashed var(--color-zinc-400);
+    border-bottom: 1px dashed var(--primary-600);
 }
 .progress-bar {
-    background-color: var(--secondary) !important;
+    background-color: var(--secondary-600) !important;
 }
 .angle-content .three {
-    color: var(--primary);
+    color: var(--primary-600);
 }
 .loading-container:hover .loading {
-    border-color: transparent var(--primary) transparent var(--primary);
+    border-color: transparent var(--primary-600) transparent var(--primary-600);
 }
 .loading {
-    border-color: transparent var(--secondary) transparent var(--secondary);
+    border-color: transparent var(--secondary-600) transparent var(--secondary-600);
 }
 .section-container .dash {
-    color: var(--primary);
+    color: var(--primary-600);
 }
 .close-content .fa-times::before {
-    color: var(--primary) !important;
+    color: var(--primary-600) !important;
 }
 .Basis_Calendar .month_day_list table td:hover,
 .Basis_Calendar .selected_date {
-    background-color: var(--primary);
+    background-color: var(--primary-600);
 }
 .Basis_Calendar .month_change i:hover {
-    color: var(--color-zinc-400);
+    color: var(--primary-600);
 }
 .Basis_Calendar .current_day {
-    background-color: var(--color-zinc-400) !important;
+    background-color: var(--primary-600) !important;
 }
 .Basis_Calendar .selected_day {
-    background-color: var(--color-zinc-400);
+    background-color: var(--primary-600);
 }
 .ui-datepicker-today .ui-state-highlight,
 .ui-datepicker table thead th,
 .ui-datepicker .ui-datepicker-buttonpane button,
 .ui-datepicker-buttonpane .ui-datepicker-current:focus {
-    background-color: var(--color-zinc-400);
+    background-color: var(--primary-600);
 }
 .ui-datepicker th,
 .ui-datepicker .ui-datepicker-prev span,
 .ui-datepicker .ui-datepicker-next span {
-    color: var(--color-zinc-400);
+    color: var(--primary-600);
 }
 .ui-datepicker-buttonpane .ui-state-default:hover,
 .ui-datepicker-buttonpane .ui-state-default:focus,
@@ -361,30 +361,30 @@ fieldset hr {
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-    border: 1px solidvar(--primary);
-    background-color: var(--primary) !important;
+    border: 1px solidvar(--primary-600);
+    background-color: var(--primary-600) !important;
 }
 .name-tour {
-    color: var(--color-zinc-400);
+    color: var(--primary-600);
 }
 .item-tour:hover {
-    background-color: var(--color-zinc-400);
+    background-color: var(--primary-600);
     color: #fff;
 }
 .tour-info-tlt {
-    background-color: var(--primary);
+    background-color: var(--primary-600);
 }
 .tour-completion-info i {
-    color: var(--primary);
+    color: var(--primary-600);
 }
 .side-tour i {
     color: #faa944;
 }
 .row-other-inf {
-    border-right: 3px solid var(--primary);
+    border-right: 3px solid var(--primary-600);
 }
 .tlt-table {
-    background-color: var(--primary);
+    background-color: var(--primary-600);
 }
 .loading-img img {
     width: 70px;
@@ -409,93 +409,93 @@ fieldset hr {
 /*<!--------------------------------END CSS LIST TEMPLATE 3-------------------------------*/
 /*<!--------------------------------START CSS VIEW TEMPLATE 3-------------------------------*/
 .flight-duration-stop::before {
-    background-color: var(--color-zinc-400);
-    border: 1px solid var(--color-zinc-400);
+    background-color: var(--primary-600);
+    border: 1px solid var(--primary-600);
 }
 .next-btn {
-    background-color: var(--primary);
+    background-color: var(--primary-600);
 }
 .next-btn:hover {
-    background-color: var(--color-zinc-400);
+    background-color: var(--primary-600);
 }
 .prev-passengers {
-    border-bottom: 2px solid var(--color-zinc-400);
-    color: var(--color-zinc-400);
+    border-bottom: 2px solid var(--primary-600);
+    color: var(--primary-600);
 }
 .prev-passengers svg {
-    fill: var(--color-zinc-400);
+    fill: var(--primary-600);
 }
 .prev-passengers:hover {
-    border-color: var(--color-zinc-400) !important;
-    color: var(--color-zinc-400) !important;
+    border-color: var(--primary-600) !important;
+    color: var(--primary-600) !important;
 }
 .prev-passengers:hover svg {
-    fill: var(--color-zinc-400);
+    fill: var(--primary-600);
 }
 .passengers-prev-title svg {
-    fill: var(--color-zinc-400);
+    fill: var(--primary-600);
 }
 .passenger-title {
-    color: var(--color-zinc-400);
+    color: var(--primary-600);
 }
 .details-item-title {
-    color: var(--color-zinc-400);
+    color: var(--primary-600);
 }
 .nav-details li:hover,
 .nav-details li.active {
-    color: var(--color-zinc-400);
+    color: var(--primary-600);
 }
 .nav-details li::before {
-    border-top: 3px solid var(--color-zinc-400);
+    border-top: 3px solid var(--primary-600);
 }
 .brief-container .head-items .title {
-    background-color: var(--color-zinc-400);
+    background-color: var(--primary-600);
     color: #fff;
 }
 .buyer-type ul li.active,
 .buyer-type ul li:hover {
-    background-color: var(--primary);
+    background-color: var(--primary-600);
     color: #fff;
 }
 .buyer-type ul li {
-    border: 1px solid var(--primary);
-    color: var(--primary);
+    border: 1px solid var(--primary-600);
+    color: var(--primary-600);
 }
 .login-btn {
-    background-color: var(--color-zinc-400);
+    background-color: var(--primary-600);
 }
 .login-link {
-    border: 1px solid var(--color-zinc-400);
-    color: var(--primary);
+    border: 1px solid var(--primary-600);
+    color: var(--primary-600);
 }
 .login-link:hover {
-    background-color: var(--primary);
+    background-color: var(--primary-600);
     color: #fff !important;
 }
 .login-btn:hover {
-    background-color: var(--color-zinc-400);
+    background-color: var(--primary-600);
 }
 .login-btn:hover {
     box-shadow: 0 10px 13px -10px #0c2d33;
 }
 .login-title i {
-    color: var(--color-zinc-400);
+    color: var(--primary-600);
 }
 .bottom-content .action-loading {
-    background-color: var(--color-zinc-400);
+    background-color: var(--primary-600);
 }
 .select-passnger {
-    background-color: var(--color-zinc-400);
+    background-color: var(--primary-600);
 }
 .inside-title {
-    border-right: 3px solid var(--color-zinc-400);
+    border-right: 3px solid var(--primary-600);
 }
 .duration-details {
-    border-bottom: 2px dashed var(--primary);
+    border-bottom: 2px dashed var(--primary-600);
 }
 .duration-details::after,
 .duration-details::before {
-    background-color: var(--primary);
+    background-color: var(--primary-600);
 }
 /*<!--------------------------------END CSS VIEW TEMPLATE 3-------------------------------*/
 /*<!--------------------------MAIN COLORS------------------------------->*/
@@ -503,7 +503,7 @@ fieldset hr {
     background-color: var(--primary-600);
 }
 .background-color_2 {
-    background-color: var(--color-zinc-400);
+    background-color: var(--primary-600);
 }
 .background-color_3 {
     background-color: #363215;
@@ -515,10 +515,10 @@ fieldset hr {
     background-color: #f3f4f5;
 }
 .color_1 {
-    color: var(--primary);
+    color: var(--primary-600);
 }
 .color_2 {
-    color: var(--color-zinc-400);
+    color: var(--primary-600);
 }
 .color_3 {
     color: #252563;
@@ -556,7 +556,7 @@ i[class^="flaticon-"]:before {
     -moz-osx-font-smoothing: grayscale;
 }
 .hover\:book-bg-secondary-400:hover{
-    background: var(--color-zinc-400) !important;
+    background: var(--primary-600) !important;
 }
 
 main header , main footer{
@@ -591,4 +591,10 @@ header .Login_Information{
     padding: 0;
     margin: 0;
     position: unset;
+}
+.bg-secondary {
+    background-color: var(--secondary-900) !important;
+}
+.loading-img img{
+    margin: 1rem !important;
 }

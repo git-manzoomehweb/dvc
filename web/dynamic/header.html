@@ -61,13 +61,13 @@
                         </layout>
                         <face level="end" filter="link is null">
                             <li class="relative">
-                                <a href="/tour-list.bc?catid=@catid" class="block px-4 py-2 hover:text-primary_2 max-lg:block max-lg:w-full end-link">@title</a>
+                                <a href="/tour-list.bc?catid=@catid" class="block px-4 py-2  link-underMenu-two max-lg:block max-lg:w-full end-link">@title</a>
                             </li>
                         </face>
                         <face level="end">
                             <li class="relative">
                                 <a href="/@link"
-                                   class="block px-4 py-2 hover:text-primary_2 max-lg:block max-lg:w-full end-link">@title</a>
+                                   class="block px-4 py-2  link-underMenu-two max-lg:block max-lg:w-full end-link">@title</a>
                             </li>
                         </face>
                         <face level="1" filter="link is null">
@@ -177,14 +177,14 @@
                             </li>
                         </layout>
                         <face level="end" filter="link is null">
-                            <li class="relative ul-underMenu-one">
-                                <a href="/visa-list.bc?catid=@catid" class="block px-4 py-2 hover:text-primary_2 max-lg:block max-lg:w-full end-link">@title</a>
+                            <li class="relative">
+                                <a href="/visa-list.bc?catid=@catid" class="block link-underMenu-one px-4 py-2 hover:text-primary_2 max-lg:block max-lg:w-full end-link">@title</a>
                             </li>
                         </face>
                         <face level="end">
                             <li class="relative">
                                 <a href="/@link"
-                                   class="block px-4 py-2 hover:text-primary_2 max-lg:block max-lg:w-full end-link">@title</a>
+                                   class="block px-4 link-underMenu-two py-2 hover:text-primary_2 max-lg:block max-lg:w-full end-link">@title</a>
                             </li>
                         </face>
                         <face level="1" filter="link is null">
@@ -282,8 +282,8 @@
                     <basis core="tree" datamembername="db.blogs-header" idcol="catid" parentidcol="parentid"
                            nullvalue="219097">
                         <layout>
-                            <li class="group-links p-first-link cursor-pointer relative px-6 px-5 h-10 flex items-center">
-                                <a href="/blogs" class="text-zinc-900 first-link">وبلاگ ها  </a>
+                            <li class=" p-first-link cursor-pointer group-links relative px-6 px-5 h-10 flex items-center">
+                                <a href="/blogs" class="text-zinc-900 first-link">وبلاک ها  </a>
                                 <svg class="mr-2 svg-one" width="24" height="24">
                                     <use href="/images/sprite-icons.svg#icon-arrow-down"></use>
                                 </svg>
@@ -295,21 +295,21 @@
                             </li>
                         </layout>
                         <face level="end" filter="link is null">
-                            <li class="relative ul-underMenu-one">
-                                <a href="/article-list.bc?catid=@catid" class="block px-4 py-2 hover:text-primary_2 max-lg:block max-lg:w-full end-link">@title</a>
+                            <li class="relative">
+                                <a href="/article-list.bc?catid=@catid" class="block link-underMenu-one px-4 py-2 hover:text-primary_2 max-lg:block max-lg:w-full end-link">@title</a>
                             </li>
                         </face>
                         <face level="end">
                             <li class="relative">
                                 <a href="/@link"
-                                   class="block px-4 py-2 hover:text-primary_2 max-lg:block max-lg:w-full end-link">@title</a>
+                                   class="block px-4 link-underMenu-two py-2 hover:text-primary_2 max-lg:block max-lg:w-full end-link">@title</a>
                             </li>
                         </face>
                         <face level="1" filter="link is null">
                             <li class="relative has-sub-menu link-underMenu-one items-center rounded-xl h-8 justify-center">
-                                <div class="w-full flex item-undermenu-two items-center justify-between items-center p-3">
+                                <div class="w-full item-undermenu-two flex items-center justify-between items-center p-3">
                                     <span> @title </span>
-                                    <svg class="svg-two" width="24" height="24">
+                                    <svg class="svg-two"  width="24" height="24">
                                         <use href="/images/sprite-icons.svg#icon-arrow-down"></use>
                                     </svg>
                                 </div>
@@ -335,7 +335,7 @@
                             <li class="relative has-sub-menu link-underMenu-one items-center rounded-xl h-8 justify-center">
                                 <div class="w-full item-undermenu-two flex items-center justify-between items-center p-3">
                                     <span> @title </span>
-                                    <svg class="svg-two" width="24" height="24">
+                                    <svg class="svg-two"  width="24" height="24">
                                         <use href="/images/sprite-icons.svg#icon-arrow-down"></use>
                                     </svg>
                                 </div>
@@ -400,7 +400,7 @@
                 </ul>
             </div>
             <a href="/default.bc" aria-label="logo" class="logo">
-                <img width="110" src="/images/logo-footer.png" alt="logo">
+                <img width="110" src="[##cms.cms.cdn##]/images/logo.png" alt="logo">
             </a>
         </div>
     </div>

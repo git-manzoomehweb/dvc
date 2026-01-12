@@ -103,7 +103,7 @@
             </div>
             <div class="flex w-full flex-col items-center">
                 <a href="#s-two" class="flex flex-col  items-center mb-2 justify-center">
-                    <img width="36" src="/images/mouse.png" alt="">
+                    <img width="36" src="[##cms.cms.cdn##]/images/mouse.png" alt="">
                     <span class="text-white text-[15px] danaRegular">بیشتر ببینید</span>
                 </a>
             </div>
@@ -115,7 +115,7 @@
     <section id="s-two" class="s-info-blog mt-15 px-4">
         <div class="p-blog-info w-full flex flex-col  gap-6">
             <div class="flex start w-full flex-col">
-                <div class="editor-tags w-full bg-white shadow-custom-2 rounded-lg flex flex-col items-start px-4">
+                <div class="editor-tags pb-4 w-full bg-white shadow-custom-2 rounded-lg flex flex-col items-start px-4">
                     <div class="text-base text-zinc-900 text-justify leading-6 w-full danaRegular">
                         <div class="flex flex-col w-full items-start w-full my-5">
                             <basis core="list" datamembername="db.view">
@@ -129,6 +129,11 @@
                         </div>
                         <basis core="print" datamembername="db.view">
                             <layout>@child</layout>
+                            <else-layout>
+                                <div class="w-full border-zinc-200 border h-[120px] rounded-xl flex items-center justify-center">
+                                    <h5 class="text-sm font-bold text-zinc-900">متنی وجود ندارد</h5>
+                                </div>
+                            </else-layout>
                             <face filter="TypeID in(159)">
                                 <img class="w-full rounded-2xl my-5" src="/@largetext" alt="">
                             </face>
@@ -137,7 +142,7 @@
                 </div>
                 <div class="w-full mt-6  flex px-3 py-6 flex-col items-start rounded-lg bg-white box-visa-comment">
                     <h3 class="danaBold  text-zinc-900 text-base">نظر کاربران</h3>
-                    <form action="/Tem1_OpinionAction.bc" method="POST"
+                    <form action="/Tem1_OpinionAction.bc" id="opinionForm" method="POST"
                           class="w-full mt-5 flex  gap-2 flex-col justify-between">
                         <input type="hidden" name="title" value="[##cms.seo.title##]">
                         <div class="grid  w-full gap-2">
@@ -213,7 +218,7 @@
                                     <div class="swiper-slide">
                                         <div class="thumbnail-comment   rounded-xl box-visa-comment bg-white flex flex-col p-3">
                                             <div class="top w-full flex items-center gap-3">
-                                                <img width="60" src="/images/icon-circle-user.png" alt="">
+                                                <img width="60" src="[##cms.cms.cdn##]/images/icon-circle-user.png" alt="">
 
                                                 <div class="flex flex-col">
                                                     <h5 class="text-zinc-900 danaBold text-base">@username</h5>
@@ -234,8 +239,8 @@
 
                 </div>
                 <div class="banners mt-3 w-full gap-3 flex flex-col">
-                    <img class="w-full rounded-2xl" src="/images/banner.png" alt="">
-                    <img class="w-full rounded-2xl" src="/images/banner.png" alt="">
+                    <img class="w-full rounded-2xl" src="[##cms.cms.cdn##]/images/banner.png" alt="">
+                    <img class="w-full rounded-2xl" src="[##cms.cms.cdn##]/images/banner.png" alt="">
                 </div>
             </div>
         </div>
@@ -270,7 +275,7 @@
                                 <p>@prp_7244</p>
                             </div>
                             <div class="w-full flex items-center justify-start gap-2 mt-3">
-                                <img width="17" src="/images/date-blog.png" alt="">
+                                <img width="17" src="[##cms.cms.cdn##]/images/date-blog.png" alt="">
                                 <span class="text-zinc-500 text-xs	">@prp_7249</span>
                             </div>
                             <a href="/@link" class="w-full relative z-10 flex items-center justify-between mt-7">
@@ -302,9 +307,33 @@
 
 
 <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]"/>
+<script>
+    document.getElementById("opinionForm").addEventListener("submit", function (e) {
+        e.preventDefault();
 
+        const formData = new FormData(this);
+        const messageDiv = document.getElementById("Message-Form");
+
+        fetch("/Tem1_OpinionAction.bc", {
+            method: "POST",
+            body: formData,
+            headers: {
+                "X-Requested-With": "XMLHttpRequest"
+            }
+        })
+            .then(res => res.text())
+            .then(data => {
+                messageDiv.innerHTML = data;
+            })
+            .catch(() => {
+                messageDiv.innerHTML = `<span class="text-red-500">خطا در ارتباط با سرور</span>`;
+            });
+
+    });
+</script>
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
+
 <script>
     // swiper-comment-user
     var swiperComment = new Swiper(".swiper-comment-user", {

@@ -60,7 +60,7 @@
             <div class="flex flex-col justify-between relative h-[750px] pb-4">
                 <div class="box-main-tour pt-12  h-[450px] w-full flex flex-col items-center justify-center">
                     <basis core="print" datamembername="db.viewEN">
-                        <face >
+                        <face filter="TypeID in(150)">
                             <h4 class="text-zinc-200 leading-[16px] text-4xl">@text</h4>
                         </face>
                     </basis>
@@ -82,7 +82,7 @@
 
                 <div class="flex w-full flex-col items-center">
                     <a href="#s-two" class="flex flex-col  items-center mb-9 justify-center">
-                        <img width="36" src="/images/mouse.png" alt="">
+                        <img width="36" src="[##cms.cms.cdn##]/images/mouse.png" alt="">
                         <span class="text-white text-[15px] danaRegular">بیشتر ببینید</span>
                     </a>
                     <div class="flex w-full items-center justify-between">
@@ -122,7 +122,9 @@
                                     <use href="/images/sprite-icons.svg#icon-time-white"></use>
                                 </svg>
                                 <basis core="print" datamembername="db.view">
-                                    <face filter="TypeID in(200)">
+                                    <layout>@child</layout>
+                                    <else-layout><span class="danaRegular text-white relative top-[2px] text-sm">----</span></else-layout>
+                                    <face filter="prpID in(3088243)">
                                         <span class="danaRegular text-white relative top-[2px] text-sm">@text</span>
                                     </face>
                                 </basis>
@@ -132,7 +134,9 @@
                                     <use href="/images/sprite-icons.svg#icon-date-white"></use>
                                 </svg>
                                 <basis core="print" datamembername="db.view">
-                                    <face filter="valueID in(4231525)">
+                                    <layout>@child</layout>
+                                    <else-layout><span class="danaRegular text-white relative top-[2px] text-sm">----</span></else-layout>
+                                    <face filter="prpID in(7249)">
                                         <span class="danaRegular text-white text-sm	 relative top-[2px]">@text</span>
                                     </face>
                                 </basis>
@@ -143,7 +147,9 @@
                                     <use href="/images/sprite-icons.svg#icon-user-white"></use>
                                 </svg>
                                 <basis core="print" datamembername="db.view">
-                                    <face filter="valueID in(4231524)">
+                                    <layout>@child</layout>
+                                    <else-layout><span class="danaRegular text-white relative top-[2px] text-sm">----</span></else-layout>
+                                    <face filter="prpID in(7248)">
                                         <span class="danaRegular text-white text-sm	 relative top-[1px]">@text</span>
                                     </face>
                                 </basis>
@@ -165,9 +171,15 @@
                     <div class="box-editor w-full bg-white shadow-custom-2 rounded-3xl flex flex-col items-start pt-6 pb-30 px-6">
                         <div class="flex flex-col items-start w-full my-5 editor-tags">
                             <basis core="list" datamembername="db.view">
+                                <layout>@child</layout>
+                                <else-layout>
+                                    <div class="w-full border-zinc-200 border h-[120px] rounded-xl flex items-center justify-center">
+                                        <h5 class="text-base font-bold text-zinc-900">متنی وجود ندارد</h5>
+                                    </div>
+                                </else-layout>
                                 <face filter="TypeID in(250)">
                                     <div class="title flex items-center  w-full justify-between">
-                                        <h5 class="danaBold text-base text-zinc-900">@text</h5>
+                                        <h5 id="@text" class="danaBold text-base text-zinc-900">@text</h5>
                                         <svg width="600" height="6" viewBox="0 0 662 6" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path d="M661.773 2.88672L658.887 -3.26633e-05L656 2.88672L658.887 5.77347L661.773 2.88672ZM0 2.88687L2.88672 5.77363L5.7735 2.88687L2.88672 0.000122204L0 2.88687ZM658.887 2.88672L658.887 2.38672L2.88672 2.38687L2.88672 2.88687L2.88672 3.38687L658.887 3.38672L658.887 2.88672Z"
@@ -180,7 +192,6 @@
                         </div>
                         <basis core="print" datamembername="db.view">
                             <layout>@child</layout>
-
                             <face filter="TypeID in(159)">
                                 <div class="img">
                                     <img class="w-full rounded-2xl my-5" src="/@largetext" alt="">
@@ -190,8 +201,9 @@
                     </div>
                     <div class="w-full mt-6 h-[300px] flex px-3 py-6 flex-col items-start rounded-lg bg-white box-visa-comment">
                         <h3 class="danaBold  text-zinc-900 text-xl">نظر کاربران</h3>
-                        <form action="/Tem1_OpinionAction.bc" method="POST"
-                              class="w-full mt-5 flex  gap-2 flex-col justify-between">
+                        <form  action="/Tem1_OpinionAction.bc" method="POST"
+                               id="opinionForm"
+                               class="w-full mt-5 flex  gap-2 flex-col justify-between">
                             <input type="hidden" name="title" value="[##cms.seo.title##]">
                             <div class="grid grid-cols-2 w-full gap-2">
                                 <input class="h-[55px] text-base  bg-white rounded-[100px] shadow-custom-1 px-[20px]"
@@ -215,8 +227,8 @@
                                                     <input type="hidden" value="[##captcha.code.captcha##]"
                                                            name="Captchaid">
                                                 </span>
-                                <button type="submit"
-                                        class="h-[55px] btn-primary rounded-[100px] text-white">
+                                <button  type="submit"
+                                         class="h-[55px] btn-primary rounded-[100px] text-white">
                                     ارسال
                                 </button>
                             </div>
@@ -232,11 +244,11 @@
                                     <div id="ballsWaveG_8" class="ballsWaveG"></div>
                                 </div>
                             </div>
-                            <div class="Message-Form text-center mt-6"></div>
+                            <div id="Message-Form" class="Message-Form text-center"></div>
                         </form>
                     </div>
                 </div>
-                <div class="flex end w-full flex-col">
+                <div class="flex end w-full flex-col sticky top-0">
                     <div class="quick-access w-full flex flex-col">
                         <h3 class="danaBold text-xl text-zinc-900"> دسترسی سریع</h3>
                         <svg class="mt-5" width="306" height="6" viewBox="0 0 306 6" fill="none"
@@ -245,35 +257,26 @@
                                   fill="#CFAA65"/>
                         </svg>
                         <div class="items flex flex-col gap-2 mt-3 w-full">
-                            <div class="item w-full rounded-[100px] h-[50px] shadow-custom-2 px-[24px] flex items-center justify-start gap-2">
-                                <i class="w-2.5 h-2.5 bg-secondary-900 rounded-[50%]"></i>
+                            <basis core="list" datamembername="db.view">
+                                <layout>@child</layout>
+                                <else-layout>
+                                    <div class="w-full border-zinc-200 border h-[120px] rounded-xl flex items-center justify-center">
+                                        <h5 class="text-base font-bold text-zinc-900">لینکی وجود ندارد</h5>
+                                    </div>
+                                </else-layout>
+                                <face filter="TypeID in(250)">
+                                    <a href="#@text" class="item w-full rounded-[100px] h-[50px] shadow-custom-2 px-[24px] flex items-center justify-start gap-2">
+                                        <i class="w-2.5 h-2.5 bg-secondary-900 rounded-[50%]"></i>
+                                        <span class="text-zinc-900 text-sm	danaRegular">@text</span>
+                                    </a>
 
-                                <span class="text-zinc-900 text-sm	 danaRegular">چگونه به استانبول سفر کنیم</span>
-                            </div>
-                            <div class="item w-full rounded-[100px] h-[50px] shadow-custom-2 px-[24px] flex items-center justify-start gap-2">
-                                <i class="w-2.5 h-2.5 bg-secondary-900 rounded-[50%]"></i>
+                                </face>
+                            </basis>
 
-                                <span class="text-zinc-900 text-sm	 danaRegular">چگونه به استانبول سفر کنیم</span>
-                            </div>
-                            <div class="item w-full rounded-[100px] h-[50px] shadow-custom-2 px-[24px] flex items-center justify-start gap-2">
-                                <i class="w-2.5 h-2.5 bg-secondary-900 rounded-[50%]"></i>
-
-                                <span class="text-zinc-900 text-sm	 danaRegular">چگونه به استانبول سفر کنیم</span>
-                            </div>
-                            <div class="item w-full rounded-[100px] h-[50px] shadow-custom-2 px-[24px] flex items-center justify-start gap-2">
-                                <i class="w-2.5 h-2.5 bg-secondary-900 rounded-[50%]"></i>
-
-                                <span class="text-zinc-900 text-sm	 danaRegular">چگونه به استانبول سفر کنیم</span>
-                            </div>
-                            <div class="item w-full rounded-[100px] h-[50px] shadow-custom-2 px-[24px] flex items-center justify-start gap-2">
-                                <i class="w-2.5 h-2.5 bg-secondary-900 rounded-[50%]"></i>
-
-                                <span class="text-zinc-900 text-sm	 danaRegular">چگونه به استانبول سفر کنیم</span>
-                            </div>
                             <div id="sharebutton"
-                                 class="group/sharebutton share-container float-left w-[300px] h-[56px] relative z-50 transition-all duration-500 my-2 hover:w-[302px] hover:h-fit ">
+                                 class="group/sharebutton share-container float-left w-[300px] h-[56px]  relative z-50 transition-all duration-500 my-2 hover:w-[302px] hover:h-fit ">
                                 <div id="sharebutton-content" onclick="ShareSocialMedia(event, 'sharebutton')"
-                                     class="w-full btn-primary bg-white drop-shadow-xl p-3 cursor-pointer transition-all duration-500 z-20 group-hover/sharebutton:w-[302px] group-hover/sharebutton:bg-primary ">
+                                     class="w-full btn-primary btn-primary  group-hover/sharebutton:w-[302px] group-hover/sharebutton:bg-primary ">
                                     <div class="bg-activation-sharebtn bg-primary w-12 h-12 rounded-full drop-shadow-md absolute top-0 bottom-0 left-0 my-auto mx-1 -z-10 group-hover/sharebutton:w-full group-hover/sharebutton:h-full group-hover/sharebutton:mx-0 group-hover/sharebutton:right-0 ">
                                     </div>
                                     <div class="flex justify-between items-center gap-4">
@@ -337,7 +340,7 @@
                                                     @prp_7244
                                                 </p>
                                                 <div class="w-full flex items-center justify-start gap-2 mt-3">
-                                                    <img width="17" src="/images/date-blog.png" alt="">
+                                                    <img width="17" src="[##cms.cms.cdn##]/images/date-blog.png" alt="">
                                                     <span class="text-zinc-500 text-xs">@prp_7249</span>
                                                 </div>
                                                 <a href="@link"
@@ -362,8 +365,8 @@
                                 </div>
                             </div>
                             <div class="banners mt-3 w-full gap-3 flex flex-col">
-                                <img class="w-full rounded-2xl" src="/images/banner.png" alt="">
-                                <img class="w-full rounded-2xl" src="/images/banner.png" alt="">
+                                <img class="w-full rounded-2xl" src="[##cms.cms.cdn##]/images/banner.png" alt="">
+                                <img class="w-full rounded-2xl" src="[##cms.cms.cdn##]/images/banner.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -403,7 +406,7 @@
                                 <div class="swiper-slide">
                                     <div class="thumbnail-comment h-[216px]  rounded-xl box-visa-comment bg-white flex flex-col p-3">
                                         <div class="top w-full flex items-center gap-3">
-                                            <img width="60" src="/images/icon-circle-user.png" alt="">
+                                            <img width="60" src="[##cms.cms.cdn##]/images/icon-circle-user.png" alt="">
                                             <div class="flex flex-col">
                                                 <h5 class="text-zinc-900 danaBold text-base">@username</h5>
                                                 <span class="text-zinc-400 text-xs	 mt-2">@createdate</span>
@@ -455,7 +458,7 @@
                                     @prp_7244
                                 </p>
                                 <div class="w-full flex items-center justify-start gap-2 mt-3">
-                                    <img width="17" src="/images/date-blog.png" alt="">
+                                    <img width="17" src="[##cms.cms.cdn##]/images/date-blog.png" alt="">
                                     <span class="text-zinc-500 text-xs">@prp_7249</span>
                                 </div>
                                 <a href="@link" class="w-full relative z-10 flex items-center justify-between mt-7">
@@ -488,5 +491,36 @@
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
 <basis core="call" file="script.inc"/>
+
+<script>
+    // swiper-comment-user
+    var swiper = new Swiper(".swiper-comment-user", {
+        scrollbar: {
+            el: ".swiper-scrollbar-comment",
+            hide: false,
+            draggable: true,
+            snapOnRelease: true,
+        },
+        slidesPerView: 3,
+        spaceBetween: 20,
+        freeMode: true,
+        navigation: {
+            nextEl: ".swiper-button-next-comment",
+            prevEl: ".swiper-button-prev-comment",
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            }
+        }
+    });
+
+</script>
 </body>
 </html>

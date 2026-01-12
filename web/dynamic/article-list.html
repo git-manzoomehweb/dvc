@@ -1,5 +1,5 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.tid##]">
-    <member name="tours" size="385x222" type="list" link="tour.bc" propertyid="8181,3088230,8076,8077,10000504,3088231"
+    <member name="tours" size="385x222" type="list" link="tour.bc" propertyid="8181,3088230,8076,8077,10000504,3088231,3088305"
             order="ord" />
 </basis>
 <basis core="dbsource" source="basiscore" mid="18" name="db" lid="1" usedforid="[##cms.query.catid|(0)##]">
@@ -352,18 +352,19 @@
                         <layout>@child</layout>
                         <face>
                             <div data-category="@prp_3088231" class="swiper-slide  tab-content">
-                                <div class="thumbnail-tour w-full rounded-3xl p-3 flex flex-col items-center">
+                                <a href="/@link" aria-label="@title" class="thumbnail-tour w-full rounded-3xl p-3 flex flex-col items-center">
                                     <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
-                                        <a class="w-full h-[222px] relative" href="/@link" aria-label="@title">
+                                        <div class="w-full h-[222px] relative">
                                             <img class="w-full h-full" src="/@image" draggable="false" alt="tour">
-                                        </a>
+                                        </div>
                                     </div>
                                     <div class="w-full flex flex-col gap-1 items-start mt-6">
-                                        <h3><a class="font-bold danaBold text-lg" href="/@link">@title</a></h3>
+                                        <h3><span class="font-bold danaBold text-lg">@title</span></h3>
                                         <span class="text-primary-700 text-xs">
                                             شروع سفر از :
                                             <span class="title-data">@prp_3088230</span>
                                             </span>
+
                                     </div>
                                     <div class="w-full mt-6 grid grid-cols-4">
                                         <div class="item flex flex-col items-center justify-center gap-2">
@@ -372,25 +373,25 @@
                                                     <use href="/images/sprite-icons.svg#icon-days"></use>
                                                 </svg>
                                             </div>
-                                            <span class="text-zinc-600 text-xs danaRegular">@prp_8076</span>
+                                            <span  class="text-zinc-600 text-xs item-text-empty danaRegular">@prp_8076</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
                                                 <img width="23" src="/images/date.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 mt-1 danaRegular">@prp_8077</span>
+                                            <span class="text-zinc-600 text-xs	item-text-empty mt-1 danaRegular">@prp_8077</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
                                                 <img width="26" src="/images/fun.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs	 danaRegular">تفریحی</span>
+                                            <span class="text-zinc-600 text-xs	item-text-empty danaRegular">@prp_3088305</span>
                                         </div>
                                         <div class="item flex flex-col items-center justify-center gap-2">
                                             <div class="h-9 flex items-end">
                                                 <img width="26" src="/images/airline.png" alt="">
                                             </div>
-                                            <span class="text-zinc-600 text-xs danaRegular">@prp_10000504</span>
+                                            <span class="text-zinc-600 text-xs item-text-empty danaRegular">@prp_10000504</span>
                                         </div>
 
 
@@ -399,7 +400,7 @@
                                         <span class="text-zinc-500 danaRegular text-sm	">شروع قیمت:</span>
                                         <h5>@prp_8181</h5>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </face>
                     </basis>
@@ -481,12 +482,13 @@
                         </div>
                     </div>
                     <div class="img w-full h-full absolute right-0 top-0">
-                        <img class="w-full h-full" src="/images/img-services.png" alt="bg-service">
+                        <img class="w-full h-full" src="[##cms.cms.cdn##]/images/img-services.png" alt="bg-service">
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 </main>
 
 
@@ -496,8 +498,8 @@
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
+
 <basis core="call" file="script.inc" />
 
 </body>
-
 </html>

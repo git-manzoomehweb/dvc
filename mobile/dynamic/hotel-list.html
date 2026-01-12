@@ -107,7 +107,7 @@
                     </ul>
                 </div>
                 <a href="#s-two" class="flex flex-col  items-center justify-center">
-                    <img width="36" src="/images/mouse.png" alt="">
+                    <img width="36" src="[##cms.cms.cdn##]/images/mouse.png" alt="">
                     <span class="text-white text-[15px] danaRegular">بیشتر ببینید</span>
                 </a>
             </div>
@@ -130,7 +130,7 @@
                     </div>
                 </face>
             </basis>
-            <div data-default="true" class="btn-tab w-full flex overflow-x-scroll overflow-y-hidden pr-4 py-3 my-2 gap-2 flex items-center justify-center my-5 gap-2">
+            <div data-default="true" class="btn-tab w-full flex overflow-x-scroll overflow-y-hidden pr-3 py-3 my-2 gap-2 flex items-center justify-center my-5 gap-2">
                 <a data-tab="cat_1"  onclick="openTab(event, 'all')"
                    class="px-[17px] tab-btn flex-shrink-0  transition-colors  hover:bg-[#F6F0E6] rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm">همه
                 </a>
@@ -150,20 +150,20 @@
                 <basis core="list" datamembername="db.hotels">
                     <layout>@child</layout>
                     <face>
-                        <div data-category="@prp_3088232" class="swiper-slide swiper-slide-tabs tab-content">
+                        <a href="@link" aria-label="@title" data-category="@prp_3088232" class="swiper-slide swiper-slide-tabs tab-content">
                             <div class="thumbnail-tour bg-white w-full rounded-3xl p-3 flex flex-col items-center">
-                                <a href="@link" aria-label="@title" class="img rounded-[9px] h-[150px] w-full overflow-hidden relative">
+                                <div  class="img rounded-[9px] h-[150px] w-full overflow-hidden relative">
                                     <img class="w-full h-full " src="/@image" draggable="false"
                                          alt="tour">
-                                </a>
+                                </div>
                                 <div class="w-full flex flex-col gap-1 items-start mt-3">
-                                    <h3><a class="font-bold danaBold text-base" href="/@link">@title</a></h3>
+                                    <h3><span class="font-bold danaBold text-base">@title</span></h3>
                                     <span class="text-secondary-900 text-xs	">@prp_7245</span>
                                 </div>
                                 <div class="w-full mt-4 grid grid-cols-4">
                                     <div class="item flex flex-col items-center justify-center gap-2">
                                         <div class="h-9 flex items-end">
-                                            <img width="27" src="/images/star.png" alt="">
+                                            <img width="27" src="[##cms.cms.cdn##]/images/star.png" alt="">
                                         </div>
                                         <span class="text-zinc-600 text-xs	 danaRegular">
                                      @prp_3088219
@@ -171,31 +171,31 @@
                                     </div>
                                     <div class="item flex flex-col items-center justify-center gap-2">
                                         <div class="h-9 flex items-end">
-                                            <img width="27" src="/images/drink.png" alt="">
+                                            <img width="27" src="[##cms.cms.cdn##]/images/drink.png" alt="">
                                         </div>
-                                        <span class="text-zinc-600 text-xs	 mt-1 danaRegular">@prp_3088220</span>
+                                        <span class="text-zinc-600 text-xs item-text-empty	 mt-1 danaRegular">@prp_3088220</span>
+                                    </div>
+                                    <div class="item flex flex-col items-center item-text-empty justify-center gap-2">
+                                        <div class="h-9 flex items-end">
+                                            <img width="27" src="[##cms.cms.cdn##]/images/pin.png" alt="">
+                                        </div>
+                                        <span class="text-zinc-600 text-xs	item-text-empty danaRegular">@prp_3088221</span>
                                     </div>
                                     <div class="item flex flex-col items-center justify-center gap-2">
                                         <div class="h-9 flex items-end">
-                                            <img width="27" src="/images/pin.png" alt="">
+                                            <img width="27" src="[##cms.cms.cdn##]/images/star2.png" alt="">
                                         </div>
-                                        <span class="text-zinc-600 text-xs	 danaRegular">@prp_3088221</span>
-                                    </div>
-                                    <div class="item flex flex-col items-center justify-center gap-2">
-                                        <div class="h-9 flex items-end">
-                                            <img width="27" src="/images/star2.png" alt="">
-                                        </div>
-                                        <span class="text-zinc-600 text-xs	 danaRegular">@prp_3088222</span>
+                                        <span class="text-zinc-600 text-xs	item-text-empty danaRegular">@prp_3088222</span>
                                     </div>
 
 
                                 </div>
                                 <div class="w-full price flex items-center justify-between mt-5">
                                     <span class="text-zinc-500 danaRegular text-sm	">شروع قیمت:</span>
-                                    <h5 class="text-base text-zinc-900">@prp_3088223</h5>
+                                    <h5 class="text-base item-text-empty text-zinc-900">@prp_3088223</h5>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </face>
                 </basis>
             </div>
@@ -299,6 +299,16 @@
     </section>
     <!-- s-faq-->
     <section class="s-faq  py-2 px-4 mt-15">
+        <div id="box-video"
+             class="modal-video  z-10 fixed right-0 top-0 h-full w-full hidden items-center justify-center p-6">
+            <div class="box-video w-full  flex bg-white  rounded-xl h-full justify-center items-center">
+                <div class="h-full w-full"><span style="display: block;"></span>
+                    <iframe class="h-full w-full" src=""
+                            allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                </div>
+            </div>
+        </div>
+
         <div class="title w-full flex flex-col items-center justify-center gap-[6px]">
             <h2 class="danaBold mb-0 text-base">سوالات متداول </h2>
             <svg width="133" height="6" viewBox="0 0 133 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -308,7 +318,7 @@
             <basis core="print" datamembername="db.faq-title">
                 <layout>@child</layout>
                 <face>
-                    <div class="text-zinc-500 text-xs text-center mt-1">
+                    <div class="text-zinc-500 text-xs	 text-center mt-1">
                         <span>@text</span>
                     </div>
                 </face>
@@ -346,10 +356,10 @@
                                         @largetext
                                     </div>
                                     <div class="w-full mt-5">
-                                        <a class="rounded-[100px] text-white danaRegular text-base w-full px-[24px] h-12 flex items-center justify-center bg-primary-900"
-                                           href="/Frequently-asked-questions">
+                                        <div class="rounded-[100px] btn-view-video text-white danaRegular text-base w-full px-[24px] h-12 flex items-center justify-center bg-primary-900"
+                                        >
                                             مشاهده ویدیو
-                                        </a>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -359,7 +369,7 @@
                 </basis>
 
             </div>
-            <img class="w-full" src="/images/img-faq.webp" alt="">
+            <img class="w-full" src="[##cms.cms.cdn##]/images/img-faq.webp" alt="">
         </div>
         <div class="w-full flex flex-col items-center gap-6 mt-8">
             <div class="w-full flex flex-col items-center gap-6">
@@ -388,14 +398,17 @@
                                         <script type="text/template">
                                             <div>
                                                 <div class="flex gap-8">
-                                                    <div class="float-right"><input type="text" class="contactUsInput codeinputm"
+                                                    <div class="float-right"><input type="text"
+                                                                                    class="contactUsInput codeinputm"
                                                                                     name="captcha" maxlength="4"
-                                                                                    placeholder="کد امنیتی"/><input type="hidden"
-                                                                                                                    name="captchaid"
-                                                                                                                    value="@captcha@"/>
+                                                                                    placeholder="کد امنیتی"/><input
+                                                            type="hidden"
+                                                            name="captchaid"
+                                                            value="@captcha@"/>
                                                     </div>
                                                     <div class="flex items-center gap-6">
-                                                        <img draggable="false" src="/@captcha@" loading="lazy" height="55"
+                                                        <img draggable="false" src="/@captcha@" loading="lazy"
+                                                             height="55"
                                                              alt="captcha" class="rounded-[100px]"/>
                                                         <svg width="48" height="48" onclick="refreshCaptchaFaq()"
                                                              class="text-zinc-900 cursor-pointer">
@@ -453,14 +466,14 @@
                     <layout>@child</layout>
                     <face>
                         <div class="thumbnail-blog w-[290px] flex-shrink-0 relative w-full flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
-                            <h2><a class="text-zinc-900 danaBold text-zinc-900 text-base" href="/@link">@title</a>
+                            <h2 class="h-8"><a class="text-zinc-900 danaBold text-zinc-900 text-base" href="/@link">@title</a>
                             </h2>
-                            <div class="leading-[21px] relative z-10 text-xs h-[165px] overflow-y-auto text-justify danaRegular text-zinc-700 mt-3">
+                            <div class="leading-[21px] relative z-10 text-xs h-[200px] overflow-y-auto text-justify danaRegular text-zinc-700 mt-3">
                                 <p>@prp_7244</p>
                             </div>
                             <div class="w-full flex items-center justify-start gap-2 mt-3">
-                                <img width="17" src="/images/date-blog.png" alt="">
-                                <span class="text-zinc-500 text-xs	">@prp_7249</span>
+                                <img width="17" src="[##cms.cms.cdn##]/images/date-blog.png" alt="">
+                                <span class="text-zinc-500 text-xs	item-text-empty">@prp_7249</span>
                             </div>
                             <a href="/@link" class="w-full relative z-10 flex items-center justify-between mt-7">
                                 <span class="text-primary-900 text-sm	 danaRegular">مشاهده بیشتر</span>
