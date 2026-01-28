@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
         waitForFiles()
     }
 })
+
 document.addEventListener("DOMContentLoaded", () => {
     const fetchContentVisa = document.querySelector('.result-id-visa')
     const contentCacheVisa = new Map()
@@ -125,6 +126,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     window.loadCategoryVisa = loadCategoryVisa
+
+
+    const pageL = document.querySelectorAll('.pagination')
+    pageL.forEach(item => {
+        if (item.childElementCount === 0) {
+            item.style.opacity = '0'
+        }
+    })
+
 })
 document.addEventListener("DOMContentLoaded", () => {
     const fetchContentHeader = document.querySelector('.result-id')
@@ -672,7 +682,6 @@ function ShareSocialMedia(event, containerid) {
     const txtcontainer = container.querySelector(".text-share-box");
     const bgactivation = container.querySelector(".bg-activation-sharebtn");
     const onlybtncontainer = document.getElementById("sharebutton-content");
-
     if (!container || !shareBox) return;
 
     // بررسی باز یا بسته بودن
@@ -920,7 +929,6 @@ document.addEventListener('DOMContentLoaded' , function (){
 
 //---------------slider-tour
 let swiperTour;
-
 function initSwiperTour() {
     if (swiperTour) {
         swiperTour.destroy(true, true);
@@ -937,7 +945,6 @@ function initSwiperTour() {
         observeParents: true,
     });
 }
-
 function openTab(evt, tabName) {
     const allBtns = document.querySelectorAll(".btn-tab .tab-btn");
     allBtns.forEach(btn => btn.classList.remove("active"));
@@ -964,3 +971,4 @@ function openTab(evt, tabName) {
         initSwiperTour();
     }, 0);
 }
+

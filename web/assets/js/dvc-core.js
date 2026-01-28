@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
         waitForFiles()
     }
 })
+
 document.addEventListener("DOMContentLoaded", () => {
     const fetchContentVisa = document.querySelector('.result-id-visa')
     const contentCacheVisa = new Map()
@@ -125,6 +126,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     window.loadCategoryVisa = loadCategoryVisa
+
+
+    const pageL = document.querySelectorAll('.pagination')
+    pageL.forEach(item => {
+        if (item.childElementCount === 0) {
+            item.style.opacity = '0'
+        }
+    })
+
 })
 document.addEventListener("DOMContentLoaded", () => {
     const fetchContentHeader = document.querySelector('.result-id')
@@ -251,24 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// modal-video
-const btnVideo = document.querySelector('.btn-view-video')
-const modalVideo = document.getElementById('box-video')
-const modalBox = modalVideo.querySelector('.box-video')
 
-btnVideo.addEventListener('click', () => {
-    modalVideo.classList.remove('hidden')
-    modalVideo.classList.add('flex')
-})
-
-modalVideo.addEventListener('click', () => {
-    modalVideo.classList.add('hidden')
-    modalVideo.classList.remove('flex')
-})
-
-modalBox.addEventListener('click', (e) => {
-    e.stopPropagation()
-})
 
 // swiper-thumbnail-visa
 var swiper = new Swiper(".swiper-thumbnail-visa", {
@@ -672,7 +665,6 @@ function ShareSocialMedia(event, containerid) {
     const txtcontainer = container.querySelector(".text-share-box");
     const bgactivation = container.querySelector(".bg-activation-sharebtn");
     const onlybtncontainer = document.getElementById("sharebutton-content");
-
     if (!container || !shareBox) return;
 
     // بررسی باز یا بسته بودن
@@ -937,32 +929,93 @@ function initSwiperTour() {
         observeParents: true,
     });
 }
+function showSwiperLoading(container, duration = 1000) {
+    if (!container) return Promise.resolve();
 
-function openTab(evt, tabName) {
+    // اگر قبلا لودر هست، پاکش کن
+    const old = container.querySelector(".swiper-loading-overlay");
+    if (old) old.remove();
+
+    container.classList.add("is-loading");
+    container.style.position = container.style.position || "relative";
+
+    // اسلایدر رو موقتا مخفی کن (کل wrapper)
+    const swiperEl = container.querySelector(".swiper-thumbnail-tour");
+    if (swiperEl) swiperEl.classList.add("hidden");
+
+    // overlay loader
+    const overlay = document.createElement("div");
+    overlay.className = "swiper-loading-overlay my-18";
+    overlay.innerHTML = `
+    <div class="h-[200px] flex items-center justify-center"><div class="flex justify-center box-loading "><span class="fetch-loader"></span></div></div>
+  `;
+    container.appendChild(overlay);
+
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            overlay.remove();
+            container.classList.remove("is-loading");
+            if (swiperEl) swiperEl.classList.remove("hidden");
+            resolve();
+        }, duration);
+    });
+}
+
+async function openTab(evt, tabName) {
     const allBtns = document.querySelectorAll(".btn-tab .tab-btn");
-    allBtns.forEach(btn => btn.classList.remove("active"));
+    allBtns.forEach((btn) => btn.classList.remove("active"));
 
     const contents = document.querySelectorAll(".tab-content");
-    contents.forEach(c => c.classList.remove("active"));
+    contents.forEach((c) => c.classList.remove("active"));
 
     const clickedBtn = evt.target.closest(".tab-btn");
-    if (clickedBtn) {
-        clickedBtn.classList.add("active");
-    }
+    if (clickedBtn) clickedBtn.classList.add("active");
 
     // ✅ حالت پیش‌فرض: نمایش همه
     if (tabName === "all") {
-        contents.forEach(item => item.classList.add("active"));
+        contents.forEach((item) => item.classList.add("active"));
     } else {
         const matchedContents = document.querySelectorAll(
             `.tab-content[data-category="${tabName}"]`
         );
-        matchedContents.forEach(item => item.classList.add("active"));
+        matchedContents.forEach((item) => item.classList.add("active"));
     }
 
+    // کانتینری که میخوای لودر روش بیاد (بهتره نزدیک‌ترین wrapper اسلایدر باشه)
+    // اگر wrapper خاص داری این selector رو تغییر بده
+    const sliderWrapper =
+        document.querySelector(".tour-slider-wrapper") ||
+        document.querySelector(".swiper-thumbnail-tour")?.closest("section") ||
+        document.querySelector(".swiper-thumbnail-tour")?.parentElement;
+
+    // اول لودینگ، بعد از 2 ثانیه نمایش و init
+    await showSwiperLoading(sliderWrapper, 1000);
+
+    // بعد از اینکه DOM تب‌ها active شد و لودینگ رفت، اسلایدر رو init کن
+    // یک tick هم میدیم که layout نهایی بشه
     setTimeout(() => {
         initSwiperTour();
     }, 0);
 }
 
 
+
+
+// modal-video
+const btnVideo = document.querySelector('.btn-view-video')
+const modalVideo = document.getElementById('box-video')
+const modalBox = modalVideo.querySelector('.box-video')
+
+btnVideo.addEventListener('click', () => {
+    modalVideo.classList.remove('hidden')
+    modalVideo.classList.add('flex')
+})
+
+modalVideo.addEventListener('click', () => {
+    modalVideo.classList.add('hidden')
+    modalVideo.classList.remove('flex')
+})
+
+modalBox.addEventListener('click', (e) => {
+    e.stopPropagation()
+})

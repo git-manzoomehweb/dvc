@@ -13,7 +13,7 @@
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
     <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"
-            pageno="[##cms.query.pagenum|(1)##]"  perpage="1" />
+            pageno="[##cms.query.pagenum|(1)##]"  perpage="12" />
     <member name="paging" type="list" request="paging" count="3" parentname="article" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid|(0)##]">
@@ -56,12 +56,11 @@
     </basis>
     <!-- pwa metatags -->
     <basis core="call" file="pwa.inc" />
-    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
     <basis core="call" file="style.inc" />
 </head>
 
 <body>
-
 <basis core="call" file="header.inc" />
 
 <!--main-->
@@ -310,7 +309,7 @@
         </div>
     </section>
     <!-- s-vacation-tours-->
-    <section class="s-vacation-tours  py-2 mt-25 mb-24">
+    <section class="s-vacation-tours  py-2 mt-25">
         <div class="c-container">
             <div class="title w-full flex flex-col items-center justify-center gap-[12px]">
                 <h2 class="danaBold text-4xl">تور های تعطیلات رویایی</h2>
@@ -488,9 +487,7 @@
             </div>
         </div>
     </section>
-
 </main>
-
 
 
 <!--footer-->
@@ -498,8 +495,7 @@
 
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
-
-<basis core="call" file="script.inc" />
+<basis core="call" file="script.inc"/>
 
 </body>
 </html>

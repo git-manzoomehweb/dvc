@@ -1,14 +1,14 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
-    <member name="tours" type="list" link="tour.bc" perpage="2" pageno="[##cms.query.pagenum|(1)##]"
-            propertyid="8181,3088230,8076,8077,10000504,3088231,3088305"  size="385x222" order="ord"/>
+    <member name="tours" type="list" link="tour.bc" perpage="12" pageno="[##cms.query.pagenum|(1)##]"
+            propertyid="8181,3088230,8076,8077,10000504,3088231,3088305" size="385x222" order="ord"/>
     <member name="paging" type="list" request="paging" count="3" parentname="tours"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.qid##]">
     <member name="faq" type="view" postsql="select * from [db.faq] where TypeID in(250)"/>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.gid##]">
-    <member name="article" type="list"  link="article.bc" order="ord" propertyid="7244,7249"
-      postsql="SELECT * FROM [db.article] ORDER BY ord ASC LIMIT 3;"
+    <member name="article" type="list" link="article.bc" order="ord" propertyid="7244,7249"
+            postsql="SELECT * FROM [db.article] ORDER BY ord ASC LIMIT 3;"
     />
 </basis>
 
@@ -61,6 +61,7 @@
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"/>
     <basis core="call" file="style.inc"/>
 </head>
+
 <body>
 <basis core="call" file="header.inc"/>
 
@@ -135,7 +136,7 @@
                     </face>
                 </basis>
                 <div data-default="true" class="btn-tab w-full flex items-center justify-center my-5 gap-2">
-                    <div data-tab="cat_all"   onclick="openTab(event, 'all')"
+                    <div data-tab="cat_all" onclick="openTab(event, 'all')"
                          class="px-[17px] tab-btn  transition-colors  hover:bg-[#F6F0E6] cursor-pointer rounded-[100px] py-[12px] bg-[#F8F8F8] text-[#747474] danaRegular text-sm active">
                         همه
                     </div>
@@ -155,69 +156,73 @@
                 </div>
 
             </div>
-            <div class="list-tour grid grid-cols-3 mt-8 gap-x-7 gap-y-9">
-                <basis core="list" datamembername="db.tours">
-                    <layout>@child</layout>
-                    <else-layout>
-                        <div class=" h-[120px] border border-zinc-200 box-not-found rounded-xl flex items-center justify-center">
+
+            <basis core="list" datamembername="db.tours">
+                <layout>
+                    <div class="list-tour grid grid-cols-3 mt-8 gap-x-7 gap-y-9">@child</div>
+                </layout>
+                <else-layout>
+                    <div class="w-3/4 flex justify-center mx-auto">
+                        <div class=" h-[120px] w-full border border-zinc-200 box-not-found rounded-xl flex items-center justify-center">
                             <h3 class="font-bold text-zinc-900 text-xl">موردی یافت نشد</h3>
                         </div>
-                    </else-layout>
-                    <face>
-                        <a href="/@link" aria-label="@title" class="thumbnail-tour w-full rounded-3xl p-3 flex flex-col items-center">
-                            <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
-                                <div class="w-full h-[222px] relative">
-                                    <img class="w-full h-full" src="/@image" draggable="false" alt="tour">
-                                </div>
+                    </div>
+                </else-layout>
+                <face>
+                    <a href="/@link" aria-label="@title" data-category="@prp_3088231"
+                       class="thumbnail-tour w-full rounded-3xl tab-content p-3 flex flex-col items-center">
+                        <div class="img rounded-[9px] h-[222px] w-full overflow-hidden relative">
+                            <div class="w-full h-[222px] relative">
+                                <img class="w-full h-full" src="/@image" draggable="false" alt="tour">
                             </div>
-                            <div class="w-full flex flex-col gap-1 items-start mt-6">
-                                <h3><span class="font-bold danaBold text-lg">@title</span></h3>
-                                <span class="text-primary-700 text-xs">
+                        </div>
+                        <div class="w-full flex flex-col gap-1 items-start mt-6">
+                            <h3><span class="font-bold danaBold text-lg">@title</span></h3>
+                            <span class="text-primary-700 text-xs">
                                             شروع سفر از :
                                             <span class="title-data">@prp_3088230</span>
                                             </span>
 
+                        </div>
+                        <div class="w-full mt-6 grid grid-cols-4">
+                            <div class="item flex flex-col items-center justify-center gap-2">
+                                <div class="h-9 flex items-end">
+                                    <svg width="27" height="27">
+                                        <use href="/images/sprite-icons.svg#icon-days"></use>
+                                    </svg>
+                                </div>
+                                <span class="text-zinc-600 text-xs item-text-empty danaRegular">@prp_8076</span>
                             </div>
-                            <div class="w-full mt-6 grid grid-cols-4">
-                                <div class="item flex flex-col items-center justify-center gap-2">
-                                    <div class="h-9 flex items-end">
-                                        <svg width="27" height="27">
-                                            <use href="/images/sprite-icons.svg#icon-days"></use>
-                                        </svg>
-                                    </div>
-                                    <span  class="text-zinc-600 text-xs item-text-empty danaRegular">@prp_8076</span>
+                            <div class="item flex flex-col items-center justify-center gap-2">
+                                <div class="h-9 flex items-end">
+                                    <img width="23" src="/images/date.png" alt="">
                                 </div>
-                                <div class="item flex flex-col items-center justify-center gap-2">
-                                    <div class="h-9 flex items-end">
-                                        <img width="23" src="/images/date.png" alt="">
-                                    </div>
-                                    <span class="text-zinc-600 text-xs	item-text-empty mt-1 danaRegular">@prp_8077</span>
-                                </div>
-                                <div class="item flex flex-col items-center justify-center gap-2">
-                                    <div class="h-9 flex items-end">
-                                        <img width="26" src="/images/fun.png" alt="">
-                                    </div>
-                                    <span class="text-zinc-600 text-xs	item-text-empty danaRegular">@prp_3088305</span>
-                                </div>
-                                <div class="item flex flex-col items-center justify-center gap-2">
-                                    <div class="h-9 flex items-end">
-                                        <img width="26" src="/images/airline.png" alt="">
-                                    </div>
-                                    <span class="text-zinc-600 text-xs item-text-empty danaRegular">@prp_10000504</span>
-                                </div>
-
-
+                                <span class="text-zinc-600 text-xs	item-text-empty mt-1 danaRegular">@prp_8077</span>
                             </div>
-                            <div class="w-full price flex items-center justify-between mt-5">
-                                <span class="text-zinc-500 danaRegular text-sm	">شروع قیمت:</span>
-                                <h5>@prp_8181</h5>
+                            <div class="item flex flex-col items-center justify-center gap-2">
+                                <div class="h-9 flex items-end">
+                                    <img width="26" src="/images/fun.png" alt="">
+                                </div>
+                                <span class="text-zinc-600 text-xs	item-text-empty danaRegular">@prp_3088305</span>
                             </div>
-                        </a>
+                            <div class="item flex flex-col items-center justify-center gap-2">
+                                <div class="h-9 flex items-end">
+                                    <img width="26" src="/images/airline.png" alt="">
+                                </div>
+                                <span class="text-zinc-600 text-xs item-text-empty danaRegular">@prp_10000504</span>
+                            </div>
 
-                    </face>
-                </basis>
 
-            </div>
+                        </div>
+                        <div class="w-full price flex items-center justify-between mt-5">
+                            <span class="text-zinc-500 danaRegular text-sm	">شروع قیمت:</span>
+                            <h5>@prp_8181</h5>
+                        </div>
+                    </a>
+
+                </face>
+            </basis>
+
             <div id="paging">
 
                 <ul class="p-pagination w-full mb-14 mt-12 flex justify-center" id="wibpaging">
@@ -319,7 +324,7 @@
                         </layout>
                         <face filter="TypeID=129">
                             <div class="text-xs text-justify text-zinc-900 leading-5">
-                               <p>@largetext</p>
+                                <p>@largetext</p>
                             </div>
                         </face>
                     </basis>
@@ -369,6 +374,13 @@
                 <div class="w-full container p-faq flex flex-col gap-4">
                     <basis core="print" datamembername="db.faq">
                         <layout>@child</layout>
+                        <else-layout>
+                            <div class="w-full flex justify-center mx-auto">
+                                <div class="h-[120px] w-full border border-zinc-200 box-not-found rounded-xl flex items-center justify-center">
+                                    <h3 class="font-bold text-zinc-900 text-xl">موردی یافت نشد</h3>
+                                </div>
+                            </div>
+                        </else-layout>
                         <face>
                             <div class="panel flex flex-col gap-4 cursor-pointer ">
                                 <div class="setting-title">
@@ -509,7 +521,7 @@
                         <face>
                             <div class="thumbnail-blog relative w-full flex flex-col bg-white px-4 py-5 rounded-3xl shadow-custom-2">
                                 <h2 class="h-8"><a class="text-zinc-900  danaBold text-zinc-900 text-base"
-                                       href="@link">@title</a>
+                                                   href="@link">@title</a>
                                 </h2>
                                 <p class="leading-[21px] title-customize line-clamp-9 relative z-10 text-xs	h-[200px] text-justify danaRegular text-zinc-700 mt-3">
                                     @prp_7244
@@ -538,7 +550,8 @@
                     </basis>
                 </div>
                 <div class="end w-full flex flex-col items-start">
-                    <img class="w-full ease hover:grayscale h-[200px] rounded-xl" src="[##cms.cms.cdn##]/images/img-blog.png"
+                    <img class="w-full ease hover:grayscale h-[200px] rounded-xl"
+                         src="[##cms.cms.cdn##]/images/img-blog.png"
                          alt="">
                     <h3 class="danaBold text-xl text-zinc-900 mt-6">برای دیدن مقاله های بیشتر</h3>
                     <p class="leading-[21px] relative z-10 text-xs	 text-justify danaRegular mt-3 text-zinc-600">
@@ -561,7 +574,14 @@
 <!--scripts-->
 <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
 <basis core="call" file="script.inc"/>
-
+<script>
+    const pageL = document.querySelectorAll('.pagination')
+    pageL.forEach(itemCount => {
+        if (itemCount.childElementCount === 0) {
+            itemCount.style.opacity = '0'
+        }
+    })
+</script>
 </body>
 </html>
 
