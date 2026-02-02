@@ -498,10 +498,54 @@
     display: grid
 }
 
-.Flightclass-Passenger .flightclass-field, .form-about .gap-8 svg, .form-faq .gap-8 svg, .form-faq [data-bc-section-title], .form-footer .gap-8 svg, .hidden, .reservation-item .module-icon .module-icon-active, .reserve-field .auto-fit, .route-minus-btn svg, .search-flight svg, .search-flighthotel svg, .search-hotel svg, .search-tour svg, .searchList .clear-both div.leading-9, .tab-content, .tab-content-hotel, .tab-content-popular, [data-bc-title-container] {
+.form-about .gap-8 svg, .form-faq .gap-8 svg, .form-faq [data-bc-section-title], .form-footer .gap-8 svg, .hidden, .reservation-item .module-icon .module-icon-active, .reserve-field .auto-fit, .route-minus-btn svg, .search-flight svg, .search-flighthotel svg, .search-hotel svg, .search-tour svg, .searchList .clear-both div.leading-9, .tab-content, .tab-content-hotel, .tab-content-popular, [data-bc-title-container] {
     display: none
 }
 
+.Flightclass-Passenger .flightclass-field label svg:first-child {
+    position: absolute;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #f4f4f5;
+}
+
+.Flightclass-Passenger .flightclass-field {
+    border-bottom: 1px solid #f2f2f2;
+    height: 67px !important;
+}
+
+.Flightclass-Passenger .FlightClass-text ,
+.Flightclass-Passenger label .label-text {
+    margin-right: 47px;
+}
+.FlightClass ul{
+  margin-top: 3rem;
+}
+.FlightClass ul li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+
+}
+.FlightClass ul .active-FlightClass {
+    background: var(--primary-900);
+    border-radius: 12px;
+}
+.FlightClass ul .active-FlightClass span {
+   color: white !important;
+}
+.passengerbox .confirm-passenger{
+    background: var(--primary-900);
+    display: flex !important;
+    justify-content: center;
+    border-radius: 8px;
+}
+.passengerbox .confirm-passenger span{
+    color: white !important;
+}
 .table {
     display: table
 }
@@ -2724,15 +2768,18 @@ a, button, input {
 .border-l-head {
     border-left: 1px solid var(--color-zinc-200)
 }
+
 .btnstyle .hasNot-login-icon {
     width: auto !important;
     height: auto !important;
     padding: 3px !important;
     display: flex !important;
 }
-.Login_Information{
+
+.Login_Information {
     background: unset !important;
 }
+
 #firstUsername input, #mailsSelectContainer input {
     box-shadow: 0 4px 67px 0 #0000000F;
     background: #fff;
@@ -2745,7 +2792,7 @@ a, button, input {
 }
 
 .login-btn-content button {
-    background: var(--primary-900) ;
+    background: var(--primary-900);
     border: 1px solid var(--primary-900);
     border-radius: 100px;
     height: 55px;
@@ -2756,7 +2803,8 @@ a, button, input {
     justify-content: center;
     transition: .6s
 }
- .login-btn-content button:hover {
+
+.login-btn-content button:hover {
     background: #fff;
     color: var(--primary-900);
     box-shadow: rgba(0, 0, 0, .19) 0 10px 20px, rgba(0, 0, 0, .23) 0 6px 6px
@@ -2795,6 +2843,7 @@ a, button, input {
     align-items: center;
     font-size: 13px;
 }
+
 .searchList .justify-between .close-searchList {
     width: auto !important;
     font-size: 13px;
@@ -2903,6 +2952,7 @@ a, button, input {
     height: 50%;
     background: white;
 }
-.Basis_Date_Box .no-activedate{
+
+.Basis_Date_Box .no-activedate {
     background: unset !important;
 }
