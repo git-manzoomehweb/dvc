@@ -387,9 +387,11 @@
 .my-20 {
     margin-block: calc(var(--spacing) * 20)
 }
+
 .my-60 {
     margin-block: calc(var(--spacing) * 60)
 }
+
 .my-80 {
     margin-block: calc(var(--spacing) * 80)
 }
@@ -2906,6 +2908,7 @@ header .item-social:hover {
     background: var(--color-zinc-900) !important;
     align-items: center
 }
+
 .add-routs span, .remove-routs span {
     font-family: DanaFaNum !important;
     font-size: 14px !important
@@ -3195,17 +3198,31 @@ header .item-social:hover {
     width: 1280px !important;
 }
 
-.date__searched__container .departure-date  ,.date__searched__container .return-date {
+.date__searched__container .departure-date, .date__searched__container .return-date {
     height: 53px !important;
     border-radius: 8px;
 }
-.Basis_Date_Box .no-activedate{
+
+.Basis_Date_Box .no-activedate {
     background: unset !important;
 }
+
 .output-content .date .departure-date {
     height: auto !important;
 }
-.tourSearch{
+
+.tourSearch {
     height: 70px;
 }
 
+.mailsSelectContainer .email-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start;
+}
+
+.mailsSelectContainer .email-item input {
+    width: 20px !important;
+    height: 20px !important;
+    margin: 0 4px 0 0 !important;
+}

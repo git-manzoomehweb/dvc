@@ -1,69 +1,118 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const isDesktop = window.innerWidth > 1024
-    const requiredFiles = isDesktop
-        ? ['dvc.ui.min.css']
-        : ['dvc-mob.ui.min.css']
+    const container = document.getElementById('search-box')
+    if (!container) return
 
-    function checkAllResourcesLoaded() {
-        const resources = performance.getEntriesByType('resource')
-        const loadedFiles = resources
-            .map((res) => res.name.split('/').pop())
-            .filter((name) => requiredFiles.includes(name))
-
-        return requiredFiles.every((file) => loadedFiles.includes(file))
+    function toAbsUrl(href) {
+        try {
+            return new URL(href, document.baseURI).href
+        } catch {
+            return href
+        }
     }
 
-    if (document.getElementById('search-box')) {
-        function fetchEngine() {
-            try {
-                const xhrobj = new XMLHttpRequest()
-                xhrobj.open('GET', 'search-engine.bc');
-                xhrobj.send();
-
-                xhrobj.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        const container = document.getElementById('search-box')
-                        container.innerHTML = xhrobj.responseText
-                        ;['.Basis_Date.end_date', '.Basis_Date.start_date'].forEach(
-                            (selector) => {
-                                const dateInputs = document.querySelectorAll(selector)
-                                dateInputs.forEach((input) => {
-                                    input.placeholder = 'انتخاب تاریخ'
-                                })
-                            },
-                        )
-
-
-                        const scripts = container.getElementsByTagName('script')
-                        for (let i = 0; i < scripts.length; i++) {
-                            const scriptTag = document.createElement('script')
-                            if (scripts[i].src) {
-                                scriptTag.src = scripts[i].src
-                                scriptTag.async = false
-                            } else {
-                                scriptTag.text = scripts[i].textContent
-                            }
-                            document.head
-                                .appendChild(scriptTag)
-                                .parentNode.removeChild(scriptTag)
-                        }
-                    }
-                }
-            } catch (error) {
-                console.error('مشکلی پیش آمده است. لطفا صبور باشید', error)
+    function fetchEngine() {
+        return new Promise((resolve, reject) => {
+            const x = new XMLHttpRequest()
+            x.open('GET', 'search-engine.bc')
+            x.onreadystatechange = function () {
+                if (x.readyState !== 4) return
+                if (x.status !== 200) return reject(new Error('XHR failed: ' + x.status))
+                resolve(x.responseText)
             }
-        }
+            x.send()
+        })
+    }
 
-        function waitForFiles() {
-            if (checkAllResourcesLoaded()) {
-                fetchEngine()
+    function ensureStylesheetLoaded(href) {
+        const abs = toAbsUrl(href)
+
+        return new Promise((resolve) => {
+            const existing = Array.from(document.querySelectorAll('link[rel="stylesheet"]'))
+                .find(l => (l.href || '') === abs)
+
+            if (existing) {
+                if (existing.sheet) return resolve()
+                existing.addEventListener('load', () => requestAnimationFrame(resolve), { once: true })
+                existing.addEventListener('error', () => resolve(), { once: true }) // fail-open
+                return
+            }
+
+            const link = document.createElement('link')
+            link.rel = 'stylesheet'
+            link.href = abs
+            link.addEventListener('load', () => requestAnimationFrame(resolve), { once: true })
+            link.addEventListener('error', () => resolve(), { once: true })
+            document.head.appendChild(link)
+        })
+    }
+
+    function moveInlineStylesToHead(tmpRoot) {
+        const styles = Array.from(tmpRoot.querySelectorAll('style'))
+        styles.forEach((st) => {
+            const tag = document.createElement('style')
+            tag.textContent = st.textContent || ''
+            document.head.appendChild(tag)
+            st.remove()
+        })
+    }
+
+    function runScriptsInOrder(tmpRoot) {
+        const scripts = Array.from(tmpRoot.querySelectorAll('script'))
+        scripts.forEach(s => s.remove())
+
+        for (const s of scripts) {
+            const tag = document.createElement('script')
+            if (s.src) {
+                tag.src = toAbsUrl(s.getAttribute('src'))
+                tag.async = false
             } else {
-                setTimeout(waitForFiles, 500)
+                tag.text = s.textContent || ''
             }
+            document.head.appendChild(tag)
+            document.head.removeChild(tag)
         }
-
-        waitForFiles()
     }
+
+    function postDomFixes() {
+        ;['.Basis_Date.end_date', '.Basis_Date.start_date'].forEach((selector) => {
+            document.querySelectorAll(selector).forEach((input) => (input.placeholder = ''))
+        })
+    }
+
+    ;(async function boot() {
+        try {
+
+            const html = await fetchEngine()
+
+            const tmp = document.createElement('div')
+            tmp.innerHTML = html
+
+            const cssLinks = Array.from(tmp.querySelectorAll('link[rel="stylesheet"]'))
+            const cssHrefs = cssLinks
+                .map(l => l.getAttribute('href'))
+                .filter(Boolean)
+
+            cssLinks.forEach(l => l.remove())
+
+            moveInlineStylesToHead(tmp)
+
+            await Promise.all(cssHrefs.map(ensureStylesheetLoaded))
+
+            container.innerHTML = tmp.innerHTML
+
+            const tmp2 = document.createElement('div')
+            tmp2.innerHTML = html
+            Array.from(tmp2.querySelectorAll('link[rel="stylesheet"]')).forEach(l => l.remove())
+            Array.from(tmp2.querySelectorAll('style')).forEach(s => s.remove())
+            runScriptsInOrder(tmp2)
+
+            postDomFixes()
+        } catch (e) {
+            console.error('مشکلی پیش آمده است. لطفا صبور باشید', e)
+            container.innerHTML =
+                '<div class="text-center p-3">خطا در بارگذاری. لطفاً دوباره تلاش کنید.</div>'
+        }
+    })()
 })
 
 document.addEventListener("DOMContentLoaded", () => {
